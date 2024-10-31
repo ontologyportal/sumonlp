@@ -1,0 +1,3 @@
+Input: Roberto lost his teeth
+Output: ( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "Robert"? H ) ( instance? P Removing ) ( agent? P? H ) ( before ( EndFn ( WhenFn? P ) ) Now ) ( instance? DO Tooth ) ( objectTransferred? P? DO ) ) )
+

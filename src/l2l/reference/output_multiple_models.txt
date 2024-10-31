@@ -1,0 +1,13 @@
+Input: OrangeRed is an instance of Orange
+
+Model: 12m Sentences
+Output: ( instance OrangeRed Orange )
+
+Model: 500k SUFFLED Sentences
+Output: ( instance OrangeRed Orange )
+
+Model: 500k Last Sentences
+Output: ( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "OrangeRed"? H ) ( instance? P Ingesting ) ( experiencer? P? H ) ( attribute? DO Female ) ( names "OrangeRed"? DO ) ( instance? DO Human ) ( objectTransferred? P? DO ) ) )
+
+==================================================
+
