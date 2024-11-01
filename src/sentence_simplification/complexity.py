@@ -33,3 +33,8 @@ def get_complexity_dict(sentence):
              'average_frequency': get_average_frequency(sentence),
              'lexical_diversity': get_lexical_diversity(sentence),
              'readability': get_readability(sentence) }
+
+
+def get_complexity_score(sentence):
+    ''' Calculates complexity score of a sentence based on the complexity metrics.'''
+    # TODO: Add weights to the complexity metrics
