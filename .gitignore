@@ -1,3 +1,8 @@
 data/
 
 
+src/oov_handling/vocabulary_test.db
+src/oov_handling/vocabulary.db
+src/oov_handling/stanza_test.py
+src/oov_handling/logs/log_53864924.err
+src/oov_handling/logs/log_53864924.out
