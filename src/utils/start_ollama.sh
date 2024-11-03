@@ -1,4 +1,4 @@
-
+#!/bin/bash
 ####################################################################################################
 # Checks to see if an o-llama server is already running.
 # If one is not, then it will start an instance.
@@ -16,7 +16,7 @@
 # This is done because we only care about the exit status of the command.
 ####################################################################################################
 
-parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
 cd "$parent_path" || exit
 source ../config_paths.sh
 
@@ -25,7 +25,7 @@ if lsof -i :11434 | grep ollama > /dev/null; then
   echo "Ollama server is running."
 else
   echo "Ollama server is not running. Starting server..."
-  ollama serve
+  ollama serve &
 fi
 
 

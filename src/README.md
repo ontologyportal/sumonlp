@@ -1,4 +1,4 @@
-##Ollama Install Notes
+## Ollama Install Notes
 
 Instructions modified from: 
 https://github.com/ollama/ollama/blob/main/docs/linux.md
