@@ -37,4 +37,5 @@ def get_complexity_dict(sentence):
 
 def get_complexity_score(sentence):
     ''' Calculates complexity score of a sentence based on the complexity metrics.'''
-    # TODO: Add weights to the complexity metrics
+    # TODO : Implement a better way to calculate complexity score, right now it is just the length of the sentence
+    return get_sentence_length(sentence)
