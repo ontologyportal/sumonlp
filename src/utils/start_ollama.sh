@@ -16,6 +16,7 @@
 # This is done because we only care about the exit status of the command.
 ####################################################################################################
 
+# Gets the path to this script, so this script can be run from any location.
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
 cd "$parent_path" || exit
 source ../config_paths.sh
@@ -26,7 +27,6 @@ if lsof -i :11434 | grep ollama > /dev/null; then
 else
   echo "Ollama server is not running. Starting server..."
   ollama serve &
+  # Give the server a chance to start up before moving to the next instruction
+  sleep 4
 fi
-
-
-

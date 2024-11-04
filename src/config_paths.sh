@@ -10,9 +10,9 @@
 ###############################################################
 
 OLLAMA_PATH="$HOME/Programs/ollama/bin"
+VAMPIRE_PATH="$HOME/workspace/vampire"
 
-
-
-# If ollama/bin doesn't exist on the path, then add it to the path
+# If PATHs don't exist on $PATH variable, then add them to the $PATH variable
 [[ ":$PATH:" == *$OLLAMA_PATH* ]] || PATH="$OLLAMA_PATH:$PATH"
+[[ ":$PATH:" == *$VAMPIRE_PATH* ]] || PATH="$VAMPIRE_PATH:$PATH"
 
