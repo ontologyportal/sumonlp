@@ -34,7 +34,7 @@ def simplify_file(file, date_time, max_allowed_complexity=30):
         line = line.strip()
         if line:
             complexity_score = get_complexity_score(line)
-            if complexity_score < max_allowed_complexity:    # If the sentence is already simple enough, leave it as it is
+            if complexity_score <= max_allowed_complexity:    # If the sentence is already simple enough, leave it as it is
                 output_lines.append(line)
             else:
                 output_lines.append(simplify_sentence_llm(line, model, prompt))
