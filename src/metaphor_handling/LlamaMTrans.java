@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 public class LlamaMTrans {
 
     // Hardcoded path to Ollama binary
-    private static final String OLLAMA_PATH = "/home/jarrad.singley/Programs/llama/bin/ollama";
+    // private static final String OLLAMA_PATH = "/home/jarrad.singley/Programs/llama/bin/ollama";
 
     public static void main(String[] args) {
         // Ensure correct number of arguments
@@ -55,7 +55,7 @@ public class LlamaMTrans {
         StringBuilder result = new StringBuilder();
         try {
             // Command to run Ollama with the hardcoded path
-            ProcessBuilder processBuilder = new ProcessBuilder(OLLAMA_PATH, "run", "llama3.2");
+            ProcessBuilder processBuilder = new ProcessBuilder("ollama", "run", "llama3.2");
 
             Process process = processBuilder.start();
             

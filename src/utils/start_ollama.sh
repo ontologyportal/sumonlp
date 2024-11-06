@@ -28,5 +28,5 @@ else
   echo "Ollama server is not running. Starting server..."
   ollama serve &
   # Give the server a chance to start up before moving to the next instruction
-  sleep 4
+  sleep 5
 fi

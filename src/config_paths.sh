@@ -9,7 +9,10 @@
 # for the commands in config_path.sh
 ###############################################################
 
-OLLAMA_PATH="$HOME/Programs/ollama/bin"2
+
+CONDA_ENVIRONMENT="py3109_pytorch"
+OLLAMA_PATH="$HOME/Programs/ollama/bin"
+OLLAMA_LOG_PATH="$HOME/Programs/llamaMD/ollama_log.out"
 VAMPIRE_PATH="$HOME/workspace/vampire"
 SIGMAKEE_HOME="$HOME/workspace/sigmakee"
 MODEL_HOME="$HOME/workspace/L2L_model/t5_model"
@@ -18,3 +21,6 @@ MODEL_HOME="$HOME/workspace/L2L_model/t5_model"
 [[ ":$PATH:" == *$OLLAMA_PATH* ]] || PATH="$OLLAMA_PATH:$PATH"
 [[ ":$PATH:" == *$VAMPIRE_PATH* ]] || PATH="$VAMPIRE_PATH:$PATH"
 
+#initialize the conda environment
+eval "$(conda shell.bash hook)"
+conda activate py3109_pytorch
