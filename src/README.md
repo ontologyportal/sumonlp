@@ -1,9 +1,39 @@
+## Install model tools
+
+```
+conda create -n py39_pytorch python=3.9
+conda activate py39_pytorchtouch
+pip install torch
+pip install transformers
+pip install stanza
+```
+
+## Configuring the prover
+
+To be able to translate the generated SUO-KIF logic to the input required by the vampire prover, update 
+
+```
+$HOME/.sigmakee/KBs/config.xml
+```
+
+and add the following line is in the <kb name="SUMO" > section:
+
+```
+...
+  <kb name="SUMO" >
+    ...
+    <constituent filename="/home/THE_USER/.sigmakee/KBs/SUMO_NLP.kif" />
+    ...
+  </kb>
+...
+
+```
+
 ## Ollama Install Notes
 
 Instructions modified from: 
 https://github.com/ollama/ollama/blob/main/docs/linux.md
 https://ollama.com/download/linux
-
 
 ```
 cd Programs
