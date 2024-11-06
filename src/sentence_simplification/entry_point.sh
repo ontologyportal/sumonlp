@@ -6,3 +6,5 @@ parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
 cd "$parent_path" || exit
 source ../config_paths.sh
 ../utils/start_ollama.sh
+
+cp input_ss.txt output_ss.txt
