@@ -7,8 +7,10 @@ import java.io.InputStreamReader;
 public class LlamaMTrans {
 
     // Hardcoded path to Ollama binary
-    private static final String OLLAMA_PATH = "/home/jarrad.singley/Programs/llama/bin/ollama";
-
+    //private static final String OLLAMA_PATH = "/home/jarrad.singley/Programs/llama/bin/ollama";
+    private static final String OLLAMA_PATH = System.getenv("OLLAMA_PATH") != null 
+                                             ? System.getenv("OLLAMA_PATH")
+                                             : "ollama";          // Default to "ollama" in PATH
     public static void main(String[] args) {
         // Ensure correct number of arguments
         if (args.length != 2) {
@@ -33,9 +35,9 @@ public class LlamaMTrans {
                     // Remove the leading "1" and any tab character from the sentence
                     sentence = sentence.substring(1).replace("\t", "");
                     String result = askOllama("The following sentence contains metaphorical content:  " + sentence + "  Translate the sentence so that no metaphorical expressions are present. Make sure there is no figurative language, make the sentence as plain and literal as possible. MOST IMPORTANTLY, respond with ONLY the translated sentence.");
-                    System.out.println("-----------------------\n");
+                    //System.out.println("-----------------------\n");
                     System.out.println("result: " + result);
-                    System.out.println("-----------------------\n");
+                    //System.out.println("-----------------------\n");
                     result = result.replace("\n", "");
                     writer.write(result + "\n");
                     

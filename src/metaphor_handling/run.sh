@@ -18,7 +18,7 @@ javac LlamaMTrans.java
  
 # Start Ollama server in the background and log its output
 export OLLAMA_HOST="127.0.0.1:55757"
-ollama serve > /home/jarrad.singley/Programs/llamaMD/ollama_log.out 2>&1 &
+ollama serve > ./logs/ollama_log.out 2>&1 &
  
 # Capture the PID of the Ollama server so we can track/kill it later if needed
 OLLAMA_PID=$!
@@ -26,9 +26,9 @@ OLLAMA_PID=$!
 # Sleep to ensure Ollama has started
 sleep 5
  
-ollama pull llama3.2:1b
-ollama pull llama3.2:3b
-ollama pull llama3.1:8b
+#ollama pull llama3.2:1b
+#ollama pull llama3.2:3b
+#ollama pull llama3.1:8b
 ollama pull mistral
 echo "running detector"
 python3 metaphor_detect_pipeline.py
