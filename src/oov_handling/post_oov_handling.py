@@ -2,7 +2,7 @@ import re
 import sqlite3
 import time
 
-db_path = 'vocabulary_test.db'
+db_path = '/data/angelos.toutsios.gr/vocabulary.db'
 conn = sqlite3.connect(db_path)
 cursor = conn.cursor()
 

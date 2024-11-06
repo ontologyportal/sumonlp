@@ -8,7 +8,7 @@ stanza.download('en', processors='tokenize,pos,lemma', verbose=False)  # Downloa
 nlp = stanza.Pipeline('en', processors='tokenize,pos,lemma', verbose=False)
 
 # Database configuration
-DB_PATH = 'vocabulary.db'
+DB_PATH = '/data/angelos.toutsios.gr/vocabulary.db'
 
 # Connect to the SQLite database
 conn = sqlite3.connect(DB_PATH)

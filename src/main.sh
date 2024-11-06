@@ -19,7 +19,10 @@ bash oov_handling/entry_point.sh
 cp oov_handling/output_oov.txt l2l/input_l2l.txt
 
 bash l2l/entry_point.sh
-cp l2l/output_l2l.txt prover/input_pr.txt
+cp l2l/output_l2l.txt oov_handling/input_post_oov.txt
+
+bash oov_handling/entry_point_postprocessing.sh
+cp oov_handling/output_post_oov.txt prover/input_pr.txt
 
 bash prover/entry_point.sh
 
