@@ -7,7 +7,7 @@ import random
 from complexity import get_complexity_score
 
 
-def simplify_file(file, date_time, max_allowed_complexity=0.5):
+def simplify_file(file, date_time, max_allowed_complexity=30):
     '''
     
     '''
@@ -34,15 +34,12 @@ def simplify_file(file, date_time, max_allowed_complexity=0.5):
         line = line.strip()
         if line:
             complexity_score = get_complexity_score(line)
-            if complexity_score < max_allowed_complexity:
+            if complexity_score <= max_allowed_complexity:    # If the sentence is already simple enough, leave it as it is
                 output_lines.append(line)
             else:
-                # Each sentence gets its own line in the output.
                 output_lines.append(simplify_sentence_llm(line, model, prompt))
 
     return output_lines
-
-
     
 
 
@@ -84,27 +81,6 @@ def end_program(start_time):
     print("Goodbye!")
     os._exit(0)
 
-if __name__ == '__main__':
 
-    max_complexity = 0.5 # TODO : Determine the maximum complexity score threshold
-
-    start_time = time.time()
-    date_time = datetime.datetime.now().strftime('%d%b%Y_%H%M').upper()
-
-    input = 'input.txt'
-    output = 'output.txt'
-    file = os.path.join(input)
-
-    output_lines = simplify_file(file, date_time)
-
-
-    with open(output, 'w', encoding='utf-8') as outfile:
-        for line in output_lines:
-            outfile.write(line + '\n')
-
-
-
-
-    end_program(start_time)
 
 
