@@ -6,6 +6,24 @@ db_path = '/data/angelos.toutsios.gr/vocabulary.db'
 conn = sqlite3.connect(db_path)
 cursor = conn.cursor()
 
+def format_word(word):
+
+    # Step 1: Replace special characters (except commas and periods) with underscores
+    word = re.sub(r'[^a-zA-Z0-9,.\s]', '_', word)
+
+    # Step 2: Remove commas and periods
+    word = word.replace(',', '').replace('.', '')
+
+    # Step 3: Add prefix 'num_' if the word starts with a digit
+    if word[0].isdigit():
+        word = 'num_' + word
+
+    # Step 4: Replace any remaining whitespaces with underscores
+    word = word.replace(' ', '_')
+
+    return word
+
+
 def get_word_from_db(word_id):
     # Connect to the database
 
@@ -16,7 +34,8 @@ def get_word_from_db(word_id):
     # If the word is found, mark it as used and return it
     if result:
         word = result[0]
-        cursor.execute("UPDATE UnknownWords SET Used = 1 WHERE id = ?", (word_id,))
+        word = format_word(word)
+        cursor.execute("UPDATE UnknownWords SET Used = 1, formatted_word = ? WHERE id = ?", (word, word_id))
         conn.commit()
         return word
     else:
