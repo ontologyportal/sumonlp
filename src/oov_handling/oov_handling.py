@@ -44,12 +44,15 @@ def check_word_in_dictionary(root, word_type):
 def add_unknown_word(word, root, word_type):
     """Check if an unknown word already exists in the UnknownWords table with 'used' set to 0, or insert it if not."""
     try:
-        cursor.execute("SELECT * FROM UnknownWords WHERE word = ? AND used = 0", (word.lower(),))
+        # trim word
+        word = word.strip()
+        word = word.lower()
+        cursor.execute("SELECT * FROM UnknownWords WHERE word = ? AND used = 0", (word,))
         result = cursor.fetchone()
         if result:
             return result[0] # Return the ID if the word exists
         else:
-            cursor.execute("INSERT INTO UnknownWords (word) VALUES (?)", (word.lower(),))
+            cursor.execute("INSERT INTO UnknownWords (word) VALUES (?)", (word,))
             conn.commit()
             return cursor.lastrowid # Return the ID of the newly inserted word
     except sqlite3.IntegrityError as e:
