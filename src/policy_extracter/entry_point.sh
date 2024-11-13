@@ -8,5 +8,5 @@ source ../config_paths.sh
 echo "Starting policy extracter ..."
 bash ../utils/start_ollama.sh
 
+python3 sentence_extract.py
 
-cp input_pe.txt output_pe.txt

@@ -1,0 +1,43 @@
+#from maverick import Maverick
+#import torch
+
+# Check for GPU
+def check_gpu():
+    if torch.cuda.is_available():
+        print('Using GPU')
+        device = 'cuda:0'
+    else:
+        print('Using CPU')
+        device = 'cpu'
+
+    return device
+
+
+def test(sentence):
+    '''Perform coreference resolution and return the resolved sentence.'''
+    model = Maverick(hf_name_or_path="sapienzanlp/maverick-mes-ontonotes", device=device) 
+
+    result = model.predict(sentence)
+    print(f'Coreference resolution result: {result}')
+
+    resolved_text = sentence
+    clusters = result['clusters_text_mentions']
+    for cluster in clusters:
+        main_mention = cluster[0] 
+        for mention in cluster[1:]:
+            resolved_text = resolved_text.replace(mention, main_mention)
+    
+
+if __name__ == '__main__':
+    import torch
+    print('cuda version:', torch.version.cuda)
+    print(torch.version.cuda)
+    #sentence = "My sister has a dog. She loves him."
+    #print(f'Input sentence: {sentence}')
+    #print(f'Output sentence: {test(sentence)}')
+
+    #sentence = "Joe is going to the store. He wants to buy a car there."
+    #print(f'Input sentence: {sentence}')
+    #print(f'Output sentence: {test(sentence)}')
+          
+
