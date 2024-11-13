@@ -3,6 +3,7 @@ import sqlite3
 import time
 
 db_path = '/data/angelos.toutsios.gr/vocabulary.db'
+# db_path = '/home/angelos.toutsios.gr/workspace/sumonlp/src/oov_handling/vocabulary_test.db'
 conn = sqlite3.connect(db_path)
 cursor = conn.cursor()
 
