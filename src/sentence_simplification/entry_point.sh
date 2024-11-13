@@ -5,8 +5,8 @@ echo "Starting sentence simplification ..."
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
 cd "$parent_path" || exit
 source ../config_paths.sh
-../utils/start_ollama.sh
+../utils/start_ollama.sh > logs/ollama.log 2>&1 &
 
-cp input_ss.txt output_ss.txt
+python3 main.py
 
 # python3 main.py
