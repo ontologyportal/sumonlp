@@ -11,21 +11,6 @@ nlp = stanza.Pipeline('en', processors='tokenize,pos,lemma,ner', verbose=False)
 # DB_PATH = '/data/angelos.toutsios.gr/vocabulary_test.db'
 DB_PATH = '/home/angelos.toutsios.gr/workspace/sumonlp/src/oov_handling/vocabulary_test.db'
 
-# Connect to the SQLite database
-conn = sqlite3.connect(DB_PATH)
-cursor = conn.cursor()
-
-# Ensure the Dictionary and UnknownWords tables exist
-cursor.execute("""
-CREATE TABLE IF NOT EXISTS UnknownWords (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    word TEXT UNIQUE,
-    formatted_word TEXT DEFAULT '',
-    type TEXT DEFAULT '',
-    used INTEGER DEFAULT 0 CHECK (used IN (0, 1))
-)
-""")
-conn.commit()
 
 def get_word_type(word):
     """Determine if the word is a noun or verb using Stanza."""
@@ -38,13 +23,13 @@ def get_word_type(word):
     else:
         return None
 
-def check_word_in_dictionary(root, word_type):
+def check_word_in_dictionary(root, word_type, cursor):
     """Check if the word exists in the Dictionary table."""
     cursor.execute("SELECT id FROM Word WHERE root = ? AND pos = ?", (root.lower(), word_type))
     # cursor.execute("SELECT id FROM Dictionary WHERE root = ?", (root.lower()))
     return cursor.fetchone()
 
-def add_unknown_word(word, word_type):
+def add_unknown_word(word, word_type, conn, cursor):
     """Check if an unknown word already exists in the UnknownWords table with 'used' set to 0, or insert it if not."""
     try:
         # trim word
@@ -63,7 +48,7 @@ def add_unknown_word(word, word_type):
         return None
 
 
-def process_sentence(sentence):
+def process_sentence(sentence, conn, cursor):
     """Process a single sentence, replacing unknown nouns and verbs with tags."""
 
     doc = nlp(sentence)
@@ -75,13 +60,13 @@ def process_sentence(sentence):
             word_type = get_word_type(word)
             if word_type:
                 # Check if the root form exists in the Dictionary
-                dictionary_entry = check_word_in_dictionary(word.lemma, word_type)
+                dictionary_entry = check_word_in_dictionary(word.lemma, word_type, cursor)
                 if dictionary_entry:
                     # Known word, keep the original token text
                     processed_tokens.append(word.text)
                 else:
                     # Unknown word, replace with <UNK_type_id>
-                    unk_id = add_unknown_word(word.text, word_type)
+                    unk_id = add_unknown_word(word.text, word_type, conn, cursor)
                     if unk_id != None:
                         processed_tokens.append(f"<UNK_{word_type}_{unk_id}>")
                     else:
@@ -100,7 +85,7 @@ def process_sentence(sentence):
     for ent in doc.ents:
 
       # Save each ent and type in DB
-      unk_id = add_unknown_word(ent.text, ent.type)
+      unk_id = add_unknown_word(ent.text, ent.type, conn, cursor)
 
       # Replace in the document each ent with the appropiate <tag>
       tag = f'<UNK_{ent.type}_{unk_id}>'
@@ -111,7 +96,7 @@ def process_sentence(sentence):
 
 
 
-def process_file(input_file, output_file):
+def process_file(input_file, output_file, conn, cursor):
     """Process the input file and write the processed text to the output file."""
     if not os.path.exists(input_file):
         print(f"Input file '{input_file}' does not exist.")
@@ -123,7 +108,7 @@ def process_file(input_file, output_file):
         for line in infile:
             stripped_line = line.strip()
             if stripped_line:
-                processed_line = process_sentence(stripped_line)
+                processed_line = process_sentence(stripped_line, conn, cursor)
                 outfile.write(processed_line + '\n')
             else:
                 outfile.write('\n')  # Preserve empty lines
@@ -135,7 +120,24 @@ if __name__ == "__main__":
     input_filename = 'input_oov.txt'    # Input file containing sentences
     output_filename = 'output_oov.txt'  # Output file to save processed sentences
 
-    process_file(input_filename, output_filename)
+
+    # Connect to the SQLite database
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+
+    # Ensure the Dictionary and UnknownWords tables exist
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS UnknownWords (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        word TEXT UNIQUE,
+        formatted_word TEXT DEFAULT '',
+        type TEXT DEFAULT '',
+        used INTEGER DEFAULT 0 CHECK (used IN (0, 1))
+    )
+    """)
+    conn.commit()
+
+    process_file(input_filename, output_filename, conn, cursor)
 
     # Close the database connection after processing
     conn.close()
