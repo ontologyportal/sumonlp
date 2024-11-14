@@ -1,11 +1,8 @@
-(instance kjetil Human)
-(=> (and (instance games Action)
-         (agent games whitefish)
-         (destination games spoiled))
-    (result games (instance 28th Event)))
-
-(a.m. <UNK_noun-phrase_105> (attribute kerrigan Intelligent))
-
-(forall (?x)
-  (=> (instance ?x evy)
-      (capable ?x kerrigan)))
+(instance angelos_toutsios Human)
+(exists (?angelos_toutsios ?R ?S ?wobblegadget)
+  (and
+    (instance ?R Rotating)
+    (instance ?S Screw)
+    (agent ?R angelos_toutsios)
+    (patient ?R ?S)
+    (instrument ?R ?wobblegadget)))

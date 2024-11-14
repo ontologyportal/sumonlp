@@ -1,11 +1,7 @@
-(instance <UNK_noun_80> Human)
-(=> (and (instance <UNK_verb_85> Action)
-         (agent <UNK_verb_85> <UNK_noun_90>)
-         (destination <UNK_verb_85> <UNK_noun_95>))
-    (result <UNK_verb_85> (instance <UNK_noun_100> Event)))
-
-(<UNK_verb_110> <UNK_noun-phrase_105> (attribute <UNK_noun_115> Intelligent))
-
-(forall (?x)
-  (=> (instance ?x <UNK_noun_120>)
-      (capable ?x <UNK_verb_115>)))
+(exists (?<UNK_PERSON_35> ?R ?S ?<UNK_noun_34>)
+  (and
+    (instance ?R Rotating)
+    (instance ?S Screw)
+    (agent ?R <UNK_PERSON_35>)
+    (patient ?R ?S)
+    (instrument ?R ?<UNK_noun_34>)))
