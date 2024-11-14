@@ -35,7 +35,7 @@ def add_unknown_word(word, word_type, conn, cursor):
         # trim word
         word = word.strip()
         word = word.lower()
-        cursor.execute("SELECT * FROM UnknownWords WHERE word = ? AND used = 0 AND type = ?", (word, word_type))
+        cursor.execute("SELECT * FROM UnknownWords WHERE word = ? AND type = ?", (word, word_type))
         result = cursor.fetchone()
         if result:
             return result[0] # Return the ID if the word exists

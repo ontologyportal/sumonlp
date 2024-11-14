@@ -1,11 +1,8 @@
-(instance sr Human)
-(=> (and (instance _ Action)
-         (agent am whitefish)
-         (destination btu d_isere))
-    (result games (instance num_28th Event)))
-
-(am <UNK_noun-phrase_105> (attribute kerrigan Intelligent))
-
-(forall (?x)
-  (=> (instance ?x evy)
-      (capable ?x kerrigan)))
+(instance angelos_toutsios Human)
+(exists (?angelos_toutsios ?R ?S ?wobblegadget)
+  (and
+    (instance ?R Rotating)
+    (instance ?S Screw)
+    (agent ?R angelos_toutsios)
+    (patient ?R ?S)
+    (instrument ?R ?wobblegadget)))
