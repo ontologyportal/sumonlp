@@ -1,0 +1,8 @@
+(instance angelos_toutsios Human)
+(exists (?angelos_toutsios ?R ?S ?wobblegadget)
+  (and
+    (instance ?R Rotating)
+    (instance ?S Screw)
+    (agent ?R angelos_toutsios)
+    (patient ?R ?S)
+    (instrument ?R ?wobblegadget)))

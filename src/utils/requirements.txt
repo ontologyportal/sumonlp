@@ -1,0 +1,7 @@
+transformers
+torch
+stanza
+pymupdf
+ollama
+setuptools
+wheel

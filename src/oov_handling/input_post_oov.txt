@@ -1,7 +1,0 @@
-(exists (?<UNK_PERSON_35> ?R ?S ?<UNK_noun_34>)
-  (and
-    (instance ?R Rotating)
-    (instance ?S Screw)
-    (agent ?R <UNK_PERSON_35>)
-    (patient ?R ?S)
-    (instrument ?R ?<UNK_noun_34>)))

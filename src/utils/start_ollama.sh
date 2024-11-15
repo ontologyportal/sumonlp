@@ -21,12 +21,15 @@ parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
 cd "$parent_path" || exit
 source ../config_paths.sh
 
+
 # Check if Ollama server is running
-if lsof -i :11434 | grep ollama > /dev/null; then
-  echo "Ollama server is running."
+if lsof -i :$HOST_PORT | grep ollama > /dev/null; then
+  echo "Ollama server is running on $HOST_PORT"
 else
   echo "Ollama server is not running. Starting server..."
-  ollama serve &
+  
+  ollama serve > ./ollama_log.out 2>&1 &
+  #ollama serve &
   # Give the server a chance to start up before moving to the next instruction
-  sleep 4
+  sleep 2
 fi

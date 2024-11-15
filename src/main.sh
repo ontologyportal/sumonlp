@@ -1,8 +1,16 @@
 #!/bin/bash
+source config_paths.sh
+
+echo "Installing requirements..."
+conda config --set quiet true
+conda install pip
+pip install -U -r utils/requirements.txt
+module load lib/cuda/10.1.243
+module load lang/miniconda3/24.3.0
+module load util/cuda-toolkit/12.2
+module load sdk/nvidia/23.1
 
 echo "Starting SUMO Language to Logic conversion ..."
-
-source config_paths.sh
 
 ./utils/start_ollama.sh
 
