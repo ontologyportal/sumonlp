@@ -38,13 +38,16 @@ def find_sumo_category(word_type):
 
 def format_word(word):
 
+    word  = word.strip()
+
     # Step 1: Replace special characters (except commas and periods) with underscores
-    word = re.sub(r'[^a-zA-Z0-9,.\s]', '_', word)
+    word = re.sub(r'[^a-zA-Z0-9,.!?\s]', '_', word)
 
     # Step 2: Remove commas and periods
-    word = word.replace(',', '').replace('.', '')
+    word = word.replace(',', '').replace('.', '').replace('!','').replace('?','')
 
     # Step 3: Add prefix 'num_' if the word starts with a digit
+
     if word[0].isdigit():
         word = 'num_' + word
 
