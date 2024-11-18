@@ -56,3 +56,4 @@ java LlamaMTrans output_md.txt output_mh.txt
 # Optionally, kill the Ollama server when the script finishes
 #kill $OLLAMA_PID
 
+echo "Finished metaphor handling ..."
