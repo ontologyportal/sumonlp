@@ -6,6 +6,8 @@ conda activate py39_pytorchtouch
 pip install torch
 pip install transformers
 pip install stanza
+pip install wordfreq
+pip install ollama
 ```
 
 ## Configuring the prover

@@ -10,3 +10,5 @@ bash ../utils/start_ollama.sh
 
 
 cp input_pe.txt output_pe.txt
+
+echo "Finished policy extracter ..."
