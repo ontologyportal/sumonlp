@@ -1,2 +1,2 @@
-/home/jarrad.singley/.conda/envs/py3109_pytorch/lib
-Ollama server is running.
+/home/jarrad.singley/.conda/envs/py3109_pytorch/lib:/share/apps/nvidia/cuda-12.2/lib64
+Ollama server is running on 55848

@@ -18,32 +18,37 @@ source ../config_paths.sh
 #SBATCH --gres=gpu:1               # Request 1 GPU
 
 
-#module load util/cuda-toolkit/12.0
-#module load lib/cuda/12.2
-#module load util/cuda-toolkit/12.2
-
-# For use in compilation of java code
-module load lang/java/8.141-oracle > /dev/null 2>&1
-
-
-
 echo "Running Metaphor detector..."
+export LD_LIBRARY_PATH="$HOME/.conda/envs/py3109_pytorch/lib"  # for running torch
 python3 metaphor_detect_pipeline.py
 
 
+
+export OLLAMA_HOST="127.0.0.1:55848"
+#ollama serve > ./ollama_log.out 2>&1 &
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/share/apps/nvidia/cuda-12.2/lib64   # for running ollama
 ../utils/start_ollama.sh
 echo "Ollama Host: $OLLAMA_HOST"
+
 # Select model to use from below, will also have to change the argument to 'OLLAMA_PATH run <>' in java code 
 #ollama pull llama3.2:1b > /dev/null 2>&1
 #ollama pull llama3.2:3b > /dev/null 2>&1
 #ollama pull llama3.2:3b > /dev/null 2>&1
-ollama pull llama3.2:3b
-#ollama pull llama3.1:8b > /dev/null 2>&1
+#ollama pull llama3.2:3b
+#ollama pull llama3.1:8b
 #ollama pull mistral > /dev/null 2>&1
+ollama pull mistral
 
-module load lib/cuda/12.2
 
 echo "Running Metaphor translator..."
-javac LlamaMTrans.java
-java LlamaMTrans output_md.txt output_mh.txt
+echo "Ollama Host: $OLLAMA_HOST"
 
+# Java and python metaphor translators perform the same task: parse and interface with ollama
+
+# For use in compilation of java code
+#module load lang/java/8.141-oracle > /dev/null 2>&1
+#javac LlamaMTrans.java
+#java LlamaMTrans output_md.txt output_mh.txt
+
+
+python3 metaphor_trans.py output_md.txt output_mh.txt mistral

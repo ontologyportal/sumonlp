@@ -57,7 +57,7 @@ public class LlamaMTrans {
         StringBuilder result = new StringBuilder();
         try {
             // Command to run Ollama with the hardcoded path
-            ProcessBuilder processBuilder = new ProcessBuilder(OLLAMA_PATH, "run", "llama3.2");
+            ProcessBuilder processBuilder = new ProcessBuilder(OLLAMA_PATH, "run", "mistral");
             System.out.println("Input to llama is:" + sentence);
 
             Process process = processBuilder.start();

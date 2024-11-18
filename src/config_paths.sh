@@ -35,9 +35,10 @@ eval "$(conda shell.bash hook)"
 conda activate py3109_pytorch
 
 # Troubleshooting efforts:
-export HOST_PORT="55848"
-
-export LD_LIBRARY_PATH="$HOME/.conda/envs/py3109_pytorch/lib"  # for running torch
-#export OLLAMA_HOST="127.0.0.1:11434"                           # for running ollama
+export HOST_PORT="55848"   # changes default port to unique port number, can change this
 export OLLAMA_HOST="127.0.0.1:$HOST_PORT"
+
+#export LD_PRELOAD=/share/apps/nvidia/cuda-12.2/lib64/libcudart.so.12
+export LD_LIBRARY_PATH="$HOME/.conda/envs/py3109_pytorch/lib"  # for running torch
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/share/apps/nvidia/cuda-12.2/lib64  # for running ollama
 echo $LD_LIBRARY_PATH

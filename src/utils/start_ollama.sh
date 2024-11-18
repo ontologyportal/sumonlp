@@ -28,7 +28,7 @@ if lsof -i :$HOST_PORT | grep ollama > /dev/null; then
 else
   echo "Ollama server is not running. Starting server..."
   
-  ollama serve > ./ollama_log.out 2>&1 &
+  ollama serve > ../ollama_log.out 2>&1 &
   #ollama serve &
   # Give the server a chance to start up before moving to the next instruction
   sleep 2
