@@ -8,3 +8,5 @@ source ../config_paths.sh
 ../utils/start_ollama.sh > logs/ollama.log 2>&1 &
 
 python3 main.py
+
+echo "Finished sentence simplification ..."

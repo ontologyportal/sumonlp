@@ -4,9 +4,9 @@
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
 cd "$parent_path" || exit
 source ../config_paths.sh
-cp input_oov.txt output_oov.txt
+cp input_post_oov.txt output_post_oov.txt
 
 echo "Starting out of vocabulary handling ..."
-#python3 -u post_oov_handling.py
+python3 -u post_oov_handling.py
 echo "Finished out of vocabulary proccessing ..."
 

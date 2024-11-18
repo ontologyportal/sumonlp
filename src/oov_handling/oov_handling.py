@@ -8,7 +8,8 @@ stanza.download('en', processors='tokenize,pos,lemma,ner', verbose=False)  # Dow
 nlp = stanza.Pipeline('en', processors='tokenize,pos,lemma,ner', verbose=False)
 
 # Database configuration
-DB_PATH = '/data/angelos.toutsios.gr/vocabulary.db'
+DB_PATH = os.environ['VOCABULARY_HOME']+"/vocabulary.db"
+#DB_PATH = '/data/angelos.toutsios.gr/vocabulary.db'
 # DB_PATH = '/home/angelos.toutsios.gr/workspace/sumonlp/src/oov_handling/vocabulary_test.db'
 
 
@@ -35,6 +36,7 @@ def add_unknown_word(word, word_type, conn, cursor):
         # trim word
         word = word.strip()
         word = word.lower()
+        print("word is: " + word)
         cursor.execute("SELECT * FROM UnknownWords WHERE word = ? AND type = ?", (word, word_type))
         result = cursor.fetchone()
         if result:

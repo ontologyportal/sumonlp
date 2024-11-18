@@ -10,14 +10,13 @@
 ###############################################################
 
 
-
-CONDA_ENVIRONMENT="py3109_pytorch"
-OLLAMA_PATH="$HOME/Programs/ollama/bin"
-OLLAMA_LOG_PATH="$HOME/Programs/llamaMD/ollama_log.out"
-VAMPIRE_PATH="$HOME/workspace/vampire"
-SIGMAKEE_HOME="$HOME/workspace/sigmakee"
-MODEL_HOME="$HOME/data/workspace/L2L_model/t5_model"
-
+export CONDA_ENVIRONMENT="py312_pytorch"
+export OLLAMA_PATH="$HOME/Programs/ollama/bin"
+export OLLAMA_LOG_PATH="$HOME/Programs/llamaMD/ollama_log.out"
+export VAMPIRE_PATH="$HOME/workspace/vampire"
+export SIGMAKEE_HOME="$HOME/workspace/sigmakee"
+export MODEL_HOME="$HOME/workspace/L2L_model/t5_model"
+export VOCABULARY_HOME="$HOME/.sumonlp"
 
 # If PATHs don't exist on $PATH variable, then add them to the $PATH variable
 [[ ":$PATH:" == *$OLLAMA_PATH* ]] || PATH="$OLLAMA_PATH:$PATH"
@@ -41,4 +40,5 @@ export OLLAMA_HOST="127.0.0.1:$HOST_PORT"
 #export LD_PRELOAD=/share/apps/nvidia/cuda-12.2/lib64/libcudart.so.12
 export LD_LIBRARY_PATH="$HOME/.conda/envs/py3109_pytorch/lib"  # for running torch
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/share/apps/nvidia/cuda-12.2/lib64  # for running ollama
-echo $LD_LIBRARY_PATH
+
+conda activate $CONDA_ENVIRONMENT

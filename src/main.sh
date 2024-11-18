@@ -9,6 +9,13 @@ module load lib/cuda/12.2
 
 echo "Starting SUMO Language to Logic conversion ..."
 
+# Gets the path to this script, so this script can be run from any location and still work
+parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
+cd "$parent_path" || exit
+
+
+source config_paths.sh
+
 ./utils/start_ollama.sh
 
 bash policy_extracter/entry_point.sh
