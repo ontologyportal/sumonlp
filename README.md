@@ -88,9 +88,9 @@ source ~/.bashrc
 I run the following to produce the SUMO-based training files
 
 ```
-time java -Xmx14g -classpath /home/apease/workspace/sigmakee/lib/*:/home/apease/workspace/sigmakee/build/classes com.articulate.nlp.GenSimpTestData -a allAxioms
-time java -Xmx60g -classpath /home/apease/workspace/sigmakee/lib/*:/home/apease/workspace/sigmakee/build/classes com.articulate.nlp.GenSimpTestData -g groundRelations
-time java -Xmx14g -classpath /home/apease/workspace/sigmakee/lib/*:/home/apease/workspace/sigmakee/build/classes com.articulate.nlp.GenSimpTestData -s outKindaSmall
+time java -Xmx14g -classpath /home/apease/workspace/sigmanlp/lib/*:/home/apease/workspace/sigmanlp/build/classes com.articulate.nlp.GenSimpTestData -a allAxioms
+time java -Xmx60g -classpath /home/apease/workspace/sigmanlp/lib/*:/home/apease/workspace/sigmanlp/build/classes com.articulate.nlp.GenSimpTestData -g groundRelations
+time java -Xmx14g -classpath /home/apease/workspace/sigmanlp/lib/*:/home/apease/workspace/sigmanlp/build/classes com.articulate.nlp.GenSimpTestData -s outKindaSmall
 ```
 
 Each command produces a -log.txt and -eng.txt file.  Make sure they completed 
