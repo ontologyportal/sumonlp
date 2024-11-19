@@ -2,7 +2,7 @@
 
 ```
 conda create -n py39_pytorch python=3.9
-conda activate py39_pytorchtouch
+conda activate py39_pytorch
 pip install torch
 pip install transformers
 pip install stanza
