@@ -1,8 +1,9 @@
 import re
 import sqlite3
 import time
+import os
 
-db_path = '/data/angelos.toutsios.gr/vocabulary.db'
+db_path = os.environ['VOCABULARY_HOME']+"/vocabulary.db"
 # db_path = '/home/angelos.toutsios.gr/workspace/sumonlp/src/oov_handling/vocabulary_test.db'
 
 def find_sumo_category(word_type):
