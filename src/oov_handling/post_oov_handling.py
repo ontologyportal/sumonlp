@@ -11,29 +11,29 @@ def find_sumo_category(word_type):
   if word_type == 'DATE':
     return None
   elif word_type == 'EVENT':
-    return None
+    return 'SocialInteraction'
   elif word_type == 'FAC':
-    return None
+    return 'Facility'
   elif word_type == 'GPE':
     return 'GeopoliticalArea'
   elif word_type == 'LANGUAGE':
-    return None
+    return 'NaturalLanguage'
   elif word_type == 'LAW':
-    return None
+    return 'DeonticAttribute'
   elif word_type == 'LOC':
     return 'GeographicArea'
   elif word_type == 'MONEY':
-    return None
+    return 'CurrencyMeasure'
   elif word_type == 'NORP':
-    return None
+    return 'GroupOfPeople'
   elif word_type == 'ORG':
     return 'Organization'
   elif word_type == 'PERSON':
     return 'Human'
   elif word_type == 'PRODUCT':
-    return None
+    return 'Product'
   elif word_type == 'WORK_OF_ART':
-    return None
+    return 'ArtWork'
   else:
     return None
 
