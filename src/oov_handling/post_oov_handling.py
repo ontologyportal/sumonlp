@@ -1,8 +1,10 @@
 import re
 import sqlite3
 import time
+import os
 
-db_path = '/data/angelos.toutsios.gr/vocabulary.db'
+# db_path = '/data/angelos.toutsios.gr/vocabulary.db'
+DB_PATH = os.environ['VOCABULARY_HOME']+"/vocabulary.db"
 # db_path = '/home/angelos.toutsios.gr/workspace/sumonlp/src/oov_handling/vocabulary_test.db'
 
 def find_sumo_category(word_type):
@@ -58,8 +60,8 @@ def format_word(word):
 
 
 def get_word_from_db(word_id, conn, cursor):
-    # Connect to the database
 
+  try:
     # Query to get the word based on ID
     cursor.execute("SELECT word, type FROM UnknownWords WHERE id = ?", (word_id,))
     result = cursor.fetchone()
@@ -73,6 +75,14 @@ def get_word_from_db(word_id, conn, cursor):
         conn.commit()
         return (word, word_type)
     else:
+        return None
+  except sqlite3.Error as e:
+        # Handle any SQLite errors
+        print(f"Database error: {e}")
+        return None
+  except Exception as e:
+        # Handle unexpected errors
+        print(f"Unexpected error: {e}")
         return None
 
 def replace_unk_words(input_file, output_file, conn, cursor):
@@ -104,7 +114,7 @@ def replace_unk_words(input_file, output_file, conn, cursor):
 
 if __name__ == "__main__":
 
-    conn = sqlite3.connect(db_path)
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
     start_time = time.time()
