@@ -1,5 +1,6 @@
 import sys
 import ollama
+import os
 
 PROMPT1 = 'The following sentence contains metaphorical content:  '
 PROMPT2 = 'Translate the sentence so that no metaphorical expressions are present. Make sure there is no figurative language, make the sentence as plain and literal as possible. MOST IMPORTANTLY, respond with ONLY the translated sentence.'
@@ -30,7 +31,7 @@ def process_file(input_file, output_file, model_type):
                         # Write the response to the output file
                         outfile.write(response + '\n')
             elif line.startswith('0'):
-                outfile.write(line.strip()[2:])
+                outfile.write(line.strip()[2:] + '\n')
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:

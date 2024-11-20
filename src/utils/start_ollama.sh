@@ -24,12 +24,12 @@ source ../config_paths.sh
 
 # Check if Ollama server is running
 if lsof -i :$HOST_PORT | grep ollama > /dev/null; then
-  echo "Ollama server is running on $HOST_PORT"
+  echo "Ollama server is running on $OLLAMA_HOST"
 else
   echo "Ollama server is not running. Starting server..."
-  
+  module purge
+  module load lib/cuda/12.2  # needs this module for running server with GPU
   ollama serve > ../ollama_log.out 2>&1 &
-  #ollama serve &
   # Give the server a chance to start up before moving to the next instruction
-  sleep 2
+  sleep 1
 fi

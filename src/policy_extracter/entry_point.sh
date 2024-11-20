@@ -6,8 +6,7 @@ cd "$parent_path" || exit
 source ../config_paths.sh
 
 echo "Starting policy extracter ..."
-bash ../utils/start_ollama.sh
-
+#bash ../utils/start_ollama.sh
 
 cp input_pe.txt output_pe.txt
 
