@@ -5,6 +5,7 @@ import os
 
 # db_path = '/data/angelos.toutsios.gr/vocabulary.db'
 DB_PATH = os.environ['VOCABULARY_HOME']+"/vocabulary.db"
+
 # db_path = '/home/angelos.toutsios.gr/workspace/sumonlp/src/oov_handling/vocabulary_test.db'
 
 def find_sumo_category(word_type):

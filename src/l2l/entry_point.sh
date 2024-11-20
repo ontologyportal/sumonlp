@@ -8,3 +8,6 @@ source ../config_paths.sh
 
 python reference/inference.py $MODEL_HOME
 
+sed -i 's/? / ?/g' output_l2l.txt
+
+echo "Finished Language to Logic translation ..."
