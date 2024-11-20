@@ -16,7 +16,8 @@ export OLLAMA_LOG_PATH="$HOME/Programs/llamaMD/ollama_log.out"
 export VAMPIRE_PATH="$HOME/workspace/vampire"
 export SIGMAKEE_HOME="$HOME/workspace/sigmakee"
 export MODEL_HOME="$HOME/workspace/L2L_model/t5_model"
-export VOCABULARY_HOME="$HOME/.sumonlp"
+# export VOCABULARY_HOME="$HOME/.sumonlp"
+export VOCABULARY_HOME="data/angelos.toutsios.gr"
 
 # If PATHs don't exist on $PATH variable, then add them to the $PATH variable
 [[ ":$PATH:" == *$OLLAMA_PATH* ]] || PATH="$OLLAMA_PATH:$PATH"
