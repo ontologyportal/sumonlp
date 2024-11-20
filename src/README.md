@@ -12,7 +12,7 @@ pip install ollama
 
 ## Configuring the prover
 
-To be able to translate the generated SUO-KIF logic to the input required by the vampire prover, update 
+The language to logic translator produces the file SUMO_NLP.kif, with logic statements generated from natural language. This file is automatically copied to the .sigmakee/KBs directory. To be able to translate the generated SUO-KIF logic to the TPTP input required by the vampire prover, update 
 
 ```
 $HOME/.sigmakee/KBs/config.xml
@@ -30,6 +30,8 @@ and add the following line is in the <kb name="SUMO" > section:
 ...
 
 ```
+
+The files within this tag are all combined and translated into the SUMO.fof file which is then fed as input to the vampire prover.
 
 ## Ollama Install Notes
 
