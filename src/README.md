@@ -70,3 +70,10 @@ To run a specific model on the server (and download if necessary). For example:
 ```
 
 For a list of models - https://ollama.com/library
+
+
+# Running on Hamming GPU Node:
+
+From a submit node, run
+
+srun --pty -N 1 --partition=genai --gres=gpu:1 bash

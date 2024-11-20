@@ -9,6 +9,4 @@ source ../config_paths.sh
 
 python3 main.py
 
-# python3 main.py
-
 echo "Finished sentence simplification ..."

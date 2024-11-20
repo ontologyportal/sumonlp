@@ -1,7 +1,9 @@
 # Use a pipeline as a high-level helper
 from transformers import pipeline
+import torch
 
-pipe = pipeline("token-classification", model="lwachowiak/Metaphor-Detection-XLMR")
+device = 0 if torch.cuda.is_available() else -1
+pipe = pipeline("token-classification", model="lwachowiak/Metaphor-Detection-XLMR", device=device)
 
 
 with open("input_mh.txt", "r") as infile, open("output_md.txt", "w") as outfile:

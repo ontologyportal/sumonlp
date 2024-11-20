@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 public class LlamaMTrans {
 
     // Hardcoded path to Ollama binary
-    //private static final String OLLAMA_PATH = "/home/jarrad.singley/Programs/llama/bin/ollama";
+    
     private static final String OLLAMA_PATH = System.getenv("OLLAMA_PATH") != null 
                                              ? System.getenv("OLLAMA_PATH")
                                              : "ollama";          // Default to "ollama" in PATH
@@ -57,7 +57,8 @@ public class LlamaMTrans {
         StringBuilder result = new StringBuilder();
         try {
             // Command to run Ollama with the hardcoded path
-            ProcessBuilder processBuilder = new ProcessBuilder(OLLAMA_PATH, "run", "llama3.2");
+            ProcessBuilder processBuilder = new ProcessBuilder(OLLAMA_PATH, "run", "mistral");
+            System.out.println("Input to llama is:" + sentence);
 
             Process process = processBuilder.start();
             
@@ -77,7 +78,6 @@ public class LlamaMTrans {
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.print(".");
         return result.toString();
     }
 }

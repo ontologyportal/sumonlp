@@ -6,54 +6,29 @@ parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
 cd "$parent_path" || exit
 source ../config_paths.sh
 
-pip install -r requirements.txt
 
-#SBATCH --job-name=sumo_nlp_training_smallwork_1000
-#SBATCH --output=/home/roberto.milanese/scripts/log_%j.out  # Output log file
-#SBATCH --error=/home/roberto.milanese/scripts/log_%j.err   # Error log file
-#SBATCH -N 1
-#SBATCH --mem=64G
-#SBATCH --cpus-per-task=32
-#SBATCH --time=24:00:00             # Time limit (hh:mm:ss)
-#SBATCH --partition=genai
-#SBATCH --gres=gpu:1               # Request 1 GPU
-
-# Activate environment
-# module load lib/cuda/9.0.176
-# module load util/cuda-toolkit/12.0
+module unload lib/cuda/12.2  # need to unload this because otherwise torch will be messed up. Messy fix, may need to find torch <-> ollama CUDA version incompatability
+echo "Running Metaphor detector..."
+python3 metaphor_detect_pipeline.py
 
 
-#module load lang/java/8.141-oracle
-javac LlamaMTrans.java
-# conda activate nmt_env  # Change to your desired conda environment
+# Select model to use from below, will also have to change the argument to 'OLLAMA_PATH run <>' in java code (if using java)
 
-# Start Ollama server in the background and log its output
-#export OLLAMA_HOST="127.0.0.1:55757"
-#ollama serve > ./logs/ollama_log.out 2>&1 &
-
-
-# Capture the PID of the Ollama server so we can track/kill it later if needed
-# OLLAMA_PID=$!
-
-# Sleep to ensure Ollama has started
-#sleep 5
-
-../utils/start_ollama.sh
-
-
-#ollama pull llama3.2:1b
+#ollama pull llama3.2:1b > /dev/null 2>&1
+#ollama pull llama3.2:3b > /dev/null 2>&1
+#ollama pull llama3.2:3b > /dev/null 2>&1
 #ollama pull llama3.2:3b
 #ollama pull llama3.1:8b
-ollama pull mistral
-echo "running detector"
-python3 metaphor_detect_pipeline.py
-echo "running translator"
-# Run the Python script
-java LlamaMTrans output_md.txt output_mh.txt
+ollama pull mistral > /dev/null 2>&1
 
-# send output to input of sentence simplifier
-#cp output_mh.txt ../sentence_simplification/input_ss.txt
-# Optionally, kill the Ollama server when the script finishes
-#kill $OLLAMA_PID
+echo "Running Metaphor translator..."
 
-echo "Finished metaphor handling ..."
+
+# Java and python metaphor translators perform the same task: parse and interface with ollama
+
+# For use in compilation of java code
+#module load lang/java/8.141-oracle > /dev/null 2>&1
+#javac LlamaMTrans.java
+#java LlamaMTrans output_md.txt output_mh.txt
+
+python3 metaphor_trans.py output_md.txt output_mh.txt mistral

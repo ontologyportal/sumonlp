@@ -1,1 +1,13 @@
-<UNK_PERSON_35> turns the screw with the <UNK_noun_34> .
+The boy kicked the ball .
+<UNK_PERSON_50> wore a shirt .
+<UNK_PERSON_50> sucks .
+<UNK_PERSON_51> got a haircut .
+<UNK_PERSON_52> cut his wrists .
+The sentence " <UNK_PERSON_53> fired his team " is not a common idiom or metaphor in <UNK_LANGUAGE_56> . The term " fired " here is literal . <UNK_PERSON_53> dismissed members from his team . <UNK_PERSON_53> removed members from his team . To make it even more explicit , the sentence can be translated as : <UNK_PERSON_53> let go of the members of his team .
+All cows eat grass .
+A good child behaves well in the following situations : <UNK_PERSON_57> , B , D , and <UNK_PERSON_58> ( <UNK_PERSON_57>= <UNK_PERSON_57>ood behavior ; B= Behavior in school ; D= Behavior at home ; F= Behavior in front of others )
+There is a girl out there for me .
+Somewhere a voice cries for help .
+<UNK_PERSON_54> jumps .
+<UNK_PERSON_54> jumps over a river .
+The <UNK_FAC_36> road leads to <UNK_FAC_37> . On this road , you encounter <UNK_CARDINAL_38> castles . The <UNK_ORDINAL_45> castle is <UNK_PERSON_None> . <UNK_PERSON_None> is an <UNK_DATE_41> castle . It is located on a hillock overlooking <UNK_LOC_42> . <UNK_LOC_42> has a bend in it near <UNK_PERSON_None> . The <UNK_ORDINAL_46> castle is <UNK_PERSON_None> . <UNK_PERSON_None> is situated almost next to <UNK_PERSON_None> . <UNK_PERSON_None> is partially covered by <UNK_NORP_44> carvings .
