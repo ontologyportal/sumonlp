@@ -6,3 +6,7 @@ src/oov_handling/vocabulary.db
 src/oov_handling/stanza_test.py
 src/oov_handling/logs/log_53864924.err
 src/oov_handling/logs/log_53864924.out
+src/oov_handling/__pycache__/oov_handling.cpython-39.pyc
+src/oov_handling/__pycache__/post_oov_handling.cpython-39.pyc
+src/oov_handling/test/__pycache__/oov_handling_test.cpython-39.pyc
+src/oov_handling/test/__pycache__/post_oov_handling_test.cpython-39.pyc
