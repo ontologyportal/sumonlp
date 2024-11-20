@@ -17,6 +17,7 @@ def get_word_type(word):
     """Determine if the word is a noun or verb using Stanza."""
     if word.upos == 'NOUN':
         return 'noun'
+    # PROPN is handling from NER
     # elif word.upos == 'PROPN':
     #   return 'noun-phrase'
     elif word.upos == 'VERB':
@@ -27,11 +28,10 @@ def get_word_type(word):
 def check_word_in_dictionary(root, word_type, cursor):
     """Check if the word exists in the Dictionary table."""
     cursor.execute("SELECT id FROM Word WHERE root = ? AND pos = ?", (root.lower(), word_type))
-    # cursor.execute("SELECT id FROM Dictionary WHERE root = ?", (root.lower()))
     return cursor.fetchone()
 
 def add_unknown_word(word, word_type, conn, cursor):
-    """Check if an unknown word already exists in the UnknownWords table with 'used' set to 0, or insert it if not."""
+    """Check if an unknown word already exists in the UnknownWords table, or insert it if not."""
     try:
         # trim word
         word = word.strip()
@@ -47,6 +47,8 @@ def add_unknown_word(word, word_type, conn, cursor):
             return cursor.lastrowid # Return the ID of the newly inserted word
     except sqlite3.IntegrityError as e:
         print(f"Error: {e}")
+        print(f"Word that caused the error: {word}")
+        print(f"result:{result}")
         return None
 
 
@@ -128,16 +130,16 @@ if __name__ == "__main__":
     cursor = conn.cursor()
 
     # Ensure the Dictionary and UnknownWords tables exist
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS UnknownWords (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        word TEXT UNIQUE,
-        formatted_word TEXT DEFAULT '',
-        type TEXT DEFAULT '',
-        used INTEGER DEFAULT 0 CHECK (used IN (0, 1))
-    )
-    """)
-    conn.commit()
+    # cursor.execute("""
+    # CREATE TABLE IF NOT EXISTS UnknownWords (
+    #     id INTEGER PRIMARY KEY AUTOINCREMENT,
+    #     word TEXT UNIQUE,
+    #     formatted_word TEXT DEFAULT '',
+    #     type TEXT DEFAULT '',
+    #     used INTEGER DEFAULT 0 CHECK (used IN (0, 1))
+    # )
+    # """)
+    # conn.commit()
 
     process_file(input_filename, output_filename, conn, cursor)
 

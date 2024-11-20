@@ -9,4 +9,6 @@ source ../config_paths.sh
 export LD_LIBRARY_PATH="$HOME/.conda/envs/py3109_pytorch/lib"  # for running torch
 python reference/inference.py $MODEL_HOME
 
+sed -i 's/? / ?/g' output_l2l.txt
+
 echo "Finished Language to Logic translation ..."
