@@ -19,17 +19,35 @@
 # Gets the path to this script, so this script can be run from any location.
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
 cd "$parent_path" || exit
-source ../config_paths.sh
+# source ../config_paths.sh
 
+# Define required model names
+MODEL_1="llama3.1:8b"
+MODEL_2="llama3.2:latest"
+
+# Function to check and pull model if necessary
+check_and_pull_model() {
+    local model_name=$1
+    if ! ollama list | grep -q "$model_name"; then
+        echo "Model '$model_name' not found. Pulling it now..."
+        ollama pull "$model_name"
+    else
+        echo "Model '$model_name' is already installed."
+    fi
+}
 
 # Check if Ollama server is running
 if lsof -i :$HOST_PORT | grep ollama > /dev/null; then
   echo "Ollama server is running on $OLLAMA_HOST"
 else
   echo "Ollama server is not running. Starting server..."
-  module purge
-  module load lib/cuda/12.2  # needs this module for running server with GPU
+  # module purge
+  # module load lib/cuda/12.2  # needs this module for running server with GPU
   ollama serve > ../ollama_log.out 2>&1 &
   # Give the server a chance to start up before moving to the next instruction
   sleep 1
 fi
+
+# Check and pull both models
+check_and_pull_model "$MODEL_1"
+check_and_pull_model "$MODEL_2"
