@@ -1,18 +1,14 @@
 #!/bin/bash
-source config_paths.sh
-
-echo "Installing requirements..."
-conda config --set quiet true
-conda install pip
-pip install -U -q -r ./utils/requirements.txt
-
-
 echo "Starting SUMO Language to Logic conversion ..."
 
 # Gets the path to this script, so this script can be run from any location and still work
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
 cd "$parent_path" || exit
 
+echo "Installing requirements..."
+conda config --set quiet true
+conda install pip
+pip install -U -q -r ./utils/requirements.txt
 
 source config_paths.sh
 
