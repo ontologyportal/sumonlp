@@ -93,7 +93,8 @@ def replace_unk_words(input_file, output_file, conn, cursor):
     words_replaced = []
 
     # Regex pattern to find all <UNK_word_type_ID> words
-    pattern = r'<UNK_(\w+)_([\d]+)>'
+    # pattern = r'<UNK_(\w+)_([\d]+)>'
+    pattern = r'UNK_(\w+)_([\d]+)'
 
     # Replace all matches in the content
     def replacement(match):
