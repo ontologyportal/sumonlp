@@ -30,13 +30,19 @@ while true; do
             echo $ask_value > policy_extracter/input_pe.txt
             bash run_pipeline.sh
             cat prover/input_pr.txt >> $HOME/.sigmakee/KBs/SUMO_NLP.kif
-            bash prover/build_tptp.sh
-            vampire --question_answering --mode casc $HOME/.sigmakee/KBs/SUMO.fof > prover/output_pr.txt
+            question_KIF=$(cat prover/input_pr.txt)
+            echo $question_KIF
+            question_TPTP=$(java -Xmx8g -classpath $ONTOLOGYPORTAL_GIT/sigmakee/build/sigmakee.jar:$ONTOLOGYPORTAL_GIT/sigmakee/lib/* com.articulate.sigma.trans.SUMOformulaToTPTPformula -g "$question_KIF" | tail -n 1)
+            cat $HOME/.sigmakee/KBs/SUMO.fof > $HOME/.sigmakee/KBs/SUMO_NLP_QUERY.fof
+            echo "fof(name1,conjecture, $question_TPTP)." >> $HOME/.sigmakee/KBs/SUMO_NLP_QUERY.fof
+            vampire --input_syntax tptp -t 10 --proof tptp -qa plain --mode casc $HOME/.sigmakee/KBs/SUMO_NLP_QUERY.fof > prover/output_pr.txt
             ;;
         add)
             add_value=${input:4} # gets the substring from character position 4 to the end.
+            txt_file=false;
             echo "Adding $add_value to the knowledge base."
             if [[ "${add_value: -4}" == ".txt" ]]; then
+                txt_file=true;
                 echo "Text file: $add_value"
                 cat $add_value > policy_extracter/input_pe.txt
             else
@@ -45,18 +51,30 @@ while true; do
             bash run_pipeline.sh
             cat prover/input_pr.txt >> $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif
             cat $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif > $HOME/.sigmakee/KBs/SUMO_NLP.kif
+            if [ -e "$HOME/.sigmakee/KBs/SUMO.fof" ] && [ $txt_file == false ]; then
+                axiom_KIF=$(cat prover/input_pr.txt)
+                echo $axiom_KIF
+                axiom_TPTP=$(java -Xmx8g -classpath $ONTOLOGYPORTAL_GIT/sigmakee/build/sigmakee.jar:$ONTOLOGYPORTAL_GIT/sigmakee/lib/* com.articulate.sigma.trans.SUMOformulaToTPTPformula -g "$axiom_KIF" | tail -n 1)
+                echo $axiom_TPTP
+                echo "fof(name1,axiom, $axiom_TPTP)." >> $HOME/.sigmakee/KBs/SUMO.fof
+            else
+                bash prover/build_tptp.sh # Builds the whole thing.
+            fi
             #bash prover/entry_point.sh
             echo "Added $add_value to the knowledge base."
             ;;
         clear)
-            echo "" > $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif
-            echo "" > $HOME/.sigmakee/KBs/SUMO_NLP.kif
-            echo "" > $HOME/.sigmakee/KBs/SUMO.fof
-            echo "" > $HOME/.sigmakee/KBs/SUMO.tptp
+            rm $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif
+            rm $HOME/.sigmakee/KBs/SUMO_NLP.kif
+            rm $HOME/.sigmakee/KBs/SUMO.fof
+            rm $HOME/.sigmakee/KBs/SUMO.tptp
+            rm $HOME/.sigmakee/KBs/SUMO_NLP_QUERY.fof
             echo "Knowledge base has been cleared."
             ;;
         list)
-            cat $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif
+            if [ -e "$HOME/.sigmakee/KBs/SUMO_NLP_KB.kif" ]; then
+              cat $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif
+            fi
             ;;
         test)
             time_value=${input:6}
