@@ -19,7 +19,7 @@ python3 metaphor_detect_pipeline.py
 #ollama pull llama3.2:3b > /dev/null 2>&1
 #ollama pull llama3.2:3b
 #ollama pull llama3.1:8b
-ollama pull mistral > /dev/null 2>&1
+ollama pull $MODEL_MH > /dev/null 2>&1
 
 echo "Running Metaphor translator..."
 
@@ -31,4 +31,4 @@ echo "Running Metaphor translator..."
 #javac LlamaMTrans.java
 #java LlamaMTrans output_md.txt output_mh.txt
 
-python3 metaphor_trans.py output_md.txt output_mh.txt mistral
+python3 metaphor_trans.py output_md.txt output_mh.txt "$MODEL_MH"

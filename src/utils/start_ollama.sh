@@ -37,7 +37,7 @@ check_and_pull_model() {
 }
 
 # Check if Ollama server is running
-if lsof -i :$HOST_PORT | grep ollama > /dev/null; then
+if lsof -i :$OLLAMA_HOST_PORT | grep ollama > /dev/null; then
   echo "Ollama server is running on $OLLAMA_HOST"
 else
   echo "Ollama server is not running. Starting server..."

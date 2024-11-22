@@ -1,2 +1,1 @@
-( exists ( ?H ?P ?DO ?IO ) ( and ( instance ?H Human ) ( names "UNK_PERSON_54" ?H ) ( instance ?P Pretending ) ( agent ?P ?H ) ( instance ?DO Guitar ) ( patient ?P ?DO ) ) )
-( not ( exists ( ?H ?P ?DO ?IO ) ( and ( instance ?H Human ) ( names "UNK_PERSON_54" ?H ) ( instance ?P Pretending ) ( agent ?P ?H ) ( instance ?DO Guitar ) ( patient ?P ?DO ) ) ) )
+( exists ( ?H ?P ?DO ?IO ) ( and ( instance ?P Kicking ) ( agent ?P You ) ( instance ?DO UNK_PERSON_77 ) ( objectTransferred ?P ?DO ) ) )

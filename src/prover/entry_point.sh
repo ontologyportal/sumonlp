@@ -15,7 +15,8 @@ cd "$parent_path" || exit
 
 cp input_pr.txt /data/angelos.toutsios.gr/Programs/.sigmakee/KBs/SUMO_NLP.kif
 
-java  -Xmx8g -classpath   $SIGMAKEE_HOME/build/sigmakee.jar:$SIGMAKEE_HOME/lib/* com.articulate.sigma.trans.SUMOKBtoTPTPKB
+#java  -Xmx8g -classpath   $SIGMAKEE_HOME/build/sigmakee.jar:$SIGMAKEE_HOME/lib/* com.articulate.sigma.trans.SUMOKBtoTPTPKB
+bash prover/build_tptp.sh
 vampire --input_syntax tptp -t 10 --proof tptp -qa plain --mode casc /data/angelos.toutsios.gr/Programs/.sigmakee/KBs/SUMO.fof
 
 cp /data/angelos.toutsios.gr/Programs/.sigmakee/KBs/SUMO.tptp output_pr.txt
