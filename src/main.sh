@@ -1,58 +1,93 @@
 #!/bin/bash
-echo "Starting SUMO Language to Logic conversion ..."
-
 # Gets the path to this script, so this script can be run from any location and still work
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
 cd "$parent_path" || exit
 
-echo "Installing requirements..."
-conda config --set quiet true
-conda install pip
-pip install -U -q -r ./utils/requirements.txt
-
 source config_paths.sh
+BLACK=`tput setaf 0`
+RED=`tput setaf 1`
+GREEN=`tput setaf 2`
+YELLOW=`tput setaf 3`
+BLUE=`tput setaf 4`
+MAGENTA=`tput setaf 5`
+CYAN=`tput setaf 6`
+WHITE=`tput setaf 7`
+RESET=`tput sgr0`
 
-./utils/start_ollama.sh
 
+echo "Starting SUMO Language to Logic conversion. type '${YELLOW}help${RESET}' for command list ..."
+while true; do
+    # Read user input
+    read -p "${MAGENTA}>>>${RESET} " input
+    # Extract the first word
+    command=$(echo $input | awk '{print $1}')
 
-FLOW_FILE="flow.txt"
-> "$FLOW_FILE"
-echo -e "\nInput" >> "$FLOW_FILE"
-cat policy_extracter/input_pe.txt >> "$FLOW_FILE"
-
-
-bash policy_extracter/entry_point.sh
-cp policy_extracter/output_pe.txt metaphor_handling/input_mh.txt
-echo -e "\n\nAfter policy extractor" >> "$FLOW_FILE"
-cat policy_extracter/output_pe.txt >> "$FLOW_FILE"
-
-bash metaphor_handling/entry_point.sh
-cp metaphor_handling/output_mh.txt sentence_simplification/input_ss.txt
-echo -e "\n\nAfter metaphor handling" >> "$FLOW_FILE"
-cat metaphor_handling/output_mh.txt >> "$FLOW_FILE"
-
-bash sentence_simplification/entry_point.sh
-cp sentence_simplification/output_ss.txt oov_handling/input_oov.txt
-echo -e "\nAfter sentence simplification" >> "$FLOW_FILE"
-cat sentence_simplification/output_ss.txt >> "$FLOW_FILE"
-
-bash oov_handling/entry_point.sh
-cp oov_handling/output_oov.txt l2l/input_l2l.txt
-echo -e "\nAfter OOV handling" >> "$FLOW_FILE"
-cat oov_handling/output_oov.txt >> "$FLOW_FILE"
-
-bash l2l/entry_point.sh
-cp l2l/output_l2l.txt oov_handling/input_post_oov.txt
-echo -e "\nAfter L2L" >> "$FLOW_FILE"
-cat l2l/output_l2l.txt >> "$FLOW_FILE"
-
-bash oov_handling/entry_point_postprocessing.sh
-cp oov_handling/output_post_oov.txt prover/input_pr.txt
-echo -e "\nAfter OOV post-processing" >> "$FLOW_FILE"
-cat oov_handling/output_post_oov.txt >> "$FLOW_FILE"
-
-bash prover/entry_point.sh
-echo -e "\nProver Results" >> "$FLOW_FILE"
-cat prover/output_pr.txt >> "$FLOW_FILE"
-
-echo "Done!"
+    # Execute commands based on the first word
+    case $command in
+        ask)
+            ask_value=${input:4} # gets the substring from character position 4 to the end.
+            echo "Asking $ask_value"
+            echo $ask_value > policy_extracter/input_pe.txt
+            bash run_pipeline.sh
+            cat prover/input_pr.txt >> $HOME/.sigmakee/KBs/SUMO_NLP.kif
+            bash prover/build_tptp.sh
+            vampire --question_answering --mode casc $HOME/.sigmakee/KBs/SUMO.fof > prover/output_pr.txt
+            ;;
+        add)
+            add_value=${input:4} # gets the substring from character position 4 to the end.
+            echo "Adding $add_value to the knowledge base."
+            if [[ "${add_value: -4}" == ".txt" ]]; then
+                echo "Text file: $add_value"
+                cat $add_value > policy_extracter/input_pe.txt
+            else
+                echo $add_value > policy_extracter/input_pe.txt
+            fi
+            bash run_pipeline.sh
+            cat prover/input_pr.txt >> $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif
+            cat $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif > $HOME/.sigmakee/KBs/SUMO_NLP.kif
+            #bash prover/entry_point.sh
+            echo "Added $add_value to the knowledge base."
+            ;;
+        clear)
+            echo "" > $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif
+            echo "" > $HOME/.sigmakee/KBs/SUMO_NLP.kif
+            echo "" > $HOME/.sigmakee/KBs/SUMO.fof
+            echo "" > $HOME/.sigmakee/KBs/SUMO.tptp
+            echo "Knowledge base has been cleared."
+            ;;
+        list)
+            cat $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif
+            ;;
+        test)
+            time_value=${input:6}
+            cat $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif > $HOME/.sigmakee/KBs/SUMO_NLP.kif
+            bash prover/build_tptp.sh
+            vampire --input_syntax tptp $time_value --proof tptp -qa plain --mode casc $HOME/.sigmakee/KBs/SUMO.fof
+            ;;
+        last)
+            cat flow.txt
+            ;;
+        "")
+            ;;
+        help|man)
+            printf "\n\n=================================================================\n"
+            printf "\nValid commands are ask, add, clear or quit\n"
+            printf '\n"ask" a question from the knowledge base.\n  Example: "ask Does CO2 cause global warming?"\n'
+            printf '\n"add" will append a new sentence or file to the knowledge base.\n  Example: "add CO2 causes global warming."\n'
+            printf '  Example: "add climate_facts.txt"\n'
+            printf '\n"clear" will completely clear the knowledge base.\n  Example: "clear"\n'
+            printf '\n"last" will show the progression through the pipeline of the last added sentence or file.\n  Example: "last"\n'
+            printf '\n"list" will display the knowledge base.\n  Example: "list"\n'
+            printf '\n"test" will run the Vampire prover on the knowledge base, searching for contradictions. Default is 60 seconds.\n  Example: "test -t 40" # runs for 40 seconds\n  Example: "test" # runs for 60 seconds\n'
+            printf '\n"quit" will exit the interface.\n  Example: "quit"\n'
+            printf "\n=================================================================\n\n"
+            ;;
+        quit|exit)
+            echo "Good bye."
+            break
+            ;;
+        *)
+            echo "Invalid command. Please use 'ask', 'add', 'clear', 'list', 'help', or 'quit'."
+            ;;
+    esac
+done

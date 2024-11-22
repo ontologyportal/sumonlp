@@ -13,9 +13,8 @@ source ../config_paths.sh
 #    java  -Xmx8g -classpath   $SIGMAKEE_HOME/build/sigmakee.jar:$SIGMAKEE_HOME/lib/* com.articulate.sigma.trans.SUMOKBtoTPTPKB
 #fi
 
-cp input_pr.txt $HOME/.sigmakee/KBs/SUMO_NLP.kif
 
-java  -Xmx8g -classpath   $SIGMAKEE_HOME/build/sigmakee.jar:$SIGMAKEE_HOME/lib/* com.articulate.sigma.trans.SUMOKBtoTPTPKB
+bash prover/build_tptp.sh
 vampire --input_syntax tptp -t 10 --proof tptp -qa plain --mode casc $HOME/.sigmakee/KBs/SUMO.fof
 
 echo "Finished Prover ..."

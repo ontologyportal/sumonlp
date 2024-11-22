@@ -1,13 +1,1 @@
-0	The boy kicked the ball.
-0	Angelos wore a shirt.
-0	Angelos sucks.
-0	Roberto got a haircut.
-0	Jarrad cut his wrists.
-1	Pease fired his team.
-0	All cows eat grass.
-1	Every good boy does fine.
-0	There is a girl out there for me.
-0	Somewhere a voice cries for help.
-0	John jumps.
-0	John jumps over a river.
-1	Wriggling across the countryside on the D216 to Port-d'Envaux, you come upon two more chateaux: the 18th-century Panloy, flaking romantically on its hillock overlooking a bend in the Charente, and, almost next door, the much older, moated Crazannes, half-smothered in flamboyant Gothic carvings.
+0	Who kicked the Ball?
