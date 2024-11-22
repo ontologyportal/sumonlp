@@ -1,0 +1,2 @@
+User error: --mode is an invalid value for question_answering
+See help or use explain i.e. vampire -explain mode
