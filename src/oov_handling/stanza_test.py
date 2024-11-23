@@ -10,7 +10,7 @@ nlp2 = stanza.Pipeline(lang='en', processors='tokenize,pos,lemma,ner')
 
 
 # paragraph = "In the humid rainforest climate of the U.S.A Basin, the mighty Amazon River flows through multiple South American countries, including Brazil and Peru, supporting diverse ecosystems. Not far, the Andes Mountains stretch along the continent, home to species like the Andean condor and the spectacled bear. Meanwhile, in North America, the National Park Service protects regions like Yellowstone National Park, where geothermal features like Old Faithful draw visitors. Over in Europe, the Rhône River cuts through France, winding near the Swiss Alps’ Matterhorn peak. Elsewhere, environmental NGOs like the World Wildlife Fund and Greenpeace focus on preserving biodiversity hotspots, including the Congo Basin and the Mekong River Delta, which face threats from climate change-induced flooding and droughts. Back in Asia, Mount Fuji towers over Japan, while the Gobi Desert spans China and Mongolia, experiencing extreme temperature swings. The Red Cross and the United Nations Climate Change Secretariat continue efforts to address global warming and its effects, with international conferences often held in cities like Geneva, Nairobi, and New York and has hip arthritis."
-paragraph = '''Python and Java are computer languages'''
+paragraph = '''The Stanford Univercity caused the death of the dinosaurs'''
 doc1 = nlp1(paragraph)
 doc2 = nlp2(paragraph)
 # doc = nlp("The Baobab trees in Madagascar and the Giant Sequoias in California are some of the oldest living species on Earth.")

@@ -1,1 +1,2 @@
-( exists ( ?H ?P ?DO ?IO ) ( and ( instance ?P Kicking ) ( agent ?P You ) ( instance ?DO UNK_PERSON_77 ) ( objectTransferred ?P ?DO ) ) )
+(instance robert Human)
+( not ( exists ( ?H ?P ?DO ?IO ) ( and ( instance ?H Human ) ( names "robert" ?H ) ( instance ?P Imagining ) ( experiencer ?P ?H ) ( before ( EndFn ( WhenFn ?P ) ) Now ) ( instance ?DO Ball ) ( patient ?P ?DO ) ) ) )

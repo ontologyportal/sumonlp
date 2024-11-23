@@ -1,6 +1,1 @@
-<<<<<<< HEAD
-John is playing the guitar.
-John is not playing the guitar.
-=======
-Who kicked the Ball?
->>>>>>> master
+Robert has not imagined a ball.

@@ -1,2 +1,1 @@
-0	John is playing the guitar.
-0	John is not playing the guitar.
+0	Robert has not imagined a ball.

@@ -1,2 +1,1 @@
-John is playing the guitar.
-John is not playing the guitar.
+Robert has not imagined a ball.

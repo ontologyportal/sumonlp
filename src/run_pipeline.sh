@@ -16,7 +16,9 @@ cp policy_extracter/output_pe.txt metaphor_handling/input_mh.txt
 echo -e "\n\nAfter policy extractor" >> "$FLOW_FILE"
 cat policy_extracter/output_pe.txt >> "$FLOW_FILE"
 
-bash metaphor_handling/entry_point.sh
+# bash metaphor_handling/entry_point.sh
+cp policy_extracter/output_pe.txt metaphor_handling/output_mh.txt
+
 cp metaphor_handling/output_mh.txt sentence_simplification/input_ss.txt
 echo -e "\n\nAfter metaphor handling" >> "$FLOW_FILE"
 cat metaphor_handling/output_mh.txt >> "$FLOW_FILE"

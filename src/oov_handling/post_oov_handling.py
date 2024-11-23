@@ -20,11 +20,12 @@ def find_sumo_category(word_type):
   elif word_type == 'LANGUAGE':
     return 'NaturalLanguage'
   elif word_type == 'LAW':
-    return 'DeonticAttribute'
+    return 'Proposition'
   elif word_type == 'LOC':
     return 'GeographicArea'
   elif word_type == 'MONEY':
-    return 'CurrencyMeasure'
+    #return 'CurrencyMeasure'
+    return None
   elif word_type == 'NORP':
     return 'GroupOfPeople'
   elif word_type == 'ORG':
