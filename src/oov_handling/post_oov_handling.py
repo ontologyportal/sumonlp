@@ -111,7 +111,7 @@ def replace_unk_words(input_file, output_file, conn, cursor):
         for replacement_word, word_type in words_replaced:
           sumo_term = find_sumo_category(word_type)
           if sumo_term == 'Human':
-            file.write(f'( and ( instance {replacement_word} {sumo_term} ) (names \"{replacement_word}\" {sumo_term} ) )\n')
+            file.write(f'( and ( instance {replacement_word} {sumo_term} ) (names \"{replacement_word}\" {replacement_word} ) )\n')
           elif sumo_term is not None:
             file.write(f'(instance {replacement_word} {sumo_term})\n')
         file.write(updated_content)
