@@ -72,7 +72,7 @@ def process_sentence(sentence, conn, cursor):
                     # Unknown word, replace with <UNK_type_id>
                     unk_id = add_unknown_word(word.text, word_type, conn, cursor)
                     if unk_id != None:
-                        processed_tokens.append(f"<UNK_{word_type}_{unk_id}>")
+                        processed_tokens.append(f"UNK_{word_type}_{unk_id}")
                     else:
                         # In case of any issue, keep the original word
                         processed_tokens.append(word.text)
