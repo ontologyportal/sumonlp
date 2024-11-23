@@ -19,6 +19,7 @@ echo "Starting SUMO Language to Logic conversion. type '${YELLOW}help${RESET}' f
 while true; do
     # Read user input
     read -p "${MAGENTA}>>>${RESET} " input
+    echo $input >> command_history.txt
     # Extract the first word
     command=$(echo $input | awk '{print $1}')
 
@@ -64,11 +65,11 @@ while true; do
             echo "Added $add_value to the knowledge base."
             ;;
         clear)
-            rm $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif
-            rm $HOME/.sigmakee/KBs/SUMO_NLP.kif
-            rm $HOME/.sigmakee/KBs/SUMO.fof
-            rm $HOME/.sigmakee/KBs/SUMO.tptp
-            rm $HOME/.sigmakee/KBs/SUMO_NLP_QUERY.fof
+            rm -f $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif
+            rm -f $HOME/.sigmakee/KBs/SUMO_NLP.kif
+            rm -f $HOME/.sigmakee/KBs/SUMO.fof
+            rm -f $HOME/.sigmakee/KBs/SUMO.tptp
+            rm -f $HOME/.sigmakee/KBs/SUMO_NLP_QUERY.fof
             echo "Knowledge base has been cleared."
             ;;
         list)
