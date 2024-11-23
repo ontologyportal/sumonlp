@@ -17,9 +17,9 @@ export SIGMAKEE_HOME="/data/angelos.toutsios.gr/Programs/sigmakee"
 export MODEL_HOME="/data/angelos.toutsios.gr/Programs/t5_model"
 export VOCABULARY_HOME="/data/angelos.toutsios.gr/"
 export CUDA_HOME="/share/apps/nvidia/cuda-12.2/lib64/"   # may not be needed
-export HOST_PORT="55848"   # changes default port to unique port number, can change this
+export $OLLAMA_HOST_PORT="55848"   # changes default port to unique port number, can change this
 export NEW_HOME="/data/angelos.toutsios.gr/Programs"
-export OLLAMA_HOST="127.0.0.1:$HOST_PORT"
+export OLLAMA_HOST="127.0.0.1:$$OLLAMA_HOST_PORT"
 # export PATH="/share/spack/gcc-10.3.0/miniconda3-23.1.0-4vp/bin:$PATH"
 export PATH="/data/angelos.toutsios.gr/Programs/miniconda3/bin:$PATH"
 
