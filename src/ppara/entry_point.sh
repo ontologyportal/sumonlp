@@ -22,6 +22,6 @@ ollama pull $MODEL_PP > /dev/null 2>&1
 
 echo "Running proof paraphrasing..."
 
-java -Xmx8g -classpath   $SIGMA_SRC/build/sigmakee.jar:$SIGMA_SRC/lib/* com.articulate.sigma.trans.TPTP3ProofProcessor -s output_pr.txt &> input_pp.txt
+java -Xmx8g -classpath $SIGMA_SRC/build/sigmakee.jar:$SIGMA_SRC/lib/* com.articulate.sigma.trans.TPTP3ProofProcessor -s output_pr.txt &> input_pp.txt
 
 python3 ppara.py input_pp.txt output_pp.txt "$MODEL_PP"

@@ -16,11 +16,12 @@ def call_ollama(prompt, model_type):
 
 def process_file(input_file, output_file, model_type):
     """Process the input file, send prompts to the Ollama model, and write responses."""
+    inProof = False
     with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
         for line in infile:
             # Check if the line starts with '1 '
-            if line.startswith('KBmanager.initializeOnce(): total initi time in seconds'):
-                inProof = True;
+            if line.startswith('KBmanager.initializeOnce(): total init time in seconds'):
+                inProof = True
             if inProof:
                 print('recognized line')
                 # Extract the part of the line after '1_'
