@@ -1,12 +1,12 @@
 #!/bin/bash
-echo "Starting sentence simplification ..."
 
 # Gets the path to this script, so this script can be run from any location and still work
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
 cd "$parent_path" || exit
 source ../config_paths.sh
-../utils/start_ollama.sh > logs/ollama.log 2>&1 &
+cp input_post_oov.txt output_post_oov.txt
 
-python3 main.py
+echo "Starting out of vocabulary post-processing ..."
+python3 -u post_oov_handling.py
+echo "Finished out of vocabulary post-proccessing ..."
 
-echo "Finished sentence simplification ..."

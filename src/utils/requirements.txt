@@ -1,0 +1,9 @@
+transformers
+torch
+tf-keras
+stanza
+pymupdf
+ollama
+setuptools
+wheel
+wordfreq

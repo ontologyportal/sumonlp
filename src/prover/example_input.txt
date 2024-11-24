@@ -1,0 +1,110 @@
+(instance Deaf Attribute)
+(instance Female Attribute)
+(subclass Hearing Process)
+(instance capability TernaryPredicate)
+(domain capability 2 CaseRole)
+(domain capability 3 Object)
+(domainSubclass capability 1 Process)
+
+(=>
+    (attribute ?A Deaf)
+    (not
+        (capability Hearing experiencer ?A)))
+
+(exists (?X)
+  (and
+    (names "Judith" ?X)
+    (instance ?X Human)
+    (attribute ?X Deaf)))
+
+(=>
+  (not
+    (capability ?P experiencer ?A))
+  (not
+    (exists (?PI)
+      (and
+        (instance ?PI ?P)
+        (experiencer ?PI ?A)))))
+
+( exists (?H ?P ?DO ?IO)
+      ( and
+        ( instance ?H Human )
+        ( names "Judith" ?H )
+        ( instance ?P Hearing )
+        ( experiencer ?P ?H )
+        ( attribute ?DO Female )
+        ( instance ?DO Mouse )
+        ( patient ?P ?DO ) ) )
+
+
+
+;; Judith was hearing ZZCnythia.
+    (not ( exists (?H ?P ?DO ?IO)
+      ( and
+        ( instance ?H Human )
+        ( names "Judith" ?H )
+        ( instance ?P Hearing )
+        ( experiencer ?P ?H )
+        ( attribute ?DO Female )
+        ( names "ZZCnythia" ?DO )
+        ( instance ?DO Human )
+        ( patient ?P ?DO ) ) ) )
+
+
+;; The film producer will locate a camera.
+ (not ( exists ( ?H ?P ?DO ?IO )
+  ( and
+    ( attribute ?H FilmProducer )
+    ( instance ?P Locating )
+    ( agent ?P ?H )
+    ( before Now ( BeginFn ( WhenFn ?P ) ) )
+    ( instance ?DO Camera )
+    ( patient ?P ?DO ) ) ) )
+
+
+;; On Sun , 27 Oct 2024 at 2PM Conan was discovering a home base.
+(not ( exists ( ?H ?P ?DO ?IO )
+  ( and
+    ( instance ?T
+      ( HourFn 14
+      ( DayFn 27
+      ( MonthFn 10
+      ( YearFn 2024 ) ) ) ) )
+    ( during ?P ?T )
+    ( instance ?H Human )
+    ( names "Conan" ?H )
+    ( instance ?P Discovering )
+    ( agent ?P ?H )
+    ( instance ?DO HomeBase )
+    ( patient ?P ?DO ) ) ) )
+
+
+;; Guenevere heard the clerical secretary.
+(not ( exists ( ?H ?P ?DO ?IO )
+  ( and
+    ( instance ?H Human )
+    ( names "Guenevere" ?H )
+    ( instance ?P Hearing )
+    ( experiencer ?P ?H )
+    ( before ( EndFn ( WhenFn ?P ) ) Now )
+    ( instance ?DO ClericalSecretary )
+    ( patient ?P ?DO ) ) ) )
+
+
+;; eat a vehicle!
+(not ( exists ( ?H ?P ?DO ?IO )
+  ( and
+    ( instance ?P Eating )
+    ( experiencer ?P You )
+    ( instance ?DO Vehicle )
+    ( objectTransferred ?P ?DO ) ) ) )
+
+;; Sharon is tasting a mouse.
+(not ( exists ( ?H ?P ?DO ?IO )
+  ( and
+    ( instance ?H Human )
+    ( names "Sharon" ?H )
+    ( instance ?P Tasting )
+    ( experiencer ?P ?H )
+    ( instance ?DO Mouse )
+    ( patient ?P ?DO ) ) ) )
