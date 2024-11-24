@@ -15,6 +15,6 @@ source ../config_paths.sh
 
 
 bash prover/build_tptp.sh
-vampire --input_syntax tptp -t 10 --proof tptp -qa plain --mode casc $HOME/.sigmakee/KBs/SUMO.fof
+vampire --input_syntax tptp -t 10 --proof tptp -qa plain --mode casc $HOME/.sigmakee/KBs/SUMO.fof &> output_pr.txt
 
 echo "Finished Prover ..."

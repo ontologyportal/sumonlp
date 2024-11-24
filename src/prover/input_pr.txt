@@ -1,1 +1,1 @@
-( exists ( ?H ?P ?DO ?IO ) ( and ( instance ?P Kicking ) ( agent ?P You ) ( instance ?DO UNK_PERSON_77 ) ( objectTransferred ?P ?DO ) ) )
+( exists ( ?H ?P ?DO ?IO ) ( and ( instance ?H Human ) ( names "CO2" ?H ) ( instance ?P Reasoning ) ( agent ?P ?H ) ( temporallyBetween ( BeginFn ( WhenFn ?P ) ) Now ( EndFn ( WhenFn ?P ) ) ) ( instance ?V2 GlobalHeating ) ( refers ?DO ?V2 ) ) )
