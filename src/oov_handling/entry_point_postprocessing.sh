@@ -9,4 +9,4 @@ cp input_post_oov.txt output_post_oov.txt
 echo "Starting out of vocabulary post-processing ..."
 python3 -u post_oov_handling.py
 echo "Finished out of vocabulary post-proccessing ..."
-pkill ollama
+

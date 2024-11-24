@@ -1,0 +1,11 @@
+% These are sentence pairs that will successfully create a contradiction.
+
+%%%%%%%%%%%%%%%%
+Robert imagined a ball.
+Robert did not imagine a ball.
+
+%%%%%%%%%%%%%%%%
+The tornado has destroyed the house.
+The tornado has not destroyed the house.
+
+%%%%%%%%%%%%%%%

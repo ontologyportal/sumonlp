@@ -93,7 +93,8 @@ def replace_unk_words(input_file, output_file, conn, cursor):
     words_replaced = []
 
     # Regex pattern to find all <UNK_word_type_ID> words
-    pattern = r'<UNK_(\w+)_([\d]+)>'
+    # pattern = r'<UNK_(\w+)_([\d]+)>'
+    pattern = r'UNK_(\w+)_([\d]+)'
 
     # Replace all matches in the content
     def replacement(match):
@@ -109,7 +110,9 @@ def replace_unk_words(input_file, output_file, conn, cursor):
     with open(output_file, 'w', encoding='utf-8') as file:
         for replacement_word, word_type in words_replaced:
           sumo_term = find_sumo_category(word_type)
-          if sumo_term:
+          if sumo_term == 'Human':
+            file.write(f'( and ( instance {replacement_word} {sumo_term} ) (names \"{replacement_word}\" {replacement_word} ) )\n')
+          elif sumo_term is not None:
             file.write(f'(instance {replacement_word} {sumo_term})\n')
         file.write(updated_content)
 
