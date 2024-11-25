@@ -1,4 +1,5 @@
 data/
+.idea/
 
 
 src/oov_handling/vocabulary_test.db

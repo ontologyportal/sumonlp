@@ -9,3 +9,6 @@ The tornado has destroyed the house.
 The tornado has not destroyed the house.
 
 %%%%%%%%%%%%%%%
+The refugee left the country.
+The refugee did not leave the country.
+

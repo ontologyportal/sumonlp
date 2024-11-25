@@ -21,6 +21,7 @@ export VOCABULARY_HOME="$HOME/.sumonlp"
 export OLLAMA_HOST_PORT="11434" # Used to change default port (11434) to unique port number if necessary. Default has been shown to cause problems on Hamming.
 export OLLAMA_HOST="127.0.0.1:$OLLAMA_HOST_PORT"
 export MODEL_MH="mistral" # Model to be used in metaphor handling. Common models are mistral and llama3.2
+export MODEL_PP="llama3.2" # Model to be used in metaphor handling. Common models are mistral and llama3.2
 ######################################################
 
 
