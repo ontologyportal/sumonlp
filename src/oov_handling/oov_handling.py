@@ -2,6 +2,16 @@ import sqlite3
 import stanza
 import os
 import time
+import warnings
+
+# Suppress logging warnings
+os.environ["GRPC_VERBOSITY"] = "ERROR"
+os.environ["GLOG_minloglevel"] = "2"
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+
+# Suppress FutureWarning messages
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 
 # Initialize Stanza pipeline for English
 stanza.download('en', processors='tokenize,pos,lemma,ner', verbose=False)  # Download model if not already done

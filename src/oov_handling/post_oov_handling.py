@@ -2,6 +2,16 @@ import re
 import sqlite3
 import time
 import os
+import warnings
+
+# Suppress logging warnings
+os.environ["GRPC_VERBOSITY"] = "ERROR"
+os.environ["GLOG_minloglevel"] = "2"
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+
+# Suppress FutureWarning messages
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 
 # db_path = '/data/angelos.toutsios.gr/vocabulary.db'
 DB_PATH = os.environ['VOCABULARY_HOME']+"/vocabulary.db"
