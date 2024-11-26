@@ -1,0 +1,29 @@
+Climate related examples:
+
+Before (from the Paris accords):
+The Warsaw International Mechanism for Loss and Damage associated with Climate Change Impacts shall be subject to the authority and guidance of the Conference of the Parties serving as the meeting of the Parties to this Agreement.
+After:
+The Warsaw International Mechanism will follow the decisions made by the countries that signed this agreement.
+
+Before:
+The Earth’s atmosphere is not transparent to infrared radiation, being able to recycle some of it in a way that creates a warming influence.
+After:
+The Earth's atmosphere cannot allow all infrared radiation to pass through; instead, it traps some of it, warming the planet.
+
+Before:
+Observations from space-based instruments clearly indicate that the rising concentrations of the anthropogenic greenhouse gases are tending to enhance the natural greenhouse effect.
+After:
+Space observations show that greenhouse gases emitted by humans are making the Earth warmer.
+
+Before:
+The costs or additional benefits of specific interventions to achieve greenhouse gas reduction are artificially separated from the resulting health benefits.
+After:
+The cost of reducing greenhouse gases is often not compared to its health benefits.
+
+Before:
+The cumulative impacts of warming may overwhelm societal adaptive capacity.
+After:
+The effects of global warming can be too much for societies to handle.
+
+Failed simplifications.
+There is a flying pterydactyl. -> There is a big bird in the sky.
