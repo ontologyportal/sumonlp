@@ -16,3 +16,8 @@ The refugee did not leave the country.
 %%%%%%%%%%%%%%%
 A bird is a subclass of animal.
 A bird is not a subclass of animal.
+
+
+%%%%%%%%%%%%%%%
+Global Warming is a subclass of Climate Change.
+Global Warming is not a subclass of Climate Change.
