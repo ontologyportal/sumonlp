@@ -7,6 +7,10 @@ cd "$parent_path" || exit
 source ../config_paths.sh
 ../utils/start_ollama.sh > logs/ollama.log 2>&1 &
 
-python3 main.py
+cp input_ss.txt output_ss.txt
+
+# python3 main.py
+python3 sentence_simplify_thompson.py input_ss.txt output_ss.txt "$MODEL_SS"
+
 
 echo "Finished sentence simplification ..."

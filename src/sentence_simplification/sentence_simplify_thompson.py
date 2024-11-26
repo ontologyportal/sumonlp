@@ -1,15 +1,15 @@
 import sys
 import ollama
+import os
 import re
 
-PROMPT1 = 'The following sentence contains metaphorical content:  '
-PROMPT2 = 'Translate the sentence so that no metaphorical expressions are present. Make sure there is no figurative language, make the sentence as plain and literal as possible. MOST IMPORTANTLY, respond with ONLY the translated sentence.'
 def call_ollama(prompt, model_type):
     """Call the Ollama model with the given prompt and model type."""
     try:
         # Use the ollama library to send the prompt to the model
-        response = ollama.chat(model=model_type, messages=[{"role": "user", "content": prompt}])
-        return(response["message"]["content"].replace('\n', ' ')) # Return the model response
+        # temperature to 0 means there is no creativity, and responses are deterministic.
+        response = ollama.chat(model=model_type, messages=[{"role": "user", "content": prompt}], options={"temperature": 0})
+        return(response["message"]["content"].replace('\n', ' ')).replace("Here's a rephrased version:  ", "") # Return the model response
     except Exception as e:
         print(f"Error calling Ollama: {e}")
         return None
@@ -24,17 +24,26 @@ def process_file(input_file, output_file, model_type):
 
             #print('recognized line')
             # Extract the part of the line after '1_'
-            sentence = line.strip()[2:]  # Skip the initial '1 ' and get the rest
+            sentence = line.strip()
             if sentence:
-                prompt = "Quick answer: Does the following sentence contain metaphorical content: " + sentence
+                # Vocabulary change.
+
+                prompt = "Just the answer: Are the vocabulary, grammar and sentence structure in this sentence common and easily understandable: " + sentence
                 response = call_ollama(prompt, model_type)
-                if "yes" in response.lower():
-                    prompt = "Quick answer: Rephrase the following sentence with as few words as possible, without metaphorical content: " + sentence
+                if "no" in response.lower():
+                    prompt = "**IMPORTANT**: Output without additional commentary! Just the answer: Please split the sentence into several small sentences. In a way that the vocabulary, grammar and sentence structure are common and easily understandable.: " + sentence
                     response = call_ollama(prompt, model_type)
                     response = re.sub(r'\s*\([^)]*\)\s*$', '.', response) # Removes the parenthetical statement at the end of sentences.
+                    prompt = "**IMPORTANT**: Output without additional commentary! Just the answer: Does the following contain pronouns 'its', 'it', 'they', or 'them': " + response
+                    contains_pronouns = call_ollama(prompt, model_type)
+                    print("Before pronoun replacement: " + response)
+                    print(contains_pronouns)
+                    if "yes" in contains_pronouns.lower():
+                        prompt = "**IMPORTANT**: Output without additional commentary! Just the answer: Replace all 'its', 'it', 'they', or 'them' with accurate nouns in the following sentences: " + response
+                        response = call_ollama(prompt, model_type)
                     outfile.write(response + '\n')
                 else:
-                    outfile.write(line.strip()[2:] + '\n')
+                    outfile.write(sentence + '\n')
             #if sentence:
             #    prompt = PROMPT1 + sentence + PROMPT2
                 # Call the Ollama model with the extracted prompt

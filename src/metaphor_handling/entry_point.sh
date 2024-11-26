@@ -20,7 +20,7 @@ python3 metaphor_detect_pipeline.py
 #ollama pull llama3.2:3b > /dev/null 2>&1
 #ollama pull llama3.2:3b
 #ollama pull llama3.1:8b
-ollama pull $MODEL_MH > /dev/null 2>&1
+#ollama pull $MODEL_MH > /dev/null 2>&1
 
 echo "Running Metaphor translator..."
 

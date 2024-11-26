@@ -19,7 +19,9 @@ echo "Starting SUMO Language to Logic conversion. type '${YELLOW}help${RESET}' f
 while true; do
     # Read user input
     read -p "${MAGENTA}>>>${RESET} " input
-    echo $input >> command_history.txt
+    if [ -n "$input" ]; then # only add it if it is not empty.
+      echo $input >> command_history.txt
+    fi
     # Extract the first word
     command=$(echo $input | awk '{print $1}')
 
@@ -88,6 +90,37 @@ while true; do
             ;;
         "")
             ;;
+        mh)
+            sentence_value=${input:3}
+            echo $sentence_value > metaphor_handling/input_mh.txt
+            bash metaphor_handling/entry_point.sh > metaphor_handling/logs/mh_log.log
+            cat metaphor_handling/output_mh.txt
+            ;;
+        ss)
+            sentence_value=${input:3}
+            echo $sentence_value > sentence_simplification/input_ss.txt
+            bash sentence_simplification/entry_point.sh > sentence_simplification/logs/ss_log.log
+            echo -e "\nSentence simplified:"
+            cat sentence_simplification/output_ss.txt
+            ;;
+        l2l)
+            sentence_value=${input:3}
+            echo $sentence_value > l2l/input_l2l.txt
+            bash l2l/entry_point.sh > l2l/logs/l2l_log.log
+            cat l2l/output_l2l.txt
+            ;;
+        oov)
+            sentence_value=${input:4}
+            echo $sentence_value > oov_handling/input_oov.txt
+            bash oov_handling/entry_point.sh > oov_handling/logs/oov_handling.log
+            echo "Out of vocabulary output: "
+            cat oov_handling/output_oov.txt
+            bash l2l/entry_point.sh > l2l/l2l_log.log
+            echo "L2l output: "
+            cat l2l/output_l2l.txt
+            bash oov_handling/entry_point_postprocessing.sh > oov/logs/oov_handling_post.log
+            cat oov_handling/output_post_oov.txt
+            ;;
         help|man)
             printf "\n\n=================================================================\n"
             printf "\nValid commands are ask, add, clear or quit\n"
@@ -98,6 +131,10 @@ while true; do
             printf '\n"last" will show the progression through the pipeline of the last added sentence or file.\n  Example: "last"\n'
             printf '\n"list" will display the knowledge base.\n  Example: "list"\n'
             printf '\n"test" will run the Vampire prover on the knowledge base, searching for contradictions. Default is 60 seconds.\n  Example: "test -t 40" # runs for 40 seconds\n  Example: "test" # runs for 60 seconds\n'
+            printf '\n"mh" will run just the metaphor translation portion of the pipeline.\n  Example: "mh The car flew past the barn."\n'
+            printf '\n"ss" will run just the sentence simplification portion of the pipeline.\n  Example: "ss He who knows not, knows not he knows not, is a fool, shun him."\n'
+            printf '\n"oov" will run just the out of vocabulary handling portion of the pipeline.\n  Example: "oov Bartholemew used the doohicky as a dinglehopper."\n'
+            printf '\n"l2l" will run just the language to logic portion of the pipeline.\n  Example: "l2l A bird is a subclass of animal."\n'
             printf '\n"quit" will exit the interface.\n  Example: "quit"\n'
             printf "\n=================================================================\n\n"
             ;;
@@ -106,7 +143,7 @@ while true; do
             break
             ;;
         *)
-            echo "Invalid command. Please use 'ask', 'add', 'clear', 'list', 'help', or 'quit'."
+            echo "Invalid command. Please use 'ask', 'add', 'clear', 'list', 'test', 'mh', 'ss', 'oov', 'l2l', 'help', or 'quit'."
             ;;
     esac
 done
