@@ -1,0 +1,30 @@
+
+Climate Related Examples:
+
+Input (this is a real sentence from a UN document):
+The COP of the UNFCCC invited all parties to communicate ahead of COP21 their INDCs towards achieving the objective of the UNFCCC as set out in its Article 2.
+
+Output:
+The <UNK_ORG_97> of the <UNK_ORG_98> invited all parties to communicate ahead of <UNK_ORG_97><UNK_CARDINAL_100>1 their <UNK_ORG_99> towards achieving the objective of the <UNK_ORG_98> as set out in its Article <UNK_CARDINAL_100>.
+
+Input:
+The RCPs include a stringent mitigation scenario (RCP2.6), two intermediate scenarios (RCP4.5 and RCP6.0) and one scenario with high GHG emissions (RCP8.5).
+Output:
+The <UNK_ORG_104> include a stringent mitigation scenario ( RCP2.6 ) , <UNK_CARDINAL_38> intermediate scenarios ( UNK_noun_102 and RCP6.0 ) and <UNK_CARDINAL_39> scenario with high UNK_noun_103 emissions ( RCP8.5 ) .
+
+
+Input:
+This algorithm constructs a file containing a subset of a selected climate dataset derived from the larger dataset distributed using the OPeNDAP protocol. The OPeNDAP subset algorithm writes data into a format known as NetCDF3.
+Output:
+This algorithm constructs a file containing a subset of a selected climate dataset derived from the larger dataset distributed using the <UNK_PRODUCT_None> protocol . The <UNK_PRODUCT_None> subset algorithm writes data into a format known as <UNK_PRODUCT_107> .
+
+Input:
+An adapted version of the MARA climate model was used to generate the mid-range estimates for this assessment.
+Out of vocabulary output:
+Output:
+An adapted version of the <UNK_ORG_108> climate model was used to generate the mid-range estimates for this assessment .
+
+Input:
+In fact, the Ministry of Energy and the Green Growth Committee recently requested that MOTIE increase its 21.6% clean energy target in the energy plan draft.
+Output:
+In fact , <UNK_ORG_111> and <UNK_ORG_112> recently requested that <UNK_ORG_113> increase its <UNK_PERCENT_114> clean energy target in the energy plan draft .
