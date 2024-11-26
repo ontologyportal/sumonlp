@@ -3,27 +3,28 @@ Climate related examples:
 Before (from the Paris accords):
 The Warsaw International Mechanism for Loss and Damage associated with Climate Change Impacts shall be subject to the authority and guidance of the Conference of the Parties serving as the meeting of the Parties to this Agreement.
 After:
-The Warsaw International Mechanism will follow the decisions made by the countries that signed this agreement.
+The Warsaw International Mechanism for Loss and Damage should be guided by the Conference of the Parties. The Conference of the Parties is in charge of the Warsaw International Mechanism for Loss and Damage. The Warsaw International Mechanism for Loss and Damage must follow the rules set by the Conference of the Parties.  The Warsaw International Mechanism for Loss and Damage should be guided by the Conference of the Parties. The Conference of the Parties is in charge of the Warsaw International Mechanism for Loss and Damage. The Warsaw International Mechanism for Loss and Damage must follow the rules set by the Conference of the Parties.
 
 Before:
 The Earth’s atmosphere is not transparent to infrared radiation, being able to recycle some of it in a way that creates a warming influence.
 After:
-The Earth's atmosphere cannot allow all infrared radiation to pass through; instead, it traps some of it, warming the planet.
+The Earth's atmosphere does not allow infrared radiation to pass through. The atmosphere can, however, absorb and re-radiate some of this energy. This process has a warming effect on the planet.
 
 Before:
 Observations from space-based instruments clearly indicate that the rising concentrations of the anthropogenic greenhouse gases are tending to enhance the natural greenhouse effect.
 After:
-Space observations show that greenhouse gases emitted by humans are making the Earth warmer.
+The Earth's atmosphere contains many gases. Some of these gases trap heat from the sun. This process is called the greenhouse effect. It helps keep our planet warm enough for life to exist. However, human activities have increased the concentration of certain gases. These gases are known as anthropogenic greenhouse gases. They are released into the air through human activities such as burning fossil fuels and deforestation. The increasing levels of these gases are enhancing the natural greenhouse effect. This is causing global warming and associated impacts.
 
 Before:
 The costs or additional benefits of specific interventions to achieve greenhouse gas reduction are artificially separated from the resulting health benefits.
 After:
-The cost of reducing greenhouse gases is often not compared to its health benefits.
+The costs of reducing greenhouse gases are separate from their health benefits. Reducing greenhouse gases has health benefits. These health benefits come with a cost. The cost of these benefits is not always clearly stated.
+
 
 Before:
 The cumulative impacts of warming may overwhelm societal adaptive capacity.
 After:
-The effects of global warming can be too much for societies to handle.
+The effects of global warming can be very strong. Effects of global warming might make climate change hard for people to adapt. This could happen because of rising temperatures.
 
 Failed simplifications.
 There is a flying pterydactyl. -> There is a big bird in the sky.
