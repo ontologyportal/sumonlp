@@ -1,20 +1,13 @@
 import coreference_resolve
 import sentence_extractor
 
-
 def get_files():
-    """
-    Get all files from input_pe.txt
-    """
+    '''Get all files from the input file'''
     import os
     with open('input_pe.txt', 'r') as f:
         files = f.readlines()
     files = [f.strip() for f in files]
     return files
-
-def process_sentences(sentences):
-    ''' Takes a list of sentences and returns a list of resolved sentences '''
-    cr = coreference_resolve.CoreferenceResolver()
 
 
 def process_file(file_path, se, cr):
@@ -25,8 +18,6 @@ def process_file(file_path, se, cr):
 
     # Resolve coreferences
     resolved_sentences = resolve_coreferences(sentences, se, cr)
-    
-
     return resolved_sentences
 
 def resolve_coreferences(sentences, se, cr):

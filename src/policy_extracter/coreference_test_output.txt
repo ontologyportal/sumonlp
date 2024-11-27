@@ -1,0 +1,4 @@
+Input sentence: Sam saw a white star twinkle for a while. The beauty of it smote his heart, as he looked up out of the forsaken land, and hope returned to him.
+Output sentence: Sam saw a white star twinkle for a while. The beauty of a white star smote Sam's heart, as Sam looked up out of the forsaken land, and hope returned to Sam. 
+Input sentence: Angelos loves his dog. He takes him for a walk every day. He feeds him and plays with him.
+Output sentence: Angelos loves Angelos's dog. Angelos takes his dog for a walk every day. Angelos feeds his dog and plays with his dog. 
