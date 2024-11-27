@@ -1,6 +1,18 @@
 import torch
+import sys
 import argparse
 from transformers import AutoTokenizer, T5ForConditionalGeneration  # Use T5 classes
+import warnings
+import os
+
+# Suppress logging warnings
+os.environ["GRPC_VERBOSITY"] = "ERROR"
+os.environ["GLOG_minloglevel"] = "2"
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+
+# Suppress FutureWarning messages
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 
 def load_model(model_path):
     model = T5ForConditionalGeneration.from_pretrained(model_path)  # Load your T5 model
@@ -29,21 +41,22 @@ def main():
     # args = parser.parse_args()
 
     # Load the model and tokenizer from the saved directory
-    model = load_model('./t5_model')
+    model = load_model(sys.argv[1])
     # tokenizer = T5Tokenizer.from_pretrained('./t5_model')
     tokenizer = AutoTokenizer.from_pretrained('t5-small')
 
     # Read input sentences from the input file
-    with open('./input.txt', 'r') as f:
+    with open('./input_l2l.txt', 'r') as f:
         sentences = [line.strip() for line in f.readlines()]
 
     # Perform inference
     predictions = predict(model, tokenizer, sentences)
 
     # Write outputs to the output file
-    with open('./output.txt', 'w') as f:
+    with open('./output_l2l.txt', 'w') as f:
         for sentence, prediction in zip(sentences, predictions):
-            f.write(f"Input: {sentence}\nOutput: {prediction}\n\n")
+            # f.write(f"Input: {sentence}\nOutput: {prediction}\n\n")
+            f.write(f"{prediction}\n")
 
 if __name__ == "__main__":
     main()

@@ -1,11 +1,1 @@
-(instance <UNK_noun_80> Human)
-(=> (and (instance <UNK_verb_85> Action)
-         (agent <UNK_verb_85> <UNK_noun_90>)
-         (destination <UNK_verb_85> <UNK_noun_95>))
-    (result <UNK_verb_85> (instance <UNK_noun_100> Event)))
-
-(<UNK_verb_110> <UNK_noun-phrase_105> (attribute <UNK_noun_115> Intelligent))
-
-(forall (?x)
-  (=> (instance ?x <UNK_noun_120>)
-      (capable ?x <UNK_verb_115>)))
+( exists ( ?H ?P ?DO ?IO ) ( and ( instance ?P Kicking ) ( agent ?P You ) ( instance ?DO UNK_PERSON_77 ) ( objectTransferred ?P ?DO ) ) )

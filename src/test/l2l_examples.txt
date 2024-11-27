@@ -1,0 +1,38 @@
+L2L examples:
+
+
+Input:
+The economist conceals the climate data.
+
+Output:
+( exists ( ?H ?P ?DO ?IO ) ( and ( attribute ?H Economist ) ( instance ?P Concealing ) ( agent ?P ?H ) ( temporallyBetween ( BeginFn ( WhenFn ?P ) ) Now ( EndFn ( WhenFn ?P ) ) ) ( instance ?DO ClimateData ) ( objectTransferred ?P ?DO ) ) )
+
+
+
+Input:
+The United Nations Compensation Commission is a subordinate position to the charge d affaires for the subunified commander.
+
+Output:
+( subordinatePosition UnitedNationsCompensationCommission ChargeDAffaires SubunifiedCommander )
+
+
+
+Input:
+the headquarters of arab monetary fund is in abudahbi.
+
+Output:
+( headquartersOfOrganization ArabMonetaryFund Abudahbi )
+
+
+Input:
+The military commander will choreograph a humanitarian aid exercise.
+
+Output:
+( exists ( ?H ?P ?DO ?IO ) ( and ( attribute ?H MilitaryCommander ) ( instance ?P Choreographing ) ( agent ?P ?H ) ( before Now ( BeginFn ( WhenFn ?P ) ) ) ( instance ?DO HumanitarianAssistance ) ( patient ?P ?DO ) ) )
+
+
+Input:
+It is possible that the secretary of the interior is finding a solution.
+
+Output:
+( modalAttribute ( exists ( ?H ?P ?DO ?IO ) ( and ( attribute ?H SecretaryOfTheInterior ) ( instance ?P Learning ) ( agent ?P ?H ) ( instance ?DO Solution ) ( patient ?P ?DO ) ) ) Possibility )

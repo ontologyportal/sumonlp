@@ -21,12 +21,17 @@ parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
 cd "$parent_path" || exit
 source ../config_paths.sh
 
+
 # Check if Ollama server is running
-if lsof -i :11434 | grep ollama > /dev/null; then
-  echo "Ollama server is running."
+if lsof -i :$OLLAMA_HOST_PORT | grep ollama > /dev/null; then
+  echo "Ollama server is running on $OLLAMA_HOST"
 else
   echo "Ollama server is not running. Starting server..."
-  ollama serve &
+  if [ $RUNNING_ON_HAMMING == true ]; then
+    module purge
+    module load lib/cuda/12.2  # needs this module for running server with GPU
+  fi
+  ollama serve > ../ollama_log.out 2>&1 &
   # Give the server a chance to start up before moving to the next instruction
-  sleep 4
+  sleep 1
 fi

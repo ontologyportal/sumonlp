@@ -15,6 +15,8 @@ if __name__ == '__main__':
     file = os.path.join(input)
 
     output_lines = simplify_file(file, date_time)
+    for line in output_lines:
+        print(line)
 
     with open(output, 'w', encoding='utf-8') as outfile:
         for line in output_lines:

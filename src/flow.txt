@@ -1,0 +1,23 @@
+
+Input
+Who kicked the Ball?
+
+
+After policy extractor
+Who kicked the Ball?
+
+
+After metaphor handling
+Who kicked the Ball?
+
+After sentence simplification
+Who kicked the Ball?
+
+After OOV handling
+Who kicked the <UNK_PERSON_77> ?
+
+After L2L
+( exists ( ?H ?P ?DO ?IO ) ( and ( instance ?P Kicking ) ( agent ?P You ) ( instance ?DO UNK_PERSON_77 ) ( objectTransferred ?P ?DO ) ) )
+
+After OOV post-processing
+( exists ( ?H ?P ?DO ?IO ) ( and ( instance ?P Kicking ) ( agent ?P You ) ( instance ?DO UNK_PERSON_77 ) ( objectTransferred ?P ?DO ) ) )

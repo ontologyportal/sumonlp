@@ -1,3 +1,8 @@
+# Usage
+Go here for the latest install and usage instructions:
+https://github.com/ontologyportal/sumonlp/blob/master/src/README.md
+
+# OLD INSTRUCTIONS
 # SUMO NLP
 
 This repository is for experiments in machine translation from natural language to
@@ -88,9 +93,9 @@ source ~/.bashrc
 I run the following to produce the SUMO-based training files
 
 ```
-time java -Xmx14g -classpath /home/apease/workspace/sigmakee/lib/*:/home/apease/workspace/sigmakee/build/classes com.articulate.sigma.mlpipeline.GenSimpTestData -a allAxioms
-time java -Xmx60g -classpath /home/apease/workspace/sigmakee/lib/*:/home/apease/workspace/sigmakee/build/classes com.articulate.sigma.mlpipeline.GenSimpTestData -g groundRelations
-time java -Xmx14g -classpath /home/apease/workspace/sigmakee/lib/*:/home/apease/workspace/sigmakee/build/classes com.articulate.sigma.mlpipeline.GenSimpTestData -s outKindaSmall
+time java -Xmx14g -classpath /home/apease/workspace/sigmanlp/lib/*:/home/apease/workspace/sigmanlp/build/classes com.articulate.nlp.GenSimpTestData -a allAxioms
+time java -Xmx60g -classpath /home/apease/workspace/sigmanlp/lib/*:/home/apease/workspace/sigmanlp/build/classes com.articulate.nlp.GenSimpTestData -g groundRelations
+time java -Xmx14g -classpath /home/apease/workspace/sigmanlp/lib/*:/home/apease/workspace/sigmanlp/build/classes com.articulate.nlp.GenSimpTestData -s outKindaSmall
 ```
 
 Each command produces a -log.txt and -eng.txt file.  Make sure they completed 
