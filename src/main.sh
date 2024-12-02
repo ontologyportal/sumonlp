@@ -3,7 +3,7 @@
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
 cd "$parent_path" || exit
 
-source config_paths.sh
+source load_configs.sh
 BLACK=`tput setaf 0`
 RED=`tput setaf 1`
 GREEN=`tput setaf 2`
@@ -61,7 +61,7 @@ while true; do
                 echo $axiom_TPTP
                 echo "fof(name1,axiom, $axiom_TPTP)." >> $HOME/.sigmakee/KBs/SUMO.fof
             else
-                bash prover/build_tptp.sh # Builds the whole thing.
+                java -Xmx8g -classpath $SIGMA_SRC/build/sigmakee.jar:$SIGMA_SRC/lib/* com.articulate.sigma.trans.SUMOKBtoTPTPKB
             fi
             #bash prover/entry_point.sh
             echo "Added $add_value to the knowledge base."
@@ -74,15 +74,15 @@ while true; do
             rm -f $HOME/.sigmakee/KBs/SUMO_NLP_QUERY.fof
             echo "Knowledge base has been cleared."
             ;;
-        list)
+        list|kb)
             if [ -e "$HOME/.sigmakee/KBs/SUMO_NLP_KB.kif" ]; then
               cat $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif
             fi
             ;;
-        test)
+        prover|test)
             time_value=${input:6}
             cat $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif > $HOME/.sigmakee/KBs/SUMO_NLP.kif
-            bash prover/build_tptp.sh
+            java -Xmx8g -classpath $SIGMA_SRC/build/sigmakee.jar:$SIGMA_SRC/lib/* com.articulate.sigma.trans.SUMOKBtoTPTPKB
             vampire --input_syntax tptp $time_value --proof tptp -qa plain --mode casc $HOME/.sigmakee/KBs/SUMO.fof
             ;;
         last)
@@ -121,6 +121,9 @@ while true; do
             bash oov_handling/entry_point_postprocessing.sh > oov/logs/oov_handling_post.log
             cat oov_handling/output_post_oov.txt
             ;;
+        history|hist)
+            cat command_history.txt
+            ;;
         help|man)
             printf "\n\n=================================================================\n"
             printf "\nValid commands are ask, add, clear or quit\n"
@@ -129,12 +132,13 @@ while true; do
             printf '  Example: "add climate_facts.txt"\n'
             printf '\n"clear" will completely clear the knowledge base.\n  Example: "clear"\n'
             printf '\n"last" will show the progression through the pipeline of the last added sentence or file.\n  Example: "last"\n'
-            printf '\n"list" will display the knowledge base.\n  Example: "list"\n'
-            printf '\n"test" will run the Vampire prover on the knowledge base, searching for contradictions. Default is 60 seconds.\n  Example: "test -t 40" # runs for 40 seconds\n  Example: "test" # runs for 60 seconds\n'
+            printf '\n"list" or "kb" will display the knowledge base.\n  Example: "list"\n'
+            printf '\n"prover" or "test" will run the Vampire prover on the knowledge base, searching for contradictions. Default is 60 seconds.\n  Example: "test -t 40" # runs for 40 seconds\n  Example: "test" # runs for 60 seconds\n'
             printf '\n"mh" will run just the metaphor translation portion of the pipeline.\n  Example: "mh The car flew past the barn."\n'
             printf '\n"ss" will run just the sentence simplification portion of the pipeline.\n  Example: "ss He who knows not, knows not he knows not, is a fool, shun him."\n'
             printf '\n"oov" will run just the out of vocabulary handling portion of the pipeline.\n  Example: "oov Bartholemew used the doohicky as a dinglehopper."\n'
             printf '\n"l2l" will run just the language to logic portion of the pipeline.\n  Example: "l2l A bird is a subclass of animal."\n'
+            printf '\n"hist" or "history" will print the commands run.\n  Example: "hist"\n'
             printf '\n"quit" will exit the interface.\n  Example: "quit"\n'
             printf "\n=================================================================\n\n"
             ;;
@@ -143,7 +147,7 @@ while true; do
             break
             ;;
         *)
-            echo "Invalid command. Please use 'ask', 'add', 'clear', 'list', 'test', 'mh', 'ss', 'oov', 'l2l', 'help', or 'quit'."
+            echo "Invalid command. Please use 'ask', 'add', 'clear', 'list', 'test', 'mh', 'ss', 'oov', 'l2l', 'help', 'hist' or 'quit'."
             ;;
     esac
 done

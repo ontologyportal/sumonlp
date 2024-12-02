@@ -4,9 +4,9 @@ echo "Starting metaphor handling ..."
 # Gets the path to this script, so this script can be run from any location and still work
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
 cd "$parent_path" || exit
-source ../config_paths.sh
+source ../load_configs.sh
 
-if [ $RUNNING_ON_HAMMING == true ]; then
+if [[ "$SUMO_NLP_RUNNING_ON_HAMMING" == true ]]; then
   module unload lib/cuda/12.2  # need to unload this because otherwise torch will be messed up. Messy fix, may need to find torch <-> ollama CUDA version incompatability
 fi
 echo "Running Metaphor detector..."

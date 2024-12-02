@@ -19,7 +19,7 @@
 # Gets the path to this script, so this script can be run from any location.
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
 cd "$parent_path" || exit
-source ../config_paths.sh
+source ../load_configs.sh
 
 
 # Check if Ollama server is running
@@ -27,7 +27,7 @@ if lsof -i :$OLLAMA_HOST_PORT | grep ollama > /dev/null; then
   echo "Ollama server is running on $OLLAMA_HOST"
 else
   echo "Ollama server is not running. Starting server..."
-  if [ $RUNNING_ON_HAMMING == true ]; then
+  if [[ $SUMO_NLP_RUNNING_ON_HAMMING == true ]]; then
     module purge
     module load lib/cuda/12.2  # needs this module for running server with GPU
   fi

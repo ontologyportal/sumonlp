@@ -4,7 +4,7 @@ echo "Starting Prover ..."
 # Gets the path to this script, so this script can be run from any location and still work
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
 cd "$parent_path" || exit
-source ../config_paths.sh
+source ../load_configs.sh
 
 ###### FUTURE IMPROVEMENT, don't generate the file everytime, figure a way to somehow merge the file.
 # Generate the SUMO.fof file or if pgs (Prover Generate Sumo.fof) flag is set

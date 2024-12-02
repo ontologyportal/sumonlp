@@ -1,4 +1,13 @@
 #!/bin/bash
+###################################################################################
+#  This will strip \r characters from .sh files.
+#  If there is a \r that is being added, it is most likely a setting
+#  in a global .git configuration file. Try this command to change
+#  the setting:
+#
+#      git config --global core.autocrlf input
+#
+###################################################################################
 # Gets the path to this script, so this script can be run from any location and still work
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
 cd "$parent_path"
