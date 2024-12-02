@@ -1,7 +1,23 @@
 data/
 .idea/
+.idea/misc.xml
+
+src/flow.txt
+src/ollama.log
+src/command_history.txt
+
+src/l2l/input_l2l.txt
+src/l2l/output_l2l.txt
 
 
+src/metaphor_handling/input_mh.txt
+src/metaphor_handling/output_md.txt
+src/metaphor_handling/output_mh.txt
+
+src/oov_handling/input_oov.txt
+src/oov_handling/output_oov.txt
+src/oov_handling/input_post_oov.txt
+src/oov_handling/output_post_oov.txt
 src/oov_handling/vocabulary_test.db
 src/oov_handling/vocabulary.db
 src/oov_handling/stanza_test.py
@@ -11,3 +27,17 @@ src/oov_handling/__pycache__/oov_handling.cpython-39.pyc
 src/oov_handling/__pycache__/post_oov_handling.cpython-39.pyc
 src/oov_handling/test/__pycache__/oov_handling_test.cpython-39.pyc
 src/oov_handling/test/__pycache__/post_oov_handling_test.cpython-39.pyc
+
+src/policy_extracter/input_pe.txt
+src/policy_extracter/output_pe.txt
+
+src/ppara/input_pp.txt
+src/ppara/output_pp.txt
+
+src/prover/input_pr.txt
+src/prover/output_pr.txt
+
+src/sentence_simplification/input_ss.txt
+src/sentence_simplification/output_ss.txt
+src/sentence_simplification/logs/ollama.log
+
