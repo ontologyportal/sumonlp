@@ -1,2 +1,0 @@
-data/sample1.pdf
-Who kicked the Ball?
