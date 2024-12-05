@@ -5,8 +5,8 @@ Robert imagined a ball.
 Robert did not imagine a ball.
 
 %%%%%%%%%%%%%%%%
-The tornado has destroyed the house.
-The tornado has not destroyed the house.
+The tornado damaged the house.
+The tornado has not damaged the house.
 
 %%%%%%%%%%%%%%%
 The refugee left the country.
