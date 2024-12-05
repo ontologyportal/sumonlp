@@ -26,24 +26,26 @@ def process_file(input_file, output_file, model_type):
             # Extract the part of the line after '1_'
             sentence = line.strip()
             if sentence:
-                # Vocabulary change.
-
-                prompt = "Just the answer: Are the vocabulary, grammar and sentence structure in this sentence common and easily understandable: " + sentence
+                prompt = "Just the answer: Is the following sentence of the form (something is or is not a subclass of something else): " + sentence
                 response = call_ollama(prompt, model_type)
+                print (prompt)
+                print (response)
                 if "no" in response.lower():
-                    prompt = "**IMPORTANT**: Output without additional commentary! Just the answer: Please split the sentence into several small sentences. In a way that the vocabulary, grammar and sentence structure are common and easily understandable.: " + sentence
+                    prompt = "Just the answer: Are the vocabulary, grammar and sentence structure in this sentence common and easily understandable: " + sentence
                     response = call_ollama(prompt, model_type)
-                    response = re.sub(r'\s*\([^)]*\)\s*$', '.', response) # Removes the parenthetical statement at the end of sentences.
-                    prompt = "**IMPORTANT**: Output without additional commentary! Just the answer: Does the following contain pronouns 'its', 'it', 'they', or 'them': " + response
-                    contains_pronouns = call_ollama(prompt, model_type)
-                    print("Before pronoun replacement: " + response)
-                    print(contains_pronouns)
-                    if "yes" in contains_pronouns.lower():
-                        prompt = "**IMPORTANT**: Output without additional commentary! Just the answer: Replace all 'its', 'it', 'they', or 'them' with accurate nouns in the following sentences: " + response
+                    if "no" in response.lower():
+                        prompt = "**IMPORTANT**: Output without additional commentary! Just the answer: Please split the sentence into several small sentences. In a way that the vocabulary, grammar and sentence structure are common and easily understandable.: " + sentence
                         response = call_ollama(prompt, model_type)
-                    outfile.write(response + '\n')
-                else:
-                    outfile.write(sentence + '\n')
+                        response = re.sub(r'\s*\([^)]*\)\s*$', '.', response) # Removes the parenthetical statement at the end of sentences.
+                        prompt = "**IMPORTANT**: Output without additional commentary! Just the answer: Does the following contain pronouns 'its', 'it', 'they', or 'them': " + response
+                        contains_pronouns = call_ollama(prompt, model_type)
+                        print("Before pronoun replacement: " + response)
+                        print(contains_pronouns)
+                        if "yes" in contains_pronouns.lower():
+                            prompt = "**IMPORTANT**: Output without additional commentary! Just the answer: Replace all 'its', 'it', 'they', or 'them' with accurate nouns in the following sentences: " + response
+                            response = call_ollama(prompt, model_type)
+                        sentence = response
+                outfile.write(sentence + '\n')
             #if sentence:
             #    prompt = PROMPT1 + sentence + PROMPT2
                 # Call the Ollama model with the extracted prompt

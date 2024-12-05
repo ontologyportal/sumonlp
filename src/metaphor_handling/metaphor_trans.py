@@ -8,7 +8,7 @@ def call_ollama(prompt, model_type):
     """Call the Ollama model with the given prompt and model type."""
     try:
         # Use the ollama library to send the prompt to the model
-        response = ollama.chat(model=model_type, messages=[{"role": "user", "content": prompt}])
+        response = ollama.chat(model=model_type, messages=[{"role": "user", "content": prompt}], options={"temperature": 0})
         return(response["message"]["content"].replace('\n', ' ')) # Return the model response
     except Exception as e:
         print(f"Error calling Ollama: {e}")
@@ -26,8 +26,10 @@ def process_file(input_file, output_file, model_type):
             # Extract the part of the line after '1_'
             sentence = line.strip()[2:]  # Skip the initial '1 ' and get the rest
             if sentence:
-                prompt = "Quick answer: Does the following sentence contain metaphorical content: " + sentence
+                prompt = "Quick answer: Does the following sentence contain a blatant metaphor: " + sentence
                 response = call_ollama(prompt, model_type)
+                print (prompt)
+                print (response)
                 if "yes" in response.lower():
                     prompt = "Quick answer: Rephrase the following sentence with as few words as possible, without metaphorical content: " + sentence
                     response = call_ollama(prompt, model_type)

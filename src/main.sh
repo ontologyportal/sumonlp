@@ -36,9 +36,9 @@ while true; do
             question_KIF=$(cat prover/input_pr.txt)
             echo $question_KIF
             question_TPTP=$(java -Xmx8g -classpath $ONTOLOGYPORTAL_GIT/sigmakee/build/sigmakee.jar:$ONTOLOGYPORTAL_GIT/sigmakee/lib/* com.articulate.sigma.trans.SUMOformulaToTPTPformula -g "$question_KIF" | tail -n 1)
-            cat $HOME/.sigmakee/KBs/SUMO.fof > $HOME/.sigmakee/KBs/SUMO_NLP_QUERY.fof
-            echo "fof(name1,conjecture, $question_TPTP)." >> $HOME/.sigmakee/KBs/SUMO_NLP_QUERY.fof
-            vampire --input_syntax tptp -t 10 --proof tptp -qa plain --mode casc $HOME/.sigmakee/KBs/SUMO_NLP_QUERY.fof > prover/output_pr.txt
+            cat $HOME/.sigmakee/KBs/SUMO.tptp > $HOME/.sigmakee/KBs/SUMO_NLP_QUERY.tptp
+            echo "fof(name1,conjecture, $question_TPTP)." >> $HOME/.sigmakee/KBs/SUMO_NLP_QUERY.tptp
+            vampire --input_syntax tptp -t 10 --proof tptp -qa plain --mode casc $HOME/.sigmakee/KBs/SUMO_NLP_QUERY.tptp > prover/output_pr.txt
             ;;
         add)
             add_value=${input:4} # gets the substring from character position 4 to the end.
@@ -54,12 +54,12 @@ while true; do
             bash run_pipeline.sh
             cat prover/input_pr.txt >> $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif
             cat $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif > $HOME/.sigmakee/KBs/SUMO_NLP.kif
-            if [ -e "$HOME/.sigmakee/KBs/SUMO.fof" ] && [ $txt_file == false ]; then
+            if [ -e "$HOME/.sigmakee/KBs/SUMO.tptp" ] && [ $txt_file == false ]; then
                 axiom_KIF=$(cat prover/input_pr.txt)
                 echo $axiom_KIF
                 axiom_TPTP=$(java -Xmx8g -classpath $ONTOLOGYPORTAL_GIT/sigmakee/build/sigmakee.jar:$ONTOLOGYPORTAL_GIT/sigmakee/lib/* com.articulate.sigma.trans.SUMOformulaToTPTPformula -g "$axiom_KIF" | tail -n 1)
                 echo $axiom_TPTP
-                echo "fof(name1,axiom, $axiom_TPTP)." >> $HOME/.sigmakee/KBs/SUMO.fof
+                echo "fof(name1,axiom, $axiom_TPTP)." >> $HOME/.sigmakee/KBs/SUMO.tptp
             else
                 java -Xmx8g -classpath $SIGMA_SRC/build/sigmakee.jar:$SIGMA_SRC/lib/* com.articulate.sigma.trans.SUMOKBtoTPTPKB
             fi
@@ -83,7 +83,7 @@ while true; do
             time_value=${input:6}
             cat $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif > $HOME/.sigmakee/KBs/SUMO_NLP.kif
             java -Xmx8g -classpath $SIGMA_SRC/build/sigmakee.jar:$SIGMA_SRC/lib/* com.articulate.sigma.trans.SUMOKBtoTPTPKB
-            vampire --input_syntax tptp $time_value --proof tptp -qa plain --mode casc $HOME/.sigmakee/KBs/SUMO.fof
+            vampire --input_syntax tptp $time_value --proof tptp -qa plain --mode casc $HOME/.sigmakee/KBs/SUMO.tptp
             ;;
         last)
             cat flow.txt
