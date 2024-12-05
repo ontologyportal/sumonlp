@@ -9,8 +9,8 @@ The tornado damaged the house.
 The tornado has not damaged the house.
 
 %%%%%%%%%%%%%%%
-The refugee left the country.
-The refugee did not leave the country.
+The individual left the country.
+The individual did not leave the country.
 
 
 %%%%%%%%%%%%%%%
