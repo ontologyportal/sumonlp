@@ -1,0 +1,114 @@
+\documentclass[letterpaper]{article}
+\usepackage{times}
+\usepackage{helvet}
+\usepackage{courier}
+\usepackage{doc}
+\usepackage{framed}
+\usepackage{url}
+\usepackage{tabularx}
+\usepackage{listings}
+\frenchspacing
+\setlength{\pdfpagewidth}{8.5in}
+\setlength{\pdfpageheight}{11in}
+
+\title{SUMO's new bAbI: A Neuro-Symbolic Approach to Natural Language Inference}
+\date{\vspace{-5ex}}
+\author{Adam Pease} 
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+\begin{sloppypar}
+We are conducting experiments in machine translation from natural language to logic using SUMO \url{https://github.com/ontologyportal/sumo} terms.
+The code to create the datasets for training is in \url{com.articulate.nlp.GenSimpTestData} at 
+\url{https://github.com/ontologyportal/sigmanlp}.
+\end{sloppypar}
+
+The ML training resource used is \url{https://github.com/tensorflow/t5}
+
+\section{Language Generation}
+
+This SigmaNLP code generates language-logic pairs designed for training a machine learning system. Several approaches are used:
+
+\begin{itemize}
+\item instantiate relations with arguments of appropriate types and then generate NL paraphrases from them
+\item run through all formulas in SUMO and generate NL paraphrases
+\item build up sentences and logic expressions compositionally
+\end{itemize}
+
+
+The compositional generation is potentially the most comprehensive. It consists of building ever more complex statements that wrap or extend simpler statements. Originally, this meant starting with a simple subject-verb-object but now encompasses a host of different constructs:
+
+\begin{itemize}
+\item six tenses (part, present, future and progressive or not) and correspond to SUMO expressions relative to a diectic 'Now'
+\item  negation (for action sentences and separately for attitude wrappers that require higher-order logic, such as \texttt{believes}, \texttt{knows} etc)
+\item  frequency-based selection of nouns and verbs
+\item  human names and social roles
+\item  restrict human actions with \texttt{CaseRole} of \texttt{agent} to be \texttt{IntentionalProcess}(es) and otherwise use the \texttt{CaseRole} of 'experiencer'
+\item  use WordNet's noun and verb morphological exception lists
+\item  counts of objects (0-10) are used randomly a small portion of the time, divided between using numerals some times and digits other times
+\item  quantities of substances with units are used randomly a small portion of the time
+\item  Some sentences have metric dates and times, in several formats
+\item  Queries ('what','who') are generated sometimes, and with a question mark
+\item  WordNet verb frames are used that index verbs to a context of use. However, this is quite limited compared to VerbNet and FrameNet, and still allows many semantically non-sensical sentences to be generated, while also missing some common sentence forms, especially use of prepositions
+\item  Sentences with all variations of SUMO's \texttt{modalAttribute} are generated (\texttt{Possibility}, \texttt{Obligation} etc)
+\item  Sentences with all variations of SUMO's \texttt{PropositionalAttitudes} are generated \texttt{believes},\texttt{knows},\texttt{says} etc
+\item  Sentences with \texttt{says} have their content quoted
+\item Imperative sentences with the English ``You (understood)'' form
+\end{itemize}
+
+\section{User Interface}
+
+The system has a simple top-level command line interface
+
+\begin{verbatim}
+Valid commands are ask, add, clear or quit
+
+"ask" a question from the knowledge base.
+  Example: "ask Does CO2 cause global warming?"
+
+"add" will append a new sentence or file to the knowledge base.
+  Example: "add CO2 causes global warming."
+  Example: "add climate_facts.txt"
+
+"clear" will completely clear the knowledge base.
+  Example: "clear"
+
+"last" will show the progression through the pipeline of the last added sentence or file.
+  Example: "last"
+
+"list" or "kb" will display the knowledge base.
+  Example: "list"
+
+"prover" or "test" will run the Vampire prover on the knowledge base, searching for contradictions. Default is 60 seconds.
+  Example: "test -t 40" # runs for 40 seconds
+  Example: "test" # runs for 60 seconds
+
+"mh" will run just the metaphor translation portion of the pipeline.
+  Example: "mh The car flew past the barn."
+
+"ss" will run just the sentence simplification portion of the pipeline.
+  Example: "ss He who knows not, knows not he knows not, is a fool, shun him."
+
+"oov" will run just the out of vocabulary handling portion of the pipeline.
+  Example: "oov Bartholemew used the doohicky as a dinglehopper."
+
+"l2l" will run just the language to logic portion of the pipeline.
+  Example: "l2l A bird is a subclass of animal."
+
+"hist" or "history" will print the commands run.
+  Example: "hist"
+
+"quit" will exit the interface.
+  Example: "quit"
+\end{verbatim}
+
+\label{sect:bib}
+\bibliographystyle{plain}
+\bibliography{SUMOBabyTechRep.tex}
+
+\end{document}
+
