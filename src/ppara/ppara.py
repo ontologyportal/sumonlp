@@ -68,4 +68,4 @@ if __name__ == "__main__":
     process_file(input_file, output_file, model_type)
     print(f"Processing complete. Responses saved to {output_file}.\n\n\n")
     process_entire_argument(input_file, "entire.txt", model_type)
-    
+

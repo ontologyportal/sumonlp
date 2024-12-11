@@ -1,1 +1,1 @@
-( not ( exists ( ?H ?P ?DO ?IO ) ( and ( instance ?H Human ) ( names "UNK_PERSON_64" ?H ) ( instance ?P Imagining ) ( experiencer ?P ?H ) ( before ( EndFn ( WhenFn ?P ) ) Now ) ( instance ?DO Ball ) ( patient ?P ?DO ) ) ) )
+( white Car )
