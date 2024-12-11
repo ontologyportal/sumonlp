@@ -41,8 +41,10 @@ if lsof -i :$OLLAMA_HOST_PORT | grep ollama > /dev/null; then
   echo "Ollama server is running on $OLLAMA_HOST"
 else
   echo "Ollama server is not running. Starting server..."
-  # module purge
-  # module load lib/cuda/12.2  # needs this module for running server with GPU
+  if [[ $SUMO_NLP_RUNNING_ON_HAMMING == true ]]; then
+    # module purge
+    # module load lib/cuda/12.2  # needs this module for running server with GPU
+  fi
   ollama serve > ../ollama_log.out 2>&1 &
   # Give the server a chance to start up before moving to the next instruction
   sleep 1

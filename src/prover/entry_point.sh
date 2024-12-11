@@ -13,12 +13,18 @@ cd "$parent_path" || exit
 #    java  -Xmx8g -classpath   $SIGMAKEE_HOME/build/sigmakee.jar:$SIGMAKEE_HOME/lib/* com.articulate.sigma.trans.SUMOKBtoTPTPKB
 #fi
 
-cp input_pr.txt /data/angelos.toutsios.gr/Programs/.sigmakee/KBs/SUMO_NLP.kif
+# cp input_pr.txt /data/angelos.toutsios.gr/Programs/.sigmakee/KBs/SUMO_NLP.kif
+# bash prover/build_tptp.sh
+# vampire --input_syntax tptp -t 10 --proof tptp -qa plain --mode casc /data/angelos.toutsios.gr/Programs/.sigmakee/KBs/SUMO.fof
+# cp /data/angelos.toutsios.gr/Programs/.sigmakee/KBs/SUMO.tptp output_pr.txt
 
-#java  -Xmx8g -classpath   $SIGMAKEE_HOME/build/sigmakee.jar:$SIGMAKEE_HOME/lib/* com.articulate.sigma.trans.SUMOKBtoTPTPKB
-bash prover/build_tptp.sh
-vampire --input_syntax tptp -t 10 --proof tptp -qa plain --mode casc /data/angelos.toutsios.gr/Programs/.sigmakee/KBs/SUMO.fof
 
-cp /data/angelos.toutsios.gr/Programs/.sigmakee/KBs/SUMO.tptp output_pr.txt
+# generate tptp translation of just the statement or query
+bash $HOME/workspace/sumonlp/src/prover/build_tptp.sh
+
+# add statement to the existing TPTP KB translation
+cat $HOME/.sigmakee/KBs/SUMO.tptp $HOME/.sigmakee/KBs/temp-query.fof > $HOME/.sigmakee/KBs/temp-comb.fof
+
+$HOME/workspace/vampire/vampire --input_syntax tptp -t 10 --proof tptp -qa plain --mode casc $HOME/.sigmakee/KBs/temp-comb.fof &> output_pr.txt
 
 echo "Finished Prover ..."

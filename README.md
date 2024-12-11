@@ -1,180 +1,153 @@
-# SUMO NLP
+# Overview
+SUMO Natural Language Processing (SUMO NLP) takes natural language text and turns the text into logical statements. These statements can be queried against, and tested for inconsistencies.
 
-This repository is for experiments in machine translation from natural language to
-logic using SUMO https://github.com/ontologyportal/sumo terms.  
-The code to create the datasets for training is in
-com.articulate.sigma.mlpipeline.GenSimpTestData at 
-https://github.com/ontologyportal/sigmakee
+# Install pre-requisites
+SUMO NLP is reliant on the the following:
 
-The ML training resource used is https://github.com/tensorflow/nmt
+* SUMO and SIGMAKEE. Installation instructions are [here](https://github.com/ontologyportal/sigmakee).
+* Vampire. Installation instructions are [here](https://github.com/ontologyportal/sigmakee?tab=readme-ov-file#vampire). Configuration instructions below.
+* Miniconda (instructions below)
+* Ollama (instructions below)
 
-This SigmaKEE code generates language-logic pairs designed for training
-a machine learning system.  Several approaches are used
- - instantiate relations with arguments of appropriate types
-   and then generate NL paraphrases from them
- - run through all formulas in SUMO and generate NL paraphrases
- - build up sentences and logic expressions compositionally
-
- The compositional generation is potentially the most comprehensive.
- It consists of building ever more complex statements that wrap or
- extend simpler statements.  Currently, this means starting with
- a simple subject-verb-object construction and adding:
- - indirect objects
- - tenses for the verbs
- - modals
- 
-Ultimately we believe we can feed natural text to the system and save formulas
-that pass test for correctness from SigmaKEE 
-
-We should be able to wrap everything in negated/not-negated, likely/unlikely.
-
-We plan to trap bad constructions by using language models to eliminate rare combinations of words, maybe.
-
-## Mechanics
-
-Install miniconda
+## Create folder structure
+Create a sumonlp folder where models and large files will be stored. This should be separate from where you clone this repository. For example:
 
 ```
-wget https://repo.anaconda.com/miniconda/Miniconda3-py310_23.1.0-1-Linux-x86_64.sh
-bash Miniconda3*
+cd ~
+mkdir .sumonlp
+cd .sumonlp
+mkdir L2L_model
 ```
 
-We need CUDA-9 for TensorFlow 1.12.  Install from https://github.com/akirademoss/cuda-9.0-installation-on-ubuntu-18.04
-But you'll need to do 
-```
-sudo apt-get install ubuntu-drivers-common
-```
-Then
-```
-conda install cudatoolkit=9.0
-```
-There's also a typo in the instructions of a '.' instead of a '-' so make sure you do
+Add the following lines to your .bashrc file. HAMMING is a super computer at the Naval Postgraduate School. If you are not running on the Hamming super computer, this should be set to false:
 
 ```
-chmod +x cuda_9.0.176_384.81_linux-run 
-sudo ./cuda_9.0.176_384.81_linux-run --override
-```
-Check with 
-```
-cat /proc/driver/nvidia/version
+export SUMO_NLP_RUNNING_ON_HAMMING=false
+export SUMO_NLP_HOME=~/.sumonlp
 ```
 
-Create a conda environment and tensorflow 1.12 which requires python 3.6
+Clone the repository to your workspace directory:
 ```
-conda create --name py36 python=3.6.2
-conda activate py36
-pip3 install tensorflow-gpu==1.12.0
-```
-
-I still had to fix my NVIDIA driver
-```
-sudo apt purge nvidia* libnvidia*
-sudo apt install nvidia-driver-470
-nvidia-smi
-```
-I put the following in my .bashrc (was tf_gpu112)
-
-```
-/home/apease/miniconda3/condabin/conda init bash
-conda activate py36
+cd ~/workspace
+git clone https://github.com/ontologyportal/sumonlp.git
 ```
 
-then 
-
+## Miniconda
+Follow install instructions at https://docs.anaconda.com/miniconda/install/ . Linux instructions reproduced here for convenience:
 ```
-source ~/.bashrc
-```
-
-I run the following to produce the SUMO-based training files
-
-```
-time java -Xmx14g -classpath /home/apease/workspace/sigmanlp/lib/*:/home/apease/workspace/sigmanlp/build/classes com.articulate.nlp.GenSimpTestData -a allAxioms
-time java -Xmx60g -classpath /home/apease/workspace/sigmanlp/lib/*:/home/apease/workspace/sigmanlp/build/classes com.articulate.nlp.GenSimpTestData -g groundRelations
-time java -Xmx14g -classpath /home/apease/workspace/sigmanlp/lib/*:/home/apease/workspace/sigmanlp/build/classes com.articulate.nlp.GenSimpTestData -s outKindaSmall
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm ~/miniconda3/miniconda.sh
+source ~/miniconda3/bin/activate
+conda init --all
 ```
 
-Each command produces a -log.txt and -eng.txt file.  Make sure they completed 
-and each file is the same number of lines as its sibling.  Then concatenate them
-all together
+Create a conda environment. This allows you to create, export, list, remove, and update environments that have different versions of Python and/or packages installed in them.
 
+As an example: If your version of Python were 3.9, then you would run:
 ```
-cat allAxioms-eng.txt groundRelations-eng.txt outKindaSmall-eng.txt > combined-eng.txt
-cat allAxioms-log.txt groundRelations-log.txt outKindaSmall-log.txt > combined-log.txt
+conda create -n name_you_choose_for_environment python=3.9
 ```
 
-The two -eng and -log files can go anywhere.  They first need some pre-processing with
+Add the name of your environment ("name_you_choose_for_environment") to the .bashrc file:
 
 ```
-~/workspace/sumonlp/preprocess1.sh ~/nfs/data/combined combined
+export SUMO_NLP_CONDA_ENVIRONMENT="name_you_chose_for_environment"
 ```
 
-Note that it produces the vocab.* files that will typically have empty
-(or just whitespace) lines in them. You need to delete these empty
-lines manually (or improve the script).
-
-
-The result will be files call trainX, devX and testX where X is ".nat" and ".sum1" in the "combined" directory. When running the training process the script needs to be run from a directory
-
-where you have installed nmt.  For me that's in ~/test1
+## Vampire Prover
+Installation instructions are [here](https://github.com/ontologyportal/sigmakee?tab=readme-ov-file#vampire). It is recommended to install vampire in After installing Vampire, add the following line to the .bashrc file:
 
 ```
-~/workspace/sumonlp/training.sh ~/nfs/data/combined
+export PATH="$HOME/path/to/vampire:$PATH" 
 ```
 
-Then you can test it
+### Configuration
+The language to logic translator produces the file SUMO_NLP.kif, with logic statements generated from natural language. This file is automatically copied to the .sigmakee/KBs directory. To be able to translate the generated SUO-KIF logic to the TPTP input required by the vampire prover, update 
 
 ```
-~/workspace/sumonlp/test.sh ~/nfs/data/combined/models/model
+$HOME/.sigmakee/KBs/config.xml
 ```
 
-Note that you should first check which GPU carsd are free by runing 
+and add the following line is in the <kb name="SUMO" > section:
 
 ```
-nvidia-smi
-```
-
-When you see that e.g. GPU number 1 is free, do the following to put
-your job there:
-
-```
-export CUDA_VISIBLE_DEVICES=2
-```
-
-Note that this number seems to be off by 1 on air-05 (likely a
-peculiarity of air-05).
-
-If you are getting OOM (Out of Memorey) crashes, decrease the batch
-size in the training script in this line:
+...
+  <kb name="SUMO" >
+    ...
+    <constituent filename="/home/THE_USER/.sigmakee/KBs/SUMO_NLP.kif" />
+    ...
+  </kb>
+...
 
 ```
-  --batch_size=768 \
+
+The files within this tag are all combined and translated into the SUMO.fof file which is then fed as input to the vampire prover.
+
+## Ollama Install Notes
+
+Instructions adapted from: 
+https://github.com/ollama/ollama/blob/main/docs/linux.md
+https://ollama.com/download/linux
+
+
+```
+cd Programs
+mkdir ollama
+cd ollama
+curl -L https://ollama.com/download/ollama-linux-amd64.tgz -o ollama-linux-amd64.tgz
+sudo tar -C ./ -xzf ollama-linux-amd64.tgz
+cd bin
+sudo chmod 777 *
 ```
 
-e.g.
-
-to 32 (and fine tune it later if its too low/high).
-
-Don't forget to delete the model directory if you change such
-parameters, otherwise the old params will be kept and read from the
-file hparams there.
-
-Running many of these steps can take time.  Here are some current values to support expectations and estimates
-
-- generating allAxioms (GenSimpleTestData -a ) real 2m6.851s
-- generating all ground statements (GenSimpleTestData -g ) real	5m58.213s
-- on a 1.5 GB file, running preprocess.sh takes - real 9m34.599s
-- training.sh takes - real 3m31.257s but this seems too fast
-- test.sh takes - real 3m32.435s but generates nonsense
-
-John kicks the cart.
-Mary knows John.
-
-results in
-
-faces InternationalCriminalTribunalForTheFormerYugoslavia TheBahamas
-faces AgencyForTheFrenchSpeakingCommunity Northeast
+To start a server, from the ollama/bin directory
+```
+./ollama serve
+```
 
 
+On different terminal, from the ollama/bin directory
+
+```
+./ollama -v
+```
+
+If you see a version, then it worked!
+
+To run a specific model on the server (and download if necessary). For example:
+
+```
+./ollama run llama3.2 
+```
+
+For a list of models - https://ollama.com/library
+
+Add the path of your ollama installation to the .bashrc file:
+
+```
+export OLLAMA_HOST_PORT="11434" # Used to change default port (11434) to unique port number if necessary.
+export OLLAMA_HOST="127.0.0.1:$OLLAMA_HOST_PORT"
+export PATH="$HOME/path/to/ollama/bin:$PATH" # Path to ollama executable
+```
 
 
-# sumonlp
+## L2L model and vocabulary.db
+The vocabulary.db file must be present, as well as the model used for language to logic conversion.
+
+For more information, see [here](https://github.com/ontologyportal/sumonlp/blob/master/T5.md)
+
+Place the vocabulary.db file in $SUMO_NLP_HOME location, and model used for L2L conversion to $SUMO_NLP_HOME/L2L_Model.
+
+# Running sumonlp
+1. To configure the models that will be run during different parts of the pipeline, edit the src/load_configs.sh file.
+2. Run src/utils/install_requirements.sh. This will install necessary python packages.
+3. Run src/main.sh
+4. Type "help" to list available commands.
+
+## Running on Hamming GPU Node:
+
+From a submit node, run
+
+srun --pty -N 1 --partition=genai --gres=gpu:1 bash

@@ -6,8 +6,7 @@ parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
 cd "$parent_path" || exit
 # source ../config_paths.sh
 
-# export LD_LIBRARY_PATH="$HOME/.conda/envs/py3109_pytorch/lib"  # for running torch
-python reference/inference.py $MODEL_HOME
+python reference/inference.py "$SUMO_NLP_HOME/L2L_model/$MODEL_L2L"
 
 sed -i 's/? / ?/g' output_l2l.txt
 

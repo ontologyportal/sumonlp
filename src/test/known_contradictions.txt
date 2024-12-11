@@ -1,0 +1,23 @@
+% These are sentence pairs that will successfully create a contradiction.
+
+%%%%%%%%%%%%%%%%
+Robert imagined a ball.
+Robert did not imagine a ball.
+
+%%%%%%%%%%%%%%%%
+The tornado damaged the house.
+The tornado has not damaged the house.
+
+%%%%%%%%%%%%%%%
+The individual left the country.
+The individual did not leave the country.
+
+
+%%%%%%%%%%%%%%%
+A bird is a subclass of animal.
+A bird is not a subclass of animal.
+
+
+%%%%%%%%%%%%%%%
+Rain is a subclass of weather.
+Rain is not a subclass of weather.

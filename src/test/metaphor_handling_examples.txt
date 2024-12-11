@@ -1,0 +1,45 @@
+Climate related examples:
+Climate denialism misses the boat. -> Climate denialism ignores reality.
+The nightmare hurricane destroyed the city. -> A severe hurricane demolished the city.
+The carbon tax system is a labyrinth of regulation. -> The carbon tax system is complex and heavily regulated.
+The goal of limiting carbon emissions to 2 million metric tons per year is within striking distance. -> The target of annual carbon emission reduction to 2 million metric tons is achievable.
+The carbon footprint is leaving deep scars. -> The carbon footprint causes significant harm.
+Nature's alarm bells are ringing as our world is drowning in a sea of CO2. -> The rising level of CO2 in the atmosphere is a sign of environmental distress.
+
+Other examples:
+It is raining cats and dogs. -> Heavy rain is falling.
+The car flew past the barn. -> The car sped past the barn quickly.
+He could sell sand to a desert dweller -> He can persuade even the most resistant buyer.
+She sings like a lark. -> She sings melodiously.
+I could eat a horse. -> I'm extremely hungry.
+It all went pear shaped. -> Everything turned poorly.
+It’s no skin off my nose -> It doesn't concern me.
+She is an open book -> She is transparent.
+She is transparent. -> She is honest/open.
+He wears his heart on his sleeve -> He openly expresses his feelings.
+These are the dog days of summer -> This is the period of extremely hot summer days.
+You’re building castles in the air -> You're creating unrealistic plans.
+I was a million miles away. -> I felt distant.
+He marches to his own drummer. ->  He acts independently.
+Splitting hairs. ->  Unnecessary detailing or overanalyzing minor differences.
+The whole enchilada. -> The entire thing or situation.
+Hit the books. -> Study diligently.
+Cover your bases. -> Ensure all possibilities are considered.
+To carry a torch for someone. -> To be deeply devoted to someone.
+It was like trying to squeeze blood from a turnip. -> It was unproductive or futile.
+She had a heart of gold ->  She was very kind and generous.
+It's time to go back to the drawing board. -> Time for a rethink or restart.
+Cut me some slack! -> Please be understanding.
+He is on the ball. -> He is alert and attentive.
+Suzy was under the weather. ->  Suzy wasn't feeling well.
+You've got to bite the bullet and get it done. -> You must complete the task straightaway.
+Taxonomies are a dime a dozen. -> Taxonomies are abundant.
+To cut corners ->  To save time or resources by not following proper procedures or standards.
+I think he is pulling my leg. -> I believe he's joking or lying.
+I need some time to wrap my head around that. -> I require time to understand that thoroughly.
+
+
+Failed translations.
+Blood from a turnip. -> Juice from a turnip (implies it's not real blood)
+
+

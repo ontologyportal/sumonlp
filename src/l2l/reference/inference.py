@@ -2,6 +2,17 @@ import torch
 import sys
 import argparse
 from transformers import AutoTokenizer, T5ForConditionalGeneration  # Use T5 classes
+import warnings
+import os
+
+# Suppress logging warnings
+os.environ["GRPC_VERBOSITY"] = "ERROR"
+os.environ["GLOG_minloglevel"] = "2"
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+
+# Suppress FutureWarning messages
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 
 def load_model(model_path):
     model = T5ForConditionalGeneration.from_pretrained(model_path)  # Load your T5 model

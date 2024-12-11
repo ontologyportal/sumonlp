@@ -2,9 +2,19 @@ import re
 import sqlite3
 import time
 import os
+import warnings
+
+# Suppress logging warnings
+os.environ["GRPC_VERBOSITY"] = "ERROR"
+os.environ["GLOG_minloglevel"] = "2"
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+
+# Suppress FutureWarning messages
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 
 # db_path = '/data/angelos.toutsios.gr/vocabulary.db'
-DB_PATH = os.environ['VOCABULARY_HOME']+"/vocabulary.db"
+DB_PATH = os.environ['SUMO_NLP_HOME']+"/vocabulary.db"
 
 # db_path = '/home/angelos.toutsios.gr/workspace/sumonlp/src/oov_handling/vocabulary_test.db'
 
@@ -111,9 +121,8 @@ def replace_unk_words(input_file, output_file, conn, cursor):
     with open(output_file, 'w', encoding='utf-8') as file:
         for replacement_word, word_type in words_replaced:
           sumo_term = find_sumo_category(word_type)
-
           if sumo_term == 'Human':
-            file.write(f'( and ( instance {replacement_word} {sumo_term} ) (names \"{replacement_word}\" {sumo_term} ) )\n')
+            file.write(f'( and ( instance {replacement_word} {sumo_term} ) (names \"{replacement_word}\" {replacement_word} ) )\n')
           elif sumo_term is not None:
             file.write(f'(instance {replacement_word} {sumo_term})\n')
         file.write(updated_content)
