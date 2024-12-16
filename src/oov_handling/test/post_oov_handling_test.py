@@ -4,7 +4,7 @@ import tempfile
 import os
 import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from post_oov_handling import format_word, replace_unk_words, find_sumo_category
+from post_oov_handling import format_word, replace_unk_words, clear_unknown_words_from_db
 
 class TestMainCode(unittest.TestCase):
 
@@ -39,7 +39,7 @@ class TestMainCode(unittest.TestCase):
         self.output_file = tempfile.NamedTemporaryFile(delete=False, mode='w+', encoding='utf-8')
 
         # Add test content to the input file
-        self.input_file.write("<UNK_GPE_1> <UNK_PERSON_2> <UNK_ORG_3> <UNK_LOC_4>")
+        self.input_file.write("UNK_GPE_1 UNK_PERSON_2 UNK_ORG_3 UNK_LOC_4")
         self.input_file.seek(0)
 
     def tearDown(self):
@@ -60,10 +60,10 @@ class TestMainCode(unittest.TestCase):
 
         # Expected SUMO mappings and replacement content
         expected_lines = [
-            "(instance Paris GeopoliticalArea)\n",
-            "(instance John Human)\n",
-            "(instance Google Organization)\n",
-            "(instance num_123Main GeographicArea)\n",
+            "( instance Paris GeopoliticalArea )\n",
+            "( and ( instance John Human ) (names \"John\" John ) )\n"
+            "( instance Google Organization )\n",
+            "( instance num_123Main GeographicArea )\n",
         ]
         for line in expected_lines:
             self.assertIn(line, content)
@@ -87,6 +87,22 @@ class TestMainCode(unittest.TestCase):
         for input_word, expected_output in test_cases:
             with self.subTest(input=input_word, expected=expected_output):
                 self.assertEqual(format_word(input_word), expected_output)
+
+    def test_clear_unknown_words_from_db(self):
+        """Test the clear_unknown_words_from_db function."""
+        # Check initial count
+        self.cursor.execute("SELECT COUNT(*) FROM UnknownWords")
+        initial_count = self.cursor.fetchone()[0]
+        self.assertEqual(initial_count, 4)  # Ensure test data is inserted
+
+        # Call the function to clear the table
+        clear_unknown_words_from_db(self.conn, self.cursor)
+
+        # Verify the table is empty
+        self.cursor.execute("SELECT COUNT(*) FROM UnknownWords")
+        final_count = self.cursor.fetchone()[0]
+        self.assertEqual(final_count, 0)
+
 
 if __name__ == "__main__":
     unittest.main()
