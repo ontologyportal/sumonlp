@@ -112,9 +112,10 @@ def process_sentence(sentence, conn, cursor):
           # Replace in the document each ent with the appropiate <tag>
           if id_exist != None:
             tag = f'UNK_{ent.type}_{id_exist[0]}'
+            new_sentence = new_sentence.replace(ent.text, tag)
             if id_exist[1] == 'new':
               word_id += 1
-              new_sentence = new_sentence.replace(ent.text, tag)
+
 
       sentences.append(f"SentenceId:{sentence_id}")
       sentences.append(new_sentence)
