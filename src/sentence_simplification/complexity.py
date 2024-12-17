@@ -63,7 +63,7 @@ def check_complexity_ollama(sentence, model_type):
     ''' Prompts the passed model_type to check if the sentence is common and easily understandable. Returns true if it is, false if it is not.'''
 
 
-    prompt = "The following sentence is to be passed through a language to logic translator. The model is trained on a dataset of sentences that are common and easily understandable. The model will handle out of vocabulary words, like proper nouns, so you don't need to worry about that. Does the following sentence have common structure and is easily understandable? The sentence is: '" + sentence + "' Answer 'Yes' or 'No'."
+    prompt = "Does the following sentence have common structure and is easily understandable? Do not base your answer on the complexity of the subject or the nuace associated with the sentence. Base your answer solely on the structure and complexity of the language used. The sentence is: '" + sentence + "' Answer 'Yes' or 'No'."
     try:
         # Use the ollama library to send the prompt to the model
         # temperature to 0 means there is no creativity, and responses are determinic.sti
