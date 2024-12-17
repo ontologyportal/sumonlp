@@ -18,9 +18,11 @@ stanza.download('en', processors='tokenize,pos,lemma,ner', verbose=False)  # Dow
 nlp = stanza.Pipeline('en', processors='tokenize,pos,lemma,ner', verbose=False)
 
 # Database configuration
-DB_PATH = os.environ['SUMO_NLP_HOME']+"/vocabulary.db"
-# DB_PATH = '/data/angelos.toutsios.gr/vocabulary.db'
+# DB_PATH = os.environ['SUMO_NLP_HOME']+"/vocabulary.db"
+DB_PATH = '/data/angelos.toutsios.gr/vocabulary.db'
 # DB_PATH = '/home/angelos.toutsios.gr/workspace/sumonlp/src/oov_handling/vocabulary_test.db'
+
+sentence_id = 1 # Sentence Counter
 
 
 def get_word_type(word):
@@ -40,21 +42,21 @@ def check_word_in_dictionary(root, word_type, cursor):
     cursor.execute("SELECT id FROM Word WHERE root = ? AND pos = ?", (root.lower(), word_type))
     return cursor.fetchone()
 
-def add_unknown_word(word, word_type, conn, cursor):
+def add_unknown_word(word, word_type, conn, cursor, sent_id, word_id):
     """Check if an unknown word already exists in the UnknownWords table, or insert it if not."""
     try:
         # trim word
         word = word.strip()
         word = word.lower()
-        print("word is: " + word)
-        cursor.execute("SELECT * FROM UnknownWords WHERE word = ? AND type = ?", (word, word_type))
+        # print("word is: " + word)
+        cursor.execute("SELECT * FROM UnknownWords WHERE word = ? AND type = ? and sentence_id = ?", (word, word_type, sent_id))
         result = cursor.fetchone()
         if result:
-            return result[0] # Return the ID if the word exists
+            return (result[0],'exist') # Return the ID if the word exists
         else:
-            cursor.execute("INSERT INTO UnknownWords (word, type) VALUES (?,?)", (word, word_type))
+            cursor.execute("INSERT INTO UnknownWords (id, sentence_id, word, type) VALUES (?,?,?,?)", (word_id, sent_id, word, word_type))
             conn.commit()
-            return cursor.lastrowid # Return the ID of the newly inserted word
+            return (word_id,'new') # Return the ID of the newly inserted word
     except sqlite3.IntegrityError as e:
         print(f"Error: {e}")
         print(f"Word that caused the error: {word}")
@@ -66,47 +68,59 @@ def process_sentence(sentence, conn, cursor):
     """Process a single sentence, replacing unknown nouns and verbs with tags."""
 
     doc = nlp(sentence)
-    processed_tokens = []
+    sentences = []
+    global sentence_id
 
     # Check NOUNS/VERBS in Vocabulary
     for sent in doc.sentences:
-        for word in sent.words:
-            word_type = get_word_type(word)
-            if word_type:
-                # Check if the root form exists in the Dictionary
-                dictionary_entry = check_word_in_dictionary(word.lemma, word_type, cursor)
-                if dictionary_entry:
-                    # Known word, keep the original token text
-                    processed_tokens.append(word.text)
-                else:
-                    # Unknown word, replace with <UNK_type_id>
-                    unk_id = add_unknown_word(word.text, word_type, conn, cursor)
-                    if unk_id != None:
-                        processed_tokens.append(f"UNK_{word_type}_{unk_id}")
-                    else:
-                        # In case of any issue, keep the original word
-                        processed_tokens.append(word.text)
-            else:
-                # Non-noun/verb word, keep as-is
-                processed_tokens.append(word.text)
+      processed_tokens = []
+      word_id = 1
+      for word in sent.words:
+          word_type = get_word_type(word)
+          if word_type:
+              # Check if the root form exists in the Dictionary
+              dictionary_entry = check_word_in_dictionary(word.lemma, word_type, cursor)
+              if dictionary_entry:
+                  # Known word, keep the original token text
+                  processed_tokens.append(word.text)
+              else:
+                  # Unknown word, replace with <UNK_type_id>
+                  id_exist = add_unknown_word(word.text, word_type, conn, cursor, sentence_id, word_id)
+                  if id_exist != None:
+                      processed_tokens.append(f"UNK_{word_type}_{id_exist[0]}")
+                      if id_exist[1] == 'new':
+                        word_id += 1
+                  else:
+                      # In case of any issue, keep the original word
+                      processed_tokens.append(word.text)
+          else:
+              # Non-noun/verb word, keep as-is
+              processed_tokens.append(word.text)
 
-    # Join processed tokens to form the sentence with appropriate spacing
-    new_sentence = ' '.join(processed_tokens)
+      # Join processed tokens to form the sentence with appropriate spacing
+      new_sentence = ' '.join(processed_tokens)
+      # nlp again the sentence
+      doc = nlp(new_sentence)
+      # NER process  {ent.text} {ent.type}
+      for ent in doc.ents:
+        # If type != DATE
+        # Don't try to NER the Unknown Words from previous step
+        if ent.type != "DATE" and not ent.text.startswith("UNK_"):
+          # Save each ent and type in DB
+          id_exist = add_unknown_word(ent.text, ent.type, conn, cursor, sentence_id, word_id)
 
-    doc = nlp(new_sentence)
+          # Replace in the document each ent with the appropiate <tag>
+          if id_exist != None:
+            tag = f'UNK_{ent.type}_{id_exist[0]}'
+            if id_exist[1] == 'new':
+              word_id += 1
+              new_sentence = new_sentence.replace(ent.text, tag)
 
-    # NER process  {ent.text} {ent.type}
-    for ent in doc.ents:
+      sentences.append(f"SentenceId:{sentence_id}")
+      sentences.append(new_sentence)
+      sentence_id += 1
 
-      # Save each ent and type in DB
-      unk_id = add_unknown_word(ent.text, ent.type, conn, cursor)
-
-      # Replace in the document each ent with the appropiate <tag>
-      tag = f'<UNK_{ent.type}_{unk_id}>'
-      new_sentence = new_sentence.replace(ent.text, tag)
-
-    return new_sentence
-
+    return "\n".join(sentences)
 
 
 
@@ -124,8 +138,8 @@ def process_file(input_file, output_file, conn, cursor):
             if stripped_line:
                 processed_line = process_sentence(stripped_line, conn, cursor)
                 outfile.write(processed_line + '\n')
-            else:
-                outfile.write('\n')  # Preserve empty lines
+            # else:
+                # outfile.write('\n')  # Preserve empty lines
 
 
 
@@ -142,11 +156,11 @@ if __name__ == "__main__":
     # Ensure the Dictionary and UnknownWords tables exist
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS UnknownWords (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        word TEXT UNIQUE,
-        formatted_word TEXT DEFAULT '',
+        id INTEGER,
+        sentence_id INTEGER,
+        word TEXT,
         type TEXT DEFAULT '',
-        used INTEGER DEFAULT 0 CHECK (used IN (0, 1))
+        PRIMARY KEY (id, sentence_id)
     )
     """)
     conn.commit()

@@ -131,6 +131,7 @@ def clear_unknown_words_from_db(conn, cursor):
   try:
     # Query to get the word based on ID
     cursor.execute("DELETE FROM UnknownWords")
+    cursor.execute("DELETE FROM sqlite_sequence WHERE name = 'UnknownWords'")
     cursor.execute("SELECT COUNT(*) FROM UnknownWords")
     result = cursor.fetchone()
     # If the word is found, mark it as used and return it
