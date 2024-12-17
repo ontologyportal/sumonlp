@@ -13,7 +13,7 @@ os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 
-# db_path = '/data/angelos.toutsios.gr/vocabulary.db'
+# DB_PATH = '/data/angelos.toutsios.gr/vocabulary.db'
 DB_PATH = os.environ['SUMO_NLP_HOME']+"/vocabulary.db"
 
 # db_path = '/home/angelos.toutsios.gr/workspace/sumonlp/src/oov_handling/vocabulary_test.db'
@@ -70,11 +70,11 @@ def format_word(word):
     return word
 
 
-def get_word_from_db(word_id, conn, cursor):
+def get_word_from_db(word_id, sent_id, conn, cursor):
 
   try:
     # Query to get the word based on ID
-    cursor.execute("SELECT word, type FROM UnknownWords WHERE id = ?", (word_id,))
+    cursor.execute("SELECT word, type FROM UnknownWords WHERE id = ? and sentence_id = ?", (word_id, sent_id))
     result = cursor.fetchone()
 
     # If the word is found, mark it as used and return it
@@ -82,8 +82,8 @@ def get_word_from_db(word_id, conn, cursor):
         word = result[0]
         word_type = result[1]
         word = format_word(word)
-        cursor.execute("UPDATE UnknownWords SET Used = 1, formatted_word = ? WHERE id = ?", (word, word_id))
-        conn.commit()
+        # cursor.execute("UPDATE UnknownWords SET Used = 1, formatted_word = ? WHERE id = ?", (word, word_id))
+        # conn.commit()
         return (word, word_type)
     else:
         return None
@@ -98,23 +98,35 @@ def get_word_from_db(word_id, conn, cursor):
 
 def replace_unk_words(input_file, output_file, conn, cursor):
     with open(input_file, 'r', encoding='utf-8') as file:
-        content = file.read()
+        content = file.readlines()
 
     words_replaced = []
+    sentence_id = None
 
     # Regex pattern to find all <UNK_word_type_ID> words
     # pattern = r'<UNK_(\w+)_([\d]+)>'
-    pattern = r'UNK_(\w+)_([\d]+)'
+    word_pattern = r'UNK_(\w+)_([\d]+)'
+    sentence_pattern = r'SentenceId:(\d+)'
 
     # Replace all matches in the content
     def replacement(match):
         word_id = match.group(2)
-        (replacement_word, word_type) = get_word_from_db(word_id, conn, cursor)
+        (replacement_word, word_type) = get_word_from_db(word_id, sentence_id, conn, cursor)
         if replacement_word is not None and (replacement_word, word_type) not in words_replaced:
           words_replaced.append((replacement_word, word_type))
         return replacement_word if replacement_word else match.group(0)
 
-    updated_content = re.sub(pattern, replacement, content)
+    updated_content = []
+    for line in content:
+      # Check if the current line contains a SentenceId
+      sentence_match = re.match(sentence_pattern, line)
+      if sentence_match:
+          sentence_id = sentence_match.group(1)  # Update sentence_id based on the SentenceId line
+      else:
+        # Replace UNK words in the current line using the sentence_id
+        updated_line = re.sub(word_pattern, replacement, line)
+        updated_content.append(updated_line)
+
 
     # Write the updated content to the output file
     with open(output_file, 'w', encoding='utf-8') as file:
@@ -124,14 +136,13 @@ def replace_unk_words(input_file, output_file, conn, cursor):
             file.write(f'( and ( instance {replacement_word} {sumo_term} ) (names \"{replacement_word}\" {replacement_word} ) )\n')
           elif sumo_term is not None:
             file.write(f'( instance {replacement_word} {sumo_term} )\n')
-        file.write(updated_content)
+        file.writelines(updated_content)
 
 
 def clear_unknown_words_from_db(conn, cursor):
   try:
     # Query to get the word based on ID
     cursor.execute("DELETE FROM UnknownWords")
-    cursor.execute("DELETE FROM sqlite_sequence WHERE name = 'UnknownWords'")
     cursor.execute("SELECT COUNT(*) FROM UnknownWords")
     result = cursor.fetchone()
     # If the word is found, mark it as used and return it

@@ -14,24 +14,24 @@ class TestMainCode(unittest.TestCase):
         self.conn = sqlite3.connect(":memory:")
         self.cursor = self.conn.cursor()
         self.cursor.execute("""
-        CREATE TABLE UnknownWords (
-            id INTEGER PRIMARY KEY,
-            word TEXT NOT NULL,
-            type TEXT NOT NULL,
-            Used INTEGER DEFAULT 0,
-            formatted_word TEXT
+        CREATE TABLE IF NOT EXISTS UnknownWords (
+            id INTEGER,
+            sentence_id INTEGER,
+            word TEXT,
+            type TEXT DEFAULT '',
+            PRIMARY KEY (id, sentence_id)
         )
         """)
         self.conn.commit()
 
         # Insert test data
         self.test_data = [
-            (1, "Paris", "GPE"),
-            (2, "John", "PERSON"),
-            (3, "Google", "ORG"),
-            (4, "123Main", "LOC"),
+            (1,1, "Paris", "GPE"),
+            (2,1, "John", "PERSON"),
+            (3,1, "Google", "ORG"),
+            (4,1, "123Main", "LOC"),
         ]
-        self.cursor.executemany("INSERT INTO UnknownWords (id, word, type) VALUES (?, ?, ?)", self.test_data)
+        self.cursor.executemany("INSERT INTO UnknownWords (id, sentence_id, word, type) VALUES (?, ?, ?, ?)", self.test_data)
         self.conn.commit()
 
         # Create temporary files for input and output
@@ -39,6 +39,8 @@ class TestMainCode(unittest.TestCase):
         self.output_file = tempfile.NamedTemporaryFile(delete=False, mode='w+', encoding='utf-8')
 
         # Add test content to the input file
+
+        self.input_file.write("SentenceId:1\n")
         self.input_file.write("UNK_GPE_1 UNK_PERSON_2 UNK_ORG_3 UNK_LOC_4")
         self.input_file.seek(0)
 
