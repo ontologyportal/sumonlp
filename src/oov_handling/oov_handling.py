@@ -19,7 +19,7 @@ nlp = stanza.Pipeline('en', processors='tokenize,pos,lemma,ner', verbose=False)
 
 # Database configuration
 DB_PATH = os.environ['SUMO_NLP_HOME']+"/vocabulary.db"
-#DB_PATH = '/data/angelos.toutsios.gr/vocabulary.db'
+# DB_PATH = '/data/angelos.toutsios.gr/vocabulary.db'
 # DB_PATH = '/home/angelos.toutsios.gr/workspace/sumonlp/src/oov_handling/vocabulary_test.db'
 
 
@@ -140,16 +140,16 @@ if __name__ == "__main__":
     cursor = conn.cursor()
 
     # Ensure the Dictionary and UnknownWords tables exist
-    # cursor.execute("""
-    # CREATE TABLE IF NOT EXISTS UnknownWords (
-    #     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    #     word TEXT UNIQUE,
-    #     formatted_word TEXT DEFAULT '',
-    #     type TEXT DEFAULT '',
-    #     used INTEGER DEFAULT 0 CHECK (used IN (0, 1))
-    # )
-    # """)
-    # conn.commit()
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS UnknownWords (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        word TEXT UNIQUE,
+        formatted_word TEXT DEFAULT '',
+        type TEXT DEFAULT '',
+        used INTEGER DEFAULT 0 CHECK (used IN (0, 1))
+    )
+    """)
+    conn.commit()
 
     process_file(input_filename, output_filename, conn, cursor)
 

@@ -123,8 +123,29 @@ def replace_unk_words(input_file, output_file, conn, cursor):
           if sumo_term == 'Human':
             file.write(f'( and ( instance {replacement_word} {sumo_term} ) (names \"{replacement_word}\" {replacement_word} ) )\n')
           elif sumo_term is not None:
-            file.write(f'(instance {replacement_word} {sumo_term})\n')
+            file.write(f'( instance {replacement_word} {sumo_term} )\n')
         file.write(updated_content)
+
+
+def clear_unknown_words_from_db(conn, cursor):
+  try:
+    # Query to get the word based on ID
+    cursor.execute("DELETE FROM UnknownWords")
+    cursor.execute("SELECT COUNT(*) FROM UnknownWords")
+    result = cursor.fetchone()
+    # If the word is found, mark it as used and return it
+    if result[0] == 0:
+      print(f"Database cleaned from Unknown Words")
+      conn.commit()
+    else:
+      print(f"ERROR Cleaning Database from Unknown Words. number of words found: {result[0]}")
+  except sqlite3.Error as e:
+        # Handle any SQLite errors
+        print(f"Database error: {e}")
+  except Exception as e:
+        # Handle unexpected errors
+        print(f"Unexpected error: {e}")
+
 
 if __name__ == "__main__":
 
@@ -136,6 +157,7 @@ if __name__ == "__main__":
     input_filename = 'input_post_oov.txt'
     output_filename = 'output_post_oov.txt'
     replace_unk_words(input_filename, output_filename, conn, cursor)
+    clear_unknown_words_from_db(conn, cursor)
     conn.close()
 
     print(f"Processing complete in {time.time() - start_time:.2f} seconds.")
