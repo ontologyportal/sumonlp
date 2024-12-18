@@ -4,6 +4,7 @@ import argparse
 from transformers import AutoTokenizer, T5ForConditionalGeneration  # Use T5 classes
 import warnings
 import os
+import time
 
 # Suppress logging warnings
 os.environ["GRPC_VERBOSITY"] = "ERROR"
@@ -25,11 +26,14 @@ def tokenize_input(tokenizer, input_sentence):
 def predict(model, tokenizer, input_sentences):
     predictions = []
     for sentence in input_sentences:
+      if(not sentence.startswith('SentenceId:')):
         inputs = tokenize_input(tokenizer, sentence)
         with torch.no_grad():  # Disable gradient calculation
             outputs = model.generate(inputs['input_ids'], attention_mask=inputs['attention_mask'], max_new_tokens=300)
         decoded_output = tokenizer.decode(outputs[0], skip_special_tokens=True)
         predictions.append(decoded_output)
+      else:
+        predictions.append(sentence)
     return predictions
 
 def main():
@@ -59,4 +63,6 @@ def main():
             f.write(f"{prediction}\n")
 
 if __name__ == "__main__":
-    main()
+  start_time = time.time()
+  main()
+  print(f"Processing complete in {time.time() - start_time:.2f} seconds.")
