@@ -4,82 +4,93 @@ import datetime
 import ollama
 import time
 import random
-from complexity import get_complexity_score
+from complexity import *
+import stanza
+import tqdm
+from util import *
 
-
-def simplify_file(file, date_time, max_allowed_complexity=30):
-    '''
+def call_ollama(prompt, model_type):
+    """Call the Ollama model with the given prompt and model type."""
+    try:
+        # Use the ollama library to send the prompt to the model
+        # temperature to 0 means there is no creativity, and responses are deterministic.
+        response = ollama.chat(model=model_type, messages=[{"role": "user", "content": prompt}], options={"temperature": 0})
+        response = response["message"]["content"]
+        response = remove_numbering(response)
+        response = response.replace('\n', ' ')
+        with open("ollama_log.txt", "a") as log:
+            log.write(f"Prompt: {prompt}\nResponse: {response}\n\n")
+        return(response)
     
-    '''
-    with open(file, 'r', encoding='utf-8') as infile:
-        lines = infile.readlines()
+    except Exception as e:
+        print(f"Error calling Ollama: {e}")
+        return None
 
-    output_lines = []
+def simplify_file(input_file, output_file, model_type):
+    ''' Simplify a file using the provided tokenizer and model. Flows through the following steps:
+        1. check if sentence is complex and simplifies it if it is.
+        2. checks if sentence contains pronouns and replaces them with accurate nouns if possible.
+        3. joins all sentences and uses stanza to separate sentences to write onto individual lines of output. '''
 
-    model_list = ['llama3.2:1b', 'llama3.2:3b', 'llama3.1:8b', 'mistral']
+    simplified_sentences = []  
 
-    prompt_dict = {
-                1 : "Your task is to simplify a long sentence into multiple, shorter sentences. Focus on splitting up ideas, ensuring that each idea is a separate sentence. Use clear and straightforward English. Replace pronouns with the appropriate noun. Return all sentences in one line, separated by periods. Keep only the essential words to preserve the sentence’s meaning. Most importantly, respond with only the sentences, nothing extra. The sentence is: '{sentence}'", 
+    for sentence in tqdm.tqdm(open(input_file, 'r').readlines()):
+        sentence = sentence.strip()
 
-                2 : "Simplify the following sentence by dividing it into smaller, simpler sentences. Ensure each distinct thought is expressed in its own sentence. Replace any pronouns with the corresponding noun, if you know it. Respond with all sentences in a single line, using periods to separate them. Avoid unnecessary words, keeping the main message intact. For example: 'As it was raining outside, Sarah sat by the fire, reflecting on the letter she had just received, while her brother paced the room, muttering about the strange visitor they had encountered earlier that day.' would become 'It was raining outside. Sarah sat by the fire. Sarah reflected on the letter she received. Sarah's brother paced the room. Sarah's brother talked about a visitor. Sarah and her brother encountered a visitor earlier in the day.' Most importantly, respond with only the sentences, nothing extra. The sentence is: '{sentence}'", 
+        complex = False
+        if check_complexity_ollama(sentence, model_type) or check_complexity_hueristic(sentence):  
+            complex = True
+        with open("ollama_log.txt", "a") as log:
+            log.write(f"Sentence: {sentence}\nComplex: {complex}\n\n")
 
-                3 : "Your task is to simplify the sentence by converting it into multiple short sentences, ensuring clarity and precision. Break down each idea into separate sentences. Replace any pronouns with the correct noun. Return all the simplified sentences in one line, separated by periods. Strip out any non-essential words while maintaining the original meaning. Most importantly, respond with only the sentences, nothing extra. The sentence is: '{sentence}'",
+        if complex:
+            sentence = simplify_sentence_llm(sentence, model_type)
 
-                4 : "You are tasked with simplifying sentences into multiple, simpler sentences. If the sentence contains multiple ideas, split them into shorter sentences. Use common English words if possible. Respond with all sentences on one line, separated by periods. Remove words that are not essential in relaying the overall sentiment of the sentence. Replace pronouns with proper nouns, if possible. For example, 'John went to the store and he is sick' would be 'John went to the store. John is sick.' Most importantly, respond with only the sentences, nothing extra. The sentence is: '{sentence}'"}
+        pronouns = False
+        if check_pronouns_ollama(sentence, model_type):
+            pronouns = True
+        with open("ollama_log.txt", "a") as log:
+            log.write(f"Sentence: {sentence}\nPronouns: {pronouns}\n\n")
+        if pronouns:
+            sentence = remove_pronouns(sentence, model_type)
 
-    model = 'llama3.1:8b'
-    prompt = prompt_dict[2]
-
-    for line in lines:
-        line = line.strip()
-        if line:
-            complexity_score = get_complexity_score(line)
-            if complexity_score <= max_allowed_complexity:    # If the sentence is already simple enough, leave it as it is
-                output_lines.append(line)
-            else:
-                output_lines.append(simplify_sentence_llm(line, model, prompt))
-
-    return output_lines
+        simplified_sentences.append(sentence)
     
+    #join all sentences
+    simplified_text = ' '.join(simplified_sentences)
+    simplified_sentences = split_sentences(simplified_text)
 
+    with open(output_file, 'w') as outfile:
+        for sentence in simplified_sentences:
+            outfile.write(sentence + '\n')
+        
+            
 
-def simplify_sentence_llm(sentence, model, prompt):
+def remove_pronouns(sentence, model):
     '''
-    Simplify a sentence using the provided tokenizer and model.
-
-    Args:
-        sentence (str): The sentence to simplify.
-        model (str): The model to use.
-        prompt (str): The prompt to use.
-
-
-    Returns:
-        str: The simplified sentence.
+    Remove pronouns from a sentence passing prompt and sentence through passed model. 
     '''
 
+    prompt = prompt = "Perform coreference resolution on the following sentence. Follow these rules EXACTLY: Return ONLY the resolved sentence. Do not number the sentences. Do not add quotes, apostrophes, or any additional punctuation around the sentence. Do not include explanations, commentary, or any other text. If a pronoun cannot be resolved, leave it unchanged. Sentence: '" + sentence + "'"
 
 
-    response = ollama.chat(
-        model=model,
-        messages=[
-            {
-                "role": "user",
-                "content": prompt.format(sentence=sentence),
-            },
-        ],
-        options={
-            "temperature": 0.0,  # Makes responses more deterministic
-            },
+    response = call_ollama(prompt, model)
+    return response
 
-    )
 
-    return(response["message"]["content"].replace('\n', ' '))
+def simplify_sentence_llm(sentence, model):
+    '''Simplifies a sentence by concatenating prompt to it and using the passed model. '''
 
-def end_program(start_time):
-    #close file    
-    print("Time taken in minutes:", (time.time() - start_time) / 60)
-    print("Goodbye!")
-    os._exit(0)
+    prompt = "Split the following sentence into several small sentences in a way that the grammar and sentence structure are common and easily understandable. Extremely import rules to follow: Respond with just the sentences. Do not add apostrophes around the sentences. Do not add additional commentary. DO NOT ADD ADDITIONAL INFORMATION. The sentence to simplify is: '" + sentence + "'"
+
+    response = call_ollama(prompt, model)
+    return response
+
+def split_sentences(text):
+    ''' Split a text into sentences using stanza. '''
+    nlp = stanza.Pipeline(lang='en', processors='tokenize')
+    doc = nlp(text)
+    return [sentence.text for sentence in doc.sentences]
 
 
 

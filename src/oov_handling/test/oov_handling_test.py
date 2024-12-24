@@ -28,13 +28,14 @@ class VocabularyTestCase(unittest.TestCase):
             pos TEXT
         )""")
         cls.cursor.execute("""
-        CREATE TABLE IF NOT EXISTS UnknownWords (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            word TEXT UNIQUE,
-            formatted_word TEXT DEFAULT '',
-            type TEXT DEFAULT '',
-            used INTEGER DEFAULT 0 CHECK (used IN (0, 1))
-        )""")
+          CREATE TABLE IF NOT EXISTS UnknownWords (
+              id INTEGER,
+              sentence_id INTEGER,
+              word TEXT,
+              type TEXT DEFAULT '',
+              PRIMARY KEY (id, sentence_id)
+          )
+          """)
         cls.conn.commit()
 
     @classmethod
@@ -66,13 +67,15 @@ class VocabularyTestCase(unittest.TestCase):
         word = "unknownword"
         word_type = "noun"
 
+        sent_id = 1
+        word_id = 1
         # Check if the word was added
-        unk_id = add_unknown_word(word, word_type, self.conn, self.cursor)
-        self.assertIsNotNone(unk_id)
+        unk_id = add_unknown_word(word, word_type, self.conn, self.cursor, sent_id, word_id)
+        self.assertEqual(unk_id[1],'new')
 
         # Try adding the same word again, should return the same ID
-        existing_id = add_unknown_word(word, word_type, self.conn, self.cursor)
-        self.assertEqual(unk_id, existing_id)
+        existing_id = add_unknown_word(word, word_type, self.conn, self.cursor, sent_id, word_id)
+        self.assertEqual(existing_id[0], 1)
 
     def test_process_multiple_sentences(self):
       # """Test process_sentence function with multiple sentences."""
@@ -91,11 +94,11 @@ class VocabularyTestCase(unittest.TestCase):
 
       # Define multiple test cases with input sentences and expected outputs
       test_cases = [
-          ("I like to run and jump", "I like to run and <UNK_verb_1>"),  # 'jump' is unknown
-          ("They play soccer", "They play <UNK_noun_2>"),  # All words are known
-          ("We hike and swim", "We <UNK_verb_3> and <UNK_verb_4>"),  # 'hike' and 'swim' are unknown
+          ("I like to run and jump", "SentenceId:1\nI like to run and UNK_verb_1"),  # 'jump' is unknown
+          ("They play soccer", "SentenceId:2\nThey play UNK_noun_1"),  # All words are known
+          ("We hike and swim", "SentenceId:3\nWe UNK_verb_1 and UNK_verb_2"),  # 'hike' and 'swim' are unknown
           # 'dog' is known, 'park' is unknown (noun), and 'John' (NER) should be tagged
-          ("John and his dog went to the park", " <UNK_PERSON_6> and his dog went to the <UNK_noun_5>")
+          ("John and his dog went to the park", "SentenceId:4\nUNK_PERSON_2 and his dog went to the UNK_noun_1")
       ]
 
       for sentence, expected_output in test_cases:
