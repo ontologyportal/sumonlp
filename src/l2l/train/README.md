@@ -23,8 +23,10 @@ java -Xmx60g -classpath /home/apease/workspace/sigmanlp/lib/*:/home/apease/works
 
 Concetenate these files together
 
+```
 cat allAxioms-eng.txt groundRelations-eng.txt out-eng.txt > combined-eng.txt
 cat allAxioms-log.txt groundRelations-log.txt out-log.txt > combined-log.txt
+```
 
 ## Execution time
 
