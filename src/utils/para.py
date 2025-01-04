@@ -23,7 +23,7 @@ def process_file(input_file, output_file, model_type):
     inProof = False
     with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
         for line in infile:
-            if len(sentence.strip()) > 1:
+            if len(line.strip()) > 1:
                 prompt = PROMPT1 + line + '"'
                 #print("prompt: ", prompt)
                 # Call the Ollama model with the extracted prompt
