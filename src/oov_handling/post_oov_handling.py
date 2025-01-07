@@ -13,8 +13,8 @@ os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 
-# DB_PATH = '/data/angelos.toutsios.gr/vocabulary.db'
-DB_PATH = os.environ['SUMO_NLP_HOME']+"/vocabulary.db"
+DB_PATH = '/data/angelos.toutsios.gr/vocabulary.db'
+# DB_PATH = os.environ['SUMO_NLP_HOME']+"/vocabulary.db"
 
 # db_path = '/home/angelos.toutsios.gr/workspace/sumonlp/src/oov_handling/vocabulary_test.db'
 
@@ -70,11 +70,11 @@ def format_word(word):
     return word
 
 
-def get_word_from_db(word_id, sent_id, conn, cursor):
+def get_word_from_db(word_id, sent_id, conn, cursor, word_type):
 
   try:
     # Query to get the word based on ID
-    cursor.execute("SELECT word, type FROM UnknownWords WHERE id = ? and sentence_id = ?", (word_id, sent_id))
+    cursor.execute("SELECT word, type FROM UnknownWords WHERE id = ? and sentence_id = ? and type = ?", (word_id, sent_id, word_type))
     result = cursor.fetchone()
 
     # If the word is found, mark it as used and return it
@@ -110,8 +110,9 @@ def replace_unk_words(input_file, output_file, conn, cursor):
 
     # Replace all matches in the content
     def replacement(match):
+        word_type = match.group(1)
         word_id = match.group(2)
-        (replacement_word, word_type) = get_word_from_db(word_id, sentence_id, conn, cursor)
+        (replacement_word, word_type) = get_word_from_db(word_id, sentence_id, conn, cursor, word_type)
         if replacement_word is not None and (replacement_word, word_type) not in words_replaced:
           words_replaced.append((replacement_word, word_type))
         return replacement_word if replacement_word else match.group(0)
@@ -169,7 +170,7 @@ if __name__ == "__main__":
     input_filename = 'input_post_oov.txt'
     output_filename = 'output_post_oov.txt'
     replace_unk_words(input_filename, output_filename, conn, cursor)
-    clear_unknown_words_from_db(conn, cursor)
+    # clear_unknown_words_from_db(conn, cursor)
     conn.close()
 
     print(f"Processing complete in {time.time() - start_time:.2f} seconds.")
