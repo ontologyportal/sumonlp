@@ -3,6 +3,7 @@ import ollama
 import os
 
 PROMPT1 = 'Please restate the following quoted sentence in a more natural single English sentence."'
+PROMPT2 = ' Extremely import rules to follow: Respond with just the sentences. Do not add apostrophes around the sentences. Do not add additional commentary. DO NOT ADD ADDITIONAL INFORMATION. The sentence to simplify is: "'
 
 
 def call_ollama(prompt, model_type):
@@ -24,7 +25,7 @@ def process_file(input_file, output_file, model_type):
     with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
         for line in infile:
             if len(line.strip()) > 1:
-                prompt = PROMPT1 + line + '"'
+                prompt = PROMPT1 + PROMPT2 + line + '"'
                 #print("prompt: ", prompt)
                 # Call the Ollama model with the extracted prompt
                 response = call_ollama(prompt, model_type)
@@ -44,5 +45,5 @@ if __name__ == "__main__":
 
     process_file(input_file, output_file, model_type)
     print(f"Processing complete. Responses saved to {output_file}.\n\n\n")
-    process_entire_argument(input_file, "entire.txt", model_type)
+
     
