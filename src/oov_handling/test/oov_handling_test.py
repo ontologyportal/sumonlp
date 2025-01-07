@@ -3,8 +3,11 @@ import sqlite3
 import stanza
 import os
 import sys
+from unittest.mock import patch
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from oov_handling import get_word_type, check_word_in_dictionary, add_unknown_word, process_sentence
+
+with patch.dict(os.environ, {"SUMO_NLP_HOME": "/mocked/path"}):
+  from oov_handling import get_word_type, check_word_in_dictionary, add_unknown_word, process_sentence, get_max_id_from_db
 
 # Path to a temporary test database
 TEST_DB_PATH = ':memory:'
@@ -33,7 +36,7 @@ class VocabularyTestCase(unittest.TestCase):
               sentence_id INTEGER,
               word TEXT,
               type TEXT DEFAULT '',
-              PRIMARY KEY (id, sentence_id)
+              PRIMARY KEY (id, sentence_id, type)
           )
           """)
         cls.conn.commit()
@@ -62,20 +65,49 @@ class VocabularyTestCase(unittest.TestCase):
         result = check_word_in_dictionary("run", "verb", self.cursor)
         self.assertIsNotNone(result)
 
+    def test_get_max_id_no_result(self):
+
+        # Define test input
+        sent_id = 2
+        word_type = "verb"
+
+        # Test the method
+        result = get_max_id_from_db(self.cursor, sent_id, word_type)
+
+        # Assert the correct fallback value is returned
+        self.assertIsNone(result)
+
+
+    def test_get_max_id_from_db(self):
+
+        # Define test input
+        sent_id = 1
+        word_type = "noun"
+        word_id = 12
+        word = 'test'
+
+        self.cursor.execute("INSERT INTO UnknownWords (id, sentence_id, word, type) VALUES (?,?,?,?)", (word_id, sent_id, word, word_type))
+
+        # Test the method
+        result = get_max_id_from_db(self.cursor, sent_id, word_type)
+
+        self.assertEqual(result, 12)
+
+
     def test_add_unknown_word(self):
         """Test add_unknown_word function."""
         word = "unknownword"
         word_type = "noun"
 
         sent_id = 1
-        word_id = 1
         # Check if the word was added
-        unk_id = add_unknown_word(word, word_type, self.conn, self.cursor, sent_id, word_id)
+        unk_id = add_unknown_word(word, word_type, self.conn, self.cursor, sent_id)
         self.assertEqual(unk_id[1],'new')
 
         # Try adding the same word again, should return the same ID
-        existing_id = add_unknown_word(word, word_type, self.conn, self.cursor, sent_id, word_id)
+        existing_id = add_unknown_word(word, word_type, self.conn, self.cursor, sent_id)
         self.assertEqual(existing_id[0], 1)
+
 
     def test_process_multiple_sentences(self):
       # """Test process_sentence function with multiple sentences."""
@@ -98,7 +130,7 @@ class VocabularyTestCase(unittest.TestCase):
           ("They play soccer", "SentenceId:2\nThey play UNK_noun_1"),  # All words are known
           ("We hike and swim", "SentenceId:3\nWe UNK_verb_1 and UNK_verb_2"),  # 'hike' and 'swim' are unknown
           # 'dog' is known, 'park' is unknown (noun), and 'John' (NER) should be tagged
-          ("John and his dog went to the park", "SentenceId:4\nUNK_PERSON_2 and his dog went to the UNK_noun_1")
+          ("John and his dog went to the park", "SentenceId:4\nUNK_PERSON_1 and his dog went to the UNK_noun_1")
       ]
 
       for sentence, expected_output in test_cases:

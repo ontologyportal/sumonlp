@@ -13,8 +13,8 @@ os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 
-DB_PATH = '/data/angelos.toutsios.gr/vocabulary.db'
-# DB_PATH = os.environ['SUMO_NLP_HOME']+"/vocabulary.db"
+# DB_PATH = '/data/angelos.toutsios.gr/vocabulary.db'
+DB_PATH = os.environ['SUMO_NLP_HOME']+"/vocabulary.db"
 
 # db_path = '/home/angelos.toutsios.gr/workspace/sumonlp/src/oov_handling/vocabulary_test.db'
 
@@ -170,7 +170,7 @@ if __name__ == "__main__":
     input_filename = 'input_post_oov.txt'
     output_filename = 'output_post_oov.txt'
     replace_unk_words(input_filename, output_filename, conn, cursor)
-    # clear_unknown_words_from_db(conn, cursor)
+    clear_unknown_words_from_db(conn, cursor)
     conn.close()
 
     print(f"Processing complete in {time.time() - start_time:.2f} seconds.")
