@@ -3,8 +3,13 @@ import sqlite3
 import tempfile
 import os
 import sys
+from unittest.mock import patch
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from post_oov_handling import format_word, replace_unk_words, clear_unknown_words_from_db
+
+# Mock the environment variable before importing the module
+with patch.dict(os.environ, {"SUMO_NLP_HOME": "/mocked/path"}):
+    from post_oov_handling import format_word, replace_unk_words, clear_unknown_words_from_db
+
 
 class TestMainCode(unittest.TestCase):
 
@@ -19,7 +24,7 @@ class TestMainCode(unittest.TestCase):
             sentence_id INTEGER,
             word TEXT,
             type TEXT DEFAULT '',
-            PRIMARY KEY (id, sentence_id)
+            PRIMARY KEY (id, sentence_id, type)
         )
         """)
         self.conn.commit()

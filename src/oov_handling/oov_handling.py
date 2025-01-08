@@ -42,7 +42,23 @@ def check_word_in_dictionary(root, word_type, cursor):
     cursor.execute("SELECT id FROM Word WHERE root = ? AND pos = ?", (root.lower(), word_type))
     return cursor.fetchone()
 
-def add_unknown_word(word, word_type, conn, cursor, sent_id, word_id):
+
+def get_max_id_from_db(cursor, sent_id, word_type):
+  try:
+    cursor.execute("SELECT max(id) FROM UnknownWords WHERE sentence_id = ? AND type = ?", (sent_id, word_type))
+    result = cursor.fetchone()
+    if result:
+      return result[0]
+    else:
+      return 0
+  except sqlite3.IntegrityError as e:
+      print(f"Error in def: get_max_id_from_db : {e}")
+      print(f"Errors caused from: sentId: {sent_id}, WordType: {word_type}")
+      print(f"result:{result}")
+      return None
+
+
+def add_unknown_word(word, word_type, conn, cursor, sent_id):
     """Check if an unknown word already exists in the UnknownWords table, or insert it if not."""
     try:
         # trim word
@@ -54,6 +70,11 @@ def add_unknown_word(word, word_type, conn, cursor, sent_id, word_id):
         if result:
             return (result[0],'exist') # Return the ID if the word exists
         else:
+            max_id = get_max_id_from_db(cursor, sent_id, word_type)
+            if max_id:
+              word_id = max_id + 1
+            else:
+              word_id = 1
             cursor.execute("INSERT INTO UnknownWords (id, sentence_id, word, type) VALUES (?,?,?,?)", (word_id, sent_id, word, word_type))
             conn.commit()
             return (word_id,'new') # Return the ID of the newly inserted word
@@ -74,7 +95,6 @@ def process_sentence(sentence, conn, cursor):
     # Check NOUNS/VERBS in Vocabulary
     for sent in doc.sentences:
       processed_tokens = []
-      word_id = 1
       for word in sent.words:
           word_type = get_word_type(word)
           if word_type:
@@ -85,11 +105,10 @@ def process_sentence(sentence, conn, cursor):
                   processed_tokens.append(word.text)
               else:
                   # Unknown word, replace with <UNK_type_id>
-                  id_exist = add_unknown_word(word.text, word_type, conn, cursor, sentence_id, word_id)
+
+                  id_exist = add_unknown_word(word.text, word_type, conn, cursor, sentence_id)
                   if id_exist != None:
                       processed_tokens.append(f"UNK_{word_type}_{id_exist[0]}")
-                      if id_exist[1] == 'new':
-                        word_id += 1
                   else:
                       # In case of any issue, keep the original word
                       processed_tokens.append(word.text)
@@ -107,14 +126,12 @@ def process_sentence(sentence, conn, cursor):
         # Don't try to NER the Unknown Words from previous step
         if ent.type != "DATE" and not ent.text.startswith("UNK_"):
           # Save each ent and type in DB
-          id_exist = add_unknown_word(ent.text, ent.type, conn, cursor, sentence_id, word_id)
+          id_exist = add_unknown_word(ent.text, ent.type, conn, cursor, sentence_id)
 
           # Replace in the document each ent with the appropiate <tag>
           if id_exist != None:
             tag = f'UNK_{ent.type}_{id_exist[0]}'
             new_sentence = new_sentence.replace(ent.text, tag)
-            if id_exist[1] == 'new':
-              word_id += 1
 
 
       sentences.append(f"SentenceId:{sentence_id}")
@@ -139,8 +156,6 @@ def process_file(input_file, output_file, conn, cursor):
             if stripped_line:
                 processed_line = process_sentence(stripped_line, conn, cursor)
                 outfile.write(processed_line + '\n')
-            # else:
-                # outfile.write('\n')  # Preserve empty lines
 
 
 
@@ -161,7 +176,7 @@ if __name__ == "__main__":
         sentence_id INTEGER,
         word TEXT,
         type TEXT DEFAULT '',
-        PRIMARY KEY (id, sentence_id)
+        PRIMARY KEY (id, sentence_id, type)
     )
     """)
     conn.commit()
