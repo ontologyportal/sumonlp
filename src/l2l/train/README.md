@@ -9,7 +9,7 @@ java  -Xmx40g -classpath   $ONTOLOGYPORTAL_GIT/sigmanlp/build/sigmanlp.jar:$ONTO
 
 This will save files nouns.txt and verbs.txt in $CORPORA/COCA
 
-Then generate language-logic pairs with GenSympTestData. For 1M pairs, do
+Then generate language-logic pairs with GenSimpTestData. For 1M pairs, do
 
 ```
 java -Xmx40g -classpath $ONTOLOGYPORTAL_GIT/sigmanlp/build/sigmanlp.jar:$ONTOLOGYPORTAL_GIT/sigmanlp/build/lib/* com.articulate.nlp.GenSimpTestData -s out 10000000
@@ -18,8 +18,8 @@ java -Xmx40g -classpath $ONTOLOGYPORTAL_GIT/sigmanlp/build/sigmanlp.jar:$ONTOLOG
 which will generate out-eng.txt and out-log.txt. Then generate the language logic pairs from all SUMO relations and all SUMO axioms with -
 
 ```
-java -Xmx14g -classpath /home/apease/workspace/sigmanlp/lib/*:/home/apease/workspace/sigmanlp/build/classes com.articulate.nlp.GenSimpTestData -a allAxioms
-java -Xmx60g -classpath /home/apease/workspace/sigmanlp/lib/*:/home/apease/workspace/sigmanlp/build/classes com.articulate.nlp.GenSimpTestData -g groundRelations
+java -Xmx14g -classpath $ONTOLOGYPORTAL_GIT/workspace/sigmanlp/lib/*:$ONTOLOGYPORTAL_GIT/workspace/sigmanlp/build/classes com.articulate.nlp.GenSimpTestData -a allAxioms
+java -Xmx60g -classpath $ONTOLOGYPORTAL_GIT/workspace/sigmanlp/lib/*:$ONTOLOGYPORTAL_GIT/workspace/sigmanlp/build/classes com.articulate.nlp.GenSimpTestData -g groundRelations
 ```
 
 Concetenate these files together
