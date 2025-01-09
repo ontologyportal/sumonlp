@@ -4,7 +4,9 @@ First get COCA.zip from our local
 DARAPA-ARC Teams Files area.  Users not at NPS will have to request this from the COCA
 developer.  We need to generate word co-occurance data from COCA. Run
 
+```
 java  -Xmx40g -classpath   $ONTOLOGYPORTAL_GIT/sigmanlp/build/sigmanlp.jar:$ONTOLOGYPORTAL_GIT/sigmanlp/build/lib/* com.articulate.nlp.corpora.COCA -a
+```
 
 This will save files nouns.txt and verbs.txt in $CORPORA/COCA
 
