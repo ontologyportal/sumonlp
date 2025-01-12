@@ -41,12 +41,12 @@ cp oov_handling/output_post_oov.txt prover/input_pr.txt
 echo -e "\nAfter OOV post-processing" >> "$FLOW_FILE"
 cat oov_handling/output_post_oov.txt >> "$FLOW_FILE"
 
-bash prover/entry_point.sh
-cp prover/output_pr.txt ppara/input_pp.txt
-echo -e "\nAfter prover" >> "$FLOW_FILE"
-cat prover/output_pr.txt >> "$FLOW_FILE"
+#bash prover/entry_point.sh
+#cp prover/output_pr.txt ppara/input_pp.txt
+#echo -e "\nAfter prover" >> "$FLOW_FILE"
+#cat prover/output_pr.txt >> "$FLOW_FILE"
 
-bash ppara/entry_point.sh
-echo -e "\nAfter proof paraphrasing" >> "$FLOW_FILE"
-cat ppara/output_pp.txt >> "$FLOW_FILE"
+#bash ppara/entry_point.sh
+#echo -e "\nAfter proof paraphrasing" >> "$FLOW_FILE"
+#cat ppara/output_pp.txt >> "$FLOW_FILE"
 
