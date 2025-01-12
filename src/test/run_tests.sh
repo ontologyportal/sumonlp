@@ -7,5 +7,5 @@
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
 cd "$parent_path" || exit
 
-cp test_set_1.txt ../policy_extracter/input_pe.txt
+cat test*.txt ../policy_extracter/input_pe.txt
 ../main.sh
