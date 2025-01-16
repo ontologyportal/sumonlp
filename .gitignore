@@ -40,4 +40,4 @@ src/prover/output_pr.txt
 src/sentence_simplification/input_ss.txt
 src/sentence_simplification/output_ss.txt
 src/sentence_simplification/logs/ollama.log
-
+src/sentence_simplification/ollama_log.txt
