@@ -1,4 +1,5 @@
 # Train the L2L model
+## Generating test data
 
 First get COCA.zip from our local DARPA-ARC Teams Files area.  Users not at NPS will have to request this from the COCA
 developer.  Save COCA.zip to $CORPORA/COCA.zip and unzip. We need to generate word co-occurance data from COCA. Run
@@ -29,7 +30,7 @@ cat allAxioms-eng.txt groundRelations-eng.txt out-eng.txt > combined-eng.txt
 cat allAxioms-log.txt groundRelations-log.txt out-log.txt > combined-log.txt
 ```
 
-## Execution time
+### Execution time
 
 On a 16 core fast laptop: 
 
@@ -59,5 +60,5 @@ as full_12m_sentences/t5_model_3_epochs .  We should consider changing the direc
 and file names, for example making the name "full_12m_sentences" a parameter in model.py instead of a hard coded name.
 
 
-
+## T5 Model Training
 
