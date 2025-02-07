@@ -1,0 +1,118 @@
+SentenceId:1
+( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "Measure"? H ) ( instance? P Ingesting ) ( experiencer? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( attribute? DO Male ) ( names "UNK_verb_2"? DO ) ( instance? DO Human ) ( destination? P? DO ) ) )
+SentenceId:2
+( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "Measure"? H ) ( instance? P Classifying ) ( agent? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO AtmosphericContent ) ( patient? P? DO ) ( instance? IO SpecificPun ) ( instance? IO SpecificPun ) ( involvedInEvent? P? IO ) ) )
+SentenceId:3
+( relatedRelation Weather Climate ) )
+SentenceId:4
+( termAgent Climate )
+SentenceId:5
+( typically Measuring Climate Long UNK_noun_1OfTime ) )
+SentenceId:6
+( not ( exists (? H? P? DO? IO ) ( and ( instance? P Reasoning ) ( agent? P You ) ( attribute? DO Female ) ( names "ClimateChange"? DO ) ( instance? DO Human ) ( patient? P? DO ) ( instance? IO HeatWid ) ( instance? IO ClimateWid ) ( patient? P? IO ) ) ) )
+SentenceId:7
+( exists (? H? P? DO? IO ) ( and ( instance? H CarbonDioxide ) ( instance? P Calculating ) ( agent? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO SmallUnitedKing ) ( patient? P? DO ) ( instance? IO TotalGasInOurAtmosph ) ( instance? IO TotalGasIn ) ( patient? P? IO ) ) )
+SentenceId:8
+( not ( exists (? H? P? DO? IO ) ( and ( instance? P Putting ) ( agent? P You ) ( instance? DO CarbonDioxide ) ( objectTransferred? P? DO ) ) ) )
+SentenceId:9
+( not ( exists (? H? P? DO? IO ) ( and ( instance? P Heating ) ( agent? P You ) ( memberType? DO AtmosphericGas ) ( memberCount? DO 1 ) ( patient? P? DO ) ) ) )
+SentenceId:10
+( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "UNK_noun_1"? H ) ( instance? P Process ) ( agent? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO HeatEnergie ) ( patient? P? DO ) ) )
+SentenceId:11
+( exists (? H? P? DO? IO ) ( and ( instance? H SmallChangeInDioxide ) ( instance? P Ingesting ) ( experiencer? P? H ) ( before Now ( BeginFn ( WhenFn? P ) ) ) ( instance? DO ClimateSystem ) ( objectTransferred? P? DO ) ) )
+SentenceId:12
+( exists (? H? P? DO? IO ) ( and ( attribute? H CarbonDioxide ) ( instance? P Increasing ) ( agent? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO CarbonDioxide ) ( patient? P? DO ) ( instance? IO Human ) ( attribute? IO Male ) ( names "UNK_LOC_1"? IO ) ( involvedInEvent? P? IO ) ) )
+SentenceId:13
+( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "Carbon"? H ) ( instance? P Cycle ) ( agent? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO Biological, Physical, GeologicalSystem ) ( patient? P? DO ) ) )
+SentenceId:14
+( amount CarbonOn UNK_LOC_1 )
+SentenceId:15
+( exists (? H? P? DO? IO ) ( and ( instance? H HumanActivities ) ( instance? P Transfer ) ( agent? P? H ) ( instance? DO Carbon ) ( objectTransferred? P? DO ) ( instance? IO Human ) ( attribute? IO Female ) ( names "Chevron"? IO ) ( involvedInEvent? P? IO ) ) ) )
+SentenceId:16
+( exists (? H? P? DO? IO ) ( and ( attribute? H Hole ) ( instance? P Translocation ) ( agent? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO LargeUNK_noun_1 ) ( patient? P? DO ) ( instance? IO GlobalHelening ) ( attribute? IO Male ) ( names "GlobalHeight ) ( names "GlobalHeight ) ( names "GlobalHeight ) ( names "GlobalHeight ) ( involvedInEvent? P? IO ) ) )
+SentenceId:17
+( exists (? H? P? DO? IO ) ( and ( attribute? H OzoneLob ) ( instance? P Interpreting ) ( agent? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( attribute? DO Female ) ( names "UNK_verb_1"? DO ) ( instance? DO HumanActivities ) ( patient? P? DO ) ) )
+SentenceId:18
+( differentIssues OzoneLood GlobalHearing )
+SentenceId:19
+( depletion OzoneLocation ) ( reducingOfTheAtmosphOzoneLayer UNK_noun_1 OzoneLayer ) ( intendedForAgent UNK_noun_2 UVLake ) ( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "OzoneLake"? H ) ( instance? P Protecting ) ( agent? P? H ) ( instance? DO UNK_noun_3 ) ( patient? P? DO ) ( instance? IO UVOfTheUnitedKn1 ) ( instance? IO UNK_noun_2 ) ( involvedInEvent? P? IO ) ) ) )
+SentenceId:20
+( caused ByReleasing UNK_noun_1 Chlorofluorocarbons )
+SentenceId:21
+( not ( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "UVEN"? H ) ( instance? P Ingesting ) ( experiencer? P? H ) ( attribute? DO Male ) ( names "UNK_noun_1"? DO ) ( instance? DO Human ) ( objectTransferred? P? DO ) ( instance? IO AverageApplication ) ( instance? IO AverageFn ( WhenFn? P ) ) Now ) ( instance? IO AverageFn ( WhenFn? P ) ) ) ( involvedInEvent? P? IO ) ) ) )
+SentenceId:22
+( large UNK_noun_3 GlobalHearing )
+SentenceId:23
+( not ( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "UNK_noun_1"? H ) ( instance? P Spraying ) ( agent? P? H ) ( before ( EndFn ( WhenFn? P ) ) Now ) ( instance? DO Human ) ( patient? P? DO ) ( instance? IO OzoneLayer ) ( instance? IO OzoneLayer ) ( involvedInEvent? P? IO ) ) ) )
+SentenceId:24
+( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "UNK_noun_1"? H ) ( instance? P Arriving ) ( agent? P? H ) ( before ( EndFn ( WhenFn? P ) ) Now ) ( instance? DO OzoneLayer ) ( patient? P? DO ) ) ) )
+SentenceId:25
+( type Chemical UNK_noun_1 Chlorofluorocarbons )
+SentenceId:26
+( not ( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "UNK_noun_1"? H ) ( instance? P Filling ) ( agent? P? H ) ( instance? DO OzoneLayerLoodhole ) ( patient? P? DO ) ) ) )
+SentenceId:27
+( exists (? H? P? DO? IO ) ( and ( instance? P Correcting ) ( agent? P You ) ( instance? V2 ClimateChange ) ( refers? DO? V2 ) ) )
+SentenceId:28
+( exists (? HA ) ( and ( attribute? HA Resistency ) ( timeRental? HA ( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "UNK_verb_1"? H ) ( believes? HA ( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "UNK_noun_2"? IO ) ( involvedInEvent? P? IO ) ) ) ) ) ) )
+SentenceId:29
+( not ( exists (? H? P? DO? IO ) ( and ( instance? P Ingesting ) ( experiencer? P You ) ( attribute? DO Female ) ( names "UNK_verb_3"? DO ) ( instance? DO Human ) ( destination? P? DO ) ( instance? IO Human ) ( attribute? IO Female ) ( names "UNK_verb_4"? IO ) ( involvedInEvent? P? IO ) ) ) )
+SentenceId:30
+( not ( exists (? H? P? DO? IO ) ( and ( instance? P Calculating ) ( agent? P You ) ( instance? DO Behavior ) ( patient? P? DO ) ( instance? IO ClimateWaxing ) ( attribute? IO Female ) ( names "UNK_noun_1"? IO ) ( involvedInEvent? P? IO ) ) ) )
+SentenceId:31
+( exists (? H? P? DO? IO ) ( and ( instance? P Looking ) ( agent? P You ) ( instance? DO ClimateChange ) ( patient? P? DO ) ( instance? IO Human ) ( attribute? IO Male ) ( names "UNK_noun_1"? IO ) ( involvedInEvent? P? IO ) ) ) )
+SentenceId:32
+( exists (? H? P? DO? IO ) ( and ( instance? P MovingResidence ) ( agent? P You ) ( instance? DO RightUNK_noun_1 ) ( destination? P? DO ) ) )
+SentenceId:33
+( modalAttribute ( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "UNK_noun_2"? H ) ( instance? P Change ) ( agent? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO PlantsAndAnimal ) ( patient? P? DO ) ) ) ) Possibility )
+SentenceId:34
+( no ( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "UNK_noun_1"? H ) ( instance? P Arriving ) ( agent? P? H ) ( before Now ( BeginFn ( WhenFn? P ) ) ) ( instance? DO Human ) ( patient? P? DO ) ( instance? IO Human ) ( attribute? IO Female ) ( names "UNK_verb_1"? IO ) ( involvedInEvent? P? IO ) ) ) ) )
+SentenceId:35
+( modalAttribute ( exists (? H? P? DO? IO ) ( and ( instance? P Seeding ) ( agent? P You ) ( attribute? DO Male ) ( names "UNK_noun_1"? DO ) ( instance? DO Human ) ( patient? P? DO ) ( instance? IO Tree ) ( instance? IO Tree ) ( involvedInEvent? P? IO ) ) ) )
+SentenceId:36
+( less likely Trees Grow Slowly and Cannot reproduceFor manyAnthony ) ( instance? H Human ) ( names "UNK_verb_1"? H ) ( instance? P Ingesting ) ( experiencer? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO Human ) ( destination? P? DO ) ( instance? IO ClimateCondition ) ( instance? IO ClimateCondition ) ( involvedInEvent? P? IO ) ) ) ) )
+SentenceId:37
+( less ClimateChanges occured FastAndVariably ) ( existingEcosystems UNK_verb_1 ) ( and ( instance? H Tree ) ( agent? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( attribute? DO Male ) ( names "UNK_noun_1"? DO ) ( instance? DO Human ) ( destination? P? DO ) ) ) ) Likely ) )
+SentenceId:38
+( exists (? H? P? DO? IO ) ( and ( instance? T ( DayFn 5 ( MonthFn 5 ( YearFn 2024 ) ) ) ) ( during? P? T ) ( instance? H Forest ) ( instance? P Arriving ) ( agent? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO ForestType ) ( patient? P? DO ) ) ) )
+SentenceId:39
+( exists (? H? P? DO? IO ) ( and ( instance? H Plants ) ( instance? P Releasing ) ( agent? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO Oxygen ) ( objectTransferred? P? DO ) ) ) )
+SentenceId:40
+( exists (? H? P? DO? IO ) ( and ( instance? P Releasing ) ( agent? P You ) ( instance? DO CO2 ) ( objectTransferred? P? DO ) ) ) )
+SentenceId:41
+( exists (? H? P? DO? IO ) ( and ( instance? P Keeping ) ( agent? P You ) ( instance? DO CO2 Decomposition ) ( patient? P? DO ) ( instance? IO Human ) ( attribute? IO Male ) ( names "Unclear"? IO ) ( involvedInEvent? P? IO ) ) ) )
+SentenceId:42
+( usedForAgent UNK_ORG_1 ComplexStructuren UNK_noun_1 UNK_noun_2 ) )
+SentenceId:43
+( exists (? H? P? DO? IO ) ( and ( attribute? H Process ) ( instance? P Releasing ) ( agent? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO Carbon ) ( objectTransferred? P? DO ) ( instance? IO CarbonDioxide ) ( instance? IO CarbonDioxide ) ( involvedInEvent? P? IO ) ) )
+SentenceId:44
+( exists (? H? P? DO? IO ) ( and ( instance? P Process ) ( agent? P You ) ( instance? DO DayFn Night ) ( patient? P? DO ) ) )
+SentenceId:45
+( exists (? H? P? DO? IO ) ( and ( instance? H Animal ) ( instance? P Ingesting ) ( experiencer? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( attribute? DO Female ) ( names "CO2"? DO ) ( instance? DO Oxydioxid ) ( objectTransferred? P? DO ) ) )
+SentenceId:46
+( exists (? H? P? DO? IO ) ( and ( instance? H Plant ) ( instance? P Ingesting ) ( experiencer? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO Oxygen ) ( objectTransferred? P? DO ) ) ) )
+SentenceId:47
+( modalAttribute ( exists (? H? P? DO? IO ) ( and ( instance? H Plant ) ( instance? P Releasing ) ( agent? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO Oxygen ) ( objectTransferred? P? DO ) ) ) )
+SentenceId:48
+( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "UNK_noun_1"? H ) ( instance? P Ingesting ) ( experiencer? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO CarbonDioxid ) ( objectTransferred? P? DO ) ) ) )
+SentenceId:49
+( not ( exists (? H? P? DO? IO ) ( and ( instance? H Gase ) ( instance? P Ingesting ) ( experiencer? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO Mass ) ( objectTransferred? P? DO ) ) ) )
+SentenceId:50
+( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "UNK_noun_1"? H ) ( instance? P Ingesting ) ( experiencer? P? H ) ( before ( EndFn ( WhenFn? P ) ) Now ) ( attribute? DO Female ) ( names "Mass"? DO ) ( instance? DO Human ) ( objectTransferred? P? DO ) ) )
+SentenceId:51
+(? H ) ( and ( instance? P Ingesting ) ( experiencer? P You ) ( attribute? DO Female ) ( names "DerryEiss"? DO ) ( instance? DO Human ) ( objectTransferred? P? DO ) ) )
+SentenceId:52
+( exists (? H? P? DO? IO ) ( and ( instance? H Gases ) ( instance? P Ingesting ) ( experiencer? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO Molecule ) ( objectTransferred? P? DO ) ) ) )
+SentenceId:53
+( exists (? H? P? DO? IO ) ( and ( attribute? H FoodDown ForEnergy ) ( instance? P Translocation ) ( agent? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO Animal ) ( patient? P? DO ) ( instance? IO UrineAndFeces ) ( instance? IO Urine ) ( involvedInEvent? P? IO ) ) )
+SentenceId:54
+( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "Food"? H ) ( instance? P Demonstrating ) ( agent? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO Animal ) ( patient? P? DO ) ) ) )
+SentenceId:55
+( not ( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "UNK_noun_1"? H ) ( instance? P Demonstrating ) ( agent? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO Energy ) ( patient? P? DO ) ) ) )
+SentenceId:56
+( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "UNK_noun_1"? H ) ( instance? P Substituting ) ( agent? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO Energy ) ( destination? P? DO ) ( instance? IO Human ) ( attribute? IO Male ) ( names "UNKARDINAL_1"? IO ) ( involvedInEvent? P? IO ) ) )
+SentenceId:57
+( exists (? H? P? DO? IO ) ( and ( instance? H Human ) ( names "Energy"? H ) ( instance? P Ingesting ) ( experiencer? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO BiochemicalProcess ) ( objectTransferred? P? DO ) ) )
+SentenceId:58
+( exists (? H? P? DO? IO ) ( and ( instance? H Gase ) ( instance? P Mange ) ( agent? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO Biomassage ) ( destination? P? DO ) ( instance? IO Plant ) ( involvedInEvent? P? IO ) ) ) )
+SentenceId:59
+( exists (? H? P? DO? IO ) ( and ( instance? H Plant ) ( instance? P Getting ) ( agent? P? H ) ( temporallyBetween ( BeginFn ( WhenFn? P ) ) Now ( EndFn ( WhenFn? P ) ) ) ( instance? DO Mass ) ( patient? P? DO ) ( instance? IO Soil ) ( involvedInEvent? P? IO ) ) )
