@@ -136,7 +136,7 @@ export PATH="$HOME/path/to/ollama/bin:$PATH" # Path to ollama executable
 ## L2L model and vocabulary.db
 The vocabulary.db file must be present, as well as the model used for language to logic conversion.
 
-For more information, see [here](https://github.com/ontologyportal/sumonlp/blob/master/T5.md)
+For more information, see [here](https://github.com/ontologyportal/sumonlp/blob/master/src/l2l/train/README.md)
 
 Place the vocabulary.db file in $SUMO_NLP_HOME location, and model used for L2L conversion to $SUMO_NLP_HOME/L2L_Model.
 
