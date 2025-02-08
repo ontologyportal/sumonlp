@@ -43,15 +43,20 @@ On a 16 core fast laptop:
 
 ## Instructions
 
+## Step 0: Preprocess the data
+On the command line, navigate to the foler where `combined-eng.txt` and `combined-log.txt` are located. Run the following command
+
+`bash $ONTOLOGYPORTAL_GIT/sumonlp/scripts/preprocess/preproc1.sh`
+
 ## Step 1: Prepare Data
 
-- Open the `/data/scripts/select_sentences.sh`
+- Open the `$ONTOLOGYPORTAL_GIT/sumonlp/src/l2l/train/scripts/select_sentences.sh`
 at `line 8` and `line 9` you can specify the path for the data (which in our case are the `combined-eng.txt-0` and `combined-log.txt-0`).
 The `-0` means that the data have been preprocessed.
 
-- run the command: `./select_sentences <number_of_suffled_lines>`
-if no `<number_of_suffled_lines>` is specifiied it will use the whole dataset.
-If `<number_of_suffled_lines>` exist as arguments, it will create a training data file with the specified number of sentences.
+- run the command: `./select_sentences <number_of_shuffled_lines>`
+if no `<number_of_shuffled_lines>` is specified it will use the whole dataset.
+If `<number_of_shuffled_lines>` exist as arguments, it will create a training data file with the specified number of sentences.
 
 - In both cases, the script is going to create the `training` and the `validating` data, where the validating data will be 10% of the testing data.
 
@@ -69,6 +74,10 @@ input_file = 'data/full_12m_sentences/input_sentences.txt'
 output_file = 'data/full_12m_sentences/output_logical.txt'
 tokenized_output_file = 'data/full_12m_sentences/tokenized_data.json'
 ```
+While in the same folder where your input_sentences.txt and output_logical.txt sentences are located, execute the batch_train.sh file:
+
+```bash $ONTOLOGYPORTAL_GIT/sumonlp/src/l2l/train/batch_train.sh```
+
 
 For the `tokenized_output_file`, you just need to specify the name of the file and the location that you want it to be saved. It should be empty, if you run the program for the first time.
 If you have run the program again in the past for **the same dataset** you can comment out the
