@@ -78,6 +78,9 @@ While in the same folder where your input_sentences.txt and output_logical.txt s
 
 ```bash $ONTOLOGYPORTAL_GIT/sumonlp/src/l2l/train/batch_train.sh```
 
+On the hamming supercomputer this command is:
+
+```sbatch $ONTOLOGYPORTAL_GIT/sumonlp/src/l2l/train/batch_train.sh```
 
 For the `tokenized_output_file`, you just need to specify the name of the file and the location that you want it to be saved. It should be empty, if you run the program for the first time.
 If you have run the program again in the past for **the same dataset** you can comment out the
