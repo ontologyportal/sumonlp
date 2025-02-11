@@ -64,15 +64,15 @@ If `<number_of_shuffled_lines>` exist as arguments, it will create a training da
 
 ### Train the model:
 
-- Change the paths in the `batch_train.sh` file, and the resources if you want.
+- Change the paths in the `$ONTOLOGYPORTAL_GIT/sumonlp/src/l2l/train/batch_train.sh` file, and the resources if you want.
 
-- Open the `train.py` and change the paths, so that they will point to your new create data from `Step 1`.
+- Open the `$ONTOLOGYPORTAL_GIT/sumonlp/src/l2l/train/train.py` and change the paths, so that they will point to your new create data from `Step 1`.
 
 ``` txt
 # Paths to your data
-input_file = 'data/full_12m_sentences/input_sentences.txt'
-output_file = 'data/full_12m_sentences/output_logical.txt'
-tokenized_output_file = 'data/full_12m_sentences/tokenized_data.json'
+input_file = 'input_sentences.txt'
+output_file = 'output_logical.txt'
+tokenized_output_file = 'tokenized_data.json'
 ```
 While in the same folder where your input_sentences.txt and output_logical.txt sentences are located, execute the batch_train.sh file:
 
