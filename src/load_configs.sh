@@ -14,7 +14,7 @@
 export MODEL_L2L="t5_model"
 export MODEL_MH="mistral" # Model to be used in metaphor handling. Common models are mistral and llama3.2
 export MODEL_PP="llama3.2" # Model to be used in PPara. Common models are mistral and llama3.2
-export MODEL_SS="llama3.2" # Model to be used in sentence simplification. Common models are mistral and llama3.2
+export MODEL_SS="llama3.1:8b-instruct-q8_0" # Model to be used in sentence simplification. Common models are mistral and llama3.2
 ######################################################
 
 
