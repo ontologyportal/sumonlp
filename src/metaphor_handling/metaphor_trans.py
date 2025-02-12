@@ -18,32 +18,43 @@ class MetaphorTranslator:
             print(f"Error calling Ollama: {e}")
             return None
 
-    def trans_metaphor(self, line: str):
-        if line.startswith('0'):
-            sentence = line.strip()[2:]
-            if sentence:
-                prompt = f"Quick answer: Does the following sentence contain a blatant metaphor: {sentence}"
-                response = self.call_ollama(prompt)
-                if "yes" in response.lower():
-                    prompt = f"Quick answer: Rephrase the following sentence with as few words as possible, without metaphorical content: {sentence}"
-                    response = self.call_ollama(prompt)
-                    response = re.sub(r'\s*\([^)]*\)\s*$', '.', response)  # Removes trailing parentheticals
-                    return response
-                else:
-                    return line.strip()[2:]
-            else:
+    def translate_metaphor(self, line: str):
+        try:
+            if line.startswith('0'):
+                sentence = line.strip()[2:]
+
+                '''Double check for metaphors using ollama'''
+
+
+                # if sentence:
+                #     print("Calling ollama to translate metaphor even if the metaphor detector didn't detect one...")
+                #     prompt = f"Quick answer: Does the following sentence contain a blatant metaphor: {sentence}"
+                #     response = self.call_ollama(prompt)
+                #     if "yes" in response.lower():
+                #         prompt = f"Quick answer: Rephrase the following sentence with as few words as possible, without metaphorical content: {sentence}"
+                #         response = self.call_ollama(prompt)
+                #         response = re.sub(r'\s*\([^)]*\)\s*$', '.', response)  # Removes trailing parentheticals
+                #         return response
+                #     else:
+                #         return line.strip()[2:]
+                # else:
+                #     return sentence
+
                 return sentence
-        else:
-            prompt = f"Quick answer: Rephrase the following sentence with as few words as possible, without metaphorical content: {line.strip()[2:]}"
-            response = self.call_ollama(prompt)
-            response = re.sub(r'\s*\([^)]*\)\s*$', '.', response)  # Removes trailing parentheticals
-            return response
+            else:
+                prompt = f"Quick answer: Rephrase the following sentence with as few words as possible, without metaphorical content: {line.strip()[2:]}"
+                response = self.call_ollama(prompt)
+                response = re.sub(r'\s*\([^)]*\)\s*$', '.', response)  # Removes trailing parentheticals
+                return response
+        except Exception as e:
+            print(f"Error, could not translate metaphor: {e}")
+            return None
 
     def process_file(self, input_file: str, output_file: str):
         with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
             for line in infile:
                 line = line.strip()
-                result = self.trans_metaphor(line)
+                result = self.translate_metaphor(line)
                 outfile.write(result + '\n')
 
 if __name__ == "__main__":
