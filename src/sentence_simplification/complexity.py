@@ -1,6 +1,11 @@
-from wordfreq import zipf_frequency   # requiremnet: pip install wordfreq
-
 import ollama
+import spacy
+import textacy
+import wordfreq
+
+from wordfreq import zipf_frequency
+
+nlp = spacy.load("en_core_web_sm")
 
 def get_sentence_length(sentence):
     return len(sentence.split())
@@ -87,3 +92,144 @@ def check_complexity_hueristic(sentence, max_complexity_score = 30):
         return True
     else:
         return False
+
+
+
+def get_max_depth(token, level=0):
+    '''
+    Calculate the maximum depth of a syntactic tree rooted at the given token.
+    
+    Args:
+        token (spacy.tokens.Token): The root token of the syntactic tree.
+        level (int): The current depth level (default is 0).
+        
+    Returns:
+        list: A list of tuples containing token text and its depth.
+    '''
+    tree = [(token.text, level)]
+    for child in token.children:
+        tree.extend(get_max_depth(child, level + 1))
+    return tree
+
+
+def depth_tree_analysis(doc):
+    '''
+    Analyze the depth of the syntactic tree for each sentence in the given text.
+    
+    Args:
+        doc (spacy.tokens.Doc): The input document to analyze.
+        
+    Returns:
+        list: A list of tuples where each tuple contains:
+              - Maximum depth of the syntactic tree for a sentence.
+              - A list of tuples (token text, depth) for that sentence.
+    '''
+    results = []
+    
+    for sent in doc.sents:
+        root = [token for token in sent if token.head == token][0]  # Get root token of sentence
+        depth_tree = get_max_depth(root)
+        max_depth = max(depth for _, depth in depth_tree)
+        results.append(max_depth)
+    
+    return results
+
+
+def get_sentence_length(doc):
+    '''
+    Calculate the length of the sentence in terms of the number of tokens.
+    
+    Args:
+        doc (spacy.tokens.Doc): The input sentence to analyze.
+        
+    Returns:
+        int: The number of tokens in the sentence.
+    '''
+    return len(doc)
+
+
+def get_word_frequencies(doc):
+    '''
+    Calculate the zipf_frequency of each word in the given text.
+    
+    Args:
+        doc (spacy.tokens.Doc): The input sentence to analyze.
+        
+    Returns:
+        dict: A dictionary containing the word frequencies.
+    '''
+
+    return {token.text: wordfreq.zipf_frequency(token.text, 'en') for token in doc if token.pos_ != 'PUNCT'}
+
+
+
+def clause_to_text(clause_tokens):
+    '''
+    Convert a list of tokens (forming a clause) back into a text string.
+    '''
+    # Sort tokens by their position in the original document
+    sorted_tokens = sorted(clause_tokens, key=lambda t: t.i)
+    return " ".join(t.text for t in sorted_tokens)
+
+def split_clauses(doc):
+    """
+    Splits a spaCy doc into clauses based on the dependency tree.
+    Handles "but" and "and" but NOT "or" to avoid loss of meaning.
+
+    Args:
+        doc (spacy.tokens.Doc): The parsed sentence.
+
+    Returns:
+        The list of clause texts.
+    """
+    clauses = []
+
+    # Identify the main clause (using the ROOT token)
+    roots = [token for token in doc if token.dep_ == "ROOT"]
+    if not roots:
+        return []
+    
+    main_root = roots[0]
+    main_clause_tokens = list(main_root.subtree)
+    clauses.append(main_clause_tokens)
+    
+    # Handle coordinated clauses ("and", "but") but NOT "or"
+    for token in doc:
+        if token.text.lower() in {"and", "but"} and token.dep_ == "cc":
+            # Find the head of "and" or "but" and extract its subtree
+            if token.head:
+                clause_tokens = list(token.head.subtree)
+                clauses.append(clause_tokens)
+
+    # Convert token lists back into strings
+    clause_texts = [clause_to_text(tokens) for tokens in clauses]
+    return clause_texts
+
+
+def determine_complexity(sentence, max_len_threshold=24, max_depth_threshold=4, min_freq_threshold=3):
+    doc = nlp(sentence)
+    frequencies = get_word_frequencies(doc)
+    measured_min_freq = min(frequencies.values()) if frequencies else 0
+    measured_max_depth, depth_tree = depth_tree_analysis(doc)
+    sentence_length = get_sentence_length(doc)
+
+    length_exceeded = sentence_length > max_len_threshold
+    depth_exceeded = measured_max_depth > max_depth_threshold
+    frequency_exceeded = measured_min_freq < min_freq_threshold
+
+    is_complex = length_exceeded or depth_exceeded or frequency_exceeded
+
+    complexity_dict = {
+        'sentence_length': sentence_length,
+        'max_depth': measured_max_depth,
+        'min_freq': measured_min_freq,
+        'length_exceeded': length_exceeded,
+        'depth_exceeded': depth_exceeded,
+        'frequency_exceeded': frequency_exceeded,
+        'complex': is_complex
+    }
+
+    return is_complex, complexity_dict
+
+if __name__ == '__main__':
+    pass

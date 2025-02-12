@@ -2,6 +2,15 @@ data/
 .idea/
 .idea/misc.xml
 
+# Ignore Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore .DS_Store files
+.DS_Store
+
 src/flow.txt
 src/ollama.log
 src/command_history.txt
