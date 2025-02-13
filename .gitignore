@@ -18,6 +18,7 @@ src/metaphor_handling/test/output
 src/metaphor_handling/sbert_sentence_transformer
 src/metaphor_handling/logs
 src/metaphor_handling/__pycache__
+src/metaphor_handling/test/__pycache__
 
 src/oov_handling/input_oov.txt
 src/oov_handling/output_oov.txt
