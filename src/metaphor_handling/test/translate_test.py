@@ -7,8 +7,7 @@ import nltk
 from nltk.translate.bleu_score import sentence_bleu
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from metaphor_detect_pipeline import MetaphorDetector
-from metaphor_trans import MetaphorTranslator
+from metaphor_handler import MetaphorDetector, MetaphorTranslator
 import csv
 import datetime
 from bert_score import score
@@ -80,32 +79,6 @@ else:
 mt = MetaphorTranslator('llama3.2')
 md = MetaphorDetector()
 
-def foo():
-    for i in range(1,4):
-        met, lit = data[i]
-        # this was bleu score, isn't that great for the task
-        # l = [nltk.word_tokenize(lit)]
-        # trans = mt.translate_metaphor(met)
-        # print(f'Original: {met}   Translation: {trans}')
-        # t = nltk.word_tokenize(trans)
-        # bleu_score = sentence_bleu(l, t)
-        # print(bleu_score)
-        trans = mt.translate_metaphor(met)
-        if trans == None:
-            print('Didn\'t recieve a valid translation. Quitting')
-            break
-        
-        bertscore_f1 = get_bertscore(trans, [lit])
-        sbert_similarity = get_sbert_similarity(trans, [lit])
-        
-        print(f'Original: {met}   Translation: {trans}')
-        print(f"BERTScore F1: {bertscore_f1:.4f}")
-        print(f"SBERT Cosine Similarity: {sbert_similarity:.4f}")
-
-        met_binary = md.detect_metaphor(met)[0]
-        print(f"Metaphor Classification: {met_binary}")
-
-
 
 def run_test(num_instances=None):
     '''Translates metaphorical sentences from the IMPLI dataset, calculates the SBERT Cosine Similarity
@@ -116,11 +89,12 @@ def run_test(num_instances=None):
 
     bertscore_sum = 0
     sbert_sum = 0
-    recall_sum = 0
+    num_metaphors_detected = 0
+    decode_label = {0:'No', 1:'Yes'}
 
     with open(path, 'w') as out:
         writer = csv.writer(out)
-        writer.writerow(['Metaphorical Sentence', 'Literal Sentence', 'Translation', 'BERTScore F1', 'SBERT Cosine Similarity', 'Metaphor Classification'])
+        writer.writerow(['Metaphorical Sentence', 'Literal Sentence', 'Detected?','Translation', 'BERTScore F1', 'SBERT Cosine Similarity'])
 
         if num_instances != None:
             last = num_instances + 1
@@ -128,28 +102,37 @@ def run_test(num_instances=None):
             last = len(data) + 1
 
         for i in range(1, last):
+            #label = None
+            
             met, lit = data[i]
-            trans = mt.translate_metaphor(met)
+            sen, sen_dict = md.detect_metaphor(met)
+            
+            label = 0 if sen_dict['sentence_label'] == 0 else 1
+
+
+            trans = mt.translate_metaphor(sen, sen_dict)
             if trans == None:
                 print('Didn\'t recieve a valid translation. Quitting')
                 break
             
-            bertscore_f1 = get_bertscore(trans, [lit])
-            sbert_similarity = get_sbert_similarity(trans, [lit])
+            if label == 1:
+                num_metaphors_detected += 1
+                bertscore_f1 = get_bertscore(trans, [lit])
+                sbert_similarity = get_sbert_similarity(trans, [lit])
+                bertscore_sum += bertscore_f1
+                sbert_sum += sbert_similarity
+            else:
+                bertscore_f1, sbert_similarity = 'N/A', 'N/A'
 
-            met_binary = md.detect_metaphor(met)[0]
 
             # Update sums for average calculation
-            bertscore_sum += bertscore_f1
-            sbert_sum += sbert_similarity
-            recall_sum += met_binary
 
-            writer.writerow([met, lit, trans, bertscore_f1, sbert_similarity, met_binary])
+            writer.writerow([met, lit, decode_label[label], trans, bertscore_f1, sbert_similarity])
 
         # Calculate averages
-        bertscore_avg = bertscore_sum / (last - 1)
-        sbert_avg = sbert_sum / (last - 1)
-        recall_avg = recall_sum / (last - 1)  # Avoid division by zero
+        bertscore_avg = bertscore_sum / num_metaphors_detected if num_metaphors_detected != 0 else 0
+        sbert_avg = sbert_sum / num_metaphors_detected if num_metaphors_detected != 0 else 0
+        recall_avg = num_metaphors_detected / (last - 1)  # Avoid division by zero
 
         # Write averages as last row
         writer.writerow(['Averages', '', '', f"{bertscore_avg:.4f}", f"{sbert_avg:.4f}", f"{recall_avg:.4f}"])

@@ -80,7 +80,10 @@ class MetaphorTranslator:
                     prompt = f"Quick answer: Rephrase the following sentence with as few words as possible, without metaphorical content: {sentence}"
                 
                 response = self.call_ollama(prompt)
-                response = re.sub(r'\s*\([^)]*\)\s*$', '.', response)  # Removes trailing parentheticals
+
+                if response != None:
+                    response = re.sub(r'\s*\([^)]*\)\s*$', '.', response)  # Removes trailing parentheticals
+                
                 return response
 
         except Exception as e:
