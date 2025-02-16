@@ -23,14 +23,20 @@ def process_file(input_file, output_file, model_type):
     """Process the input file, send prompts to the Ollama model, and write responses."""
     inProof = False
     with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
-        for line in infile:
+        while True:
+            form = infile.readline()
+            line = infile.readline()
+            if not form or not line:
+                break
             if len(line.strip()) > 1:
                 prompt = PROMPT1 + PROMPT2 + line + '"'
-                #print("prompt: ", prompt)
+                print("prompt: ", prompt)
                 # Call the Ollama model with the extracted prompt
                 response = call_ollama(prompt, model_type)
                 if response:
-                    #print("response: ", response)
+                    outfile.write(form)
+                    outfile.write(line)
+                    print("response: ", response)
                     # Write the response to the output file
                     outfile.write(response + '\n')
 
