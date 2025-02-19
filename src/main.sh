@@ -66,6 +66,27 @@ while true; do
             #bash prover/entry_point.sh
             echo "Added $add_value to the knowledge base."
             ;;
+        add_lbl)
+            inputFile=${input:8} # gets the substring from character position 4 to the end.
+            if [[ "${inputFile: -4}" == ".txt" ]]; then
+                if [ ! -f "$inputFile" ]; then
+                  echo "Input file $inputFile not found."
+                else
+                  echo "Adding $inputFile to the knowledge base."
+                  outputFile="add_lbl_output.txt"
+                  echo "" > "$outputFile"
+                  while IFS= read -r line; do
+                    echo "$line" > policy_extracter/input_pe.txt
+                    bash run_pipeline.sh
+                    cat prover/input_pr.txt >> "$outputFile"
+                    echo "!!" >> "$outputFile"
+                  done < "$inputFile"
+                fi
+                bash check_SUOKIF_syntax.sh $inputFile -c
+            else
+                echo "Please enter a text file name."
+            fi
+            ;;
         clear)
             rm -f $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif
             rm -f $HOME/.sigmakee/KBs/SUMO_NLP.kif
@@ -130,6 +151,8 @@ while true; do
             printf '\n"ask" a question from the knowledge base.\n  Example: "ask Does CO2 cause global warming?"\n'
             printf '\n"add" will append a new sentence or file to the knowledge base.\n  Example: "add CO2 causes global warming."\n'
             printf '  Example: "add climate_facts.txt"\n'
+            printf '\n"add_lbl adds a text file line by line, rather than the entire file all at once. Output is saved to add_lbl_output.txt. The add_lbl_output.txt is tested for valid syntax and results saved to SUOKIF_Syntax_Check.csv \n"'
+            printf '  Example: "add_lbl test/standard.txt"\n'
             printf '\n"clear" will completely clear the knowledge base.\n  Example: "clear"\n'
             printf '\n"last" will show the progression through the pipeline of the last added sentence or file.\n  Example: "last"\n'
             printf '\n"list" or "kb" will display the knowledge base.\n  Example: "list"\n'
