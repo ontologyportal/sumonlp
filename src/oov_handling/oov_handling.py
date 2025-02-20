@@ -121,10 +121,12 @@ def process_sentence(sentence, conn, cursor):
       # nlp again the sentence
       doc = nlp(new_sentence)
       # NER process  {ent.text} {ent.type}
+
+      ner_entities_excluded = ["DATE","CARDINAL","PERCENT", "ORDINAL", "QUANTITY","TIME"]
+
       for ent in doc.ents:
-        # If type != DATE
         # Don't try to NER the Unknown Words from previous step
-        if ent.type != "DATE" and not ent.text.startswith("UNK_"):
+        if ent.type not in ner_entities_excluded and not ent.text.startswith("UNK_"):
           # Save each ent and type in DB
           id_exist = add_unknown_word(ent.text, ent.type, conn, cursor, sentence_id)
 
