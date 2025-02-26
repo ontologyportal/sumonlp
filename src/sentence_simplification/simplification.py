@@ -12,15 +12,13 @@ from util import *
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'sentence_simplification')))
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'sentence_simplification/preprocessing')))
 
-from asset_embeddings import get_sentence_pairs
+from asset_embeddings import get_sentence_pairs, get_custom_sentence_pairs
 from complexity import determine_complexity
 
-
-
-SYSTEM_PROMPT = "You are a highly specialized sentence simplification model. Your task is to simplify complex sentences by breaking down multiple clauses into separate sentences while preserving the original meaning. If a sentence cannot be simplified further, leave it unchanged. Prioritize splitting sentences into multiple shorter sentences. Return only the simplified sentences. Do not explain or provide commentary. Do NOT change the content or meaning of the sentences UNDER ANY CIRCUMSTANCE, even if it is incorrect or disagreeable. "
-TEMPERATURE = 0.0
-
-DEFAULT_MODEL = 'llama3.1:8b-instruct-q8_0'
+EXAMPLE_SENTENCES_TYPES = ["dynamic_similarity", "dynamic_tree", "static", "random", "custom"]
+DEFAULT_MODEL = 'simplify_model'
+CAUSAL_MODEL = 'causal_model'
+CONJECTURE_MODEL = 'conjecture_model'
 
 def call_ollama(prompt, model_type):
     """Call the Ollama model with the given prompt and model type."""
@@ -40,26 +38,35 @@ def call_ollama(prompt, model_type):
         return None
 
 
-def simplify_sentence(sentence, model=DEFAULT_MODEL, context_size=5, context_type='dynamic_tree', complexity_filter=False):
+def simplify_sentence(sentence, model=DEFAULT_MODEL, context_size=5, context_type='custom', complexity_filter=False):
     '''Simplifies a sentence using the given model and context settings'''
+
+    # Check if the sentence is a conjecture
+    if '?' in sentence:
+        query = f"Is the following sentence a question? '{sentence}' Answer 'Yes' or 'No'."
+        response = call_ollama(query, model)
+        if 'yes' in response.lower():
+            return sentence, False
     
     if complexity_filter:
         complex, complexity_dict = determine_complexity(sentence)
         if not complex:
             return sentence, False
-    if context_size > 0:
+    if context_size > 0 and context_type in [t for t in EXAMPLE_SENTENCES_TYPES if t != 'custom']:
         sentence_pairs = get_sentence_pairs(sentence, context_size, context_type)
+    elif context_size > 0 and context_type == 'custom':
+        sentence_pairs = get_custom_sentence_pairs(context_size)
     else:
         sentence_pairs = None
 
-    context_examples = '\n'.join(f'Complex: {orig}\nSimple: {simp}' for orig, simp in sentence_pairs) if sentence_pairs else ''
+    context_examples = '\n'.join(f'Original: {orig}\Converted: {simp}' for orig, simp in sentence_pairs) if sentence_pairs else ''
     context = f'Here are some examples:\n{context_examples}\n' if context_examples else ''
-    query = f'{context}Simplify the following sentence. Respond with ONLY the simplified version. Nothing else.\nComplex: {sentence.strip()}\nSimple:'
-    print(query)
-    response = ollama.generate(model, prompt=query, options={'system': SYSTEM_PROMPT, 'temperature': TEMPERATURE})
+    query = f'{context}Convert the following sentence. Remember to avoid using pronouns. If appropriate, capture causal relationships with "causes". Respond with ONLY the new sentence or sentences. If the sentence is simple enough, make no changes. Do NOT, under any circumstance, add new information to the sentence.\nComplex: {sentence.strip()}\nSimple:'
+    response = ollama.generate(model, prompt=query)
     message = response['response'].replace('\n', ' ')
 
-    # print(f'output: {message}\n')
+    print(f'original sentence: {sentence}')
+    print(f'simplified sentences: {message}')
 
     return message, True
 
@@ -76,14 +83,6 @@ def simplify_file(input_file, output_file, model_type):
         sentence = sentence.strip()
 
         sentence, simplified_flag = simplify_sentence(sentence, model=model_type)
-
-        pronouns = False
-        if check_pronouns_ollama(sentence, model_type):
-            pronouns = True
-        with open("ollama_log.txt", "a") as log:
-            log.write(f"Sentence: {sentence}\nPronouns: {pronouns}\n\n")
-        if pronouns:
-            sentence = remove_pronouns(sentence, model_type)
 
         simplified_sentences.append(sentence)
     
