@@ -43,19 +43,45 @@ def get_complexity_dict(sentence):
 
 def check_pronouns_ollama(sentence, model_type):
     ''' Prompts the passed model_type to check if the sentence contains replacable pronouns. Returns true if it does, false if it does not.'''
+    examples = """
+    Here are some examples to help you understand pronoun resolution. A pronoun is considered resolvable if it can be replaced with a specific noun or proper noun in the sentence(s).
 
-    prompt = f"Does the following sentence contain **any pronouns** (like 'it', 'its', 'they', or 'them')?  '{sentence}'  Only answer 'Yes.' or 'No.' Do not treat repeated nouns as pronouns." 
+    1. 'Sarah loves painting. She spends hours on her artwork.' 
+    Response: Since 'she' refers to Sarah, the answer is Yes.
+
+    2. 'The dog barked at the cat. The cat ran away.' 
+    Response: Since there are no pronouns in the sentence, the answer is No.
+
+    3. 'John called Mike, but he didn’t answer.' 
+    Response: Since 'he' refers to Mike, the answer is Yes.
+
+    4. 'It is raining outside.' 
+    Response: Since 'it' does not refer to anything specific, the answer is No.
+
+    5. 'Alice met Bob. Alice gave Bob a book.' 
+    Response: Since 'Alice' and 'Bob' are proper nouns, the answer is No.
+
+    6. 'Tom saw Jerry. He waved at him.' 
+    Response: Since 'he' refers to Tom, and 'him' refers to Jerry, the answer is Yes.
+
+    7. 'Lisa found her keys on the table.' 
+    Response: Since 'her' refers to Lisa, the answer is Yes.
+
+    8. 'They say exercise is important.' 
+    Response: Since 'they' does not refer to anything specific, the answer is No.
+    """
 
 
+    prompt = f"{examples}\nNow, does the following sentence(s) contain any pronouns that can be resolved / replaced? Answer 'Since <insert>, the answer is <Yes or No>.\nSentence(s): '{sentence}'.\nResponse:"
 
     try:
         # Use the ollama library to send the prompt to the model
         # temperature to 0 means there is no creativity, and responses are deterministic.
         response = ollama.chat(model=model_type, messages=[{"role": "user", "content": prompt}], options={"temperature": 0})
-        if "yes" in response["message"]["content"].lower():
-            return True
-        elif "no" in response["message"]["content"].lower():
+        if "the answer is no" in response["message"]["content"].lower():
             return False
+        elif "the answer is yes" in response["message"]["content"].lower():
+            return True
         else:
             raise Exception(f'Invalid response from Ollama: {response["message"]["content"]} for sentence: {sentence}')
     except Exception as e:

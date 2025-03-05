@@ -16,7 +16,7 @@ from asset_embeddings import get_sentence_pairs, get_custom_sentence_pairs
 from complexity import determine_complexity
 
 EXAMPLE_SENTENCES_TYPES = ["dynamic_similarity", "dynamic_tree", "static", "random", "custom"]
-DEFAULT_MODEL = 'simplify_model'
+DEFAULT_MODEL = 'llama3.1:8b-instruct-q8_0'
 
 def call_ollama(prompt, model_type):
     """Call the Ollama model with the given prompt and model type."""
@@ -27,8 +27,6 @@ def call_ollama(prompt, model_type):
         response = response["message"]["content"]
         response = remove_numbering(response)
         response = response.replace('\n', ' ')
-        with open("ollama_log.txt", "a") as log:
-            log.write(f"Prompt: {prompt}\nResponse: {response}\n\n")
         return(response)
     
     except Exception as e:
@@ -50,13 +48,15 @@ def simplify_sentence(sentence, model=DEFAULT_MODEL, context_size=5, context_typ
     else:
         sentence_pairs = None
 
-    context_examples = '\n'.join(f'Original: {orig}\Converted: {simp}' for orig, simp in sentence_pairs) if sentence_pairs else ''
+    context_examples = '\n'.join(f'Original: {orig}\nConverted: {simp}' for orig, simp in sentence_pairs) if sentence_pairs else ''
     context = f'Here are some examples:\n{context_examples}\n' if context_examples else ''
-    query = f'{context}Convert the following sentence. Respond with ONLY the new sentences. Nothing else.\nComplex: {sentence.strip()}\nSimple:'
+    query = f'{context}Convert the following sentence. If the sentence is already simple, LEAVE IT UNCHANGED. Respond with ONLY the new sentences. Do NOT include a note or explanation.\nComplex: {sentence.strip()}\nSimple:'
     response = ollama.generate(model, prompt=query)
     message = response['response'].replace('\n', ' ')
 
-    # print(f'output: {message}\n')
+    with open("ollama_log.txt", "a") as log:
+        log.write(f'Simplify input: {sentence}\n')
+        log.write(f'Simplify output: {message}\n\n')
 
     return message, True
 
@@ -68,8 +68,14 @@ def simplify_file(input_file, output_file, model_type):
         3. joins all sentences and uses stanza to separate sentences to write onto individual lines of output. '''
 
     simplified_sentences = []  
+    with open("ollama_log.txt", "w") as log:   # clear log file
+        log.write("")
 
     for sentence in tqdm.tqdm(open(input_file, 'r').readlines()):
+
+        with open("ollama_log.txt", "a") as log:
+            log.write(f"Simplifying: {sentence}\n")
+
         sentence = sentence.strip()
 
         sentence, simplified_flag = simplify_sentence(sentence, model=model_type)
@@ -99,10 +105,13 @@ def remove_pronouns(sentence, model):
     Remove pronouns from a sentence passing prompt and sentence through passed model. 
     '''
 
-    prompt = prompt = "Perform coreference resolution on the following sentence. Follow these rules EXACTLY: Return ONLY the resolved sentence. Do not number the sentences. Do not add quotes, apostrophes, or any additional punctuation around the sentence. Do not include explanations, commentary, or any other text. If a pronoun cannot be resolved, leave it unchanged. Sentence: '" + sentence + "'"
+    prompt = prompt = "Perform coreference resolution on the following sentence(s). Follow these rules EXACTLY: Return ONLY the resolved sentence(s). Do not number the sentences. Do not add quotes, apostrophes, or any additional punctuation around the sentence. Do not include explanations, commentary, or any other text. Leave the sentence(s) as unchanged as possible. If a pronoun cannot be resolved, leave it unchanged. Sentence(s): '" + sentence + "'"
 
 
     response = call_ollama(prompt, model)
+
+    with open("ollama_log.txt", "a") as log:
+        log.write(f"Pronoun resolution: {response}\n\n")
     return response
 
 
