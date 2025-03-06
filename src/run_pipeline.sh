@@ -35,6 +35,8 @@ bash l2l/entry_point.sh
 cp l2l/output_l2l.txt oov_handling/input_post_oov.txt
 echo -e "\nAfter L2L" >> "$FLOW_FILE"
 cat l2l/output_l2l.txt >> "$FLOW_FILE"
+echo -e "\nAfter L2L"
+cat l2l/output_l2l.txt
 
 bash oov_handling/entry_point_postprocessing.sh
 cp oov_handling/output_post_oov.txt prover/input_pr.txt
