@@ -159,6 +159,25 @@ def process_file(input_file, output_file, conn, cursor):
                 processed_line = process_sentence(stripped_line, conn, cursor)
                 outfile.write(processed_line + '\n')
 
+def clear_unknown_words_from_db(conn, cursor):
+  try:
+    # Query to get the word based on ID
+    cursor.execute("DELETE FROM UnknownWords")
+    cursor.execute("SELECT COUNT(*) FROM UnknownWords")
+    result = cursor.fetchone()
+    # If the word is found, mark it as used and return it
+    if result[0] == 0:
+      print(f"Database cleaned from Unknown Words")
+      conn.commit()
+    else:
+      print(f"ERROR Cleaning Database from Unknown Words. number of words found: {result[0]}")
+  except sqlite3.Error as e:
+        # Handle any SQLite errors
+        print(f"Database error: {e}")
+  except Exception as e:
+        # Handle unexpected errors
+        print(f"Unexpected error: {e}")
+
 
 
 if __name__ == "__main__":
@@ -183,6 +202,7 @@ if __name__ == "__main__":
     """)
     conn.commit()
 
+    clear_unknown_words_from_db(conn, cursor)
     process_file(input_filename, output_filename, conn, cursor)
 
     # Close the database connection after processing
