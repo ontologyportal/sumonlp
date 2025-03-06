@@ -73,7 +73,7 @@ while true; do
                   echo "Input file $inputFile not found."
                 else
                   echo "Adding $inputFile to the knowledge base."
-                  outputFile="add_lbl_output.txt"
+                  outputFile="test/add_lbl_output.txt"
                   echo "" > "$outputFile"
                   while IFS= read -r line; do
                     echo "$line" > policy_extracter/input_pe.txt
@@ -82,7 +82,7 @@ while true; do
                     echo "!!" >> "$outputFile"
                   done < "$inputFile"
                 fi
-                bash check_SUOKIF_syntax.sh $inputFile -c
+                bash test/check_SUOKIF_syntax.sh $inputFile -c
             else
                 echo "Please enter a text file name."
             fi
