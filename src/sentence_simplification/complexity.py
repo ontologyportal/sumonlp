@@ -71,7 +71,6 @@ def check_pronouns_ollama(sentence, model_type):
     Response: Since 'they' does not refer to anything specific, the answer is No.
     """
 
-
     prompt = f"{examples}\nNow, does the following sentence(s) contain any pronouns that can be resolved / replaced? Answer 'Since <insert>, the answer is <Yes or No>.\nSentence(s): '{sentence}'.\nResponse:"
 
     try:
@@ -83,7 +82,8 @@ def check_pronouns_ollama(sentence, model_type):
         elif "the answer is yes" in response["message"]["content"].lower():
             return True
         else:
-            raise Exception(f'Invalid response from Ollama: {response["message"]["content"]} for sentence: {sentence}')
+            print(f'WARNING: Invalid response from Ollama: {response["message"]["content"]} for sentence: {sentence}')
+            return False
     except Exception as e:
         print(f"Error calling Ollama: {e}")
         return None

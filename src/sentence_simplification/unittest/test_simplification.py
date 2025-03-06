@@ -8,7 +8,7 @@ from simplification import call_ollama, simplify_file, remove_pronouns, simplify
 
 class TestSimplification(unittest.TestCase):
     def setUp(self):
-        self.model_type = 'llama3.1'
+        self.model_type = 'llama3.1:8b-instruct-q8_0'
 
     # Mock cases
 
