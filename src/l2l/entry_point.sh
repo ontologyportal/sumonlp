@@ -9,5 +9,6 @@ source ../load_configs.sh
 python reference/inference.py "$SUMO_NLP_HOME/L2L_model/$MODEL_L2L"
 
 sed -i 's/? / ?/g' output_l2l.txt
+sed -i 's/?/ ?/g' output_l2l.txt
 
 echo "Finished Language to Logic translation ..."
