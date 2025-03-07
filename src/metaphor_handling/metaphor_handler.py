@@ -28,9 +28,18 @@ class MetaphorDetector:
                 sentence_label = 1
                 sentence_metaphors.append(dict_entry['word'])
         
+        # get rid of tokenization underscore (_token)
+        clean_sentence_metaphors = [token.replace("▁", "") for token in sentence_metaphors]
+
         sentence_dict['sentence_label'] = sentence_label
         sentence_dict['label_list'] = label_list
-        sentence_dict['sentence_metaphors'] =  sentence_metaphors
+        sentence_dict['sentence_metaphors'] =  clean_sentence_metaphors
+        print(sentence)
+        
+        if clean_sentence_metaphors:
+            print(clean_sentence_metaphors)
+        else:
+            print("(No metaphor detected)")
 
         return sentence, sentence_dict
 
@@ -57,11 +66,37 @@ class MetaphorTranslator:
 
     def call_ollama(self, prompt: str):
         try:
-            response = ollama.chat(model=self.model_type, messages=[{"role": "user", "content": prompt}], options={"temperature": 0})
+            messages = [
+                {"role": "system", "content": "You must return only the rephrased sentence without any explanations or additional text."},
+                {"role": "user", "content": prompt}
+            ]
+            response = ollama.chat(model=self.model_type, messages=messages, options={"temperature": 0})
+            #response = ollama.chat(model=self.model_type, messages=[{"role": "user", "content": prompt}], options={"temperature": 0})
             return response["message"]["content"].replace('\n', ' ')
         except Exception as e:
             print(f"Error calling Ollama: {e}")
             return None
+
+    def replace_words(self, words, sentence):
+        
+        new_sentence = sentence
+        for word in words:
+            print(f"Word to replace: ", word)
+            prompt = f"Quick answer: For the word {word} in the following sentence: '{sentence}' /\n"
+            prompt += f"What is a replacement word I can use that will make the sentence more literal?"
+            prompt += "Please respond with ONE replacement word only. Do not include parenthesis. /\n "
+            prompt += f"MOST IMPORTANTLY: Your response must be a single word ONLY!!!:\n"
+
+            new_word = self.call_ollama(prompt)
+            print(new_word)
+
+            new_sentence = new_sentence.replace(word, new_word)
+            print(new_sentence)
+
+        print("FINAL:")
+        print(new_sentence)
+
+
 
     def translate_metaphor(self, sentence, sentence_dict=None, include_words=False):
         try:
@@ -71,14 +106,23 @@ class MetaphorTranslator:
                 
             else:
                 if include_words:
-                    words = "".join(sentence_dict['sentence_metaphors'])
-                    prompt = f"Quick answer: This sentence contains metaphorical content: {sentence} /\n"
-                    prompt += f"The following words in the sentence may be metaphorical: {words}. "
-                    prompt += "Please rephrase the sentence by replacing the words and ensure your response is free of metaphorical words or expressions."
-                    prompt += "Please return ONLY the rephrased sentence in your answer."
+                    words = " ".join(sentence_dict['sentence_metaphors'])
+                    words = sentence_dict['sentence_metaphors']
+                    #print('Words: ', words)
+                    #self.replace_words(words, sentence)
+                    prompt = f"Quick answer: The sentence: '{sentence}' contains metaphorical words. \n"
+                    prompt += f"Those words are: '{words}'. "
+                    prompt += "Please rephrase the sentence by replacing ONLY those words with more literal synonomous words. "
+                    # prompt += "Return only the sentence with replaced words, keeping the sentence structure about the same. "
+                    prompt += "Keep the sentence structure the same, and avoid figurative language. Use the most simple words possible.  "
+                    prompt += "Only replace the word in question, do not replace ANY other words in the sentence. "
+                    prompt += "Do not add ANY assumptions about the sentence, do not introduce new ideas at all. "
+                    prompt += f"MOST IMPORTANTLY: Again, ONLY return the rephrased sentence, no explanations or comments.\n"
+
                 else:
                     prompt = f"Quick answer: Rephrase the following sentence with as few words as possible, without metaphorical content: {sentence}"
                 
+                print(prompt)
                 response = self.call_ollama(prompt)
 
                 if response != None:
