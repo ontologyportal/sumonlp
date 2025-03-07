@@ -21,7 +21,7 @@ from asset_embeddings import get_sentence_pairs, get_custom_sentence_pairs
 from complexity import determine_complexity
 
 EXAMPLE_SENTENCES_TYPES = ["dynamic_similarity", "dynamic_tree", "static", "random", "custom"]
-DEFAULT_MODEL = 'llama3.1:8b-instruct-fp16'
+DEFAULT_MODEL = 'llama3.1:8b-instruct-q8_0'
 
 def call_ollama(prompt, model_type):
     """Call the Ollama model with the given prompt and model type."""
@@ -40,7 +40,7 @@ def call_ollama(prompt, model_type):
         return None
 
 
-def simplify_sentence(sentence, model=DEFAULT_MODEL, context_size=3, context_type='custom', complexity_filter=False):
+def simplify_sentence(sentence, model=DEFAULT_MODEL, context_size=5, context_type='custom', complexity_filter=False):
     '''Simplifies a sentence using the given model and context settings'''
     
     if complexity_filter:
@@ -73,7 +73,6 @@ def simplify_sentence(sentence, model=DEFAULT_MODEL, context_size=3, context_typ
         f'Original: {sentence.strip()}\nResponse:'
     )
 
-    print(f"Prompt: {query}")
     response = ollama.generate(model, prompt=query, options={"temperature": 0})
     message = response['response'].replace('\n', ' ')
     
@@ -105,16 +104,20 @@ def ollama_hallucination_check(original: str, simplified: str, model: str = DEFA
     prompt = f"""
     You are evaluating sentence simplifications for language-to-logic translation.
     
-    Identify any hallucinations (extra details not found in the original), omissions (important missing information), or meaning changes.
-    Small changes between verbs that still mean the same thing are okay, as long as they are logically equivalent. Do not penalize split sentences, as long as the meaning is preserved. Splitting is one of the main purposes of simplification. Pronouns will be resolved in a later step, so do not worry about them here.
+    Key Guidelines:
+        Splitting is the intended goal, so do not penalize for splitting sentences.
+        Do not penalize for removing conjunctions unless meaning is lost.
+        Do not suggest adding back conjunctions, even if the sentence "flows better.", unless meaning is lost.
+        Do not recommend merging unless the simplification causes ambiguity or meaning loss.
+        Each sentence should stand alone, so penalize for missing information that is necessary for understanding.
+        Pronouns are meant to be resolved, so replacements like "Terry" instead of "he" are acceptable, as long as they are accurate.
 
     Respond in the format:
     'Since <reasoning>, I have determined:
-        - Extra Information: <describe> or None
-        - Missing Information: <describe> or None
-        - Meaning Change: <describe> or None
-        - Gained Complexity: <Yes/No> (implying the simplified version is more complex than original)
-        - Recommendation: <recommendation> or 'Enthusiastically accept.' if no issues are found.
+        - Extra Information: <describe the hallucination> or None
+        - Missing Information: <describe the meaningful missing information> or None
+        - Meaning Change: <describe how the meaning changed> or None 
+        - Recommendation: <recommended actions to fix simplification> or 'Enthusiastically accept.' if no issues are found.
     
     Compare the following two sentences:
     
@@ -138,8 +141,6 @@ def ollama_hallucination_check(original: str, simplified: str, model: str = DEFA
             issues["missing_info"] = line.replace("- Missing Information:", "").strip() if "None" not in line else None
         elif line.startswith("- Meaning Change:"):
             issues["meaning_change"] = line.replace("- Meaning Change:", "").strip() if "None" not in line else None
-        elif line.startswith("- Gained Complexity:"):
-            issues["gained_complexity"] = line.replace("- Gained Complexity:", "").strip() if "No" not in line else None
         elif line.startswith("- Recommendation:"):
             issues["recommendation"] = line.replace("- Recommendation:", "").strip()
 
@@ -177,8 +178,6 @@ def hallucination_check(original: str, simplified: str, threshold: float = 0.8) 
     # Named Entity Consistency Check
     original_entities = {ent.text.lower() for ent in nlp(original).ents}
     simplified_entities = {ent.text.lower() for ent in nlp(simplified).ents}
-    print(f'Original entities: {original_entities}')
-    print(f'Simplified entities: {simplified_entities}')
 
     extra_entities = simplified_entities - original_entities
     missing_entities = original_entities - simplified_entities
@@ -191,8 +190,6 @@ def hallucination_check(original: str, simplified: str, threshold: float = 0.8) 
     # Verb & Action Matching
     original_verbs = {token.lemma_ for token in nlp(original) if token.pos_ == "VERB"}
     simplified_verbs = {token.lemma_ for token in nlp(simplified) if token.pos_ == "VERB"}
-    print(f'Original verbs: {original_verbs}')
-    print(f'Simplified verbs: {simplified_verbs}')
 
     extra_verbs = simplified_verbs - original_verbs
     missing_verbs = original_verbs - simplified_verbs
@@ -206,8 +203,6 @@ def hallucination_check(original: str, simplified: str, threshold: float = 0.8) 
 
 def validate_response(original, simplified):
     '''Check if the simplified sentence is valid by comparing it to the original sentence.'''
-    print(f"Original: {original}")
-    print(f"Simplified: {simplified}")
 
     issues = {}
 
@@ -228,8 +223,6 @@ def validate_response(original, simplified):
 
     if extra_notes:
         issues['explanation found'] = extra_notes
-
-    print(f"Issues: {issues}")
     
     return issues
 
@@ -270,7 +263,7 @@ def simplify_file(input_file, output_file, model_type):
             issues_text = "\n".join(f"- {key}: {value}" for key, value in issues.items())
             tries += 1
 
-            
+        # check if sentence contains pronouns and replaces them with accurate nouns if possible            
         pronouns = False
         if check_pronouns_ollama(simplified, model_type):
             pronouns = True
@@ -347,7 +340,7 @@ def remove_pronouns(sentence, model):
         resolved_output = response_text.split("The resolved output is:", 1)[-1].strip()
 
         with open("ollama_log.txt", "a") as log:
-            log.write(f"Pronoun resolution:\nOriginal: {sentence}\nResolved: {resolved_output}\n\n")
+            log.write(f"Pronoun resolution:\nOriginal: {sentence}\nResolved: {response_text}\n\n")
 
         return resolved_output
     except Exception as e:
