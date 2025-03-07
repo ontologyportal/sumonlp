@@ -121,10 +121,12 @@ def process_sentence(sentence, conn, cursor):
       # nlp again the sentence
       doc = nlp(new_sentence)
       # NER process  {ent.text} {ent.type}
+
+      ner_entities_excluded = ["DATE","CARDINAL","PERCENT", "ORDINAL", "QUANTITY","TIME"]
+
       for ent in doc.ents:
-        # If type != DATE
         # Don't try to NER the Unknown Words from previous step
-        if ent.type != "DATE" and not ent.text.startswith("UNK_"):
+        if ent.type not in ner_entities_excluded and not ent.text.startswith("UNK_"):
           # Save each ent and type in DB
           id_exist = add_unknown_word(ent.text, ent.type, conn, cursor, sentence_id)
 
@@ -157,6 +159,25 @@ def process_file(input_file, output_file, conn, cursor):
                 processed_line = process_sentence(stripped_line, conn, cursor)
                 outfile.write(processed_line + '\n')
 
+def clear_unknown_words_from_db(conn, cursor):
+  try:
+    # Query to get the word based on ID
+    cursor.execute("DELETE FROM UnknownWords")
+    cursor.execute("SELECT COUNT(*) FROM UnknownWords")
+    result = cursor.fetchone()
+    # If the word is found, mark it as used and return it
+    if result[0] == 0:
+      print(f"Database cleaned from Unknown Words")
+      conn.commit()
+    else:
+      print(f"ERROR Cleaning Database from Unknown Words. number of words found: {result[0]}")
+  except sqlite3.Error as e:
+        # Handle any SQLite errors
+        print(f"Database error: {e}")
+  except Exception as e:
+        # Handle unexpected errors
+        print(f"Unexpected error: {e}")
+
 
 
 if __name__ == "__main__":
@@ -181,6 +202,7 @@ if __name__ == "__main__":
     """)
     conn.commit()
 
+    clear_unknown_words_from_db(conn, cursor)
     process_file(input_filename, output_filename, conn, cursor)
 
     # Close the database connection after processing
