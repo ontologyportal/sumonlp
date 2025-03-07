@@ -73,7 +73,7 @@ while true; do
                   echo "Input file $inputFile not found."
                 else
                   echo "Adding $inputFile to the knowledge base."
-                  outputFile="add_lbl_output.txt"
+                  outputFile="test/add_lbl_output.txt"
                   echo "" > "$outputFile"
                   while IFS= read -r line; do
                     echo "$line" > policy_extracter/input_pe.txt
@@ -82,7 +82,9 @@ while true; do
                     echo "!!" >> "$outputFile"
                   done < "$inputFile"
                 fi
+                cd test
                 bash check_SUOKIF_syntax.sh $inputFile -c
+                cd ../
             else
                 echo "Please enter a text file name."
             fi
@@ -136,9 +138,11 @@ while true; do
             bash oov_handling/entry_point.sh > oov_handling/logs/oov_handling.log
             echo "Out of vocabulary output: "
             cat oov_handling/output_oov.txt
+            cat oov_handling/output_oov.txt > l2l/input_l2l.txt
             bash l2l/entry_point.sh > l2l/l2l_log.log
             echo "L2l output: "
             cat l2l/output_l2l.txt
+            cat l2l/output_l2l.txt > oov_handling/input_post_oov.txt
             bash oov_handling/entry_point_postprocessing.sh > oov/logs/oov_handling_post.log
             cat oov_handling/output_post_oov.txt
             ;;

@@ -8,7 +8,8 @@ source ../load_configs.sh
 ../utils/start_ollama.sh > logs/ollama.log 2>&1 &
 
 ollama pull llama3.1:8b-instruct-q8_0
-ollama create simplify_model -f ./models/Modelfile_llama3.1_8b-instruct-q8_0
+ollama create simplify_model -f ./models/Modelfile_simplify
+ollama create causal_model -f ./models/Modelfile_causal
 
 cp input_ss.txt output_ss.txt
 

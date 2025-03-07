@@ -23,6 +23,7 @@ from complexity import determine_complexity
 EXAMPLE_SENTENCES_TYPES = ["dynamic_similarity", "dynamic_tree", "static", "random", "custom"]
 DEFAULT_MODEL = 'llama3.1:8b-instruct-q8_0'
 
+
 def call_ollama(prompt, model_type):
     """Call the Ollama model with the given prompt and model type."""
     try:
@@ -42,6 +43,13 @@ def call_ollama(prompt, model_type):
 
 def simplify_sentence(sentence, model=DEFAULT_MODEL, context_size=5, context_type='custom', complexity_filter=False):
     '''Simplifies a sentence using the given model and context settings'''
+
+    # Check if the sentence is a conjecture
+    if '?' in sentence:
+        query = f"Is the following sentence a question? '{sentence}' Answer 'Yes' or 'No'."
+        response = call_ollama(query, model)
+        if 'yes' in response.lower():
+            return sentence, False
     
     if complexity_filter:
         complex, complexity_dict = determine_complexity(sentence)
@@ -74,6 +82,7 @@ def simplify_sentence(sentence, model=DEFAULT_MODEL, context_size=5, context_typ
     )
 
     response = ollama.generate(model, prompt=query, options={"temperature": 0})
+
     message = response['response'].replace('\n', ' ')
     
     with open("ollama_log.txt", "a") as log:
@@ -81,6 +90,11 @@ def simplify_sentence(sentence, model=DEFAULT_MODEL, context_size=5, context_typ
         log.write(f'Simplify output: {message}\n\n')
 
     message = message.split("The converted version is: ")[-1].strip()
+
+
+
+    print(f'original sentence: {sentence}')
+    print(f'simplified sentences: {message}')
 
 
     if message == sentence:
