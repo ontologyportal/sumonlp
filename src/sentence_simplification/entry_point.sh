@@ -14,6 +14,7 @@ ollama create causal_model -f ./models/Modelfile_causal
 cp input_ss.txt output_ss.txt
 
 # python3 main.py
+echo $MODEL_SS
 python3 main.py input_ss.txt output_ss.txt "$MODEL_SS"
 
 
