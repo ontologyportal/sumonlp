@@ -68,7 +68,7 @@ def check_pronouns_ollama(sentence, model_type):
     Response: Since 'her' refers to Lisa, the answer is Yes.
 
     8. 'They say exercise is important.' 
-    Response: Since 'they' does not refer to anything specific, the answer is No.
+    Response: Since 'they' does not refer to anything specific, the answer is No.g
     """
 
     prompt = f"{examples}\nNow, does the following sentence(s) contain any pronouns that can be resolved / replaced? Answer 'Since <insert>, the answer is <Yes or No>.\nSentence(s): '{sentence}'.\nResponse:"
