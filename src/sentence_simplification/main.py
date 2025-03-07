@@ -17,7 +17,6 @@ if __name__ == '__main__':
     output_file = sys.argv[2]
     model_type = sys.argv[3]
     
-    input_file = cleanup_input(input_file)
     simplify_file(input_file, output_file, model_type)
 
     end_program(start_time)

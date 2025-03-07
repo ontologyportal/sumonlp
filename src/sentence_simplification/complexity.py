@@ -77,6 +77,8 @@ def check_pronouns_ollama(sentence, model_type):
         # Use the ollama library to send the prompt to the model
         # temperature to 0 means there is no creativity, and responses are deterministic.
         response = ollama.chat(model=model_type, messages=[{"role": "user", "content": prompt}], options={"temperature": 0})
+        with open('ollama_log.txt', 'a') as f:
+            f.write(f"Prompt: {prompt}\nResponse: {response['message']['content']}\n\n")
         if "the answer is no" in response["message"]["content"].lower():
             return False
         elif "the answer is yes" in response["message"]["content"].lower():
