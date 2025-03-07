@@ -32,13 +32,14 @@ while true; do
             echo "Asking $ask_value"
             echo $ask_value > policy_extracter/input_pe.txt
             bash run_pipeline.sh
-            cat prover/input_pr.txt >> $HOME/.sigmakee/KBs/SUMO_NLP.kif
+            cat prover/input_pr.txt >> $SIGMA_HOME/KBs/SUMO_NLP.kif
             question_KIF=$(cat prover/input_pr.txt)
             echo $question_KIF
+            bash utils/add_SUMO_NLP_to_config_dot_xml_if_needed.sh
             question_TPTP=$(java -Xmx8g -classpath $ONTOLOGYPORTAL_GIT/sigmakee/build/sigmakee.jar:$ONTOLOGYPORTAL_GIT/sigmakee/lib/* com.articulate.sigma.trans.SUMOformulaToTPTPformula -g "$question_KIF" | tail -n 1)
-            cat $HOME/.sigmakee/KBs/SUMO.tptp > $HOME/.sigmakee/KBs/SUMO_NLP_QUERY.tptp
-            echo "fof(name1,conjecture, $question_TPTP)." >> $HOME/.sigmakee/KBs/SUMO_NLP_QUERY.tptp
-            vampire --input_syntax tptp -t 10 --proof tptp -qa plain --mode casc $HOME/.sigmakee/KBs/SUMO_NLP_QUERY.tptp > prover/output_pr.txt
+            cat $SIGMA_HOME/KBs/SUMO.tptp > $SIGMA_HOME/.sigmakee/KBs/SUMO_NLP_QUERY.tptp
+            echo "fof(name1,conjecture, $question_TPTP)." >> $SIGMA_HOME/KBs/SUMO_NLP_QUERY.tptp
+            vampire --input_syntax tptp -t 10 --proof tptp -qa plain --mode casc $SIGMA_HOME/.sigmakee/KBs/SUMO_NLP_QUERY.tptp | tee prover/output_pr.txt
             ;;
         add)
             add_value=${input:4} # gets the substring from character position 4 to the end.
@@ -52,14 +53,15 @@ while true; do
                 echo $add_value > policy_extracter/input_pe.txt
             fi
             bash run_pipeline.sh
-            cat prover/input_pr.txt >> $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif
-            cat $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif > $HOME/.sigmakee/KBs/SUMO_NLP.kif
-            if [ -e "$HOME/.sigmakee/KBs/SUMO.tptp" ] && [ $txt_file == false ]; then
+            cat prover/input_pr.txt >> $SIGMA_HOME/KBs/SUMO_NLP_KB.kif
+            cat $SIGMA_HOME/KBs/SUMO_NLP_KB.kif > $SIGMA_HOME/KBs/SUMO_NLP.kif
+            bash utils/add_SUMO_NLP_to_config_dot_xml_if_needed.sh
+            if [ -e "$SIGMA_HOME/KBs/SUMO.tptp" ] && [ $txt_file == false ]; then
                 axiom_KIF=$(cat prover/input_pr.txt)
                 echo $axiom_KIF
                 axiom_TPTP=$(java -Xmx8g -classpath $ONTOLOGYPORTAL_GIT/sigmakee/build/sigmakee.jar:$ONTOLOGYPORTAL_GIT/sigmakee/lib/* com.articulate.sigma.trans.SUMOformulaToTPTPformula -g "$axiom_KIF" | tail -n 1)
                 echo $axiom_TPTP
-                echo "fof(name1,axiom, $axiom_TPTP)." >> $HOME/.sigmakee/KBs/SUMO.tptp
+                echo "fof(name1,axiom, $axiom_TPTP)." >> $SIGMA_HOME/KBs/SUMO.tptp
             else
                 java -Xmx8g -classpath $SIGMA_SRC/build/sigmakee.jar:$SIGMA_SRC/lib/* com.articulate.sigma.trans.SUMOKBtoTPTPKB
             fi
@@ -90,23 +92,42 @@ while true; do
             fi
             ;;
         clear)
-            rm -f $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif
-            rm -f $HOME/.sigmakee/KBs/SUMO_NLP.kif
-            rm -f $HOME/.sigmakee/KBs/SUMO.fof
-            rm -f $HOME/.sigmakee/KBs/SUMO.tptp
-            rm -f $HOME/.sigmakee/KBs/SUMO_NLP_QUERY.fof
+            rm -f $SIGMA_HOME/KBs/SUMO_NLP_KB.kif
+            rm -f $SIGMA_HOME/KBs/SUMO_NLP.kif
+            rm -f $SIGMA_HOME/KBs/SUMO.fof
+            rm -f $SIGMA_HOME/KBs/SUMO.tptp
+            rm -f $SIGMA_HOME/KBs/SUMO_NLP_QUERY.fof
             echo "Knowledge base has been cleared."
             ;;
         list|kb)
-            if [ -e "$HOME/.sigmakee/KBs/SUMO_NLP_KB.kif" ]; then
-              cat $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif
+            if [ -e "$SIGMA_HOME/KBs/SUMO_NLP_KB.kif" ]; then
+              echo "Knowledge Base: "
+              cat $SIGMA_HOME/KBs/SUMO_NLP_KB.kif
             fi
+            echo -e "\n"
             ;;
         prover|test)
+            if [[ $input == test* ]]; then
+                time_value=${input:6}
+            else
+                time_value=${input:8}
+            fi
             time_value=${input:6}
-            cat $HOME/.sigmakee/KBs/SUMO_NLP_KB.kif > $HOME/.sigmakee/KBs/SUMO_NLP.kif
+            cat $SIGMA_HOME/KBs/SUMO_NLP_KB.kif > $SIGMA_HOME/KBs/SUMO_NLP.kif
+            bash utils/add_SUMO_NLP_to_config_dot_xml_if_needed.sh
             java -Xmx8g -classpath $SIGMA_SRC/build/sigmakee.jar:$SIGMA_SRC/lib/* com.articulate.sigma.trans.SUMOKBtoTPTPKB
-            vampire --input_syntax tptp $time_value --proof tptp -qa plain --mode casc $HOME/.sigmakee/KBs/SUMO.tptp
+            vampire --input_syntax tptp $time_value --proof tptp -qa plain --mode casc $SIGMA_HOME/KBs/SUMO.tptp | tee prover/output_pr.txt
+            ;;
+        proofvisual|pv)
+            file="prover/output_pr.txt"
+            if [ -f "$file" ]; then
+                java -Xmx8g -classpath $ONTOLOGYPORTAL_GIT/sigmakee/build/sigmakee.jar:$ONTOLOGYPORTAL_GIT/sigmakee/lib/* com.articulate.sigma.trans.TPTP3ProofProcessor -f prover/output_pr.txt
+                dot $CATALINA_HOME/webapps/sigma/graph/proof.dot -Tgif > prover/proof.gif
+                echo "Visualization has been saved to prover/proof.gif"
+                xdg-open prover/proof.gif
+            else
+                echo "Their is no prover output to visualize. Proof should be saved to prover/prover_output.txt"
+            fi
             ;;
         last)
             cat flow.txt
@@ -143,7 +164,7 @@ while true; do
             echo "L2l output: "
             cat l2l/output_l2l.txt
             cat l2l/output_l2l.txt > oov_handling/input_post_oov.txt
-            bash oov_handling/entry_point_postprocessing.sh > oov/logs/oov_handling_post.log
+            bash oov_handling/entry_point_postprocessing.sh
             cat oov_handling/output_post_oov.txt
             ;;
         history|hist)
@@ -161,6 +182,7 @@ while true; do
             printf '\n"last" will show the progression through the pipeline of the last added sentence or file.\n  Example: "last"\n'
             printf '\n"list" or "kb" will display the knowledge base.\n  Example: "list"\n'
             printf '\n"prover" or "test" will run the Vampire prover on the knowledge base, searching for contradictions. Default is 60 seconds.\n  Example: "test -t 40" # runs for 40 seconds\n  Example: "test" # runs for 60 seconds\n'
+            printf '\n"proofvisual" or "pv" will create a visualization of the most recent proof\n'
             printf '\n"mh" will run just the metaphor translation portion of the pipeline.\n  Example: "mh The car flew past the barn."\n'
             printf '\n"ss" will run just the sentence simplification portion of the pipeline.\n  Example: "ss He who knows not, knows not he knows not, is a fool, shun him."\n'
             printf '\n"oov" will run just the out of vocabulary handling portion of the pipeline.\n  Example: "oov Bartholemew used the doohicky as a dinglehopper."\n'

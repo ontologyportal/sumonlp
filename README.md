@@ -60,14 +60,14 @@ export SUMO_NLP_CONDA_ENVIRONMENT="name_you_chose_for_environment"
 Installation instructions are [here](https://github.com/ontologyportal/sigmakee?tab=readme-ov-file#vampire). It is recommended to install vampire in After installing Vampire, add the following line to the .bashrc file:
 
 ```
-export PATH="$HOME/path/to/vampire:$PATH" 
+export PATH="/path/to/vampire:$PATH" 
 ```
 
 ### Configuration
 The language to logic translator produces the file SUMO_NLP.kif, with logic statements generated from natural language. This file is automatically copied to the .sigmakee/KBs directory. To be able to translate the generated SUO-KIF logic to the TPTP input required by the vampire prover, update 
 
 ```
-$HOME/.sigmakee/KBs/config.xml
+$SIGMA_HOME/KBs/config.xml
 ```
 
 and add the following line is in the <kb name="SUMO" > section:
@@ -76,7 +76,7 @@ and add the following line is in the <kb name="SUMO" > section:
 ...
   <kb name="SUMO" >
     ...
-    <constituent filename="/home/THE_USER/.sigmakee/KBs/SUMO_NLP.kif" />
+    <constituent filename="$SIGMA_HOME/KBs/SUMO_NLP.kif" />
     ...
   </kb>
 ...
@@ -129,7 +129,7 @@ Add the path of your ollama installation to the .bashrc file:
 ```
 export OLLAMA_HOST_PORT="11434" # Used to change default port (11434) to unique port number if necessary.
 export OLLAMA_HOST="127.0.0.1:$OLLAMA_HOST_PORT"
-export PATH="$HOME/path/to/ollama/bin:$PATH" # Path to ollama executable
+export PATH="/path/to/ollama/bin:$PATH" # Path to ollama executable
 ```
 
 
