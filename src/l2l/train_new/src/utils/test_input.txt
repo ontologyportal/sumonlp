@@ -1,0 +1,1 @@
+(=> (instance ?X PAOK) (capable ?X Think))

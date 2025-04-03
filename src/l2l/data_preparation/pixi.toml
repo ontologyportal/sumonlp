@@ -1,0 +1,14 @@
+[project]
+authors = ["Angelos Toutsios <angelos.toutsios@gmail.com>"]
+channels = ["conda-forge"]
+description = "Add a short description here"
+name = "weirdness_detector"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = "=3.9.18"
+requests = ">=2.32.3,<3"
+torchvision = ">=0.20.1,<0.21"

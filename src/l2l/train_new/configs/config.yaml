@@ -1,0 +1,90 @@
+hydra:
+  run:
+    dir: ${paths.output_dir}
+  output_subdir: "configs"
+datamodule:
+  _target_: src.datamodules.dataset.L2LDataModule
+  batch_size: 32
+  num_workers: 4
+  data_dir: ${paths.data_dir}tokenized/
+  input_file: ${paths.input_file}
+  data_name : ${paths.data_name}
+
+preprocessor:
+  _target_: src.datamodules.tokenize_data.TokenizedDatasetPreprocessor
+  save_path: ${paths.data_dir}tokenized/
+  max_input_length: 256
+  max_output_length: 256
+  tokenizer_name: 'google/flan-t5-base'
+  data_name : ${paths.data_name}
+  input_file: ${paths.input_file}
+  label_file: ${paths.label_file}
+
+module:
+  _target_: src.modules.T5model.L2LModel
+  lr: 1e-2
+  # factor: 0.1
+  # patience: 10
+  model_name: 'google/flan-t5-base'
+  dropout: 0.2
+  weight_decay: null
+  sumo_terms: 'src/utils/sumo_terms.txt'
+  warm_up_step: 0
+  sumo_term_penalty_weight: 0
+
+  lora_r: 8
+  lora_alpha: 32
+  lora_dropout: 0.1
+trainer:
+  _target_: lightning.pytorch.Trainer
+  default_root_dir: ${paths.output_dir}
+  fast_dev_run: false
+  accelerator: auto
+  strategy: auto
+  devices: auto
+  precision: 32-true
+  min_epochs: 1
+  max_epochs: 15
+  num_nodes: 1
+  sync_batchnorm: false  # Enable synchronized batch norm for multi-GPU training
+  gradient_clip_val: null
+  gradient_clip_algorithm: norm
+  enable_progress_bar: true
+  accumulate_grad_batches: 1
+  # use_distributed_sampler: false
+  profiler: simple
+  log_every_n_steps: 50
+  num_sanity_val_steps: 2
+  logger: ${logger}
+  callbacks:
+    - ${callback_ckpt}
+    - ${callback_lr_monitor}
+    - ${callback_early_stopping}
+paths:
+  output_dir: ./
+  data_dir: ./
+  data_name: null
+  input_file: null
+  label_file: null
+callback_ckpt:
+  _target_: lightning.pytorch.callbacks.ModelCheckpoint
+  filename: '{epoch}-{val_loss:.5f}'
+  save_top_k: 5
+  every_n_epochs: 2
+  save_last: true
+  monitor: val_loss
+  mode: min
+callback_lr_monitor:
+  _target_: lightning.pytorch.callbacks.LearningRateMonitor
+  logging_interval: 'epoch'
+callback_early_stopping:
+  _target_: lightning.pytorch.callbacks.EarlyStopping
+  monitor: val_loss
+  mode: min
+  patience: 10
+  verbose: false
+logger:
+  _target_: lightning.pytorch.loggers.CSVLogger
+  save_dir: ${paths.output_dir}
+  flush_logs_every_n_steps: 50
+
