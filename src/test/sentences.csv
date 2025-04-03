@@ -1,0 +1,2 @@
+sentence,expected_metaphor,expected_sentence_simplification,expected_oov,expected_l2l,expected_post_oov
+"John drove Andrew mad when he ate crackers and chewed with his mouth open.","John caused Andrew to become angry when he ate crackers and chewed with his mouth open.","John made Andrew angry. John ate crackers. John chewed with his mouth open.","John made Andrew angry by eating snacks and chewing loudly.","(caused Angry Andrew) (by (eat John snacks))","(assert (caused Angry Andrew) (by (eat John snacks)))"
