@@ -23,6 +23,7 @@ source ../load_configs.sh
 
 
 # Check if Ollama server is running
+OLLAMA_HOST_PORT=55845
 if lsof -i :$OLLAMA_HOST_PORT | grep ollama > /dev/null; then
   echo "Ollama server is running on $OLLAMA_HOST"
 else

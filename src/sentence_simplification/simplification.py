@@ -21,7 +21,7 @@ from asset_embeddings import get_sentence_pairs, get_custom_sentence_pairs
 from complexity import determine_complexity
 
 EXAMPLE_SENTENCES_TYPES = ["dynamic_similarity", "dynamic_tree", "static", "random", "custom"]
-DEFAULT_MODEL = 'llama3.1:8b-instruct-q8_0'
+DEFAULT_MODEL = 'llama3.1:8b-instruct-q4_0'
 
 
 def call_ollama(prompt, model_type):
@@ -43,6 +43,8 @@ def call_ollama(prompt, model_type):
 
 def simplify_sentence(sentence, model=DEFAULT_MODEL, context_size=5, context_type='custom', complexity_filter=False):
     '''Simplifies a sentence using the given model and context settings'''
+
+    print(f'Simplifying sentence: {sentence} using model: {model}')
 
     # Check if the sentence is a conjecture
     if '?' in sentence:

@@ -23,4 +23,5 @@ export MODEL_SS="llama3.1:8b-instruct-q8_0" # Model to be used in sentence simpl
 ################## DON'T TOUCH THESE ######################
 #initialize the conda environment
 eval "$(conda shell.bash hook)"
+SUMO_NLP_CONDA_ENVIRONMENT="ollama_env"
 conda activate "$SUMO_NLP_CONDA_ENVIRONMENT"
