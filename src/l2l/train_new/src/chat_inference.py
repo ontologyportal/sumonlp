@@ -14,7 +14,6 @@ from src.modules.T5model import L2LModel
 prefix = "Convert the following sentence to SUO-KIF: "
 
 # Path to the trained checkpoint
-# CHECKPOINT_PATH = "/home/angelos.toutsios.gr/data/Thesis_dev/L2L_model_training/out/7-12mil-10-epochs/lightning_logs/version_0/checkpoints/epoch=8-val_bleu=0.99300.ckpt" # Load model from checkpoint
 CHECKPOINT_PATH = "/home/angelos.toutsios.gr/data/Thesis_dev/L2L_model_training/out/2025-03-06_09-12-34-good/lightning_logs/version_0/checkpoints/epoch=8-val_loss=0.00493.ckpt" # Load model from checkpoint
 
 

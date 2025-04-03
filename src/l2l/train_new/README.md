@@ -49,9 +49,18 @@ Prepare data:
 
 2. You can **override** some of these hyperparams in the `train.sh` script.
 
-## STEP 5:
+### STEP 5:
 
 1. Run the train.sh script.
+
+### STEP 6:
+Check the model:
+- There are 2 ways to test the model.
+1. The first one is by open a chat with it where you can write the sentence, and the model will return the logic.
+To do that open the `chat_inference.py` file and change the value of **CHECKPOINT_PATH** variable to point to the new checkpoint you want to check. Then just run the script.
+
+2. The second one is by using the `inference.py` where there are predefined sentences in the script and by running it it will create an `output.csv` file with all the responces.
+Again to use that, you have to change the value of `model_path` in the file to point to the new checkpoint. Then just run the script.
 
 
 

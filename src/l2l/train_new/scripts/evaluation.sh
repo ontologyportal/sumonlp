@@ -38,7 +38,7 @@ export HYDRA_FULL_ERROR=1
 #srun --time=2:00:00 python -m debugpy --wait-for-client --listen 0.0.0.0:54327 src/train.py \
 srun --time=2:00:00 python src/evaluation.py \
 --config-dir configs \
---config-name COASTresnet50.yaml \
+--config-name config.yaml \
 'hydra.run.dir=${paths.output_dir}' \
 'datamodule.batch_size=64' \
 'datamodule.num_workers=3' \
@@ -60,4 +60,4 @@ srun --time=2:00:00 python src/evaluation.py \
 'trainer.gradient_clip_algorithm=norm' \
 'trainer.profiler=simple' \
 'paths.output_dir='${OUTPUT_DIR} \
-'paths.data_dir=/home/angelos.toutsios.gr/data/CS4321/HW1/teamsmt/data' \
+"paths.data_dir=${SUMO_NLP_HOME}/src/l2l/train_new/data" \

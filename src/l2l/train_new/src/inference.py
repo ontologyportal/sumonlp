@@ -142,11 +142,6 @@ with torch.no_grad():
 
 outputs = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
 
-# print("-" * 50)
-# for i, (inp, pred) in enumerate(zip(transformed_questions, outputs)):
-#     print(f"Input {i+1}: {inp}")
-#     print(f"Prediction {i+1}: {pred}")
-#     print("-" * 50)
 
 with open("output.csv", "w", encoding="utf-8") as f:
     f.write('"Input","Prediction"\n')  # Adding header row
