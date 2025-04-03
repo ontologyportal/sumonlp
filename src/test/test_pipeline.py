@@ -121,6 +121,7 @@ with open(INPUT_CSV, newline="", encoding="utf-8") as csvfile:
             res_row[stage["expected_field"]] = expected_output
             res_row[stage["actual_field"]] = actual_output
             res_row[stage["status_field"]] = status
+            
 
         # Append the result for this sentence to our list.
         results.append(res_row)
