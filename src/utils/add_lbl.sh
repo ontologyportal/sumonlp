@@ -33,10 +33,8 @@ if [[ "${inputFile: -4}" == ".txt" ]]; then
         echo "!!" >> "$outputFile"
       done < "$inputFile"
     fi
-    cd test
-    bash check_SUOKIF_syntax.sh $inputFile -c
-    python3 check_SUOKIF_types.py
-    cd ../
+    bash test/check_SUOKIF_syntax.sh $outputFile -c
+    python3 test/check_SUOKIF_types.py
 else
     echo "Please enter a text file name."
 fi

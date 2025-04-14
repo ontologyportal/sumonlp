@@ -64,7 +64,7 @@ checkSUOKIF() {
       if [ "$saveToCSV" = true ]; then
         splitSegment=$(echo "$splitSegment" | sed 's/"/""/g')
         csvErrorOutput=$(echo "$csvErrorOutput" | sed 's/"/""/g')
-        echo "\"$splitSegment\",\"Invalid syntax.\n$csvErrorOutput\"" >> "test/SUOKIF_Syntax_Check.csv"
+        echo "\"$splitSegment\",\"Invalid syntax. $csvErrorOutput\"" >> "test/SUOKIF_Syntax_Check.csv"
       fi
     fi
 
@@ -106,6 +106,7 @@ while IFS= read -r line || [[ -n "$line" ]]; do
   # Check if the line is empty, only whitespace, or starts with ";" or "!!"
   if [[ -z "$line" || "$line" =~ ^[[:space:]]*$ || "$line" =~ ^[[:space:]]*\; || "$line" =~ ^\!\! ]]; then
     # Save the current segment to a variable with new lines replaced by spaces
+    echo "Checking '$currentSegment'"
     checkSUOKIF "$currentSegment" "$saveToCSV" 
     currentSegment=""
   else

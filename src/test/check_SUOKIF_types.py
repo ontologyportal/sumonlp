@@ -12,7 +12,7 @@ def clean_line(line):
 
 # Extract words, discard ignored and ?-prefixed ones
 def extract_words(line):
-    ignored_words = {"exists", "and", "or"}
+    ignored_words = {"exists", "and", "or", "instance", }
     words = re.findall(r'\??\b\w+\b', line)
     return [
         word for word in words
@@ -22,10 +22,11 @@ def extract_words(line):
 # Process all .kif files and store words (not in quotes or comments) with a file location
 def process_kif_files(kif_dir):
     word_locations = defaultdict(set)
-
+    print("Looking for kif files in " + kif_dir)
     for root, _, files in os.walk(kif_dir):
         for file in files:
             if file.endswith(".kif"):
+                print ("Processing: " + file)
                 file_path = os.path.join(root, file)
                 with open(file_path, 'r', encoding='utf-8') as f:
                     content = f.read()
@@ -92,9 +93,9 @@ def process_csv(input_csv, output_csv, word_locations):
 
 # Main execution
 if __name__ == "__main__":
-    kif_dir = os.path.expanduser("$HOME/.sigmakee/KBs")
-    input_csv = "SUOKIF_Syntax_Check.csv"
-    output_csv = "SUOKIF_Type_Check.csv"
+    kif_dir = os.path.expanduser("~/.sigmakee/KBs")
+    input_csv = "test/SUOKIF_Syntax_Check.csv"
+    output_csv = "test/SUOKIF_Type_Check.csv"
 
     print("Processing .kif files...")
     word_locations = process_kif_files(kif_dir)

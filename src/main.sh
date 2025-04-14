@@ -74,9 +74,9 @@ while true; do
             ;;
         genrandtestset|grts)
             output_file="test/random_test_set.txt"
-            lines_to_extract=100
-            shuf -n 200 "test/EntireEconomicCorpus.txt" > "$output_file"
-            echo "200 random lines from test/EntireEconomicCorpus.txt have been saved to $output_file"
+            lines_to_extract=200
+            shuf -n $lines_to_extract "test/EntireEconomicCorpus.txt" > "$output_file"
+            echo "$lines_to_extract random lines from test/EntireEconomicCorpus.txt have been saved to $output_file"
             cat $output_file
             ;;
         clear)
