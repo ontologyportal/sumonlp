@@ -32,7 +32,7 @@ while true; do
             echo "Asking $ask_value"
             echo $ask_value > policy_extracter/input_pe.txt
             bash run_pipeline.sh
-            cat prover/input_pr.txt >> $SIGMA_HOME/KBs/SUMO_NLP.kif
+            bash utils/HOLtoTFF.sh prover/input_pr.txt
             question_KIF=$(cat prover/input_pr.txt)
             echo $question_KIF
             bash utils/add_SUMO_NLP_to_config_dot_xml_if_needed.sh
@@ -40,7 +40,7 @@ while true; do
             echo $question_TPTP
             cat $SIGMA_HOME/KBs/SUMO.tptp > $SIGMA_HOME/KBs/SUMO_NLP_QUERY.tptp
             echo "fof(name1,conjecture, $question_TPTP)." >> $SIGMA_HOME/KBs/SUMO_NLP_QUERY.tptp
-            vampire --input_syntax tptp -t 10 --proof tptp -qa plain --mode casc $SIGMA_HOME/KBs/SUMO_NLP_QUERY.tptp | tee prover/output_pr.txt
+            vampire --input_syntax tptp -t 60 --proof tptp -qa plain --mode casc $SIGMA_HOME/KBs/SUMO_NLP_QUERY.tptp | tee prover/output_pr.txt
             ;;
         add)
             add_value=${input:4} # gets the substring from character position 4 to the end.
@@ -54,8 +54,8 @@ while true; do
                 echo $add_value > policy_extracter/input_pe.txt
             fi
             bash run_pipeline.sh
-            cat prover/input_pr.txt >> $SIGMA_HOME/KBs/SUMO_NLP_KB.kif
-            cat $SIGMA_HOME/KBs/SUMO_NLP_KB.kif > $SIGMA_HOME/KBs/SUMO_NLP.kif
+            bash utils/HOLtoTFF.sh prover/input_pr.txt
+            cat prover/input_pr.txt >> $SIGMA_HOME/KBs/SUMO_NLP.kif
             bash utils/add_SUMO_NLP_to_config_dot_xml_if_needed.sh
             if [ -e "$SIGMA_HOME/KBs/SUMO.tptp" ] && [ $txt_file == false ]; then
                 axiom_KIF=$(cat prover/input_pr.txt)
@@ -80,7 +80,6 @@ while true; do
             cat $output_file
             ;;
         clear)
-            rm -f $SIGMA_HOME/KBs/SUMO_NLP_KB.kif
             rm -f $SIGMA_HOME/KBs/SUMO_NLP.kif
             rm -f $SIGMA_HOME/KBs/SUMO.fof
             rm -f $SIGMA_HOME/KBs/SUMO.tptp
@@ -88,9 +87,9 @@ while true; do
             echo "Knowledge base has been cleared."
             ;;
         list|kb)
-            if [ -e "$SIGMA_HOME/KBs/SUMO_NLP_KB.kif" ]; then
+            if [ -e "$SIGMA_HOME/KBs/SUMO_NLP.kif" ]; then
               echo "Knowledge Base: "
-              cat $SIGMA_HOME/KBs/SUMO_NLP_KB.kif
+              cat $SIGMA_HOME/KBs/SUMO_NLP.kif
             fi
             echo -e "\n"
             ;;
@@ -101,7 +100,6 @@ while true; do
                 time_value=${input:8}
             fi
             time_value=${input:6}
-            cat $SIGMA_HOME/KBs/SUMO_NLP_KB.kif > $SIGMA_HOME/KBs/SUMO_NLP.kif
             bash utils/add_SUMO_NLP_to_config_dot_xml_if_needed.sh
             java -Xmx8g -classpath $SIGMA_SRC/build/sigmakee.jar:$SIGMA_SRC/lib/* com.articulate.sigma.trans.SUMOKBtoTPTPKB
             vampire --input_syntax tptp $time_value --proof tptp -qa plain --mode casc $SIGMA_HOME/KBs/SUMO.tptp | tee prover/output_pr.txt
