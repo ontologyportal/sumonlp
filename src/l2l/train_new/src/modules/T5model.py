@@ -3,7 +3,7 @@ from torchmetrics.text import BLEUScore
 from torchmetrics.text.rouge import ROUGEScore
 import lightning.pytorch as pl
 import re
-from transformers import T5ForConditionalGeneration, AutoTokenizer, get_linear_schedule_with_warmup
+from transformers import T5ForConditionalGeneration, AutoTokenizer, get_linear_schedule_with_warmup, AutoConfig
 from peft import LoraConfig, get_peft_model
 import src.plot_utils as plot_utils
 import subprocess
@@ -23,6 +23,7 @@ class L2LModel(pl.LightningModule):
         sumo_terms_path = config.get("sumo_terms",'src/utils/sumo_terms.txt')
         self.warm_up_step = config.get("warm_up_step",0)
         self.sumo_term_penalty_weight = config.get("sumo_term_penalty_weight",0)
+        self.use_pretrained = config["use_pretrained"]
 
         with open(sumo_terms_path, "r") as file:
             self.sumo_terms = {line.strip() for line in file if line.strip()}
@@ -35,7 +36,16 @@ class L2LModel(pl.LightningModule):
 
         # Load Tokenizer & Model
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-        self.model = T5ForConditionalGeneration.from_pretrained(model_name)
+
+        if self.use_pretrained:
+          # Load a pretrained model configuration
+          print(f"Loading pretrained model: {model_name}")
+          self.model = T5ForConditionalGeneration.from_pretrained(model_name)
+        else:
+          # Load a model without weights.
+          print(f"Loading model without weights: {model_name}")
+          config = AutoConfig.from_pretrained(model_name)
+          self.model = T5ForConditionalGeneration(config)
 
         self.bleu = BLEUScore(n_gram=4)
         # self.rouge = ROUGEScore(accumulate="avg")
@@ -103,7 +113,10 @@ class L2LModel(pl.LightningModule):
         target_texts = self.tokenizer.batch_decode(batch["labels"], skip_special_tokens=True)
 
         # Compute SUMO term penalties
-        sumo_penalties = torch.tensor([self.penaltize_based_on_sumo_terms(p) for p in pred_texts], device=self.device)
+        sumo_penalties = torch.tensor([self.penaltize_based_on_sumo_terms(p) for p in pred_texts],
+                                      dtype=torch.float32,
+                                      device=self.device)
+
         sumo_penalty_loss = sumo_penalties.mean()  # Average penalty
 
         # Combine losses with a weighting factor (adjust factor as needed)
@@ -162,7 +175,9 @@ class L2LModel(pl.LightningModule):
         sumo_terms_valid = sum([self.evaluate_sumo_terms(p) for p in pred_texts]) / len(pred_texts)
 
         # Compute SUMO term penalties
-        sumo_penalties = torch.tensor([self.penaltize_based_on_sumo_terms(p) for p in pred_texts], device=self.device)
+        sumo_penalties = torch.tensor([self.penaltize_based_on_sumo_terms(p) for p in pred_texts],
+                                      dtype=torch.float32,
+                                      device=self.device)
         sumo_penalty_loss = sumo_penalties.mean()  # Average penalty
 
         # Log metrics
