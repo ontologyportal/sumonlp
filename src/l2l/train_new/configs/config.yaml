@@ -26,6 +26,7 @@ module:
   # factor: 0.1
   # patience: 10
   model_name: 'google/flan-t5-base'
+  use_pretrained: true
   dropout: 0.2
   weight_decay: null
   sumo_terms: 'src/utils/sumo_terms.txt'

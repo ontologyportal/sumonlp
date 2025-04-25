@@ -56,11 +56,12 @@ srun python -u src/train.py \
 'module.lr=1e-5' \
 'module.weight_decay=0.1' \
 'module.dropout=0.5' \
+'module.use_pretrained=true' \
 'module.warm_up_step=0.01' \
 'module.sumo_term_penalty_weight=1' \
 'trainer.num_nodes=1' \
 'trainer.precision=bf16-mixed' \
-'trainer.max_epochs=10' \
+'trainer.max_epochs=5' \
 'trainer.accelerator=auto' \
 'trainer.accumulate_grad_batches=8' \
 'trainer.strategy=auto' \
@@ -72,6 +73,6 @@ srun python -u src/train.py \
 'callback_early_stopping.patience=5' \
 'paths.output_dir='${OUTPUT_DIR} \
 "paths.data_dir=${SUMO_NLP_HOME}/src/l2l/train_new/data/" \
-'paths.input_file=/home/angelos.toutsios.gr/data/Thesis_dev/SUMO-terms/data/LatestDataSet/01-3-2025/150k-best-selected-no-weird-detector/1-stage-training/stage1_var_replaced_training_895149.json' \
-'paths.data_name=stage1_var_replaced_training_895149' \
+'paths.input_file=/home/angelos.toutsios.gr/data/Thesis_dev/L2L_model_training/data/test10k.json' \
+'paths.data_name=test10k' \
 
