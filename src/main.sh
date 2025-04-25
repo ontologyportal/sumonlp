@@ -32,14 +32,15 @@ while true; do
             echo "Asking $ask_value"
             echo $ask_value > policy_extracter/input_pe.txt
             bash run_pipeline.sh
-            cat prover/input_pr.txt >> $SIGMA_HOME/KBs/SUMO_NLP.kif
+            bash utils/HOLtoTFF.sh prover/input_pr.txt
             question_KIF=$(cat prover/input_pr.txt)
             echo $question_KIF
             bash utils/add_SUMO_NLP_to_config_dot_xml_if_needed.sh
-            question_TPTP=$(java -Xmx8g -classpath $ONTOLOGYPORTAL_GIT/sigmakee/build/sigmakee.jar:$ONTOLOGYPORTAL_GIT/sigmakee/lib/* com.articulate.sigma.trans.SUMOformulaToTPTPformula -g "$question_KIF" | tail -n 1)
-            cat $SIGMA_HOME/KBs/SUMO.tptp > $SIGMA_HOME/.sigmakee/KBs/SUMO_NLP_QUERY.tptp
+            question_TPTP=$(java -Xmx8g -classpath $ONTOLOGYPORTAL_GIT/sigmakee/build/sigmakee.jar:$ONTOLOGYPORTAL_GIT/sigmakee/lib/* com.articulate.sigma.trans.SUMOformulaToTPTPformula -g "$question_KIF" | tail -n 3 | head -n 1)
+            echo $question_TPTP
+            cat $SIGMA_HOME/KBs/SUMO.tptp > $SIGMA_HOME/KBs/SUMO_NLP_QUERY.tptp
             echo "fof(name1,conjecture, $question_TPTP)." >> $SIGMA_HOME/KBs/SUMO_NLP_QUERY.tptp
-            vampire --input_syntax tptp -t 10 --proof tptp -qa plain --mode casc $SIGMA_HOME/.sigmakee/KBs/SUMO_NLP_QUERY.tptp | tee prover/output_pr.txt
+            vampire --input_syntax tptp -t 60 --proof tptp -qa plain --mode casc $SIGMA_HOME/KBs/SUMO_NLP_QUERY.tptp | tee prover/output_pr.txt
             ;;
         add)
             add_value=${input:4} # gets the substring from character position 4 to the end.
@@ -53,13 +54,13 @@ while true; do
                 echo $add_value > policy_extracter/input_pe.txt
             fi
             bash run_pipeline.sh
-            cat prover/input_pr.txt >> $SIGMA_HOME/KBs/SUMO_NLP_KB.kif
-            cat $SIGMA_HOME/KBs/SUMO_NLP_KB.kif > $SIGMA_HOME/KBs/SUMO_NLP.kif
+            bash utils/HOLtoTFF.sh prover/input_pr.txt
+            cat prover/input_pr.txt >> $SIGMA_HOME/KBs/SUMO_NLP.kif
             bash utils/add_SUMO_NLP_to_config_dot_xml_if_needed.sh
             if [ -e "$SIGMA_HOME/KBs/SUMO.tptp" ] && [ $txt_file == false ]; then
                 axiom_KIF=$(cat prover/input_pr.txt)
                 echo $axiom_KIF
-                axiom_TPTP=$(java -Xmx8g -classpath $ONTOLOGYPORTAL_GIT/sigmakee/build/sigmakee.jar:$ONTOLOGYPORTAL_GIT/sigmakee/lib/* com.articulate.sigma.trans.SUMOformulaToTPTPformula -g "$axiom_KIF" | tail -n 1)
+                axiom_TPTP=$(java -Xmx8g -classpath $ONTOLOGYPORTAL_GIT/sigmakee/build/sigmakee.jar:$ONTOLOGYPORTAL_GIT/sigmakee/lib/* com.articulate.sigma.trans.SUMOformulaToTPTPformula -g "$axiom_KIF" | tail -n 3 | head -n 1)
                 echo $axiom_TPTP
                 echo "fof(name1,axiom, $axiom_TPTP)." >> $SIGMA_HOME/KBs/SUMO.tptp
             else
@@ -69,30 +70,16 @@ while true; do
             echo "Added $add_value to the knowledge base."
             ;;
         add_lbl)
-            inputFile=${input:8} # gets the substring from character position 4 to the end.
-            if [[ "${inputFile: -4}" == ".txt" ]]; then
-                if [ ! -f "$inputFile" ]; then
-                  echo "Input file $inputFile not found."
-                else
-                  echo "Adding $inputFile to the knowledge base."
-                  outputFile="test/add_lbl_output.txt"
-                  echo "" > "$outputFile"
-                  while IFS= read -r line; do
-                    echo "$line" > policy_extracter/input_pe.txt
-                    bash run_pipeline.sh
-                    cat prover/input_pr.txt >> "$outputFile"
-                    echo "!!" >> "$outputFile"
-                  done < "$inputFile"
-                fi
-                cd test
-                bash check_SUOKIF_syntax.sh $inputFile -c
-                cd ../
-            else
-                echo "Please enter a text file name."
-            fi
+            bash utils/add_lbl.sh ${input:8}
+            ;;
+        genrandtestset|grts)
+            output_file="test/random_test_set.txt"
+            lines_to_extract=200
+            shuf -n $lines_to_extract "test/EntireEconomicCorpus.txt" > "$output_file"
+            echo "$lines_to_extract random lines from test/EntireEconomicCorpus.txt have been saved to $output_file"
+            cat $output_file
             ;;
         clear)
-            rm -f $SIGMA_HOME/KBs/SUMO_NLP_KB.kif
             rm -f $SIGMA_HOME/KBs/SUMO_NLP.kif
             rm -f $SIGMA_HOME/KBs/SUMO.fof
             rm -f $SIGMA_HOME/KBs/SUMO.tptp
@@ -100,9 +87,9 @@ while true; do
             echo "Knowledge base has been cleared."
             ;;
         list|kb)
-            if [ -e "$SIGMA_HOME/KBs/SUMO_NLP_KB.kif" ]; then
+            if [ -e "$SIGMA_HOME/KBs/SUMO_NLP.kif" ]; then
               echo "Knowledge Base: "
-              cat $SIGMA_HOME/KBs/SUMO_NLP_KB.kif
+              cat $SIGMA_HOME/KBs/SUMO_NLP.kif
             fi
             echo -e "\n"
             ;;
@@ -113,7 +100,6 @@ while true; do
                 time_value=${input:8}
             fi
             time_value=${input:6}
-            cat $SIGMA_HOME/KBs/SUMO_NLP_KB.kif > $SIGMA_HOME/KBs/SUMO_NLP.kif
             bash utils/add_SUMO_NLP_to_config_dot_xml_if_needed.sh
             java -Xmx8g -classpath $SIGMA_SRC/build/sigmakee.jar:$SIGMA_SRC/lib/* com.articulate.sigma.trans.SUMOKBtoTPTPKB
             vampire --input_syntax tptp $time_value --proof tptp -qa plain --mode casc $SIGMA_HOME/KBs/SUMO.tptp | tee prover/output_pr.txt
@@ -178,6 +164,7 @@ while true; do
             printf '  Example: "add climate_facts.txt"\n'
             printf '\n"add_lbl adds a text file line by line, rather than the entire file all at once. Output is saved to add_lbl_output.txt. The add_lbl_output.txt is tested for valid syntax and results saved to SUOKIF_Syntax_Check.csv \n"'
             printf '  Example: "add_lbl test/standard.txt"\n'
+            printf '\n"grts" will generate a random test set of 100 sentences, drawn from test/EntireEconomicCorpus.txt\n'
             printf '\n"clear" will completely clear the knowledge base.\n  Example: "clear"\n'
             printf '\n"last" will show the progression through the pipeline of the last added sentence or file.\n  Example: "last"\n'
             printf '\n"list" or "kb" will display the knowledge base.\n  Example: "list"\n'
@@ -196,7 +183,7 @@ while true; do
             break
             ;;
         *)
-            echo "Invalid command. Please use 'ask', 'add', 'clear', 'list', 'test', 'mh', 'ss', 'oov', 'l2l', 'help', 'hist' or 'quit'."
+            echo "Invalid command. Please use 'ask', 'add', 'add_lbl', 'genrandtestset', 'proofvisual', 'clear', 'list', 'test', 'mh', 'ss', 'oov', 'l2l', 'help', 'hist' or 'quit'."
             ;;
     esac
 done

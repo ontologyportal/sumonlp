@@ -44,8 +44,7 @@ checkSUOKIF() {
       if [[ ! "$element" =~ ^[[:space:]]*$ ]]; then
         echo -e "\n$element"
         java -Xmx8g -classpath $ONTOLOGYPORTAL_GIT/sigmakee/build/sigmakee.jar:$ONTOLOGYPORTAL_GIT/sigmakee/lib/* com.articulate.sigma.KButilities -v "$element" >> .temp_output.txt 2>>.error_output.txt
-        last_line=$(tail -n 1 .temp_output.txt)
-        if [ "$last_line" != "true" ]; then
+        if grep -q "is valid: true" .temp_output.txt; then
           allValidStatements=false
           grepOutput=$(grep -v "VerbNet" .error_output.txt)
           echo -e "\n$grepOutput\n"
@@ -55,19 +54,19 @@ checkSUOKIF() {
         fi
       fi
     done
-    
+
     if [ "$allValidStatements" == true ]; then
       if [ "$saveToCSV" = true ]; then
         splitSegment=$(echo "$splitSegment" | sed 's/"/""/g')
-        echo "\"$splitSegment\",Valid syntax" >> "SUOKIF_Syntax_Check.csv"
+        echo "\"$splitSegment\",Valid syntax" >> "test/SUOKIF_Syntax_Check.csv"
       fi
     else
       if [ "$saveToCSV" = true ]; then
         splitSegment=$(echo "$splitSegment" | sed 's/"/""/g')
         csvErrorOutput=$(echo "$csvErrorOutput" | sed 's/"/""/g')
-        echo "\"$splitSegment\",\"$csvErrorOutput\"" >> "SUOKIF_Syntax_Check.csv"
+        echo "\"$splitSegment\",\"Invalid syntax. $csvErrorOutput\"" >> "test/SUOKIF_Syntax_Check.csv"
       fi
-    fi            
+    fi
 
     rm .temp_output.txt
     rm .error_output.txt
@@ -95,7 +94,7 @@ for arg in "$@"; do
     if [ "$arg" == "-c" ]; then
         saveToCSV=true
         echo "Saving output to SUOKIF_Syntax_Check.csv."
-        echo -n "" > "SUOKIF_Syntax_Check.csv"
+        echo -n "" > "test/SUOKIF_Syntax_Check.csv"
     fi
 done
 
@@ -107,6 +106,7 @@ while IFS= read -r line || [[ -n "$line" ]]; do
   # Check if the line is empty, only whitespace, or starts with ";" or "!!"
   if [[ -z "$line" || "$line" =~ ^[[:space:]]*$ || "$line" =~ ^[[:space:]]*\; || "$line" =~ ^\!\! ]]; then
     # Save the current segment to a variable with new lines replaced by spaces
+    echo "Checking '$currentSegment'"
     checkSUOKIF "$currentSegment" "$saveToCSV" 
     currentSegment=""
   else
