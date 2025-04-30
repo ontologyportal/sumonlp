@@ -1,0 +1,9 @@
+../load_configs.sh: line 25: conda: command not found
+../load_configs.sh: line 26: conda: command not found
+Traceback (most recent call last):
+  File "/home/angelos.toutsios.gr/workspace/sumonlp/src/weirdness_detector/ollama-model-parallel.py", line 171, in <module>
+    main()
+  File "/home/angelos.toutsios.gr/workspace/sumonlp/src/weirdness_detector/ollama-model-parallel.py", line 149, in main
+    with open(file_output, "w") as f:
+         ^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/angelos.toutsios.gr/workspace/sumonlp/src/weirdness_detector\results/test_weird_det_results.txt'

@@ -53,12 +53,13 @@ srun python -u src/train.py \
 'hydra.run.dir=${paths.output_dir}' \
 'datamodule.batch_size=32' \
 'datamodule.num_workers=8' \
-'module.lr=1e-5' \
-'module.weight_decay=0.1' \
-'module.dropout=0.5' \
+'module.lr=1e-4' \
+'module.patience=5' \
+'module.weight_decay=0.001' \
+'module.dropout=0.2' \
 'module.use_pretrained=true' \
-'module.warm_up_step=0.01' \
-'module.sumo_term_penalty_weight=1' \
+'module.warm_up_step=0' \
+'module.sumo_term_penalty_weight=0' \
 'trainer.num_nodes=1' \
 'trainer.precision=bf16-mixed' \
 'trainer.max_epochs=5' \
@@ -73,6 +74,6 @@ srun python -u src/train.py \
 'callback_early_stopping.patience=5' \
 'paths.output_dir='${OUTPUT_DIR} \
 "paths.data_dir=${SUMO_NLP_HOME}/src/l2l/train_new/data/" \
-'paths.input_file=/home/angelos.toutsios.gr/data/Thesis_dev/L2L_model_training/data/test10k.json' \
+'paths.input_file=/home/angelos.toutsios.gr/workspace/sumonlp/src/l2l/train_new/data/test10k.json' \
 'paths.data_name=test10k' \
 

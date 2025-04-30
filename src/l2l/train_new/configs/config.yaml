@@ -22,17 +22,16 @@ preprocessor:
 
 module:
   _target_: src.modules.T5model.L2LModel
-  lr: 1e-2
-  # factor: 0.1
-  # patience: 10
+  lr: 0.0001
+  factor: 0.1
+  patience: 10
   model_name: 'google/flan-t5-base'
   use_pretrained: true
-  dropout: 0.2
-  weight_decay: null
+  dropout: 0.3
+  weight_decay: 0.1
   sumo_terms: 'src/utils/sumo_terms.txt'
   warm_up_step: 0
   sumo_term_penalty_weight: 0
-
   lora_r: 8
   lora_alpha: 32
   lora_dropout: 0.1
@@ -48,10 +47,10 @@ trainer:
   max_epochs: 15
   num_nodes: 1
   sync_batchnorm: false  # Enable synchronized batch norm for multi-GPU training
-  gradient_clip_val: null
+  gradient_clip_val: 0.5
   gradient_clip_algorithm: norm
   enable_progress_bar: true
-  accumulate_grad_batches: 1
+  accumulate_grad_batches: 8
   # use_distributed_sampler: false
   profiler: simple
   log_every_n_steps: 50
@@ -70,8 +69,8 @@ paths:
 callback_ckpt:
   _target_: lightning.pytorch.callbacks.ModelCheckpoint
   filename: '{epoch}-{val_loss:.5f}'
-  save_top_k: 5
-  every_n_epochs: 2
+  save_top_k: 3
+  every_n_epochs: 1
   save_last: true
   monitor: val_loss
   mode: min

@@ -2,6 +2,7 @@ import sys
 import json
 import time
 from pathlib import Path
+import os
 
 """
 Input: .txt file with Input sentences
@@ -43,6 +44,12 @@ if __name__ == "__main__":
     else:
         eng_file = Path(sys.argv[1])
         log_file = Path(sys.argv[2])
+
+        print(f"Current working directory: {os.getcwd()}")
+        print(f"eng_file: {eng_file}")
+        print(f"log_file: {log_file}")
+        print(f"eng_file.exists(): {eng_file.exists()}")
+        print(f"log_file.exists(): {log_file.exists()}")
 
         if not eng_file.exists() or not log_file.exists():
             print("Error: One or both input files do not exist.")
