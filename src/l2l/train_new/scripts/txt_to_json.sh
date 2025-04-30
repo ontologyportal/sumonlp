@@ -1,7 +1,7 @@
 #!/bin/bash -l
 
 #SBATCH --job-name=txt_to_json_dataset
-#SBATCH --output=./out/jobs/L2L_%j.out
+#SBATCH --output=./out/jobs/Dataset_%j.out
 #SBATCH --time=2:00:00
 #SBATCH --mem=120G
 #SBATCH --nodes=1
@@ -23,6 +23,6 @@ eval "$(pixi shell-hook -s bash)"
 
 
 srun --time=2:00:00 python src/utils/txt_to_json.py \
-"/home/angelos.toutsios.gr/data/Train_T5_Model/data/500k_sentences_suffled/input_sentences_500k.txt" \
-"/home/angelos.toutsios.gr/data/Train_T5_Model/data/500k_sentences_suffled/output_logical_500k.txt"
+/data/fsg/.sumonlp/model_generation/2025-04-25/combined-eng.txt \
+/data/fsg/.sumonlp/model_generation/2025-04-25/combined-log.txt
 
