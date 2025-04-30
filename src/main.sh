@@ -36,7 +36,7 @@ while true; do
             question_KIF=$(cat prover/input_pr.txt)
             echo $question_KIF
             bash utils/add_SUMO_NLP_to_config_dot_xml_if_needed.sh
-            question_TPTP=$(java -Xmx8g -classpath $ONTOLOGYPORTAL_GIT/sigmakee/build/sigmakee.jar:$ONTOLOGYPORTAL_GIT/sigmakee/lib/* com.articulate.sigma.trans.SUMOformulaToTPTPformula -g "$question_KIF" | tail -n 3 | head -n 1)
+            question_TPTP=$(java -Xmx8g -classpath $ONTOLOGYPORTAL_GIT/sigmakee/build/sigmakee.jar:$ONTOLOGYPORTAL_GIT/sigmakee/lib/* com.articulate.sigma.trans.SUMOformulaToTPTPformula -g "$question_KIF" | tail -n 1)
             echo $question_TPTP
             cat $SIGMA_HOME/KBs/SUMO.tptp > $SIGMA_HOME/KBs/SUMO_NLP_QUERY.tptp
             echo "fof(name1,conjecture, $question_TPTP)." >> $SIGMA_HOME/KBs/SUMO_NLP_QUERY.tptp
@@ -60,7 +60,7 @@ while true; do
             if [ -e "$SIGMA_HOME/KBs/SUMO.tptp" ] && [ $txt_file == false ]; then
                 axiom_KIF=$(cat prover/input_pr.txt)
                 echo $axiom_KIF
-                axiom_TPTP=$(java -Xmx8g -classpath $ONTOLOGYPORTAL_GIT/sigmakee/build/sigmakee.jar:$ONTOLOGYPORTAL_GIT/sigmakee/lib/* com.articulate.sigma.trans.SUMOformulaToTPTPformula -g "$axiom_KIF" | tail -n 3 | head -n 1)
+                axiom_TPTP=$(java -Xmx8g -classpath $ONTOLOGYPORTAL_GIT/sigmakee/build/sigmakee.jar:$ONTOLOGYPORTAL_GIT/sigmakee/lib/* com.articulate.sigma.trans.SUMOformulaToTPTPformula -g "$axiom_KIF" | tail -n 1)
                 echo $axiom_TPTP
                 echo "fof(name1,axiom, $axiom_TPTP)." >> $SIGMA_HOME/KBs/SUMO.tptp
             else
@@ -72,18 +72,31 @@ while true; do
         add_lbl)
             bash utils/add_lbl.sh ${input:8}
             ;;
-        genrandtestset|grts)
+        runstandardtestset|rsts)
+            bash utils/add_lbl.sh test/standard.txt
+            bash test/check_SUOKIF_syntax.sh test/add_lbl_output.txt -c
+            python3 test/check_SUOKIF_types.py test/SUOKIF_Syntax_Check.csv test/SUOKIF_Type_Check_standard_test_set.csv
+            ;;
+        runrandtestset|rrts)
             output_file="test/random_test_set.txt"
-            lines_to_extract=200
+            lines_to_extract=125
             shuf -n $lines_to_extract "test/EntireEconomicCorpus.txt" > "$output_file"
             echo "$lines_to_extract random lines from test/EntireEconomicCorpus.txt have been saved to $output_file"
             cat $output_file
+            bash utils/add_lbl.sh $output_file
+            bash test/check_SUOKIF_syntax.sh test/add_lbl_output.txt -c
+            python3 test/check_SUOKIF_types.py test/SUOKIF_Syntax_Check.csv test/SUOKIF_Type_Check_random_test_set.csv
+            ;;
+        generateWordNetKif|gwnk)
+            python3 utils/genWN_KIF.py
+            cp $ONTOLOGYPORTAL_GIT/sumo/WN_Subsuming_Mappings.kif $SIGMA_HOME/KBs/WN_Subsuming_Mappings.kif
             ;;
         clear)
             rm -f $SIGMA_HOME/KBs/SUMO_NLP.kif
             rm -f $SIGMA_HOME/KBs/SUMO.fof
             rm -f $SIGMA_HOME/KBs/SUMO.tptp
             rm -f $SIGMA_HOME/KBs/SUMO_NLP_QUERY.fof
+            rm -f $SIGMA_HOME/KBs/*.ser
             echo "Knowledge base has been cleared."
             ;;
         list|kb)
@@ -115,7 +128,7 @@ while true; do
                 echo "Their is no prover output to visualize. Proof should be saved to prover/prover_output.txt"
             fi
             ;;
-        last)
+        last|flow)
             cat flow.txt
             ;;
         "")
@@ -164,7 +177,9 @@ while true; do
             printf '  Example: "add climate_facts.txt"\n'
             printf '\n"add_lbl adds a text file line by line, rather than the entire file all at once. Output is saved to add_lbl_output.txt. The add_lbl_output.txt is tested for valid syntax and results saved to SUOKIF_Syntax_Check.csv \n"'
             printf '  Example: "add_lbl test/standard.txt"\n'
-            printf '\n"grts" will generate a random test set of 100 sentences, drawn from test/EntireEconomicCorpus.txt\n'
+            printf '\n"rsts": run standard test set. This will take test/standard.txt, add_lbl, and then syntax and type check.\n'
+            printf '\n"rrts": run random test set will generate a random test set of 100 sentences, drawn from test/EntireEconomicCorpus.txt, add lbl, then syntax and type check.\n'
+            printf '\n"gwnk" Generates WordNet .kif file, complete with subclass, documentation, and termFormat statements. Output is saved to workspace/sumo, and .sigmakee/KBs/\n'
             printf '\n"clear" will completely clear the knowledge base.\n  Example: "clear"\n'
             printf '\n"last" will show the progression through the pipeline of the last added sentence or file.\n  Example: "last"\n'
             printf '\n"list" or "kb" will display the knowledge base.\n  Example: "list"\n'
@@ -183,7 +198,7 @@ while true; do
             break
             ;;
         *)
-            echo "Invalid command. Please use 'ask', 'add', 'add_lbl', 'genrandtestset', 'proofvisual', 'clear', 'list', 'test', 'mh', 'ss', 'oov', 'l2l', 'help', 'hist' or 'quit'."
+            echo "Invalid command. Please use 'ask', 'add', 'add_lbl', 'grts', 'rrts', 'gwnp', 'proofvisual', 'clear', 'list', 'test', 'mh', 'ss', 'oov', 'l2l', 'help', 'hist' or 'quit'."
             ;;
     esac
 done

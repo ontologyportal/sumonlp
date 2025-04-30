@@ -44,13 +44,15 @@ checkSUOKIF() {
       if [[ ! "$element" =~ ^[[:space:]]*$ ]]; then
         echo -e "\n$element"
         java -Xmx8g -classpath $ONTOLOGYPORTAL_GIT/sigmakee/build/sigmakee.jar:$ONTOLOGYPORTAL_GIT/sigmakee/lib/* com.articulate.sigma.KButilities -v "$element" >> .temp_output.txt 2>>.error_output.txt
-        if grep -q "is valid: true" .temp_output.txt; then
+        echo "\n\n .temp_output.txt:\n"
+        cat .temp_output.txt
+        echo "\n\n .error_output.txt:\n"
+        cat .error_output.txt
+        if ! grep -q "is valid: true" .temp_output.txt; then
           allValidStatements=false
           grepOutput=$(grep -v "VerbNet" .error_output.txt)
           echo -e "\n$grepOutput\n"
           csvErrorOutput+="$grepOutput"
-        else
-          echo -e "\nValid syntax\n"
         fi
       fi
     done
@@ -60,17 +62,19 @@ checkSUOKIF() {
         splitSegment=$(echo "$splitSegment" | sed 's/"/""/g')
         echo "\"$splitSegment\",Valid syntax" >> "test/SUOKIF_Syntax_Check.csv"
       fi
+      echo "\nValid syntax\n"
     else
       if [ "$saveToCSV" = true ]; then
         splitSegment=$(echo "$splitSegment" | sed 's/"/""/g')
         csvErrorOutput=$(echo "$csvErrorOutput" | sed 's/"/""/g')
         echo "\"$splitSegment\",\"Invalid syntax. $csvErrorOutput\"" >> "test/SUOKIF_Syntax_Check.csv"
       fi
+      echo "\nInvalid syntax. $csvErrorOutput"
     fi
 
     rm .temp_output.txt
     rm .error_output.txt
-    echo -e "\n\n----------------------------------------------------"
+    echo -e "\n\n-------------------------------------------------------------"
   fi
 }
 
