@@ -1,6 +1,7 @@
 import os
 import re
 import csv
+import sys
 from collections import defaultdict
 
 # Clean line but preserve ? characters
@@ -12,7 +13,7 @@ def clean_line(line):
 
 # Extract words, discard ignored and ?-prefixed ones
 def extract_words(line):
-    ignored_words = {"exists", "and", "or", "instance", }
+    ignored_words = {"exists", "and", "or", "instance", "now" }
     words = re.findall(r'\??\b\w+\b', line)
     return [
         word for word in words
@@ -93,9 +94,14 @@ def process_csv(input_csv, output_csv, word_locations):
 
 # Main execution
 if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print(f"Usage: {sys.argv[0]} <input_file.csv> <output_file.csv>")
+        sys.exit(1)
+
+    input_csv = sys.argv[1]
+    output_csv = sys.argv[2]
     kif_dir = os.path.expanduser("~/.sigmakee/KBs")
-    input_csv = "test/SUOKIF_Syntax_Check.csv"
-    output_csv = "test/SUOKIF_Type_Check.csv"
+
 
     print("Processing .kif files...")
     word_locations = process_kif_files(kif_dir)
