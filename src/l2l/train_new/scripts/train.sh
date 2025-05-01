@@ -23,6 +23,8 @@ mkdir -p ${OUTPUT_DIR}
 ## Pixi ##
 eval "$(pixi shell-hook -s bash)"
 
+source ~/.bashrc
+
 ## Debugging ##
 export HYDRA_FULL_ERROR=1
 
