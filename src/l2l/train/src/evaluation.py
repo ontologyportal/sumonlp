@@ -22,8 +22,6 @@ root = pyrootutils.setup_root(
     dotenv=True,
 )
 
-
-
 torch.set_float32_matmul_precision(
     "medium"
 ) # for better performance on multi-GPU training
