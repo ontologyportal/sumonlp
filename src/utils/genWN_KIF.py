@@ -11,6 +11,7 @@ import glob
 import sys
 import unicodedata
 import re
+from KB_reader import KB_reader
 
 
 def extract_mappings(line):
@@ -155,6 +156,20 @@ def find_subsuming_mappings(directory_path, output_file):
 
 
 if __name__ == "__main__":
+    reader = KB_reader()
+    unique_terms = reader.getAllSubClassesSubAttributesInstances("Attribute")
+
+    # Check if a specific term exists in the set
+    if "Car" in unique_terms:
+        print("Car is a unique term.")
+    else:
+        print("Car is not a unique term.")
+
+    # Print all unique terms
+    for term in unique_terms:
+        print(term)
+
+
     search_directory =  os.path.expandvars("$ONTOLOGYPORTAL_GIT/sumo/WordNetMappings/")
     output_file_path =  os.path.expandvars("$ONTOLOGYPORTAL_GIT/sumo/WN_Subsuming_Mappings.kif")
     find_subsuming_mappings(search_directory, output_file_path)
