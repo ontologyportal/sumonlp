@@ -13,12 +13,32 @@ import unicodedata
 import re
 from KB_reader import KB_reader
 
+created_terms = set()
+# Dictionary to convert numeric digits to their spelled-out form
+number_words = {
+    '0': 'Zero',
+    '1': 'One',
+    '2': 'Two',
+    '3': 'Three',
+    '4': 'Four',
+    '5': 'Five',
+    '6': 'Six',
+    '7': 'Seven',
+    '8': 'Eight',
+    '9': 'Nine'
+}
+
 
 def extract_mappings(line):
     # Match &% followed by content, ending with either + or = (capture both content and delimiter)
     matches = re.findall(r"&%([^+=]+)([+=])", line)
     # Keep only those where the delimiter is +
     mappings = [m[0].strip() for m in matches if m[1] == '+']
+    if not mappings:
+        if line.strip().endswith('+'):
+            print(f"No subsuming mapping for line but ends in '+' for line: {line.strip()}")
+        return mappings
+    mappings = [item for item in mappings if item not in relations]
     return mappings if mappings else None
 
 
@@ -59,24 +79,46 @@ def create_new_term(file_name, synset, mappings):
     newTerm = camel_case_word(synset[0]) + mappings[0]
     newTerm = newTerm[0].upper() + newTerm[1:]
 
-    # Append suffix based on the file name
-    if "adj" in file_name.lower():
-        newTerm += "Adj"
-    elif "noun" in file_name.lower():
-        newTerm += "Noun"
-    elif "adv" in file_name.lower():
-        newTerm += "Adv"
-    elif "verb" in file_name.lower():
-        newTerm += "Verb"
+    # If the term starts with digits, replace all leading digits with spelled-out forms
+    if newTerm and newTerm[0].isdigit():
+        # Find how many consecutive digits are at the start
+        i = 0
+        while i < len(newTerm) and newTerm[i].isdigit():
+            i += 1
+        # Replace each digit with its word form
+        spelled_prefix = ''
+        for digit in newTerm[:i]:
+            spelled_prefix += number_words[digit]
 
+        # Combine the spelled prefix with the rest of the term
+        newTerm = spelled_prefix + newTerm[i:]
+
+    original_term = newTerm
+    counter = 1
+    while newTerm in created_terms:
+        newTerm = f"{original_term}{counter}"
+        counter += 1
+    created_terms.add(newTerm)
     return newTerm
 
 
 def write_to_file(out_f, newTerm, mappings, documentation, synset):
+    global reader
     out_f.write(f"\n\n;; ;;;;;;;;;;;;;;;;;;;; {newTerm} ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\n")
     out_f.write(f"(documentation {newTerm} EnglishLanguage \"{documentation}\")\n")
     for mapping in mappings:
-        out_f.write(f"(subclass {newTerm} {mapping})\n")
+        if mapping in attributes:
+            if reader.isInstance(mapping):
+                out_f.write(f"(subAttribute {newTerm} {mapping})\n")
+                #print ("\n\n*********** " + newTerm + " " + mapping + " *******************")
+                #print ("(subAttribute " + newTerm + " " + mapping+")")
+            else:
+                out_f.write(f"(subclass {newTerm} {mapping})\n")
+                #print ("\n\n*********** " + newTerm + " " + mapping + " *******************")
+                #print ("(subclass " + newTerm + " " + mapping+")")
+
+        else:
+            out_f.write(f"(subclass {newTerm} {mapping})\n")
 
     for synset_element in synset:
         synset_element = synset_element.replace("_", " ")
@@ -106,8 +148,6 @@ def process_file(file_path, out_f):
                     line = clean_text(line)
                     mappings = extract_mappings(line)
                     if not mappings:
-                        if line.strip().endswith('+'):
-                            print(f"No subsuming mapping for line but ends in '+' for line: {line.strip()}")
                         continue
 
                     documentation = extract_documentation(line)
@@ -157,18 +197,8 @@ def find_subsuming_mappings(directory_path, output_file):
 
 if __name__ == "__main__":
     reader = KB_reader()
-    unique_terms = reader.getAllSubClassesSubAttributesInstances("Attribute")
-
-    # Check if a specific term exists in the set
-    if "Car" in unique_terms:
-        print("Car is a unique term.")
-    else:
-        print("Car is not a unique term.")
-
-    # Print all unique terms
-    for term in unique_terms:
-        print(term)
-
+    attributes = reader.getAllSubClassesSubAttributesInstances("Attribute")
+    relations = reader.getAllSubClassesSubAttributesInstances("Relation")
 
     search_directory =  os.path.expandvars("$ONTOLOGYPORTAL_GIT/sumo/WordNetMappings/")
     output_file_path =  os.path.expandvars("$ONTOLOGYPORTAL_GIT/sumo/WN_Subsuming_Mappings.kif")

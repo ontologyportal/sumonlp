@@ -90,6 +90,7 @@ while true; do
         generateWordNetKif|gwnk)
             python3 utils/genWN_KIF.py
             cp $ONTOLOGYPORTAL_GIT/sumo/WN_Subsuming_Mappings.kif $SIGMA_HOME/KBs/WN_Subsuming_Mappings.kif
+            echo "Results also copied to $SIGMA_HOME/KBs/WN_Subsuming_Mappings.kif"
             ;;
         clear)
             rm -f $SIGMA_HOME/KBs/SUMO_NLP.kif
