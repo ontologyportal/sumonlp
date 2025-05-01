@@ -17,9 +17,9 @@ src/command_history.txt
 
 src/l2l/input_l2l.txt
 src/l2l/output_l2l.txt
-src/l2l/train_new/data/tokenized/*
-src/l2l/train_new/out/*
-src/l2l/train_new/.pixi
+src/l2l/train/data/tokenized/*
+src/l2l/train/out/*
+src/l2l/train/.pixi
 
 
 src/metaphor_handling/input_mh.txt

@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=voc_from_sentences
-#SBATCH --output=./out/jobs/VOC_%j.out  # Output log file
-#SBATCH --error=./out/jobs/VOC_%j.err   # Error log file
+#SBATCH --output=/home/angelos.toutsios.gr/data/Train_T5_Model/data/scripts/logs/log_%j.out  # Output log file
+#SBATCH --error=/home/angelos.toutsios.gr/data/Train_T5_Model/data/scripts/logs/log_%j.err   # Error log file
 #SBATCH -N 1
 #SBATCH --mem=120G
 #SBATCH --cpus-per-task=64

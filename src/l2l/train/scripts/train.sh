@@ -20,10 +20,10 @@
 OUTPUT_DIR=out/$(date +%Y-%m-%d_%H-%M-%S)
 mkdir -p ${OUTPUT_DIR}
 
+source ~/.bashrc
+
 ## Pixi ##
 eval "$(pixi shell-hook -s bash)"
-
-source ~/.bashrc
 
 ## Debugging ##
 export HYDRA_FULL_ERROR=1
@@ -75,7 +75,7 @@ srun python -u src/train.py \
 'trainer.profiler=simple' \
 'callback_early_stopping.patience=5' \
 'paths.output_dir='${OUTPUT_DIR} \
-"paths.data_dir=${SUMO_NLP_HOME}/src/l2l/train_new/data/" \
-'paths.input_file=/home/angelos.toutsios.gr/data/Thesis_dev/L2L_model_training/data/test10k.json' \
+"paths.data_dir=${SUMO_NLP_HOME}/src/l2l/train/data/" \
+"paths.input_file=${SUMO_NLP_HOME}/src/l2l/train/data/test10k.json" \
 'paths.data_name=test10k' \
 

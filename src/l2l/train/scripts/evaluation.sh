@@ -60,4 +60,4 @@ srun --time=2:00:00 python src/evaluation.py \
 'trainer.gradient_clip_algorithm=norm' \
 'trainer.profiler=simple' \
 'paths.output_dir='${OUTPUT_DIR} \
-"paths.data_dir=${SUMO_NLP_HOME}/src/l2l/train_new/data" \
+"paths.data_dir=${SUMO_NLP_HOME}/src/l2l/train/data" \

@@ -29,8 +29,8 @@ def get_word_type(word):
     if word.upos == 'NOUN':
         return 'noun'
     # PROPN is handling from NER
-    # elif word.upos == 'PROPN':
-    #   return 'noun-phrase'
+    elif word.upos == 'PROPN':
+      return 'noun-phrase'
     elif word.upos == 'VERB':
         return 'verb'
     else:
