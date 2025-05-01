@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=run_weirdness_detector
-#SBATCH --output=/home/angelos.toutsios.gr/workspace/sumonlp/src/weirdness_detector/logs/log_%j.out  # Output log file
-#SBATCH --error=/home/angelos.toutsios.gr/workspace/sumonlp/src/weirdness_detector/logs/log_%j.err   # Error log file
+#SBATCH --output=./logs/log_%j.out  # Output log file
+#SBATCH --error=./logs/log_%j.err   # Error log file
 #SBATCH -N 1
 #SBATCH --mem=60G
 #SBATCH --cpus-per-task=64

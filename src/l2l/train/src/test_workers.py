@@ -3,12 +3,18 @@ import json
 import torch
 from torch.utils.data import Dataset, DataLoader
 from transformers import AutoTokenizer
+import os
 
 # Import your dataset class
 from datamodules.dataset import L2LDataset  # Update the import path if needed
 
 # Path to your dataset file
-data_path = "/home/angelos.toutsios.gr/data/Thesis_dev/L2L_model_training/data/sumo_dataset_500k_suffled_20250217_200924.json"
+${SUMO_NLP_HOME}/src/l2l/train/data/test10k.json
+
+sumo_nlp_home = os.environ.get('SUMO_NLP_HOME')
+l2l_home = os.path.join(sumo_nlp_home, 'src', 'l2l')
+# File paths
+data_path = os.path.join(l2l_home, 'train', 'data', 'input_l2l.json')
 
 # Load tokenizer
 tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-base")

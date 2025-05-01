@@ -5,8 +5,8 @@ DEFAULT_TRAIN_PERCENTAGE=90
 DEFAULT_VAL_PERCENTAGE=10
 
 # Set the input files
-input_file="/home/angelos.toutsios.gr/workspace/sumonlp/data/combined-eng.txt-0"
-output_file="/home/angelos.toutsios.gr/workspace/sumonlp/data/combined-log.txt-0"
+input_file="/data/fsg/.sumonlp/model_generation/2025-04-25/combined-eng.txt"
+output_file="/data/fsg/.sumonlp/model_generation/2025-04-25/combined-log.txt"
 
 # Check if an argument is provided
 if [ "$#" -eq 1 ]; then

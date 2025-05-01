@@ -9,8 +9,10 @@ Output: JSON training data.
 After the Ollama re-word, some sentences must be processed again, and remove the \" that added
 from Ollama. Also delete sentences that Ollama cannot handle.
 """
-
-file_name = "/home/angelos.toutsios.gr/data/Thesis_dev/SUMO-terms/data/LatestDataSet/20-2-2025_generated_dataset/3-stages-training/stage2_var_replaced_ollama_reword_cleaned_from_duplicates.json"
+sumo_nlp_home = os.environ.get('SUMO_NLP_HOME')
+l2l_home = os.path.join(sumo_nlp_home, 'src', 'l2l')
+# File paths
+file_name = os.path.join(l2l_home, 'data_preparation', 'data', 'input_l2l.json')
 
 output_file = output_file = os.path.splitext(file_name)[0]+"_remove_ollama_cannot_handle.json"
 

@@ -10,9 +10,12 @@ and the Json file will all the input/output pairs.
 It returns a JSON file with only the VALID sentences with the corresponding output.
 """
 
-# Define file paths
-filtered_json_file = "/home/angelos.toutsios.gr/data/Thesis_dev/SUMO-terms/data/LatestDataSet/new_dataset/combined_valid_sentences_only.json"
-json_file = "/home/angelos.toutsios.gr/data/Thesis_dev/SUMO-terms/data/LatestDataSet/new_dataset/combined.json"
+sumo_nlp_home = os.environ.get('SUMO_NLP_HOME')
+l2l_home = os.path.join(sumo_nlp_home, 'src', 'l2l')
+# File paths
+json_file = os.path.join(l2l_home, 'data_preparation', 'data', 'input_l2l.json')
+
+filtered_json_file = os.path.join(l2l_home, 'data_preparation', 'data', 'output_valid_sentences_only.json')
 
 # Function to normalize text and remove hidden characters
 def clean_text(text):

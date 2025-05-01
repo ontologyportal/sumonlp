@@ -51,15 +51,6 @@ def create_relations(sentences):
             word, root, pos = word_info
             if root == '':
                 continue
-            # if pos.lower().startswith('vb') or pos.lower().startswith('vv'):
-            #     pos = 'verb'
-            #     if (root, pos) not in dictionary:
-            #         dictionary[(root, pos)] = str(uuid.uuid4())
-
-            # elif pos.lower().startswith('nn'):
-            #     pos = 'noun'
-            #     if (root, pos) not in dictionary:
-            #         dictionary[(root, pos)] = str(uuid.uuid4())
 
             elif pos.lower().startswith('np'): # names
                 pos = 'noun-phrase'
@@ -88,7 +79,10 @@ if __name__=="__main__":
 
     cursor = conn.cursor()
 
-    for root, dirs, files in os.walk('/home/angelos.toutsios.gr/data/Thesis_dev/COCA_statistics/COCA'):
+    # Update the path to your COCA folder
+    COCA_FOLDER = ''
+
+    for root, dirs, files in os.walk(COCA_FOLDER):
         counter = 0
         for file in files:
             if file.endswith('.txt'):

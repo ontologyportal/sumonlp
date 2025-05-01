@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=training_data_sentence_replacement
-#SBATCH --output=/home/angelos.toutsios.gr/data/Thesis_dev/SUMO-terms/logs/input_reword_%j.out  # Output log file
-#SBATCH --error=/home/angelos.toutsios.gr/data/Thesis_dev/SUMO-terms/logs/input_reword_%j.err   # Error log file
+#SBATCH --output=./logs/input_reword_%j.out  # Output log file
+#SBATCH --error=./logs/input_reword_%j.err   # Error log file
 #SBATCH -N 1
 #SBATCH --mem=60G
 #SBATCH --cpus-per-task=64

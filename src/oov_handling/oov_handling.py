@@ -19,8 +19,6 @@ nlp = stanza.Pipeline('en', processors='tokenize,pos,lemma,ner', verbose=False)
 
 # Database configuration
 DB_PATH = os.environ['SUMO_NLP_HOME']+"/vocabulary.db"
-# DB_PATH = '/data/angelos.toutsios.gr/vocabulary.db'
-# DB_PATH = '/home/angelos.toutsios.gr/workspace/sumonlp/src/oov_handling/vocabulary_test.db'
 
 sentence_id = 1 # Sentence Counter
 

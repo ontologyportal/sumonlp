@@ -103,7 +103,11 @@ def process_sentences(sentences):
 
 start_time = time.time()
 
-file_path = "/home/angelos.toutsios.gr/data/Thesis_dev/SUMO-terms/data/LatestDataSet/20-2-2025_generated_dataset/3-stages-training/stage3_var_replaced.json"
+sumo_nlp_home = os.environ.get('SUMO_NLP_HOME')
+l2l_home = os.path.join(sumo_nlp_home, 'src', 'l2l')
+# File paths
+file_path = os.path.join(l2l_home, 'data_preparation', 'data', 'input_l2l.json')
+
 file_output = os.path.splitext(file_path)[0]+"_ollama_reword.json"
 
 print("-"*50)

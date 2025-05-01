@@ -2,8 +2,8 @@ import sqlite3
 import uuid
 import stanza
 
-DB_PATH = '/home/angelos.toutsios.gr/data/Train_T5_Model/data/500k_sentences_suffled/vocabulary.db'
-SENTENCE_PATH = '/home/angelos.toutsios.gr/data/Train_T5_Model/data/500k_sentences_suffled/input_sentences_500k.txt'
+DB_PATH = '/data/fsg/.sumonlp/model_generation/2025-04-25/vocabulary.db'
+SENTENCE_PATH = '/data/fsg/.sumonlp/model_generation/2025-04-25/combined-eng.txt'
 
 nlp = stanza.Pipeline(lang='en', processors='tokenize,pos,lemma')
 
