@@ -48,7 +48,7 @@ srun --time=2:00:00 python src/evaluation.py \
 'module.weight_decay=0.0' \
 'module.use_pretrained=false' \
 'module.fine_tune=true' \
-'module.load_model_path="/home/angelos.toutsios.gr/data/Thesis_dev/L2L_model_training/out/2025-03-04_23-44-38/lightning_logs/version_0/checkpoints/epoch=27-val_loss=13.49009.ckpt"' \
+"module.load_model_path=$MODEL_CHECKPOINT" \
 'trainer.num_nodes=1' \
 'trainer.precision=32-true' \
 'trainer.max_epochs=10' \
@@ -60,4 +60,4 @@ srun --time=2:00:00 python src/evaluation.py \
 'trainer.gradient_clip_algorithm=norm' \
 'trainer.profiler=simple' \
 'paths.output_dir='${OUTPUT_DIR} \
-"paths.data_dir=${SUMO_NLP_HOME}/src/l2l/train_new/data" \
+"paths.data_dir=${SUMO_NLP_HOME}/src/l2l/train/data" \

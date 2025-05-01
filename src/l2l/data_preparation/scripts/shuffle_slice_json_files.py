@@ -10,12 +10,13 @@ Suffles data and keep a specific number of sentences.
 A better approach is the `extract_the_best_sentences_from_the_file.py` which keeps the sentences that offer the most variance!
 """
 
+sumo_nlp_home = os.environ.get('SUMO_NLP_HOME')
+l2l_home = os.path.join(sumo_nlp_home, 'src', 'l2l')
 # File paths
-input_json = "/home/angelos.toutsios.gr/data/Thesis_dev/SUMO-terms/data/LatestDataSet/01-3-2025/150k-best-selected-no-weird-detector/1-stage-training/stage1_var_replaced.json"
+input_json = os.path.join(l2l_home, 'data_preparation', 'data', 'input_l2l.json')
 
+# Number of data to keep
 number_of_data = 20000
-
-
 
 # Load JSON data
 with open(input_json, "r", encoding="utf-8") as f:

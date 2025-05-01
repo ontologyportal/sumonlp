@@ -12,8 +12,6 @@ os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 # Suppress FutureWarning messages
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-
-# DB_PATH = '/data/angelos.toutsios.gr/vocabulary.db'
 DB_PATH = os.environ['SUMO_NLP_HOME']+"/vocabulary.db"
 
 # db_path = '/home/angelos.toutsios.gr/workspace/sumonlp/src/oov_handling/vocabulary_test.db'

@@ -23,7 +23,7 @@ class L2LModel(pl.LightningModule):
         sumo_terms_path = config.get("sumo_terms",'src/utils/sumo_terms.txt')
         self.warm_up_step = config.get("warm_up_step",0)
         self.sumo_term_penalty_weight = config.get("sumo_term_penalty_weight",0)
-        self.use_pretrained = config["use_pretrained"]
+        self.use_pretrained = config.get("use_pretrained", True)
 
         with open(sumo_terms_path, "r") as file:
             self.sumo_terms = {line.strip() for line in file if line.strip()}
@@ -120,7 +120,7 @@ class L2LModel(pl.LightningModule):
         sumo_penalty_loss = sumo_penalties.mean()  # Average penalty
 
         # Combine losses with a weighting factor (adjust factor as needed)
-        loss = loss + (self.sumo_term_penalty_weight * sumo_penalty_loss)  # Penalize incorrect SUMO terms
+        loss_sumo = loss + (self.sumo_term_penalty_weight * sumo_penalty_loss)  # Penalize incorrect SUMO terms
 
         # Compute metrics
         # bleu_score = self.bleu(pred_texts, [[t] for t in target_texts])

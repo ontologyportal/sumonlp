@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=custom_t5_training
-#SBATCH --output=/home/angelos.toutsios.gr/data/Thesis_dev/nmt_model_train_custom/logs/log_%j.out  # Output log file
-#SBATCH --error=/home/angelos.toutsios.gr/data/Thesis_dev/nmt_model_train_custom/logs/log_%j.err   # Error log file
+#SBATCH --output=./logs/log_%j.out  # Output log file
+#SBATCH --error=./logs/log_%j.err   # Error log file
 #SBATCH -N 1
 #SBATCH --mem=250G
 #SBATCH --cpus-per-task=32

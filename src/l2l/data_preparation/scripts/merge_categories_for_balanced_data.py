@@ -3,7 +3,10 @@ import random
 import os
 
 # Define dataset directory
-data_path = "/home/angelos.toutsios.gr/data/Thesis_dev/SUMO-terms/data/LatestDataSet/01-3-2025/150k-best-selected-no-weird-detector"
+sumo_nlp_home = os.environ.get('SUMO_NLP_HOME')
+l2l_home = os.path.join(sumo_nlp_home, 'src', 'l2l')
+# File paths
+data_path = os.path.join(l2l_home, 'data_preparation', 'data')
 
 # Define category JSON files
 categories = {

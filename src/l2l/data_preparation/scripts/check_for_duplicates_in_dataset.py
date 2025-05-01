@@ -1,7 +1,11 @@
 import json
 import os
 
-file_name = "/home/angelos.toutsios.gr/data/Thesis_dev/SUMO-terms/data/LatestDataSet/01-3-2025/150k-best-selected-no-weird-detector/1-stage-training/stage1.json"
+sumo_nlp_home = os.environ.get('SUMO_NLP_HOME')
+l2l_home = os.path.join(sumo_nlp_home, 'src', 'l2l')
+# File paths
+file_name = os.path.join(l2l_home, 'data_preparation', 'data', 'input_l2l.json')
+
 output_file = os.path.splitext(file_name)[0] + "_existing_duplicates.json"
 clean_file = os.path.splitext(file_name)[0] + "_cleaned_from_duplicates.json"
 
