@@ -17,6 +17,7 @@ from itertools import islice
 
 created_terms = set()
 roots_and_kids = {}
+new_instances = set()
 
 # Dictionary to convert numeric digits to their spelled-out form
 number_words = {
@@ -144,14 +145,11 @@ def write_to_file(out_f, newTerm, mappings, documentation, synset):
     out_f.write(f"(documentation {newTerm} EnglishLanguage \"{documentation}\")\n")
     for mapping in mappings:
         if mapping in attributes:
-            if reader.isInstance(mapping):
+            if reader.isInstance(mapping) or mapping in new_instances:
                 out_f.write(f"(subAttribute {newTerm} {mapping})\n")
-                #print ("\n\n*********** " + newTerm + " " + mapping + " *******************")
-                #print ("(subAttribute " + newTerm + " " + mapping+")")
             else:
-                out_f.write(f"(subclass {newTerm} {mapping})\n")
-                #print ("\n\n*********** " + newTerm + " " + mapping + " *******************")
-                #print ("(subclass " + newTerm + " " + mapping+")")
+                out_f.write(f"(instance {newTerm} {mapping})\n")
+                new_instances.add(newTerm)
         else:
             out_f.write(f"(subclass {newTerm} {mapping})\n")
 
@@ -215,44 +213,41 @@ def process_term(root, children_map, synset_id, wn_line):
     # Add hypernyms to mappings, but only if they are a child of the root of this branch of the ontology (so as not to conflict with SUMO defined mappings)
     for hypernym in hypernyms:
         if hypernym in children_map:
+            mappings.remove(root) # We remove the link directly to the parent and replace it with a sub-node.
             hypernym_wn_line = children_map[hypernym]
             if not hypernym_wn_line.startswith("PROCESSED"):
                 process_term(root, children_map, hypernym, hypernym_wn_line)
-            mappings.insert(0, hypernym_wn_line.split(":")[1]) # Hypernyms go in front, makes naming convention more meaningful.
+            parent = hypernym_wn_line.split(":")[1]
+            mappings.insert(0, parent) # Hypernyms go in front, makes naming convention more meaningful.
 
     synset = extract_synset(wn_line)
     newTerm = create_new_term(synset, mappings[0])
-
+    if mappings[0] in attributes:
+        attributes.add(newTerm)
+    documentation = extract_documentation(wn_line)
+    # If a subsuming mapping has more than 100 children terms, it gets its own .kif file.
+    # Otherwise, it gets thrown in the UNCATEGORIZED.kif file.
     filename = "wn_kif_files/" + root + ".kif"
     if len(children_map) < 100:
-        filename = "wn_kif_files/" +
-
-    write_to_file("wn_files/"+root+.kif, )
+        filename = "wn_kif_files/UNCATEGORIZED.kif"
+    write_to_file(filename, newTerm, mappings, documentation, synset)
     children_map[synset_id] = "PROCESSED:"+newTerm
 
 
 
 def generate_new_kifs():
-    print(f"Size of roots_and_kids: " + len(roots_and_kids))
-    # If there are more than 100 children terms, it gets its own .kif file.
-    # Otherwise, it gets thrown in the UNCATEGORIZED.kif file.
-    # roots and kids is of the form: {Common Subsuming Mapping: {synset_id: Word Net line}}
+    # roots and kids is of the form: {SubsumingMapping: {synset_id: Word Net line}}
     for root, children_map in roots_and_kids.items():
         print(f"Creating: {root}.kif")
         for synset_id, wn_line in children_map:
             if not wn_line.startswith("PROCESSED"):
                 process_term(root, children_map, synset_id, wn_line)
 
-
-
     for children_map in roots_and_kids.values():
         if len(children_map) < 100:
             total += len(children_map)
 
     print(f"Total children (with <500 per root): {total}")
-    #Do this for each new term.
-    #newTerm = create_new_term(file_name, synset, mappings)
-    #write_to_file(out_f, newTerm, mappings, documentation, synset)
 
 def find_subsuming_mappings(directory_path, output_file):
     if '$' in directory_path:
@@ -276,15 +271,15 @@ def find_subsuming_mappings(directory_path, output_file):
             found_count += process_file(file_path, out_f)
     print(f"Search complete. Found {found_count} subsuming mappings in {len(text_files)} files.")
 
-    # UPDATE THIS PART, SAVE ROOTS AND KIDS.
+    print("Generating new knowledge bases ...")
     generate_new_kifs()
-    print(f"Results saved to '{output_file}'.")
+    print(f"Results saved to 'wn_kif_files/'")
 
 
 if __name__ == "__main__":
     reader = KB_reader()
-    attributes = reader.getAllSubClassesSubAttributesInstances("Attribute")
-    relations = reader.getAllSubClassesSubAttributesInstances("Relation")
+    attributes = reader.getAllSubClassesSubAttributesInstancesOf("Attribute")
+    relations = reader.getAllSubClassesSubAttributesInstancesOf("Relation")
 
     search_directory =  os.path.expandvars("$ONTOLOGYPORTAL_GIT/sumo/WordNetMappings/")
     output_file_path =  os.path.expandvars("$ONTOLOGYPORTAL_GIT/sumo/WN_Subsuming_Mappings.kif")

@@ -66,7 +66,7 @@ class KB_reader:
         return result
 
 
-    def getAllSubClassesSubAttributesInstances(self, term, visited=None):
+    def getAllSubClassesSubAttributesInstancesOf(self, term, visited=None):
         if visited is None:
             visited = set()
 
@@ -89,7 +89,7 @@ class KB_reader:
                 for triple in lines:
                     child_attr = triple[1]
                     if child_attr not in visited:
-                        child_unique_terms = self.getAllSubClassesSubAttributesInstances(child_attr, visited)
+                        child_unique_terms = self.getAllSubClassesSubAttributesInstancesOf(child_attr, visited)
                         unique_terms.update(child_unique_terms)
 
         return unique_terms
