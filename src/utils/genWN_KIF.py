@@ -19,6 +19,9 @@ created_terms = set()
 roots_and_kids = {}
 new_instances = set()
 
+search_directory =  os.path.expandvars("$ONTOLOGYPORTAL_GIT/sumo/WordNetMappings/")
+output_file_path =  os.path.expandvars("$ONTOLOGYPORTAL_GIT/sumo/wn_kif_files")
+
 # Dictionary to convert numeric digits to their spelled-out form
 number_words = {
     '0': 'Zero',
@@ -139,8 +142,9 @@ def create_new_term(synset, parent):
     return newTerm
 
 
-def write_to_file(out_f, newTerm, mappings, documentation, synset):
+def write_to_file(outputfile, newTerm, mappings, documentation, synset):
     global reader
+    out_f = open(outputfile, 'a')
     out_f.write(f"\n\n;; ;;;;;;;;;;;;;;;;;;;; {newTerm} ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\n")
     out_f.write(f"(documentation {newTerm} EnglishLanguage \"{documentation}\")\n")
     for mapping in mappings:
@@ -156,6 +160,7 @@ def write_to_file(out_f, newTerm, mappings, documentation, synset):
     for synset_element in synset:
         synset_element = synset_element.replace("_", " ")
         out_f.write(f"(termFormat EnglishLanguage {newTerm} \"{synset_element}\")\n")
+    out_f.close()
 
 # SUMO is utf-8, but wordnet is not. We need to handle words with special characters.
 # normalize tries to replace characters, like accented e, with regular e.
@@ -168,7 +173,7 @@ def clean_text(text):
     # Remove the Unicode replacement character
     return text.replace('�', '')
 
-def process_file(file_path, out_f):
+def process_file(file_path):
     file_name = os.path.basename(file_path)
     found_count = 0
     try:
@@ -196,8 +201,7 @@ def process_file(file_path, out_f):
                         continue
 
                     mappings = extract_mappings(line)
-                    if not mappings: # If there is no subsuming mapping, then this is an error.
-                        print(f"No mapping found for wordnet line: {line.strip()}")
+                    if not mappings: # If there is no subsuming mapping, then skip it
                         continue
                     for mapping in mappings: # All conditions have been met, put it in the map for future processing.
                         roots_and_kids.setdefault(mapping, {})[synset_id] = line
@@ -207,17 +211,18 @@ def process_file(file_path, out_f):
         return 0
     return found_count
 
+global numSubmappedWords
 def process_term(root, children_map, synset_id, wn_line):
     mappings = extract_mappings(wn_line) # These are defined in SUMO
     hypernyms = extract_hypernyms_from_line(wn_line) # These are defined in wordnet.
     # Add hypernyms to mappings, but only if they are a child of the root of this branch of the ontology (so as not to conflict with SUMO defined mappings)
     for hypernym in hypernyms:
         if hypernym in children_map:
-            mappings.remove(root) # We remove the link directly to the parent and replace it with a sub-node.
-            hypernym_wn_line = children_map[hypernym]
-            if not hypernym_wn_line.startswith("PROCESSED"):
-                process_term(root, children_map, hypernym, hypernym_wn_line)
-            parent = hypernym_wn_line.split(":")[1]
+            if root in mappings:
+                mappings.remove(root) # We remove the link directly to the parent and replace it with a sub-node.
+            if not children_map[hypernym].startswith("PROCESSED"):
+                process_term(root, children_map, hypernym, children_map[hypernym])
+            parent = children_map[hypernym].split(":::")[1]
             mappings.insert(0, parent) # Hypernyms go in front, makes naming convention more meaningful.
 
     synset = extract_synset(wn_line)
@@ -227,53 +232,58 @@ def process_term(root, children_map, synset_id, wn_line):
     documentation = extract_documentation(wn_line)
     # If a subsuming mapping has more than 100 children terms, it gets its own .kif file.
     # Otherwise, it gets thrown in the UNCATEGORIZED.kif file.
-    filename = "wn_kif_files/" + root + ".kif"
+    filename = output_file_path + "/" + root + ".kif"
     if len(children_map) < 100:
-        filename = "wn_kif_files/UNCATEGORIZED.kif"
+        filename = output_file_path + "/UNCATEGORIZED.kif"
     write_to_file(filename, newTerm, mappings, documentation, synset)
-    children_map[synset_id] = "PROCESSED:"+newTerm
+    children_map[synset_id] = "PROCESSED:::"+newTerm
+    global numSubmappedWords
+    for mapping in mappings:
+        if mapping != root:
+            print(f"child: {newTerm} maps to: {mapping} instead of {root}")
+            numSubmappedWords += 1
 
 
 
 def generate_new_kifs():
     # roots and kids is of the form: {SubsumingMapping: {synset_id: Word Net line}}
+    global numSubmappedWords
+    numSubmappedWords = 0
     for root, children_map in roots_and_kids.items():
-        print(f"Creating: {root}.kif")
-        for synset_id, wn_line in children_map:
+        for synset_id, wn_line in children_map.items():
             if not wn_line.startswith("PROCESSED"):
                 process_term(root, children_map, synset_id, wn_line)
-
+    print("Total number of reconfigured hyponyms: " + str(numSubmappedWords))
+    total = 0
     for children_map in roots_and_kids.values():
-        if len(children_map) < 100:
-            total += len(children_map)
+        total += len(children_map)
+    print("Total terms processed: " + str(total))
 
-    print(f"Total children (with <500 per root): {total}")
 
-def find_subsuming_mappings(directory_path, output_file):
-    if '$' in directory_path:
-        directory_path = os.path.expandvars(directory_path)
+def find_subsuming_mappings():
+    global search_directory
+    if '$' in search_directory:
+        search_directory = os.path.expandvars(search_directory)
 
-    if not os.path.isdir(directory_path):
-        print(f"Error: Directory '{directory_path}' not found.")
+    if not os.path.isdir(search_directory):
+        print(f"Error: Directory '{search_directory}' not found.")
         sys.exit(1)
 
-    file_pattern = os.path.join(directory_path, "WordNetMappings30*.txt")
+    file_pattern = os.path.join(search_directory, "WordNetMappings30*.txt")
     text_files = glob.glob(file_pattern)
 
     if not text_files:
-        print(f"No text files found in '{directory_path}'.")
+        print(f"No text files found in '{search_directory}'.")
         sys.exit(1)
 
     found_count = 0
-
-    with open(output_file, 'w', encoding='utf-8') as out_f:
-        for file_path in sorted(text_files):
-            found_count += process_file(file_path, out_f)
+    for file_path in sorted(text_files):
+        found_count += process_file(file_path)
     print(f"Search complete. Found {found_count} subsuming mappings in {len(text_files)} files.")
 
     print("Generating new knowledge bases ...")
     generate_new_kifs()
-    print(f"Results saved to 'wn_kif_files/'")
+    print(f"Results saved to " + output_file_path)
 
 
 if __name__ == "__main__":
@@ -281,9 +291,8 @@ if __name__ == "__main__":
     attributes = reader.getAllSubClassesSubAttributesInstancesOf("Attribute")
     relations = reader.getAllSubClassesSubAttributesInstancesOf("Relation")
 
-    search_directory =  os.path.expandvars("$ONTOLOGYPORTAL_GIT/sumo/WordNetMappings/")
-    output_file_path =  os.path.expandvars("$ONTOLOGYPORTAL_GIT/sumo/WN_Subsuming_Mappings.kif")
-    find_subsuming_mappings(search_directory, output_file_path)
+    os.makedirs(output_file_path, exist_ok=True)
+    find_subsuming_mappings()
 
 
 
