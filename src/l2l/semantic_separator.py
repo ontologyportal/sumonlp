@@ -73,7 +73,8 @@ class SemanticSeparator:
                     while i < len(scrambled_text) and scrambled_text[i] != '"':
                         unscrambled_text += scrambled_text[i]
                         i = i+1
-                    unscrambled_text += scrambled_text[i]
+                    if i < len(scrambled_text):
+                        unscrambled_text += scrambled_text[i]
                     chunk = ""
                 elif not (scrambled_text[i].isalpha() and scrambled_text[i].isupper()):
                     unscrambled_text += chunk + scrambled_text[i]
