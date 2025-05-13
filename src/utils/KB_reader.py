@@ -105,3 +105,6 @@ class KB_reader:
         if not matches:
             return False
         return True
+
+    def existsTermInSumo(self, term):
+        return term in self.all_relations

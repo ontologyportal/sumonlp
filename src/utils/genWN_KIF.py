@@ -1,8 +1,15 @@
 #!/usr/bin/env python3
 #
 # Takes all wordnet subsuming mappings, and auto-generates a .kif file with
-# associated subclass and documentation statements.
+# associated subclass, subattribute, and documentation statements.
 #
+# The first step is to load all the terms to be created from WN files,
+# Then all terms that are map to the same term in SUMO are processed.
+# If there are more than 100 terms that map to the single SUMO term,
+# it is mapped to its own .kif file, named after the SUMO term. Otherwise,
+# it is placed in the UNCATEGORIZED.kif file.
+
+
 
 
 
@@ -18,7 +25,7 @@ from itertools import islice
 created_terms = set()
 roots_and_kids = {}
 new_instances = set()
-new_classes_synset_id = {}
+new_terms = {}
 
 search_directory =  os.path.expandvars("$ONTOLOGYPORTAL_GIT/sumo/WordNetMappings/")
 output_file_path =  os.path.expandvars("$ONTOLOGYPORTAL_GIT/sumo/wn_kif_files")
@@ -117,8 +124,9 @@ def camel_case_word(word):
 
 
 def create_new_term(synset, parent, grandparent):
+    global reader
     if grandparent:
-        parent = ''.join(parent.rsplit(grandparent, 1)) # Remove the grandparent term from the list, so that we don't have long term names like RobinBirdAnimalOrganismPhysicalEntity. We just have RobinBird
+        parent = ''.join(parent.rsplit(grandparent, 1)) # Remove the grandparent term from the name, so that we don't have long term names like RobinBirdAnimalOrganismPhysicalEntity. We just have RobinBird
     newTerm = camel_case_word(synset[0]) + parent
     newTerm = newTerm[0].upper() + newTerm[1:]
 
@@ -138,7 +146,7 @@ def create_new_term(synset, parent, grandparent):
 
     original_term = newTerm
     counter = 1
-    while newTerm in created_terms: # Sometimes two terms happen to have the same name, synonyms, and PoS.
+    while newTerm in created_terms or reader.existsTermInSumo(newTerm): # Sometimes two terms happen to have the same name, synonyms, and PoS.
         newTerm = f"{original_term}{counter}"
         counter += 1
     created_terms.add(newTerm)
@@ -167,6 +175,7 @@ def write_to_file(outputfile, newTerm, mappings, documentation, synset):
         synset_element = synset_element.replace("_", " ")
         out_f.write(f"(termFormat EnglishLanguage {newTerm} \"{synset_element}\")\n")
     out_f.close()
+
 
 # SUMO is utf-8, but wordnet is not. We need to handle words with special characters.
 # normalize tries to replace characters, like accented e, with regular e.
@@ -216,13 +225,16 @@ def process_file(file_path):
         return 0
     return found_count
 
-global numSubmappedWords
+
 def process_term(root, children_map, synset_id, wn_line):
+    if synset_id in new_terms: # It was already created in a different file, don't want to duplicate.
+        children_map[synset_id] = "PROCESSED:::"+new_terms[synset_id]+":::"+""
+        return
     mappings = extract_mappings(wn_line) # These are defined in SUMO
     hypernyms = extract_hypernyms_from_line(wn_line) # These are defined in wordnet.
     # Add hypernyms to mappings, but only if they are a child of the root of this branch of the ontology (so as not to conflict with SUMO defined mappings)
-    parent = ""
-    grandparent = ""
+    parent = mappings[0] # Use for newTerm name. If no hypernym is found the first mapping will be appended to the default name (i.e., SalmonFish).
+    grandparent = ""     # Need to find grandparent term, so that we can remove it from the newTerm name, so names don't get too long (i.e. SalmonFishAnimalOrganismPhysicalEntity)
     for hypernym in hypernyms:
         if hypernym in children_map:
             if root in mappings:
@@ -245,27 +257,21 @@ def process_term(root, children_map, synset_id, wn_line):
         filename = output_file_path + "/UNCATEGORIZED.kif"
     write_to_file(filename, newTerm, mappings, documentation, synset)
     children_map[synset_id] = "PROCESSED:::"+newTerm+":::"+mappings[0] # synset_id -> PROCESSED:::newTerm:::parent
-    global numSubmappedWords
-    for mapping in mappings:
-        if mapping != root:
-            print(f"child: {newTerm} maps to: {mapping} instead of {root}")
-            numSubmappedWords += 1
+    new_terms[synset_id] = newTerm
 
 
 
 def generate_new_kifs():
     # roots and kids is of the form: {SubsumingMapping: {synset_id: Word Net line}}
-    global numSubmappedWords
-    numSubmappedWords = 0
     for root, children_map in roots_and_kids.items():
         for synset_id, wn_line in children_map.items():
             if not wn_line.startswith("PROCESSED"):
                 process_term(root, children_map, synset_id, wn_line)
-    print("Total number of reconfigured hyponyms: " + str(numSubmappedWords))
     total = 0
     for children_map in roots_and_kids.values():
         total += len(children_map)
     print("Total terms processed: " + str(total))
+    print("Total new terms created: " + str(len(new_terms)))
 
 
 def find_subsuming_mappings():

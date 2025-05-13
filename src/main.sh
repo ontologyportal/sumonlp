@@ -150,7 +150,7 @@ while true; do
         l2l)
             sentence_value=${input:3}
             echo $sentence_value > l2l/input_l2l.txt
-            bash l2l/entry_point.sh > l2l/logs/l2l_log.log
+            bash l2l/entry_point.sh
             cat l2l/output_l2l.txt
             ;;
         oov)
