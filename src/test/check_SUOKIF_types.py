@@ -7,13 +7,13 @@ from collections import defaultdict
 # Clean line but preserve ? characters
 def clean_line(line):
     line_no_quotes = re.sub(r'"[^"]*"', '', line)
-    line_no_parens = re.sub(r'[()]', '', line_no_quotes)
+    line_no_parens = re.sub(r'[()]', ' ', line_no_quotes)
     line_cleaned = re.sub(r'[^\w\s?]', '', line_no_parens)
     return line_cleaned
 
 # Extract words, discard ignored and ?-prefixed ones
 def extract_words(line):
-    ignored_words = {"exists", "and", "or", "instance", "now" }
+    ignored_words = {"exists", "and", "or", "not", "instance", "now" }
     words = re.findall(r'\??\b\w+\b', line)
     return [
         word for word in words
@@ -23,10 +23,12 @@ def extract_words(line):
 # Process all .kif files and store words (not in quotes or comments) with a file location
 def process_kif_files(kif_dir):
     word_locations = defaultdict(set)
+    exclude_files = {"mondial.kif", "WN_Subsuming_Mappings.kif", "pictureList-ImageNet.kif", "pictureList.kif"}
+
     print("Looking for kif files in " + kif_dir)
     for root, _, files in os.walk(kif_dir):
         for file in files:
-            if file.endswith(".kif"):
+            if file.endswith(".kif") and file not in exclude_files:
                 print ("Processing: " + file)
                 file_path = os.path.join(root, file)
                 with open(file_path, 'r', encoding='utf-8') as f:
