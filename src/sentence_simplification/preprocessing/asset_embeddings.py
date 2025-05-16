@@ -204,8 +204,10 @@ def get_sentence_pairs(query, top_k=5, context_type='dynamic_tree', return_indic
         indices = INDICES[:top_k]
     elif context_type == 'random':
         indices = np.random.choice(range(2000), top_k, replace=False).tolist()
+    elif context_type == 'custom':
+        return get_custom_sentence_pairs(top_k)
     else:
-        raise ValueError('Invalid context type. Must be one of "dynamic_similarity", "dynamic_tree", "static", or "random".')
+        raise ValueError('Invalid context type. Must be one of "dynamic_similarity", "dynamic_tree", "static", "custom" or "random".')
 
     with open(f'{ASSET_DIR}/asset.valid.orig', 'r') as f:
         sentences = [line.strip() for line in f.readlines()]
