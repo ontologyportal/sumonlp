@@ -11,7 +11,7 @@ import asset_analyzer
 
 ASSET_DIR = './data/corpora/asset-main/dataset'
 EMBEDDINGS_DIR = './data/embeddings'
-CUSTOM_DIR = './data/custom'
+CUSTOM_DIR = './data/custom_l2l'
 
 
 MODEL = 'all-MiniLM-L6-v2'
@@ -220,9 +220,9 @@ def get_sentence_pairs(query, top_k=5, context_type='dynamic_tree', return_indic
 def get_custom_sentence_pairs(top_k=5):
     '''returns a k long list of tuples containing the original sentence and the corresponding simplified sentence of the nearest neighbors.'''
 
-    with open(f'{CUSTOM_DIR}/asset_custom.orig', 'r') as f:
+    with open(f'{CUSTOM_DIR}/custom.orig', 'r') as f:
         sentences = [line.strip() for line in f.readlines()]
-    with open(f'{CUSTOM_DIR}/asset_custom.simp', 'r') as f:
+    with open(f'{CUSTOM_DIR}/custom.simp', 'r') as f:
         simple_sentences = [line.strip() for line in f.readlines()]
 
     if top_k > len(sentences):
