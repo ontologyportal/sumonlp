@@ -155,6 +155,56 @@ def embed_structural_assets():
         save_trees(trees)
         print(f"Successfully embedded {len(trees)} sentences.")
 
+def get_custom_sentence_pairs(top_k=5):
+    '''returns a k long list of tuples containing the original sentence and the corresponding simplified sentence of the nearest neighbors.'''
+
+    with open(f'{CUSTOM_DIR}/custom.orig', 'r') as f:
+        sentences = [line.strip() for line in f.readlines()]
+    with open(f'{CUSTOM_DIR}/custom.simp', 'r') as f:
+        simple_sentences = [line.strip() for line in f.readlines()]
+
+    if top_k > len(sentences):
+        top_k = len(sentences)
+
+    return [(sentences[i], simple_sentences[i]) for i in range(len(sentences))][:top_k]
+
+def search_custom_sentence_pairs(query, top_k=5):
+    """
+    Given a query sentence, find the top_k most structurally 
+    similar originals in CUSTOM_DIR, and return each with its
+    simplified counterpart (and distance, if desired).
+    """
+    # 1. Load your custom data
+    orig_path = os.path.join(CUSTOM_DIR, 'custom.orig')
+    simp_path = os.path.join(CUSTOM_DIR, 'custom.simp')
+    with open(orig_path, 'r', encoding='utf-8') as f:
+        sentences = [line.strip() for line in f if line.strip()]
+    with open(simp_path, 'r', encoding='utf-8') as f:
+        simple_sentences = [line.strip() for line in f if line.strip()]
+
+    if len(simple_sentences) != len(sentences):
+        raise ValueError("Mismatch between custom.orig and custom.simp lengths")
+
+    # 2. Build trees for every custom original
+    custom_trees = [build_tree(s) for s in sentences]
+
+    # 3. Build tree for the query
+    query_tree = build_tree(query)
+
+    # 4. Compute distances
+    distances = np.array([
+        compute_tree_similarity(query_tree, t) 
+        for t in custom_trees
+    ])
+
+    # 5. Find top_k smallest distances
+    idxs = np.argsort(distances)[:top_k]
+
+    # 6. Return original, simplified
+    return [
+        (sentences[i], simple_sentences[i])
+        for i in idxs
+    ]
 
 
 
@@ -205,7 +255,7 @@ def get_sentence_pairs(query, top_k=5, context_type='dynamic_tree', return_indic
     elif context_type == 'random':
         indices = np.random.choice(range(2000), top_k, replace=False).tolist()
     elif context_type == 'custom':
-        return get_custom_sentence_pairs(top_k)
+        return search_custom_sentence_pairs(query, top_k)
     else:
         raise ValueError('Invalid context type. Must be one of "dynamic_similarity", "dynamic_tree", "static", "custom" or "random".')
 
@@ -219,18 +269,7 @@ def get_sentence_pairs(query, top_k=5, context_type='dynamic_tree', return_indic
     
     return [(sentences[i], simple_sentences[i]) for i in indices]
 
-def get_custom_sentence_pairs(top_k=5):
-    '''returns a k long list of tuples containing the original sentence and the corresponding simplified sentence of the nearest neighbors.'''
 
-    with open(f'{CUSTOM_DIR}/custom.orig', 'r') as f:
-        sentences = [line.strip() for line in f.readlines()]
-    with open(f'{CUSTOM_DIR}/custom.simp', 'r') as f:
-        simple_sentences = [line.strip() for line in f.readlines()]
-
-    if top_k > len(sentences):
-        top_k = len(sentences)
-
-    return [(sentences[i], simple_sentences[i]) for i in range(len(sentences))][:top_k]
 
 
 def run_faiss_embeddings():
