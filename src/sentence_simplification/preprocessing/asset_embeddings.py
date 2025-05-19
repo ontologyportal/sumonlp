@@ -9,9 +9,9 @@ import asset_analyzer
 
 
 
-ASSET_DIR = './data/corpora/asset-main/dataset'
-EMBEDDINGS_DIR = './data/embeddings'
-CUSTOM_DIR = './data/custom_l2l'
+ASSET_DIR = './examples/corpora/asset-main/dataset'
+EMBEDDINGS_DIR = './examples/embeddings'
+CUSTOM_DIR = './examples/custom_l2l'
 
 
 MODEL = 'all-MiniLM-L6-v2'

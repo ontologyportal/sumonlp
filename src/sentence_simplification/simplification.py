@@ -271,6 +271,12 @@ def simplify_sentence_adversarial(sentence, model=DEFAULT_MODEL, context_size=5,
     print(f'Warning: Did not receive a properly formatted and acceptable simplification after {retries} attempts. Returning original sentence.')
     return sentence, False, retries
 
+def create_retry_prompt(context, sentence, simplified, issues_text):
+    '''Creates a retry prompt using the fixed hallucination errors template'''
+    prompt = FIX_HALLUCINATION_ERRORS_PROMPT_TEMPLATE_LOGIC.format(
+        context=context, sentence=sentence, simplified=simplified, issues_text=issues_text)
+    return prompt
+
 def simplify_sentence(sentence, model=DEFAULT_MODEL, context_size=5, context_type='custom', complexity_filter=False, verbose=False):
     '''Simplifies a sentence using the given model and context settings'''
 
