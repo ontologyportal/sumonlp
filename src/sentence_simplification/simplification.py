@@ -7,6 +7,7 @@ import random
 from complexity import *
 import stanza
 import tqdm
+import json
 import re
 from util import *
 from sentence_transformers import SentenceTransformer, util
@@ -24,6 +25,156 @@ EXAMPLE_SENTENCES_TYPES = ["dynamic_similarity", "dynamic_tree", "static", "rand
 DEFAULT_MODEL = 'llama3.1:8b-instruct-q8_0'
 
 
+# -----------------------------------------------------------------------------
+# Prompt Templates
+# -----------------------------------------------------------------------------
+ 
+# 1. Simplification Prompt
+INITIAL_PROMPT_TEMPLATE_LOGIC = """Your task is to simplify a sentence for language to logic translation. 
+
+Key Guidelines:
+    - Do not change the meaning of the sentence.
+    - Avoid adding any new information not present in the original sentence.
+    - Maximize splitting the sentence into multiple smaller sentences.
+
+{context}
+
+Simplify the following sentence. Return a JSON object in the following format:
+
+{{
+    "Original": "<original sentence>",
+    "Explanation": "<explanation of simplification>",
+    "Simple": "<simplified version>"
+}}
+
+Do not nest JSON objects.
+Do not include arrays.
+Do not escape single quotes with a backslash.
+Only use double quotes (") for keys and string values.
+Do not include markdown formatting (no triple backticks).
+
+Here is the sentence to simplify: {sentence}"""
+
+# 2. Improper JSON Prompt
+IMPROPER_JSON_PROMPT_TEMPLATE_LOGIC = """Your task is to simplify a sentence for language to logic translation. 
+
+Key Guidelines:
+    - Do not change the meaning of the sentence.
+    - Avoid adding any new information not present in the original sentence.
+    - Maximize splitting the sentence into multiple smaller sentences.
+
+{context}
+
+Your last response did not include the correct structure. Please ensure you return a valid JSON object with the keys "Original", "Explanation", and "Simple". 
+Do not escape single quotes with a backslash.
+Only use double quotes (") for keys and string values.
+Do not include markdown formatting (no triple backticks).
+Do not nest JSON objects.
+Do not include arrays.
+Return ONE and only ONE JSON object.
+Do not include any other text or formatting.
+
+It should look like this:
+{{
+    "Original": "This is a sentence and it can be simplified.",
+    "Explanation": "Since the sentence contains two clauses, it can be simplified into two sentences.",
+    "Simple": "This is a sentence. It can be simplified."
+}}
+
+Simplify the following sentence: {sentence}"""
+
+# 3. Hallucination Checker Prompt
+HALLUCINATION_CHECK_PROMPT_TEMPLATE_LOGIC = """You are evaluating sentence simplifications for language-to-logic translation.
+    
+Key Guidelines:
+    - Splitting is the intended goal, so do not penalize for splitting sentences.
+    - Do not penalize for removing conjunctions unless meaning is lost.
+    - Do not suggest adding back conjunctions, even if the sentence "flows better.", unless meaning is lost.
+    - Do not recommend merging unless the simplification causes ambiguity or meaning loss.
+    - Each sentence should stand alone, so penalize for missing information that is necessary for understanding.
+    - Pronouns are meant to be resolved, so replacements like "Terry" instead of "he" are acceptable, as long as they are accurate.
+    - Ensure no hallucinations are present in the simplified version.
+    - Identify critical missing information that changes the meaning of the original sentence. Minor missing details are acceptable.
+    - Determine if the meaning has changed in a way that is not acceptable.
+    - Provide a recommendation to fix the issues found, or "enthusiastically accept" if no issues are found.
+
+Return a JSON object in the following format:
+{{
+    "original": "<original sentence>",
+    "simplified": "<simplified sentence>",
+    "extra_info": "<extra details found in the simplified sentence>",
+    "missing_info": "<critical information missing from the simplified sentence>",
+    "meaning_change": "<indicate if the meaning has changed in an unacceptable way>",
+    "recommendation": "<recommendation to fix the issues found> or 'enthusiastically accept'>"
+}}
+
+Do not escape single quotes with a backslash.
+Only use double quotes (") for keys and string values.
+Do not include markdown formatting (no triple backticks).
+Do not nest JSON objects.
+Do not include arrays.
+
+Here is the original and simplified sentence:
+Original: "{original}"
+Simplified: "{simplified}"
+"""
+
+# 4. Fix Hallucination Errors Prompt
+FIX_HALLUCINATION_ERRORS_PROMPT_TEMPLATE_LOGIC = """Your task is to simplify a sentence for language to logic translation.
+
+{context}
+
+For the following sentence: "{sentence}"
+The simplification "{simplified}" was detected to have the following issues: {issues_text}
+
+Please correct the simplification accordingly and return a valid JSON object in the format:
+{{
+    "Original": <original sentence>,
+    "Explanation": <explanation of simplification>,
+    "Simple": <corrected simplified sentence>
+}}
+Simplify the following sentence: {sentence}"""
+
+RETRY_ADD = """\nEnsure you return a single JSON object, nothing else. Here is an example of the correct format:
+{{
+    "original": "Jarrad ate the pizza and ate the cake.",
+    "simplified": "Jarrad ate the pizza while sitting.",
+    "extra_info": "Jarrad was not sitting in the original sentence.",
+    "missing_info": "Jarrad eating cake is not mentioned in the simplified sentence, which is a critical detail.",
+    "meaning_change": "The meaning has changed, since the simplified sentence implies Jarrad was sitting, which is not in the original.",
+    "recommendation": "Correct the simplification to include the cake and remove the sitting detail. A possible simplification could be: 'Jarrad ate the pizza and cake.'"
+}}
+
+"""
+
+# -----------------------------------------------------------------------------
+# Helper Functions
+# -----------------------------------------------------------------------------
+
+def parse_model_response(response_str):
+    # Use regex to extract the JSON object from the response string
+    #replace \' with ' to avoid issues with JSON parsing
+    response_str = response_str.replace("\\'", "'")
+    # replace triple backticks with nothing to avoid issues with JSON parsing
+    response_str = response_str.replace("```", "")
+    # replace \n with space to avoid issues with JSON parsing
+    response_str = response_str.replace("\\n", ' ').strip()
+    json_str = response_str.split('{')[-1] # extract the JSON part 
+    json_str = '{' + json_str.split('}')[0] + '}' # add the opening and closing bracket
+    try:
+        parsed_json = json.loads(json_str)
+        if 'Simple' in parsed_json or 'recommendation' in parsed_json:
+            return parsed_json
+    except json.JSONDecodeError as e:
+        print(f"Error parsing JSON: {e}")
+    print("Inside parse_model_response: Invalid JSON structure.")
+    print(f"Response string: {response_str}")
+    return None
+
+# -----------------------------------------------------------------------------
+# Main Functions
+# -----------------------------------------------------------------------------
+
 def call_ollama(prompt, model_type):
     """Call the Ollama model with the given prompt and model type."""
     try:
@@ -40,130 +191,164 @@ def call_ollama(prompt, model_type):
         print(f"Error calling Ollama: {e}")
         return None
 
+def simplify_sentence_adversarial(sentence, model=DEFAULT_MODEL, context_size=5, context_type='custom', complexity_filter=False, verbose=False):
+    '''
+    Adversarial sentence simplification that uses example contexts and iterative hallucination checking.
+    
+    Returns:
+        tuple: (simplified_sentence, flag, retries) where flag is True if the simplification was accepted,
+               or (original_sentence, False, retries) otherwise.
+    '''
 
-def simplify_sentence(sentence, model=DEFAULT_MODEL, context_size=5, context_type='custom', complexity_filter=False):
-    '''Simplifies a sentence using the given model and context settings'''
-
-    # Check if the sentence is a conjecture
-    if '?' in sentence:
-        query = f"Is the following sentence a question? '{sentence}' Answer 'Yes' or 'No'."
-        response = call_ollama(query, model)
-        if 'yes' in response.lower():
-            return sentence, False
+    issues_text = None
+    if verbose:
+        print(f'Simplifying sentence adversarially: {sentence}')
     
     if complexity_filter:
-        complex, complexity_dict = determine_complexity(sentence)
-        if not complex:
-            return sentence, False
-    if context_size > 0 and context_type in [t for t in EXAMPLE_SENTENCES_TYPES if t != 'custom']:
-        sentence_pairs = get_sentence_pairs(sentence, context_size, context_type)
-    elif context_size > 0 and context_type == 'custom':
-        sentence_pairs = get_custom_sentence_pairs(context_size)
-    else:
-        sentence_pairs = None
+        complex_flag, _ = determine_complexity(sentence)
+        if not complex_flag:
+            return sentence, False, 0
 
-    context_examples = '\n'.join(
-        f'Original: {orig}\nResponse: {simp}'
-        for orig, simp in sentence_pairs
-    ) if sentence_pairs else ''
-
-    context = (
-        'Your task is to simplify a sentence. Do not add redundant sentences. '
-        'If the sentence is already simple, LEAVE IT UNCHANGED. '
-        'Do not simplify verbs or nouns, LEAVE VERBS AND NOUNS ALONE. '
-        'Here are some examples:\n'
-        f'{context_examples}\n' if context_examples else ''
-    )
-
-    query = (
-        f'{context}Convert the following sentence. Respond in the format '
-        f"'Since <reason>, I will <action>. The converted version is: <converted version>'\n"
-        f'Original: {sentence.strip()}\nResponse:'
-    )
-
-    response = ollama.generate(model, prompt=query, options={"temperature": 0})
-
-    message = response['response'].replace('\n', ' ')
+    sentence_pairs = get_sentence_pairs(sentence, context_size, context_type) if context_size > 0 else None  
+    context_examples = '\n'.join(f'Complex: {orig}\nSimple: {simp}' for orig, simp in sentence_pairs) if sentence_pairs else ''
+    context = f'Here are some examples:\n{context_examples}\n' if context_examples else ''
     
-    with open("ollama_log.txt", "a") as log:
-        log.write(f'Simplify prompt: {query}\n')
-        log.write(f'Simplify output: {message}\n\n')
 
-    message = message.split("The converted version is: ")[-1].strip()
+    base_prompt = INITIAL_PROMPT_TEMPLATE_LOGIC.format(context=context, sentence=sentence)
 
+    retries = 0
+    temp = 0
+    while retries < 100:
+        if verbose:
+            print(f'Attempt {retries+1}')
+            print(f'For sentence: {sentence}')
+        response = ollama.generate(model, prompt=base_prompt, options={'temperature': temp, 'num_predict': 1024})
+        message = response['response'].replace('\n', ' ').strip()
+        
+        with open("ollama_log.txt", "a") as log:
+            log.write(f"Attempt {retries+1}\n")
+            log.write(f"Prompt: {base_prompt}\n")
+            log.write(f"Response: {message}\n\n")
+        
+        parsed_json = parse_model_response(message)
+        if parsed_json and "Simple" in parsed_json:
+            simplified = parsed_json["Simple"]
+            issues = ollama_hallucination_check(sentence, simplified, model=model)
+            if not issues:
+                print(f"Enthusiastically accepted simplification: {simplified}")
+                print('resolving pronouns')
+                simplified = resolve_pronouns(simplified)
+                return simplified, True, retries
+            else:
+                new_issues_text = json.dumps(issues)
+                if issues_text is not None and issues_text == new_issues_text:
+                    # If the issues are the same as before, increase temperature and retry
+                    temp += 0.1
+                else:
+                    issues_text = new_issues_text
+                    temp = 0
+                base_prompt = create_retry_prompt(context, sentence, simplified, issues_text)
+                retries += 1
+                temp += 0.1
+                if temp > .5:
+                    temp = 0
+                if verbose:
+                    print(f"Issues detected: {issues_text}. Retrying with modified prompt.")
+                    print("New prompt:", base_prompt)
+                time.sleep(3)
+        else:
+            print(f'No "Simple" key found in JSON response. Parsed JSON: {parsed_json}')
+            base_prompt = IMPROPER_JSON_PROMPT_TEMPLATE_LOGIC.format(context=context, sentence=sentence)
+            retries += 1
+            temp += 0.1
+            if temp > .5:
+                temp = 0
+            if verbose:
+                print("Failed to parse JSON. Retrying with corrected prompt.")
+                print("New prompt:", base_prompt)
+            time.sleep(3)
+    
+    print(f'Warning: Did not receive a properly formatted and acceptable simplification after {retries} attempts. Returning original sentence.')
+    return sentence, False, retries
 
+def create_retry_prompt(context, sentence, simplified, issues_text):
+    '''Creates a retry prompt using the fixed hallucination errors template'''
+    prompt = FIX_HALLUCINATION_ERRORS_PROMPT_TEMPLATE_LOGIC.format(
+        context=context, sentence=sentence, simplified=simplified, issues_text=issues_text)
+    return prompt
 
-    print(f'original sentence: {sentence}')
-    print(f'simplified sentences: {message}')
+def simplify_sentence(sentence, model=DEFAULT_MODEL, context_size=5, context_type='custom', complexity_filter=False, verbose=False):
+    '''Simplifies a sentence using the given model and context settings'''
 
+    if verbose:
+        print(f'Simplifying sentence: {sentence}')
+    
+    if complexity_filter:
+        complex_flag, complexity_dict = determine_complexity(sentence)
+        if not complex_flag:
+            return sentence, False
 
-    if message == sentence:
-        return message, False
-    return message, True
+    sentence_pairs = get_sentence_pairs(sentence, context_size, context_type) if context_size > 0 else None
+    context_examples = '\n'.join(f'Complex: {orig}\nSimple: {simp}' for orig, simp in sentence_pairs) if sentence_pairs else ''
+    context = f'Here are some examples:\n{context_examples}\n' if context_examples else ''
+    
+    # Create the initial prompt using the template
+    query = INITIAL_PROMPT_TEMPLATE_LOGIC.format(context=context, sentence=sentence)
+    retries = 0
+    while retries < 3:
+        response = ollama.generate(model, prompt=query, options={'temperature': 0})
+        message = response['response'].replace('\n', ' ').strip()
+
+        if verbose:
+            print(f'Attempt {retries+1}')
+            print(f'Query: {query}')
+            print(f'Message: {message}')
+        parsed_json = parse_model_response(message)
+        if parsed_json and "Simple" in parsed_json:
+            return parsed_json['Simple'], True
+        else:
+            retries += 1
+            print(f"Attempt {retries}: Response did not include the correct JSON structure. Reprompting...")
+            # Use the improper JSON prompt template for retrying
+            query = IMPROPER_JSON_PROMPT_TEMPLATE_LOGIC.format(context=context, sentence=sentence)
+            sleep(3)  # Wait 3 seconds before trying again
+    
+    print(f'Warning: Did not receive a properly formatted response after {retries} attempts. Returning original sentence.')
+    return sentence, False
 
 
 def ollama_hallucination_check(original: str, simplified: str, model: str = DEFAULT_MODEL):
-    """
-    Uses Ollama to check if the simplified sentence hallucinates extra details or removes key information.
+    '''
+    Checks if the simplified sentence introduces hallucinations (extra details or missing key information)
+    by comparing the original and simplified sentences.
+    '''
 
-    Args:
-        original (str): The original sentence.
-        simplified (str): The simplified version of the sentence.
-        model (str): The Ollama model to use (default: "llama3").
+    prompt = HALLUCINATION_CHECK_PROMPT_TEMPLATE_LOGIC.format(original=original, simplified=simplified)
 
-    Returns:
-        dict: A dictionary with detected hallucination issues.
-    """
+    response = ollama.generate(model=model, prompt=prompt, options={"temperature": 0, "num_predict": 1024})
+    response_text = response["response"].strip()
     
-    prompt = f"""
-    You are evaluating sentence simplifications for language-to-logic translation.
-    
-    Key Guidelines:
-        Splitting is the intended goal, so do not penalize for splitting sentences.
-        Do not penalize for removing conjunctions unless meaning is lost.
-        Do not suggest adding back conjunctions, even if the sentence "flows better.", unless meaning is lost.
-        Do not recommend merging unless the simplification causes ambiguity or meaning loss.
-        Each sentence should stand alone, so penalize for missing information that is necessary for understanding.
-        Pronouns are meant to be resolved, so replacements like "Terry" instead of "he" are acceptable, as long as they are accurate.
-
-    Respond in the format:
-    'Since <reasoning>, I have determined:
-        - Extra Information: <describe the hallucination> or None
-        - Missing Information: <describe the meaningful missing information> or None
-        - Meaning Change: <describe how the meaning changed> or None 
-        - Recommendation: <recommended actions to fix simplification> or 'Enthusiastically accept.' if no issues are found.
-    
-    Compare the following two sentences:
-    
-    Original: "{original}"
-    Simplified: "{simplified}"
-
-    """
-
-    response = ollama.generate(model=model, prompt=prompt, options={"temperature": 0})
-    analysis = response["response"]
-
+    # Log the prompt and output
     with open("ollama_log.txt", "a") as log:
         log.write(f"Hallucination prompt: {prompt}\n")
-        log.write(f"Hallucination output: {analysis}\n\n")
-
-    issues = {}
-    for line in analysis.split("\n"):
-        if line.startswith("- Extra Information:"):
-            issues["extra_info"] = line.replace("- Extra Information:", "").strip() if "None" not in line else None
-        elif line.startswith("- Missing Information:"):
-            issues["missing_info"] = line.replace("- Missing Information:", "").strip() if "None" not in line else None
-        elif line.startswith("- Meaning Change:"):
-            issues["meaning_change"] = line.replace("- Meaning Change:", "").strip() if "None" not in line else None
-        elif line.startswith("- Recommendation:"):
-            issues["recommendation"] = line.replace("- Recommendation:", "").strip()
-
-    if 'enthusiastically accept' in issues.get('recommendation', '').lower(): 
+        log.write(f"Hallucination output: {response_text}\n\n")
+    
+    issues = parse_model_response(response_text)
+    while issues is None:
+        print("Retrying hallucination check due to invalid JSON response.")
+        response = ollama.generate(model=model, prompt=prompt + RETRY_ADD, options={"num_predict": 1024}) # retry with added instruction and default temperature
+        response_text = response["response"].strip()
+        with open("ollama_log.txt", "a") as log:
+            log.write(f"Hallucination prompt: {prompt+RETRY_ADD}\n")
+            log.write(f"Hallucination output: {response_text}\n\n")
+        issues = parse_model_response(response_text)
+    
+    # Check if the recommendation is an enthusiastic accept.
+    if "recommendation" in issues and "enthusiastically accept" in issues["recommendation"].lower():
         return {}
-
+    
+    # Remove keys with null values
     issues = {key: value for key, value in issues.items() if value is not None}
-
-
     return issues
 
 def hallucination_check(original: str, simplified: str, threshold: float = 0.8) -> dict:
@@ -263,28 +448,10 @@ def simplify_file(input_file, output_file, model_type):
 
         sentence = sentence.strip()
 
-        simplified, simplified_flag = simplify_sentence(sentence, model=model_type)
+        simplified, simplified_flag, retries = simplify_sentence_adversarial(sentence, model=model_type)
         if not simplified_flag:
-            issues = {}
-        else:
-            issues = validate_response(sentence, simplified)
-        issues_text = "\n".join(f"- {key}: {value}" for key, value in issues.items())
-        tries = 0
-        while issues != {} and tries < 3 and simplified != sentence:  # try to simplify again if issues are found
-            prompt = f'In simplifying the following sentence, issues were identified\nPlease correct the simplification. Respond with just the simplified version.\nOriginal sentence: {sentence}\nOriginal simplification: {simplified}\nIssues with original simplification: {issues_text}\nOriginal sentence: {sentence}\nFixed simplified:'
-            simplified = call_ollama(prompt, DEFAULT_MODEL)
-            issues = validate_response(sentence, simplified)
-            issues_text = "\n".join(f"- {key}: {value}" for key, value in issues.items())
-            tries += 1
-
-        # check if sentence contains pronouns and replaces them with accurate nouns if possible            
-        pronouns = False
-        if check_pronouns_ollama(simplified, model_type):
-            pronouns = True
-        with open("ollama_log.txt", "a") as log:
-            log.write(f"Sentence: {simplified}\nPronouns: {pronouns}\n\n")
-        if pronouns:
-            simplified = remove_pronouns(simplified, model_type)
+            print(f"Warning: Simplification failed for sentence: {sentence}. Returning original sentence.")
+            simplified = sentence
 
         simplified_sentences.append(simplified)
     
@@ -296,7 +463,17 @@ def simplify_file(input_file, output_file, model_type):
         for sentence in simplified_sentences:
             outfile.write(sentence + '\n')
         
-            
+def resolve_pronouns(simplified):
+    '''checks if simplified version contains pronouns and resolves them if it does'''           
+    pronouns = False
+    if check_pronouns_ollama(simplified, DEFAULT_MODEL):
+        pronouns = True
+    with open("ollama_log.txt", "a") as log:
+        log.write(f"Sentence: {simplified}\nPronouns: {pronouns}\n\n")
+    if pronouns:
+        simplified = remove_pronouns(simplified, DEFAULT_MODEL)
+
+    return simplified
 
 def remove_pronouns(sentence, model):
     ''' 
