@@ -34,4 +34,8 @@ fi
 #javac LlamaMTrans.java
 #java LlamaMTrans output_md.txt output_mh.txt
 
-python3 metaphor_handler.py input_mh.txt output_mh.txt "$MODEL_MH"
+module purge
+#module load lib/cuda/12.2
+ollama serve > ./logs/ollama_log.out 2>&1 &
+
+python3 metaphor_handler_batch_word_level.py input_mh.txt output_mh.txt
