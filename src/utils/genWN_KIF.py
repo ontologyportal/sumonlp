@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 #
 # Takes all wordnet subsuming mappings, and auto-generates a .kif file with
-# associated subclass, subattribute, and documentation statements.
+# associated subclass, subattribute, and documentation statements. It will then
+# create new Wordnet mapping files with subsuming mappings changed to equivalent
+# mappings. There is nothing unrecoverable that is done by this. Just try it.
 #
 # The first step is to load all the terms to be created from WN files,
 # Then all terms that are map to the same term in SUMO are processed.
 # If there are more than 100 terms that map to the single SUMO term,
 # it is mapped to its own .kif file, named after the SUMO term. Otherwise,
 # it is placed in the UNCATEGORIZED.kif file.
-
-
-
 
 
 import os
