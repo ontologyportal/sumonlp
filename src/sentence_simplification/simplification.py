@@ -236,8 +236,8 @@ def simplify_sentence_adversarial(sentence, model=DEFAULT_MODEL, context_size=5,
             simplified = parsed_json["Simple"]
             issues = ollama_hallucination_check(sentence, simplified, model=model)
             if not issues:
-                print(f"Enthusiastically accepted simplification: {simplified}")
-                print('resolving pronouns')
+                #print(f"Enthusiastically accepted simplification: {simplified}")
+                #print('resolving pronouns')
                 simplified = resolve_pronouns(simplified)
                 return simplified, True, retries
             else:
