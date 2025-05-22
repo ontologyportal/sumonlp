@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 #
 # Takes all wordnet subsuming mappings, and auto-generates a .kif file with
-# associated subclass, subattribute, and documentation statements.
+# associated subclass, subattribute, and documentation statements. It will then
+# create new Wordnet mapping files with subsuming mappings changed to equivalent
+# mappings. There is nothing unrecoverable that is done by this. Just try it.
 #
 # The first step is to load all the terms to be created from WN files,
 # Then all terms that are map to the same term in SUMO are processed.
 # If there are more than 100 terms that map to the single SUMO term,
 # it is mapped to its own .kif file, named after the SUMO term. Otherwise,
 # it is placed in the UNCATEGORIZED.kif file.
-
-
-
 
 
 import os
@@ -27,7 +26,12 @@ roots_and_kids = {}
 new_instances = set()
 new_terms = {}
 
-search_directory =  os.path.expandvars("$ONTOLOGYPORTAL_GIT/sumo/WordNetMappings/")
+noun_file = None
+verb_file = None
+adj_file  = None
+adv_file  = None
+
+search_directory =  os.path.expandvars("$ONTOLOGYPORTAL_GIT/sumo/WordNetMappings")
 output_file_path =  os.path.expandvars("$ONTOLOGYPORTAL_GIT/sumo/wn_kif_files")
 
 # Dictionary to convert numeric digits to their spelled-out form
@@ -227,6 +231,7 @@ def process_file(file_path):
 
 
 def process_term(root, children_map, synset_id, wn_line):
+    global noun_file, verb_file, adj_file, adv_file
     if synset_id in new_terms: # It was already created in a different file, don't want to duplicate.
         children_map[synset_id] = "PROCESSED:::"+new_terms[synset_id]+":::"+""
         return
@@ -256,6 +261,11 @@ def process_term(root, children_map, synset_id, wn_line):
     if len(children_map) < 100:
         filename = output_file_path + "/UNCATEGORIZED.kif"
     write_to_file(filename, newTerm, mappings, documentation, synset)
+    new_wn_line = wn_line.replace("&%" + root + "+", "&%" + newTerm + "=")
+    noun_file = noun_file.replace(wn_line, new_wn_line)
+    verb_file = noun_file.replace(wn_line, new_wn_line)
+    adj_file = noun_file.replace(wn_line, new_wn_line)
+    adv_file = noun_file.replace(wn_line, new_wn_line)
     children_map[synset_id] = "PROCESSED:::"+newTerm+":::"+mappings[0] # synset_id -> PROCESSED:::newTerm:::parent
     new_terms[synset_id] = newTerm
 
@@ -264,6 +274,7 @@ def process_term(root, children_map, synset_id, wn_line):
 def generate_new_kifs():
     # roots and kids is of the form: {SubsumingMapping: {synset_id: Word Net line}}
     for root, children_map in roots_and_kids.items():
+        print ("Saving: " + root + ".kif")
         for synset_id, wn_line in children_map.items():
             if not wn_line.startswith("PROCESSED"):
                 process_term(root, children_map, synset_id, wn_line)
@@ -275,7 +286,7 @@ def generate_new_kifs():
 
 
 def find_subsuming_mappings():
-    global search_directory
+    global search_directory, noun_file, verb_file, adj_file, adv_file
     if '$' in search_directory:
         search_directory = os.path.expandvars(search_directory)
 
@@ -296,8 +307,25 @@ def find_subsuming_mappings():
     print(f"Search complete. Found {found_count} subsuming mappings in {len(text_files)} files.")
 
     print("Generating new knowledge bases ...")
+    with open(os.path.join(search_directory, "WordNetMappings30-noun.txt"), "r", encoding="cp1252") as f:
+        noun_file = f.read()
+    with open(os.path.join(search_directory, "WordNetMappings30-verb.txt"), "r", encoding="cp1252") as f:
+        verb_file = f.read()
+    with open(os.path.join(search_directory, "WordNetMappings30-adj.txt"), "r", encoding="cp1252") as f:
+        adj_file = f.read()
+    with open(os.path.join(search_directory, "WordNetMappings30-adv.txt"), "r", encoding="cp1252") as f:
+        adv_file = f.read()
     generate_new_kifs()
-    print(f"Results saved to " + output_file_path)
+    with open(os.path.join(search_directory, "new_WordNetMappings30-noun.txt"), "w", encoding="cp1252") as f:
+        f.write(noun_file)
+    with open(os.path.join(search_directory, "new_WordNetMappings30-verb.txt"), "w", encoding="cp1252") as f:
+        f.write(verb_file)
+    with open(os.path.join(search_directory, "new_WordNetMappings30-adj.txt"), "w", encoding="cp1252") as f:
+        f.write(adj_file)
+    with open(os.path.join(search_directory, "new_WordNetMappings30-adv.txt"), "w", encoding="cp1252") as f:
+        f.write(adv_file)
+    print(f"Results saved to " + output_file_path + ". Additionally updated wordnet mappings.")
+
 
 
 if __name__ == "__main__":
