@@ -88,14 +88,15 @@ HALLUCINATION_CHECK_PROMPT_TEMPLATE_LOGIC = """You are evaluating sentence simpl
     
 Key Guidelines:
     - Splitting is the intended goal, so do not penalize for splitting sentences.
-    - Do not penalize for removing conjunctions unless meaning is lost.
-    - Do not suggest adding back conjunctions, even if the sentence "flows better.", unless meaning is lost.
-    - Do not recommend merging unless the simplification causes ambiguity or meaning loss.
-    - Each sentence should stand alone, so penalize for missing information that is necessary for understanding.
-    - Pronouns are meant to be resolved, so replacements like "Terry" instead of "he" are acceptable, as long as they are accurate.
+    - Do NOT penalize for removing conjunctions, discourse cues, or transitional phrases (e.g., "in addition to", "however") unless they signal necessary meaning.
+    - Do NOT suggest adding back conjunctions or discourse markers unless their removal causes ambiguity or factual meaning loss.
+    - Do NOT recommend merging unless the simplification causes ambiguity or removes essential logical relationships.
+    - Each sentence should stand alone, with all subjects and actions clearly stated.
+    - Pronouns are meant to be resolved; replacing them with specific nouns is preferred.
+    - Do NOT penalize for loss of sentence “flow” or style; only assess whether logical content is preserved.
     - Ensure no hallucinations are present in the simplified version.
-    - Identify critical missing information that changes the meaning of the original sentence. Minor missing details are acceptable.
-    - Determine if the meaning has changed in a way that is not acceptable.
+    - Identify factual meaning changes, such as dropped actions or incorrect subjects. Ignore superficial shifts in phrasing.
+    - If all actions and agents are preserved and unambiguous, even if phrasing differs, consider it an acceptable simplification.
     - Provide a recommendation to fix the issues found, or "enthusiastically accept" if no issues are found.
 
 Return a JSON object in the following format:
@@ -235,8 +236,8 @@ def simplify_sentence_adversarial(sentence, model=DEFAULT_MODEL, context_size=5,
             simplified = parsed_json["Simple"]
             issues = ollama_hallucination_check(sentence, simplified, model=model)
             if not issues:
-                print(f"Enthusiastically accepted simplification: {simplified}")
-                print('resolving pronouns')
+                #print(f"Enthusiastically accepted simplification: {simplified}")
+                #print('resolving pronouns')
                 simplified = resolve_pronouns(simplified)
                 return simplified, True, retries
             else:
