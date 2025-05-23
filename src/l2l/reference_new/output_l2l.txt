@@ -1,2 +1,240 @@
 SentenceId:1
-['(exists (?H ?P ?DO ?IO) (and (instance ?H Human) (names "UNK_PERSON_1" ?H) (instance ?P Kicking) (agent ?P ?H) (instance ?DO Ball) (objectTransferred ?P ?DO) ))']
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Engineer) (instance ?P FixedAttribute) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Server) (patient ?P ?DO) ))']
+SentenceId:2
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Engineer) (instance ?P Interpreting) (agent ?P ?H) (instance ?DO ServiceProcess) (patient ?P ?DO) (instance ?IO ServiceProcess) (instance ?IO ServiceProcess)(patient ?P ?IO) ))']
+SentenceId:3
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H UNK_noun_1) (instance ?P Investigating) (agent ?P ?H) (instance ?DO Report) (patient ?P ?DO) ))']
+SentenceId:4
+['(not (exists (?X)(and (instance ?X UNK_noun_1)(unpaidItem ?X Mistakes))))']
+SentenceId:5
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H USNonconformist) (instance ?P Requesting) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO UNK_Verbu_1) (patient ?P ?DO) ))']
+SentenceId:6
+['(exists (?X)(and (instance ?X Quarter)(endingCompany ?X ?X)))']
+SentenceId:7
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Committee) (instance ?P Increasing) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO UNK_noun_1) (patient ?P ?DO) ))']
+SentenceId:8
+['(not (exists (?X ?XX)(and (instance ?XX UNK_Verb_1)(instance ?X Experiment)(experiment ?X ?XX))))']
+SentenceId:9
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Scientist) (instance ?P Interpreting) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Data) (patient ?P ?DO) ))']
+SentenceId:10
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Scientist) (instance ?P Planning) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO UNK_noun_1) (patient ?P ?DO) ))']
+SentenceId:11
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Chemist) (instance ?P Making) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO UNK_noun_1) (patient ?P ?DO) ))']
+SentenceId:12
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Cleric) (instance ?P Cooking) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO MainCourse) (patient ?P ?DO) ))']
+SentenceId:13
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Cleric) (instance ?P Baking) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Dessert) (patient ?P ?DO) ))']
+SentenceId:14
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Student) (instance ?P Investigating) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Mathematics) (patient ?P ?DO) ))']
+SentenceId:15
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Student) (instance ?P Investigating) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO ComputerScience) (patient ?P ?DO) ))']
+SentenceId:16
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Student) (instance ?P Disseminating) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Paper) (patient ?P ?DO) ))']
+SentenceId:17
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Manager) (instance ?P Interpreting) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO UNK_noun_1) (patient ?P ?DO) ))']
+SentenceId:18
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Manager) (instance ?P Interviewing) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?V2 Interviewing) (refers ?DO ?V2) ))']
+SentenceId:19
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Manager) (instance ?P Getting) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Human) (patient ?P ?DO) ))']
+SentenceId:20
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Author) (instance ?P Writing) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Introduction) (patient ?P ?DO) ))']
+SentenceId:21
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Author) (instance ?P Interpreting) (agent ?P ?H) (instance ?DO Conclusion) (patient ?P ?DO) ))']
+SentenceId:22
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Author) (instance ?P Interpreting) (agent ?P ?H) (instance ?DO References) (patient ?P ?DO) ))']
+SentenceId:23
+['(exists (?X)(and (instance ?X Device)(tooT ?X)))']
+SentenceId:24
+['(not (exists (?X)(and (instance ?X Software)(stops ?X Working))))']
+SentenceId:25
+['(not (exists (?X ?X)(and (instance ?X WarningNotice)(instance ?X Software)(unknown ?X ?X))))']
+SentenceId:26
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Researcher) (instance ?P Selecting) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Sample) (patient ?P ?DO) ))']
+SentenceId:27
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Researcher) (instance ?P Investigating) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Sample) (patient ?P ?DO) ))']
+SentenceId:28
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Researcher) (instance ?P Writing) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Summary) (patient ?P ?DO) ))']
+SentenceId:29
+['(not (exists (?X ?XI)(and (instance ?XI Code)(instance ?X UNK_noun_1)(confirmedUpdate ?X ?XI))))']
+SentenceId:30
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H UNK_noun_1) (instance ?P Writing) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?V2 Interpreting) (refers ?DO ?V2) ))']
+SentenceId:31
+['(not (exists (?X ?XI)(and (instance ?XI UNK_noun_2)(instance ?X UNK_noun_1)(clearedUp ?X ?XI))))']
+SentenceId:32
+['(not (exists (?X)(and (instance ?X Alarm)(sounding ?X))))']
+SentenceId:33
+['(not (exists (?H ?P ?DO ?IO) (and (attribute ?H Team) (instance ?P Excreting) (experiencer ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Building) (objectTransferred ?P ?DO) ))']
+SentenceId:34
+['(not (exists (?X ?Z)(and (instance ?Z FireDepartment)(instance ?X Football)(mobileCaller ?X ?Z))))']
+SentenceId:35
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Lawyer) (instance ?P Looking) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Contract) (patient ?P ?DO) ))']
+SentenceId:36
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Lawyer) (instance ?P Discovering) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (memberType ?DO Risk) (memberCount ?DO 9) (patient ?P ?DO) ))']
+SentenceId:37
+['(not (exists (?X ?XI)(and (instance ?XI Company)(instance ?X Product)(optionSeller ?X ?XI))))']
+SentenceId:38
+['(not (exists (?X ?XI)(and (instance ?XI Company)(instance ?X Product)(policyWorks ?X ?XI))))']
+SentenceId:39
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Diplomat) (instance ?P Transportation) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO UNK_GPE_1) (destination ?P ?DO) ))']
+SentenceId:40
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Diplomat) (instance ?P Arriving) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO UNK_noun_1) (patient ?P ?DO) ))']
+SentenceId:41
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Diplomat) (instance ?P Signing) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Agreement) (patient ?P ?DO) ))']
+SentenceId:42
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H MusicArtist) (instance ?P Creation) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO MusicNotes) (patient ?P ?DO) ))']
+SentenceId:43
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Musician) (instance ?P Interpreting) (agent ?P ?H) (instance ?DO Studio) (patient ?P ?DO) (instance ?IO Studio) (instance ?IO Studio)(patient ?P ?IO) ))']
+SentenceId:44
+['(not (exists (?X ?X)(and (instance ?X Shipment)(instance ?X Arriving)(arrived ?X ?X))))']
+SentenceId:45
+['(not (exists (?X ?XZ)(and (instance ?XZ Pallets)(instance ?X WarehouseStaff)(postStreet ?X ?XZ))))']
+SentenceId:46
+['(not (exists (?X ?XX)(and (instance ?XX Inventory)(instance ?X WarehouseStaff)(instance ?X Inventory)(currentEvent ?X ?XX))))']
+SentenceId:47
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Teacher) (instance ?P Interpreting) (agent ?P ?H) (instance ?DO ConsciousnessAttribute) (patient ?P ?DO) (instance ?IO ConventionalProcess) (instance ?IO ConventionalProcess)(patient ?P ?IO) ))']
+SentenceId:48
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Teacher) (instance ?P Demonstrating) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Examples) (patient ?P ?DO) ))']
+SentenceId:49
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Teacher) (instance ?P Working) (agent ?P ?H) (temporallyBetween (BeginFn (WhenFn ?P)) Now (EndFn (WhenFn ?P))) (instance ?V2 Running) (refers ?DO ?V2) ))']
+SentenceId:50
+['(exists (?H ?P ?DO ?IO) (and (instance ?H Meeting) (instance ?P Ingesting) (experiencer ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Meeting) (objectTransferred ?P ?DO) ))']
+SentenceId:51
+['(exists (?X ?XZ)(and (instance ?XZ Merger)(instance ?X ?XX)(unsuccessor ?X ?XZ)))']
+SentenceId:52
+['(exists (?X ?XZ)(and (instance ?XZ NewLeader)(instance ?X Guiding)(unpaidVoiceUser ?X ?XZ)))']
+SentenceId:53
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Dr) (instance ?P Investigating) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Patient) (patient ?P ?DO) ))']
+SentenceId:54
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Drone) (instance ?P Ingesting) (experiencer ?P ?H) (instance ?DO Medication) (objectTransferred ?P ?DO) ))']
+SentenceId:55
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Photographer) (instance ?P Seeing) (experiencer ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Sunset) (patient ?P ?DO) ))']
+SentenceId:56
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Photographer) (instance ?P Interpreting) (agent ?P ?H) (instance ?DO UNK_noun_1) (patient ?P ?DO) (instance ?IO UNK_noun_1) (instance ?IO UNK_noun_1)(patient ?P ?IO) ))']
+SentenceId:57
+['(exists (?H) (and (attribute ?H Athlete) (before ?T Now) (holdsDuring ?T (attribute ?H Tired))))']
+SentenceId:58
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Athlete) (instance ?P Interpreting) (agent ?P ?H) (instance ?DO Race) (patient ?P ?DO) (instance ?IO Race) (instance ?IO Race)(patient ?P ?IO) ))']
+SentenceId:59
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Athlete) (instance ?P Thanking) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO UNK_noun_1) (patient ?P ?DO) ))']
+SentenceId:60
+['(not (exists (?X)(and (instance ?X Platform)(uses ?X MobilePhone))))']
+SentenceId:61
+['(not (exists (?X)(and (instance ?X Platform)(uses ?X Computers))))']
+SentenceId:62
+['(not (exists (?X)(and (instance ?X People)(financialOrganization ?X Grants))))']
+SentenceId:63
+['(not (exists (?X ?XI)(and (instance ?XI UNK_noun_1)(instance ?X ?XI)(reviewedEvent ?X ?XI))))']
+SentenceId:64
+['(exists (?X ?X)(and (instance ?X ThreeProjects)(instance ?X People)(paidPropertyAmenity ?X ?X)))']
+SentenceId:65
+['(not (modalAttribute (exists (?X) (and (instance ?X Working) (instance ?X Working) (agent ?X) (instance ?X Working) (refers ?X) )) Likely))']
+SentenceId:66
+['(exists (?X ?Z)(and (instance ?Z Project)(instance ?X Team)(finished ?X ?Z)))']
+SentenceId:67
+['(not (exists (?X ?XI)(and (instance ?XI Report)(instance ?X Team)(sentIn ?X ?XI))))']
+SentenceId:68
+['(not (exists (?X ?X ?X)(and (instance ?X UNK_noun_1)(instance ?X Slides)(instance ?X Team)(shownInLanguage ?X ?X ?X))))']
+SentenceId:69
+['(not (exists (?X)(and (instance ?X TrueStory)(unconscious ?X ?X))))']
+SentenceId:70
+['(exists (?X ?X)(and (instance ?X SuccessfulBook)(instance ?X TrueStory)(conversionEvent ?X ?X)))']
+SentenceId:71
+['(exists (?X ?XZ)(and (instance ?XZ Rules)(instance ?X YearAgo)(instance ?X ?XX)(instance ?X ?XX)(willBeFn (WhenFn ?XX))))']
+SentenceId:72
+['(exists (?X ?XI)(and (instance ?XI Rules)(instance ?X HotSeason)(policyLocation ?X ?XI)))']
+SentenceId:73
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Architect) (instance ?P Designing) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Building) (patient ?P ?DO) ))']
+SentenceId:74
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Architect) (instance ?P Interpreting) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Construction) (patient ?P ?DO) ))']
+SentenceId:75
+['(not (exists (?X)(and (instance ?X System)(errorHash ?X UNK_Vern_1))))']
+SentenceId:76
+['(not (exists (?X)(and (instance ?X UNK_Verb_1)(administrator ?X ?X))))']
+SentenceId:77
+['(exists (?X ?XZ)(and (instance ?XZ TrainingUNK_noun_1)(instance ?X TrainingUNK_noun_1)(exists (?X ?XZ)))']
+SentenceId:78
+['(exists (?X)(and (instance ?X UNK_noun_1)(agent ?X Certificates)))']
+SentenceId:79
+['(exists (?X ?X)(and (instance ?X UNK_noun_1)(instance ?X TrainingUNK_noun_2)(askedQuestions ?X ?X)))']
+SentenceId:80
+['(not (exists (?X)(and (instance ?X Startup)(contestAttribute ?X ?X))))']
+SentenceId:81
+['(not (exists (?X)(and (instance ?X Startup)(unpaidItem ?X ?X))))']
+SentenceId:82
+['(not (exists (?X ?XZ)(and (instance ?XZ UNK_VOLUME1)(instance ?X Startup)(destination ?X ?XZ))))']
+SentenceId:83
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Editor) (instance ?P Interpreting) (agent ?P ?H) (instance ?DO Article) (patient ?P ?DO) (instance ?IO Article) (instance ?IO Article)(patient ?P ?IO) ))']
+SentenceId:84
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Editor) (instance ?P Update) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Layout) (patient ?P ?DO) ))']
+SentenceId:85
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Researcher) (instance ?P Application) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO UNK_noun_1) (patient ?P ?DO) ))']
+SentenceId:86
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Researcher) (instance ?P Calculating) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Performance) (patient ?P ?DO) ))']
+SentenceId:87
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Editor) (instance ?P Reading) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO UNK_noun_1) (patient ?P ?DO) ))']
+SentenceId:88
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Editor) (instance ?P Demonstrating) (agent ?P ?H) (temporallyBetween (BeginFn (WhenFn ?P)) Now (EndFn (WhenFn ?P))) (instance ?DO UNK_Verb_1) (patient ?P ?DO) ))']
+SentenceId:89
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Editor) (instance ?P Correcting) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO UNK_noun_1) (patient ?P ?DO) ))']
+SentenceId:90
+['(not (exists (?X ?XZ)(and (instance ?XZ Meeting)(instance ?X UNK_noun_1)(arrangedPropertyAmenity ?X ?XZ))))']
+SentenceId:91
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H UNK_noun_1) (instance ?P Transfer) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO UNK_noun_2) (objectTransferred ?P ?DO) (instance ?IO UNK_noun_3) (instance ?IO UNK_noun_3)(patient ?P ?IO) ))']
+SentenceId:92
+['(not (exists (?X ?Z)(and (instance ?Z Event)(instance ?X UNK_noun_1)(contestOrganizer ?X ?Z))))']
+SentenceId:93
+['(exists (?X ?Z)(and (instance ?Z UNK_noun_2)(instance ?X UNK_noun_1)(coordinated ?X ?Z)))']
+SentenceId:94
+['(exists (?X)(and (instance ?X Temperature)(lowerThanBoiler ?X ZeroFrecadeCensor)))']
+SentenceId:95
+['(exists (?X)(and (instance ?X Heating)(instance ?X Fireplace)(willIt starts ?X)))']
+SentenceId:96
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Engineer) (instance ?P Investigating) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO UNK_noun_1) (patient ?P ?DO) ))']
+SentenceId:97
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Engineer) (instance ?P Comparing) (agent ?P ?H) (instance ?DO Benchmarking) (patient ?P ?DO) ))']
+SentenceId:98
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Artist) (instance ?P Painting) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO UNK_noun_1) (objectTransferred ?P ?DO) ))']
+SentenceId:99
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Artist) (instance ?P Cooperation) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO LocalSchools) (patient ?P ?DO) ))']
+SentenceId:100
+['(not (exists (?X ?XI)(and (instance ?XI Ordinance)(instance ?X Council)(approved ?X ?XI))))']
+SentenceId:101
+['(not (exists (?H ?P ?DO ?IO) (and (attribute ?H Council) (instance ?P Reasoning) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO ResidentFn) (patient ?P ?DO) ))']
+SentenceId:102
+['(exists (?X ?XY)(and (instance ?XYY UNK_verb_1)(instance ?X UNK_noun_1)(conductor ?X ?XY)))']
+SentenceId:103
+['(exists (?X)(and (instance ?X UNK_noun_1)(conductor ?X Inspections)))']
+SentenceId:104
+['(not (exists (?X)(and (instance ?X UNK_noun_1)(contractedAgent ?X Donations))))']
+SentenceId:105
+['(exists (?X ?Z)(and (instance ?Z Items)(instance ?X UNK_noun_1)(sortedItem ?X ?Z)))']
+SentenceId:106
+['(not (exists (?X)(and (instance ?X UNK_noun_1)(instance ?X UNK_noun_1)(distributed ?X ?X))))']
+SentenceId:107
+['(not (exists (?X ?XI)(and (instance ?XI Network)(instance ?X System)(monitor ?X ?XI))))']
+SentenceId:108
+['(not (exists (?X)(and (instance ?X System)(not (exists (?X Unk_Verb_1)))))']
+SentenceId:109
+['(not (exists (?H ?P ?DO ?IO) (and (attribute ?H Surveyor) (instance ?P Writing) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO ?VO) (patient ?P ?DO) ))']
+SentenceId:110
+['(not (exists (?H ?P ?DO ?IO) (and (attribute ?H Surveyor) (instance ?P Getting) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO GiftCard) (patient ?P ?DO) ))']
+SentenceId:111
+['(exists (?X)(and (instance ?X Acquisition)(unnamedProduct ?X ?X)))']
+SentenceId:112
+['(exists (?X ?XZ)(and (instance ?XZ NewTeam)(instance ?X UNK_noun_1)(started ?X ?XZ)))']
+SentenceId:113
+['(not (exists (?X)(and (instance ?X Application)(instance ?X UNK_Vern_1)(dataSet ?X ?X))))']
+SentenceId:114
+['(not (exists (?X)(and (instance ?X Application)(stores ?X DataSecurely))))']
+SentenceId:115
+['(not (exists (?X)(and (instance ?X UNK_noun_1)(creator ?X Visualizations))))']
+SentenceId:116
+['(exists (?X ?XI)(and (instance ?XI UNK_noun_2)(instance ?X UNK_noun_1)(shared ?X ?XI)))']
+SentenceId:117
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Committee) (instance ?P Reading) (agent ?P ?H) (instance ?DO Appointments) (patient ?P ?DO) ))']
+SentenceId:118
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Committee) (instance ?P Selecting) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Wins) (patient ?P ?DO) ))']
+SentenceId:119
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Engineer) (instance ?P Interpreting) (agent ?P ?H) (instance ?DO Sensors) (patient ?P ?DO) ))']
+SentenceId:120
+['(exists (?H ?P ?DO ?IO) (and (attribute ?H Engineer) (instance ?P Investigating) (agent ?P ?H) (before (EndFn (WhenFn ?P)) Now) (instance ?DO Measurement) (patient ?P ?DO) ))']
