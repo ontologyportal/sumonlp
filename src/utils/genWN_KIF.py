@@ -19,17 +19,17 @@ import unicodedata
 import re
 from KB_reader import KB_reader
 
-from itertools import islice
+
 
 created_terms = set()
 roots_and_kids = {}
 new_instances = set()
 new_terms = {}
 
-noun_file = None
-verb_file = None
-adj_file  = None
-adv_file  = None
+noun_file = {}
+verb_file = {}
+adj_file  = {}
+adv_file  = {}
 
 search_directory =  os.path.expandvars("$ONTOLOGYPORTAL_GIT/sumo/WordNetMappings")
 output_file_path =  os.path.expandvars("$ONTOLOGYPORTAL_GIT/sumo/wn_kif_files")
@@ -190,7 +190,7 @@ def clean_text(text):
         if not unicodedata.combining(c)
     )
     # Remove the Unicode replacement character
-    return text.replace('�', '')
+    return text.replace('�', '').strip()
 
 def process_file(file_path):
     found_count = 0
@@ -262,10 +262,24 @@ def process_term(root, children_map, synset_id, wn_line):
         filename = output_file_path + "/UNCATEGORIZED.kif"
     write_to_file(filename, newTerm, mappings, documentation, synset)
     new_wn_line = wn_line.replace("&%" + root + "+", "&%" + newTerm + "=")
-    noun_file = noun_file.replace(wn_line, new_wn_line)
-    verb_file = noun_file.replace(wn_line, new_wn_line)
-    adj_file = noun_file.replace(wn_line, new_wn_line)
-    adv_file = noun_file.replace(wn_line, new_wn_line)
+    line_num = noun_file.pop(wn_line, None)
+    if line_num:
+        noun_file[new_wn_line] = line_num
+    else:
+        line_num = verb_file.pop(wn_line, None)
+        if line_num:
+            verb_file[new_wn_line] = line_num
+        else:
+            line_num = adj_file.pop(wn_line, None)
+            if line_num:
+                adj_file[new_wn_line] = line_num
+            else:
+                line_num = adv_file.pop(wn_line, None)
+                if line_num:
+                    adv_file[new_wn_line] = line_num
+                else:
+                    print("Could not find this line in any file: " + wn_line)
+
     children_map[synset_id] = "PROCESSED:::"+newTerm+":::"+mappings[0] # synset_id -> PROCESSED:::newTerm:::parent
     new_terms[synset_id] = newTerm
 
@@ -274,9 +288,8 @@ def process_term(root, children_map, synset_id, wn_line):
 def generate_new_kifs():
     # roots and kids is of the form: {SubsumingMapping: {synset_id: Word Net line}}
     for root, children_map in roots_and_kids.items():
-        print ("Saving: " + root + ".kif")
         for synset_id, wn_line in children_map.items():
-            if not wn_line.startswith("PROCESSED"):
+            if not wn_line.startswith("PROCESSED") and not root == "equal":
                 process_term(root, children_map, synset_id, wn_line)
     total = 0
     for children_map in roots_and_kids.values():
@@ -284,6 +297,27 @@ def generate_new_kifs():
     print("Total terms processed: " + str(total))
     print("Total new terms created: " + str(len(new_terms)))
 
+
+def lines_to_dict(filename):
+    """
+    Reads a file and returns a dictionary mapping each line (stripped of newline)
+    to its line number (starting from 1).
+    """
+    line_dict = {}
+    with open(filename, 'r', encoding='cp1252') as f:
+        for line_num, line in enumerate(f, start=1):
+            line = line.strip()
+            line_dict[line] = line_num
+    return line_dict
+
+def write_dict_values_by_key(input_dict, output_filename):
+    """
+    Writes the values of input_dict to output_filename, one per line,
+    in the order of their keys (sorted numerically).
+    """
+    with open(output_filename, 'w', encoding='cp1252') as f:
+        for key in sorted(input_dict):
+            f.write(f"{input_dict[key]}\n")
 
 def find_subsuming_mappings():
     global search_directory, noun_file, verb_file, adj_file, adv_file
@@ -307,34 +341,63 @@ def find_subsuming_mappings():
     print(f"Search complete. Found {found_count} subsuming mappings in {len(text_files)} files.")
 
     print("Generating new knowledge bases ...")
-    with open(os.path.join(search_directory, "WordNetMappings30-noun.txt"), "r", encoding="cp1252") as f:
-        noun_file = f.read()
-    with open(os.path.join(search_directory, "WordNetMappings30-verb.txt"), "r", encoding="cp1252") as f:
-        verb_file = f.read()
-    with open(os.path.join(search_directory, "WordNetMappings30-adj.txt"), "r", encoding="cp1252") as f:
-        adj_file = f.read()
-    with open(os.path.join(search_directory, "WordNetMappings30-adv.txt"), "r", encoding="cp1252") as f:
-        adv_file = f.read()
+    noun_file = lines_to_dict(os.path.join(search_directory, "WordNetMappings30-noun.txt"))
+    verb_file = lines_to_dict(os.path.join(search_directory, "WordNetMappings30-verb.txt"))
+    adj_file = lines_to_dict(os.path.join(search_directory, "WordNetMappings30-adj.txt"))
+    adv_file = lines_to_dict(os.path.join(search_directory, "WordNetMappings30-adv.txt"))
     generate_new_kifs()
-    with open(os.path.join(search_directory, "new_WordNetMappings30-noun.txt"), "w", encoding="cp1252") as f:
-        f.write(noun_file)
-    with open(os.path.join(search_directory, "new_WordNetMappings30-verb.txt"), "w", encoding="cp1252") as f:
-        f.write(verb_file)
-    with open(os.path.join(search_directory, "new_WordNetMappings30-adj.txt"), "w", encoding="cp1252") as f:
-        f.write(adj_file)
-    with open(os.path.join(search_directory, "new_WordNetMappings30-adv.txt"), "w", encoding="cp1252") as f:
-        f.write(adv_file)
-    print(f"Results saved to " + output_file_path + ". Additionally updated wordnet mappings.")
+    write_dict_values_by_key(noun_file, "new_WordNetMappings30-noun.txt")
+    write_dict_values_by_key(verb_file, "new_WordNetMappings30-verb.txt")
+    write_dict_values_by_key(adj_file, "new_WordNetMappings30-adj.txt")
+    write_dict_values_by_key(adv_file, "new_WordNetMappings30-adv.txt")
+    print(f"Results saved to " + output_file_path + ". Additionally updated wordnet mappings saved to new_WordNetMappings30-*.txt.")
 
+def clear_directory(dir_path):
+    """
+    Deletes all files and subdirectories in the specified directory,
+    but does not delete the directory itself.
+    Supports environment variables in the path.
+    """
+    dir_path = os.path.expandvars(dir_path)
+    for filename in os.listdir(dir_path):
+        file_path = os.path.join(dir_path, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+        except Exception as e:
+            print(f'Failed to delete {file_path}. Reason: {e}')
+
+
+def concatenate_kif_files(directory, output_filename="combined_WN.kif"):
+    directory = os.path.expandvars(directory)
+    output_path = os.path.join(directory, output_filename)
+
+    # Get all .kif files (excluding the output file if it already exists)
+    kif_files = sorted(
+        f for f in glob.glob(os.path.join(directory, "*.kif"))
+        if os.path.basename(f) != output_filename
+    )
+
+    with open(output_path, 'w', encoding='utf-8') as outfile:
+        for fname in kif_files:
+            with open(fname, 'r', encoding='utf-8') as infile:
+                outfile.write(infile.read())
+                outfile.write('\n')  # Optional: add a newline between files
+
+    print(f"Combined {len(kif_files)} files into {output_path}")
 
 
 if __name__ == "__main__":
+    os.makedirs(output_file_path, exist_ok=True)
+    clear_directory(output_file_path)
     reader = KB_reader()
     attributes = reader.getAllSubClassesSubAttributesInstancesOf("Attribute")
     relations = reader.getAllSubClassesSubAttributesInstancesOf("Relation")
 
-    os.makedirs(output_file_path, exist_ok=True)
     find_subsuming_mappings()
+    concatenate_kif_files(output_file_path, "combined_WN.kif")
 
 
 
