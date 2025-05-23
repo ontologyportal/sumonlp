@@ -3,6 +3,8 @@ import stanza
 import os
 import time
 import warnings
+from tqdm import tqdm
+import cProfile
 
 # Suppress logging warnings
 os.environ["GRPC_VERBOSITY"] = "ERROR"
@@ -21,7 +23,6 @@ nlp = stanza.Pipeline('en', processors='tokenize,pos,lemma,ner', verbose=False)
 DB_PATH = os.environ['SUMO_NLP_HOME']+"/vocabulary.db"
 
 sentence_id = 1 # Sentence Counter
-
 
 def get_word_type(word):
     """Determine if the word is a noun or verb using Stanza."""
@@ -141,21 +142,23 @@ def process_sentence(sentence, conn, cursor):
     return "\n".join(sentences)
 
 
-
 def process_file(input_file, output_file, conn, cursor):
     """Process the input file and write the processed text to the output file."""
+    print(f"Processing file: {input_file}")
     if not os.path.exists(input_file):
         print(f"Input file '{input_file}' does not exist.")
         return
 
-    with open(input_file, 'r', encoding='utf-8') as infile, \
-         open(output_file, 'w', encoding='utf-8') as outfile:
+    with open(input_file, 'r', encoding='utf-8') as infile:
+        total_lines = sum(1 for _ in infile)
+        infile.seek(0)
 
-        for line in infile:
-            stripped_line = line.strip()
-            if stripped_line:
-                processed_line = process_sentence(stripped_line, conn, cursor)
-                outfile.write(processed_line + '\n')
+        with open(output_file, 'w', encoding='utf-8') as outfile:
+            for line in tqdm(infile, total=total_lines, desc="Processing lines"):
+                stripped_line = line.strip()
+                if stripped_line:
+                    processed_line = process_sentence(stripped_line, conn, cursor)
+                    outfile.write(processed_line + '\n')
 
 def clear_unknown_words_from_db(conn, cursor):
   try:
@@ -177,8 +180,7 @@ def clear_unknown_words_from_db(conn, cursor):
         print(f"Unexpected error: {e}")
 
 
-
-if __name__ == "__main__":
+def main():
     start_time = time.time()
     input_filename = 'input_oov.txt'    # Input file containing sentences
     output_filename = 'output_oov.txt'  # Output file to save processed sentences
@@ -206,3 +208,6 @@ if __name__ == "__main__":
     # Close the database connection after processing
     conn.close()
     print(f"Processing complete in {time.time() - start_time:.2f} seconds.")
+
+if __name__ == "__main__":
+    main()

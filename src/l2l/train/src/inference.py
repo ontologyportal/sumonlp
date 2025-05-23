@@ -6,6 +6,7 @@ import torch
 import os
 import warnings
 import time
+from tqdm import tqdm
 
 # Suppress logging warnings
 os.environ["GRPC_VERBOSITY"] = "ERROR"
@@ -40,24 +41,27 @@ def read_input_file():
         return sentences
 
 
+
 def predict(model, tokenizer, input_sentences):
     prefix = "Convert the following sentence to SUO-KIF: "
     predictions = []
-    for sentence in input_sentences:
-      if(not sentence.startswith('SentenceId:')):
-        sentence = prefix + sentence
-        # ✅ Prepare Inputs
-        inputs = tokenizer(sentence,
-                          return_tensors="pt",
-                          padding=True,
-                          truncation=True,
-                          ).to(model.device)
-        with torch.no_grad():
-            output_ids = model.model.generate(**inputs, max_length=500)
-            outputs = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
-        predictions.append(outputs)
-      else:
-        predictions.append(sentence)
+
+    for sentence in tqdm(input_sentences, desc="Predicting", unit="sent"):
+        if not sentence.startswith('SentenceId:'):
+            sentence = prefix + sentence
+            # Prepare Inputs
+            inputs = tokenizer(sentence,
+                               return_tensors="pt",
+                               padding=True,
+                               truncation=True,
+                               ).to(model.device)
+            with torch.no_grad():
+                output_ids = model.model.generate(**inputs, max_length=500)
+                outputs = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
+            predictions.append(outputs)
+        else:
+            predictions.append(sentence)
+
     return predictions
 
 def save_predictions(predictions, output_file):

@@ -1,2 +1,240 @@
 SentenceId:1
-UNK_PERSON_1 kicks the ball
+The engineer fixed the server .
+SentenceId:2
+The engineer UNK_verb_1 the service .
+SentenceId:3
+The UNK_noun_1 was thoroughly examining the report .
+SentenceId:4
+The UNK_noun_1 discovered mistakes .
+SentenceId:5
+The UNK_noun_1 requested a UNK_verb_1 version .
+SentenceId:6
+The quarter was ending .
+SentenceId:7
+The committee approved the UNK_noun_1 .
+SentenceId:8
+The experiment UNK_verb_1 .
+SentenceId:9
+The scientist UNK_verb_1 the data .
+SentenceId:10
+The scientist planned new UNK_noun_1 .
+SentenceId:11
+The chef prepared the UNK_noun_1 .
+SentenceId:12
+The chef cooked the main course .
+SentenceId:13
+The chef baked the dessert .
+SentenceId:14
+The student studied mathematics .
+SentenceId:15
+The student studied computer science .
+SentenceId:16
+The student published a paper .
+SentenceId:17
+The manager did the UNK_noun_1 last .
+SentenceId:18
+The manager answered questions .
+SentenceId:19
+The manager got notes from people .
+SentenceId:20
+The author wrote the introduction .
+SentenceId:21
+The author UNK_verb_1 the conclusion .
+SentenceId:22
+The author UNK_verb_1 the references .
+SentenceId:23
+The device is too hot .
+SentenceId:24
+The software will stop working .
+SentenceId:25
+The software will UNK_verb_1 a warning notice .
+SentenceId:26
+The researcher collected samples .
+SentenceId:27
+The researcher analyzed samples in the UNK_noun_1 .
+SentenceId:28
+The researcher wrote a summary .
+SentenceId:29
+The UNK_noun_1 updated the code .
+SentenceId:30
+The UNK_noun_1 wrote documentation .
+SentenceId:31
+The UNK_noun_1 cleaned up the UNK_noun_2 .
+SentenceId:32
+The alarm sounded .
+SentenceId:33
+The team evacuated the building .
+SentenceId:34
+The team called the fire department .
+SentenceId:35
+The lawyer reviewed the contract .
+SentenceId:36
+The lawyer identified several risks .
+SentenceId:37
+The company sold the product .
+SentenceId:38
+The company worked on telling people about the product .
+SentenceId:39
+The diplomat traveled to UNK_GPE_1 .
+SentenceId:40
+The diplomat met with UNK_noun_1 .
+SentenceId:41
+The diplomat signed an agreement .
+SentenceId:42
+The musician made up some music notes .
+SentenceId:43
+The musician UNK_verb_1 the song in the studio .
+SentenceId:44
+The shipment arrived .
+SentenceId:45
+The warehouse staff UNK_verb_1 the pallets .
+SentenceId:46
+The warehouse staff updated the inventory .
+SentenceId:47
+The teacher UNK_verb_1 the concept .
+SentenceId:48
+The teacher provided examples .
+SentenceId:49
+The teacher UNK_verb_1 exercises .
+SentenceId:50
+They had a meeting .
+SentenceId:51
+They UNK_verb_1 the merger .
+SentenceId:52
+They UNK_verb_1 the new leader .
+SentenceId:53
+The doctor examined the patient .
+SentenceId:54
+The doctor UNK_verb_1 medication .
+SentenceId:55
+The photographer captured the sunset .
+SentenceId:56
+The photographer UNK_verb_1 the UNK_noun_1 later .
+SentenceId:57
+The athlete was tired .
+SentenceId:58
+The athlete UNK_verb_1 the race .
+SentenceId:59
+The athlete thanked the UNK_noun_1 .
+SentenceId:60
+The platform is used by people with mobile phones .
+SentenceId:61
+The platform is used by people with computers .
+SentenceId:62
+The people give out grants .
+SentenceId:63
+The people reviewed the UNK_noun_1 .
+SentenceId:64
+The people paid for three projects .
+SentenceId:65
+It was almost time to stop working .
+SentenceId:66
+The team finished the project .
+SentenceId:67
+The team sent in the report .
+SentenceId:68
+The team showed the slides for the UNK_noun_1 .
+SentenceId:69
+The true story was written down .
+SentenceId:70
+The true story became a successful book .
+SentenceId:71
+The rules that were written a year ago will begin being enforced .
+SentenceId:72
+The rules will be enforced during the hot season .
+SentenceId:73
+The architect designed the building .
+SentenceId:74
+The architect UNK_verb_1 the construction .
+SentenceId:75
+The system UNK_verb_1 errors .
+SentenceId:76
+The system UNK_verb_1 administrators automatically .
+SentenceId:77
+The training UNK_noun_1 has ended .
+SentenceId:78
+The UNK_noun_1 gave out certificates .
+SentenceId:79
+The UNK_noun_1 asked people what they thought of the training UNK_noun_2 .
+SentenceId:80
+The startup obtained funds .
+SentenceId:81
+The startup UNK_verb_1 more staff .
+SentenceId:82
+The startup UNK_verb_1 its operations to UNK_LOC_1 .
+SentenceId:83
+The editor UNK_verb_1 the article .
+SentenceId:84
+The editor updated the layout .
+SentenceId:85
+The researcher applied the UNK_noun_1 .
+SentenceId:86
+The researcher measured the performance .
+SentenceId:87
+The editor read the UNK_noun_1 .
+SentenceId:88
+The editor UNK_verb_1 revisions .
+SentenceId:89
+The editor corrected UNK_noun_1 .
+SentenceId:90
+The UNK_noun_1 scheduled the meeting .
+SentenceId:91
+The UNK_noun_1 sent UNK_noun_2 UNK_noun_3 .
+SentenceId:92
+The UNK_noun_1 organized the event .
+SentenceId:93
+The UNK_noun_1 coordinated with UNK_noun_2 .
+SentenceId:94
+The temperature is lower than zero degrees Celsius .
+SentenceId:95
+The heater will start .
+SentenceId:96
+The engineer tested the UNK_noun_1 .
+SentenceId:97
+The engineer UNK_verb_1 the benchmarks .
+SentenceId:98
+The artist painted the UNK_noun_1 .
+SentenceId:99
+The artist collaborated with local schools .
+SentenceId:100
+The council approved the ordinance .
+SentenceId:101
+The council told the residents .
+SentenceId:102
+The policy UNK_verb_1 that the UNK_noun_1 conducts inspections .
+SentenceId:103
+The UNK_noun_1 conducts inspections and files reports .
+SentenceId:104
+The UNK_noun_1 collected donations .
+SentenceId:105
+The UNK_noun_1 sorted the items .
+SentenceId:106
+The UNK_noun_1 distributed them to shelters .
+SentenceId:107
+The system monitors the network .
+SentenceId:108
+The system UNK_verb_1 suspicious activities .
+SentenceId:109
+The people who did the survey wrote down what they thought .
+SentenceId:110
+The people who did the survey got a gift card .
+SentenceId:111
+UNK_PRODUCT_1 the acquisition .
+SentenceId:112
+The UNK_noun_1 started working with the new team .
+SentenceId:113
+The application UNK_verb_1 data .
+SentenceId:114
+The application stores data securely .
+SentenceId:115
+The UNK_noun_1 created visualizations .
+SentenceId:116
+The UNK_noun_1 shared the UNK_noun_2 .
+SentenceId:117
+The committee read through the nominations .
+SentenceId:118
+The committee selected the winners .
+SentenceId:119
+The engineer UNK_verb_1 the sensors .
+SentenceId:120
+The engineer verified the measurements .
