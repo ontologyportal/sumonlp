@@ -26,7 +26,10 @@ if [[ "${inputFile: -4}" == ".txt" ]]; then
       echo "Adding $inputFile to the knowledge base."
       outputFile="test/add_lbl_output.txt"
       echo "" > "$outputFile"
+      line_number=0
       while IFS= read -r line; do
+        ((line_number++))
+        echo -e "\n\n\n\nLine $line_number: $line"
         echo "$line" > policy_extracter/input_pe.txt
         bash run_pipeline.sh
         cat prover/input_pr.txt >> "$outputFile"

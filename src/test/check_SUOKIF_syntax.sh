@@ -106,9 +106,12 @@ done
 currentSegment=""
 
 # Loop through each line of the input file
+lineNumber=0
 while IFS= read -r line || [[ -n "$line" ]]; do
   # Check if the line is empty, only whitespace, or starts with ";" or "!!"
   if [[ -z "$line" || "$line" =~ ^[[:space:]]*$ || "$line" =~ ^[[:space:]]*\; || "$line" =~ ^\!\! ]]; then
+    ((lineNumber++))
+    echo -e "\n\nLine $lineNumber: $line"
     # Save the current segment to a variable with new lines replaced by spaces
     echo "Checking '$currentSegment'"
     checkSUOKIF "$currentSegment" "$saveToCSV" 
