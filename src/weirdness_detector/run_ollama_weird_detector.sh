@@ -41,4 +41,4 @@ cd $SUMO_NLP_HOME/src/weirdness_detector
 
 # Run the parallel Python script and redirect output
 python3 -u ollama-model-parallel.py \
-"$SUMO_NLP/src/weirdness_detector/test.txt"
+"$SUMO_NLP/src/weirdness_detector/out_RANDOM_1000.txt"
