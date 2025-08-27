@@ -1,20 +1,5 @@
-pip install wordfreq
-pip install sentence_transformers
-pip install nltk
-pip install absl
-pip install bert_score
-pip install sacrebleu
-pip install sacremoses
-pip install rouge_score
-pip install ollama
-pip install spacy
-pip install textacy
-pip install sentence-transformers
-pip install pyemd
-pip install evaluate
-pip install matplotlib
-pip install 'accelerate>=0.26.0'
-pip install zss # for tree  distance
-pip install faiss-cpu
-pip install absl-py
-python -m spacy download en_core_web_sm
+stanza
+ollama
+tqdm
+spacy
+wordfreq

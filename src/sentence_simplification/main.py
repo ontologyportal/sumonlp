@@ -1,6 +1,6 @@
 from complexity import * 
 from simplification import *
-from util import *
+from util import end_program
 import os
 import time
 import datetime
