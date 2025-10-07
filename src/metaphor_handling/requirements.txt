@@ -1,0 +1,5 @@
+transformers
+torch
+ollama
+nltk
+sentence_transformers

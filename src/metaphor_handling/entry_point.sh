@@ -1,16 +1,16 @@
 #!/bin/bash
 echo "Starting metaphor handling ..."
 
-# Gets the path to this script, so this script can be run from any location and still work
-parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
-cd "$parent_path" || exit
+# # Gets the path to this script, so this script can be run from any location and still work
+# parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd -P )
+# cd "$parent_path" || exit
 
-source ../load_configs.sh
+# source ../load_configs.sh
 
 
-if [[ "$SUMO_NLP_RUNNING_ON_HAMMING" == true ]]; then
-  module unload lib/cuda/12.2  # need to unload this because otherwise torch will be messed up. Messy fix, may need to find torch <-> ollama CUDA version incompatability
-fi
+# if [[ "$SUMO_NLP_RUNNING_ON_HAMMING" == true ]]; then
+#   module unload lib/cuda/12.2  # need to unload this because otherwise torch will be messed up. Messy fix, may need to find torch <-> ollama CUDA version incompatability
+# fi
 
 #python3 metaphor_detect_pipeline.py
 
@@ -21,7 +21,7 @@ fi
 #ollama pull llama3.2:3b > /dev/null 2>&1
 #ollama pull llama3.2:3b > /dev/null 2>&1
 #ollama pull llama3.2:3b
-#ollama pull llama3.1:8b
+ollama pull llama3.1:8b
 #ollama pull $MODEL_MH > /dev/null 2>&1
 
 
@@ -33,9 +33,7 @@ fi
 #module load lang/java/8.141-oracle > /dev/null 2>&1
 #javac LlamaMTrans.java
 #java LlamaMTrans output_md.txt output_mh.txt
-
-module purge
-#module load lib/cuda/12.2
-ollama serve > ./logs/ollama_log.out 2>&1 &
-
+# echo $MODEL_MH
+# python3 metaphor_handler.py input_mh.txt output_mh.txt "$MODEL_MH"
+./ollama.sh
 python3 metaphor_handler_batch_word_level.py input_mh.txt output_mh.txt
