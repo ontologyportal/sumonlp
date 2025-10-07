@@ -13,30 +13,45 @@ Running Instructions:
 
 
 
-Parameters:
-All parameters by default are set to the optimized parameters, which were found in Chapter 4 of the thesis.
+## Parameters
 
-See main() in metaphor_handler_batch_word_level.py for the optimized parameters used.
+All parameters are set to the optimized values described in Chapter 4 of the thesis. See `main()` in `metaphor_handler_batch_word_level.py` for the exact configurations used.
 
-Explanations of each parameter are as follows:
+    model_type: str = 'llama3.1:8b'
+        Ollama model identifier. Reference the Ollama documentation for available models.
 
-model_type: str='llama3.1:8b'     Ollama model identifier, reference Ollama documentation to see which models are available for download
+    similarity_function: str = 'bleu'
+        Determines which similarity metric to use for comparing the candidate with the original sentence.
+        Options: "rouge", "bleu", or "bert_cosine".
 
-similarity_function: str='bleu'   Which similarity function to use for comparing candidate with original sentence. Options are "rouge", "bleu", or "bert_cosine".
+    bert_embedder: BertEmbedder | None = None
+        Required only if using "bert_cosine" as the similarity function.
+        When set to None, the translator will automatically use
+        the "sentence-transformers/all-MiniLM-L6-v2" embedder.
 
-bert_embedder: BertEmbedder | None = None    A BERT embedder is needed when using "bert_cosine" as the similarity functino. By default, this parameter is set to None, which will then default to using the sentence-transformers/all-MiniLM-L6-v2 embedder.
+    md: MetaphorDetector | None = None
+        Allows passing in a pre-initialized MetaphorDetector instance.
+        Speeds up runtime if multiple translator instances are created.
 
-md: MetaphorDetector | None = None    This is in place if you want to pass in an already instatiated MetaphorDetector instance to the translator, to speed things up if multiple tranlator instances are created for whatever reason.
+    start_temp: float = 0.2
+        Temperature parameter for the Ollama LLM.
+        Higher temperatures produce more varied (creative) outputs.
 
-start_temp: float=0.2    Specifies what temperature the Ollama LLM will use, with higher temperatures producing more varied output.
+    desired_sim_score: float = 0.1
+        Similarity score threshold that determines whether a candidate passes
+        the similarity criterion.
 
-desired_sim_score: float=0.1    The threshold that determines whether a candidate's similarity score 'passes' the similarity criteria.
+    prompt_limit: int = 4
+        Maximum number of prompt batches generated per input sentence.
 
-prompt_limit: int=4    Limit on number of batches to be generated for each input sentence.
+    batch_size: int = 10
+        Number of candidate translations generated per batch.
 
-batch_size: int=10      Number of candidates generated per batch
-
-reduction_rate: float=0.82   See Chapter 3 of thesis for more details on reduction rate. This is used to calculate the maximum allowable residual metaphors a candidate can have to be considered 'acceptable'. 
+    reduction_rate: float = 0.82
+        Controls metaphor reduction aggressiveness.
+        See Chapter 3 of the thesis for a detailed explanation.
+        Used to compute the maximum allowable residual metaphors
+        for a candidate to be considered acceptable.
 
 Terminal output:
 
@@ -60,6 +75,7 @@ This example shows that two batches were produced, and since early stopping was 
 The second example below shows three batches of 6 candidates each, where early stopping was not activated.
 
 ...... .✔.✔.. ...✔.✔
+
 
 
 
