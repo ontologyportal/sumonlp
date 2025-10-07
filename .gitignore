@@ -24,11 +24,7 @@ src/l2l/train/.pixi
 
 src/metaphor_handling/input_mh.txt
 src/metaphor_handling/output_mh.txt
-src/metaphor_handling/test/IMPLI_Translation_Data
-src/metaphor_handling/test/NewsMet_Detection_Data
-src/metaphor_handling/test/output
-src/metaphor_handling/sbert_sentence_transformer
-src/metaphor_handling/logs
+src/metaphor_handling/ollama_log.out
 src/metaphor_handling/__pycache__
 src/metaphor_handling/test/__pycache__
 

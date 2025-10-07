@@ -7,6 +7,7 @@ import ollama
 import time
 import json
 import math
+#from metaphor_handler_seq_retry import MetaphorDetector
 from collections import defaultdict
 from utils import *
 
@@ -57,14 +58,14 @@ class MetaphorTranslatorBatchWordLevel:
     def __init__(
         self,
         model_type: str='llama3.1:8b',
-        similarity_function: str='bert_cosine',
+        similarity_function: str='bleu',
         bert_embedder: BertEmbedder | None = None,
         md: MetaphorDetector | None = None,
         start_temp: float=0.2,
-        desired_sim_score: float=0.8,
-        prompt_limit: int=3,
-        batch_size: int=6,
-        reduction_rate: float=0.5,
+        desired_sim_score: float=0.1,
+        prompt_limit: int=4,
+        batch_size: int=10,
+        reduction_rate: float=0.82,
     ):
         self.model_type = model_type
         self.similarity_function = similarity_function
@@ -91,6 +92,7 @@ class MetaphorTranslatorBatchWordLevel:
 
         ## Chapter 4 ##
         # here are some class vars to store things about the translation process
+        # (used for gathering test data only - not necessary for translation process)
         self.candidates = {}
         self.prompt_attempts = defaultdict(int)
         self.translations = {}
@@ -137,31 +139,6 @@ class MetaphorTranslatorBatchWordLevel:
             return None
 
 
-    def extract_json_output_old(self, json_str):
-        """
-        Extracts all reworded sentences from a JSON string output.
-        
-        The JSON is expected to have keys:
-        - "original": the original metaphorical sentence
-        - "1", "2", ..., "n": each corresponding to a reworded translation
-        
-        Args:
-            json_str (str): A JSON-formatted string with the specified fields.
-        
-        Returns:
-            dict: A dictionary mapping translation numbers (as strings) to their reworded sentences.
-                For example: {"1": "Reworded sentence one.", "2": "Reworded sentence two.", ...}
-                Returns an empty dictionary if no translations are found.
-        """
-        try:
-            data = json.loads(json_str)
-            # Build a dictionary only for keys that are digits, which represent reworded sentences.
-            translations = {key: value for key, value in data.items() if key.isdigit()}
-            return translations
-        except json.JSONDecodeError as e:
-            print(f"Error parsing JSON: {e}")
-            return None
-
     def _extract_with_retries(self, prompt: str, max_retries: int = 5):
         """
         Call Ollama up to max_retries times, extracting JSON each time.
@@ -187,18 +164,19 @@ class MetaphorTranslatorBatchWordLevel:
         # compute max allowed metaphors in a candidate
         max_allowed = math.floor(og_count * (1 - self.reduction_rate))
 
-        accepted = []             # within tolerance & ≥ threshold
-        tolerance_candidates = [] # within tolerance, any score
-        overall = []              # all candidates: (resp, score, count)
+        accepted = []             # within metaphor tolerance & ≥ similarity threshold
+        tolerance_candidates = [] # within metaphor tolerance, any similarity score
+        overall = []              # all candidates: 
+        # all three of these lists are populated by tuples: (translation, sim_score, metaphor_count)
 
-        ## Chapter 4 ##
+        # Instantiate counting how many prompts are used per input sentence - store in a dict
         if sentence_label:
             self.prompt_attempts[sentence_label] = 0
-        ################
+       
 
         for attempt in range(self.prompt_limit):
 
-            prompt = gen_batch_translation_prompt(
+            prompt = gen_batch_translation_prompt( # see utils.py for the prompt
                 sentence,
                 self.batch_size,
                 follow_on=bool(attempt),
@@ -207,16 +185,16 @@ class MetaphorTranslatorBatchWordLevel:
 
             responses = self._extract_with_retries(prompt, max_retries=5)
 
-            ## Chapter 4 ##
+       
             if sentence_label:
-                self.prompt_attempts[sentence_label] += 1
-            ################
+                self.prompt_attempts[sentence_label] += 1 # adds up prompts used for one translation
+            
             if responses is None:
                 print(f"Retry {attempt}: no JSON, skipping")
                 continue
 
-            for resp in responses.values():
-                # similarity
+            for resp in responses.values(): # now process each translation in the batch
+                # calculate similarity
                 score = compute_similarity(
                     self.similarity_function,
                     sentence,
@@ -224,13 +202,15 @@ class MetaphorTranslatorBatchWordLevel:
                     bert_embedder=getattr(self, 'bert_embedder', None)
                 )
 
-                # redetect metaphors
+                # redetection of residual metaphors
                 det = self.md.detect_metaphor(resp)
                 trans_count = len(det['sentence_metaphors'].values())
 
-                overall.append((resp, score, trans_count))
+                overall.append((resp, score, trans_count)) # always add to the 'overall' list
 
-                # check tolerance
+                # determine which bin to place the translation based on sim. score and residual
+                # metaphors. Also prints labels denoting which bin the translation falls into.
+
                 if trans_count <= max_allowed:
                     tolerance_candidates.append((resp, score, trans_count))
                     if score >= self.desired_sim_score:
@@ -243,22 +223,23 @@ class MetaphorTranslatorBatchWordLevel:
                     print('•' if score >= self.desired_sim_score else '.', end='', flush=True)
 
             print(' ', end='', flush=True)
-            if accepted:
+
+            if accepted: # early stopping if a batch yielded at least one translation in the 'accepted' bin
                 break
 
         print('\n')
 
-        # pick best
+        # go through each bin (list) in priority order
         sel_criteria = None
-        if accepted:
+        if accepted: # then choose the best response based on similarity score
             best_resp, best_score, best_count = max(accepted, key=lambda x: x[1])
             self.passed_both += 1
             sel_criteria = (True, True)
-        elif tolerance_candidates:
+        elif tolerance_candidates: # again, choose best similarity score
             best_resp, best_score, best_count = max(tolerance_candidates, key=lambda x: x[1])
             self.passed_met += 1
             sel_criteria = (True, False)
-        elif overall:
+        elif overall: # once again, select based on similarity score
             best_resp, best_score, best_count = max(overall, key=lambda x: x[1])
             if best_score >= self.desired_sim_score:
                 self.passed_sim += 1
@@ -291,17 +272,14 @@ class MetaphorTranslatorBatchWordLevel:
                     outfile.write(sentence + '\n')
                     continue
                 translation = self.translate_metaphor(sentence_dict, sentence_label=i).strip()
+
+                # the outer loop below will keep calling translate_metaphor() in case json extraction
+                # fails the first time. ideally this can be removed but in practice json extraction is not perfect.
                 while translation == "":
                     print('Running translate_metaphor again...')
                     translation = self.translate_metaphor(sentence_dict, sentence_label=i).strip()
                 outfile.write(translation + '\n')
 
-
-
-# metaphor detector main
-# if __name__ == "__main__":
-#     detector = MetaphorDetector()
-#     detector.process_file("input_mh.txt", "output_md.txt")
 
 # metaphor translator main
 if __name__ == "__main__":
@@ -311,19 +289,19 @@ if __name__ == "__main__":
 
     input_file = sys.argv[1]
     output_file = sys.argv[2]
-    md = MetaphorDetector()
+    detector = MetaphorDetector()
     translator = MetaphorTranslatorBatchWordLevel(
-            model_type='llama3.1:8b',
-            similarity_function='bleu',
-            md=md,
-            start_temp=0.2,
-            desired_sim_score=0.1,
-            prompt_limit=4,
-            batch_size=10,
-            reduction_rate=0.7     ### testing here
-        )
+        model_type='llama3.1:8b',         # model identifier used by Ollama
+        similarity_function='bleu',      # function for semantic similarity (e.g., SBERT cosine)
+        start_temp=0.2,                   # initial temperature for generation randomness
+        desired_sim_score=0.1,           # target semantic similarity between original and rewritten sentence
+        prompt_limit=4,                   # cap on number of batches
+        batch_size=10,                     # number of sentences processed together per batch
+        reduction_rate=0.82                # metaphor reduction rate
+    )
+
     print("Detecting metaphors...")
-    detection_results = md.process_file(input_file)
+    detection_results = detector.process_file(input_file)
     #print(detection_results)
     print("Translating metaphors...")
     translator.process_file(detection_results, output_file)  # change this if you just want to give ollama the sentence without detected met. words
