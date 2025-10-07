@@ -53,28 +53,28 @@ All parameters are set to the optimized values described in Chapter 4 of the the
         Used to compute the maximum allowable residual metaphors
         for a candidate to be considered acceptable.
 
-## Terminal output:
+## Terminal Output
 
-The terminal first outputs the sentence being translated, followed by a stream of symbols.
-If no symbols follow, this simply means that no metaphors were detected in the original sentence, so the sentence bypasses the metaphor translator completely (the output is identical to the input).
+The terminal first outputs the sentence being translated, followed by a stream of symbols. If no symbols follow, this means no metaphors were detected in the original sentence, so the sentence bypasses the metaphor translator completely (the output is identical to the input).
 
-Otherwise each symbol, for a single candidate translation, holistically represents both sentence similarity and metaphor re-detection results. The keys for each symbol
-are below:
+Otherwise, each symbol (for a single candidate translation) holistically represents both sentence similarity and metaphor re-detection results. The keys for each symbol are below:
 
-✔   Residual metaphors less than max. allowed (good), but does not meet sentence similarity criteria (bad)
-•   Sentence similarity passes (good), but residual metaphors greater than max. allowed (bad)
-.   Residual metaphors greater than max. allowed (bad), and does not meet sentence similarity criteria (bad)
-★   Both sentence similarity and metaphor redetection criteria pass (good, triggers early stopping)
+    ✔   Residual metaphors less than max. allowed (good), but does not meet sentence similarity criteria (bad)
+    •   Sentence similarity passes (good), but residual metaphors greater than max. allowed (bad)
+    .   Residual metaphors greater than max. allowed (bad), and does not meet sentence similarity criteria (bad)
+    ★   Both sentence similarity and metaphor redetection criteria pass (good, triggers early stopping)
 
-The symbols are seperated by batch with a space, as in the example below:
+The symbols are separated by batch with a space, as in the example below:
 
-••.•.• ••...★
+    ••.•.• ••...★
 
 This example shows that two batches were produced, and since early stopping was triggered (at least one ★ candidate was generated), a third batch was not necessary.
 
-The second example below shows three batches of 6 candidates each, where early stopping was not activated.
+The second example below shows three batches of 6 candidates each, where early stopping was not activated:
 
-...... .✔.✔.. ...✔.✔
+    ...... .✔.✔.. ...✔.✔
+
+
 
 
 
