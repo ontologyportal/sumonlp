@@ -1,4 +1,4 @@
-Running Instructions:
+## Running Instructions:
 
 1. run:
    pip install -r requirements.txt
@@ -53,7 +53,7 @@ All parameters are set to the optimized values described in Chapter 4 of the the
         Used to compute the maximum allowable residual metaphors
         for a candidate to be considered acceptable.
 
-Terminal output:
+## Terminal output:
 
 The terminal first outputs the sentence being translated, followed by a stream of symbols.
 If no symbols follow, this simply means that no metaphors were detected in the original sentence, so the sentence bypasses the metaphor translator completely (the output is identical to the input).
@@ -75,6 +75,7 @@ This example shows that two batches were produced, and since early stopping was 
 The second example below shows three batches of 6 candidates each, where early stopping was not activated.
 
 ...... .✔.✔.. ...✔.✔
+
 
 
 
