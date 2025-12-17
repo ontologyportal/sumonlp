@@ -1,0 +1,1016 @@
+,-3,Invalid: other,,
+,-2,Invalid: subject,,
+,-1,Invalid: object,,
+,0,Unclear,,
+,1,Valid: but grammar issue or pragmatically strange,,
+,2,Valid,,
+Sentence,Valid/Invalid,Reason Why,"Correct Type 
+(exact SUMO term,
+if more than one, 
+separate with commas)","Invalid 
+Preposition"
+Some wine is working.,-1,wine has no agency; work requires agency,SentientAgent,FALSE
+2 women has not massaged a girl.,1,grammar and pragmatism,,FALSE
+A boy wasn't massaging a girl.,2,ok,,FALSE
+A human child is directing some life threatening agent to a lemur.,2,ok,,FALSE
+A Methodist church in GB protected a saddle.,2,ok,,FALSE
+A man will dodge a left metatarsal 1 bone.,-1,"""bone"" is not in class ""dodge""-able (e.g, ""moving object"")","Object, Physical",FALSE
+An angel grants an american express card.,0,"typically grant: wish, exception",,FALSE
+A woman shared some oil from plant a joint forces.,1,grammar or pragmatism,,FALSE
+Five human babys were expressing a subjective emotional feeling to a girl.,2,ok,,FALSE
+9.972 liquor shots of freshwater doesn't freeze.,1,"unclear if subject ""shots"" is liquor or freshwater",,FALSE
+A teenager will be borrowing a human baby.,-1,"""baby"" is not in class ""borrow""-able (e.g, ""object, money, etc"")","Object, Physical",FALSE
+A teenager is imagining 0 ivories.,1,grammar or pragmatism,,FALSE
+A grassland doesn't smoothen a toilet.,-1,grassland has no agency; smoothen requires agency,AutonomousAgent,FALSE
+Five mules kill a chordopoxvirinae.,1,grammar or pragmatism,,FALSE
+A consumer price index minifies.,1,CPI has no agency; minimification requires agency,,FALSE
+A teenager will nod a head.,3,ok,,FALSE
+A tick borne encephalitis virus is penalising a barley grass.,1,virus has no agency; penalization requires agency,,FALSE
+A human child will be paring an eyelid from a vaccinia virus.,-3,virus does not have an eyelid,,FALSE
+6 girls are judging a question.,3,ok,,FALSE
+A shigella dysenteriae will shut.,-2,"shigella has no agency; shut requires agency (as well as an object e.g., door)",TransitwayObstacle,FALSE
+Zero men will be tasting some soda.,3,ok,,FALSE
+A man plays.,3,ok,,FALSE
+A teenager will be studying a twenty foot heavy duty container.,3,ok,,FALSE
+A human baby will be showing a llama to a deity.,1,baby has no conscious agency; show requires conscious agency,,FALSE
+A human child thinks a golf package.,1,grammar or pragmatism,,FALSE
+A human adult was befriending 6 women.,3,ok,,FALSE
+A bordetella pertussis won't pull some boulder.,-2,"pertussis has no agency; pull requires agency (also syntax ""some boulder"")",AutonomousAgent,FALSE
+An angel will be awarding a currency bill.,3,ok,,FALSE
+A virus eliminates some urine from a hyoid artery.,1,"pragmatically, urine should not be in an artery",,FALSE
+A woman has not shot an automatic gun.,3,ok,,FALSE
+A human baby was not granting a death certificate.,1,baby has no conscious agency; show requires conscious agency,,FALSE
+Six reindeers ducked to avoid a a button.,1,duck something potetentially hazardous; button does not seem hazardous,,FALSE
+An egg yolk will dissever from some adrenaline.,-3,"egg yolks and adrenaline are not ""combined"" therefore cannot be separated","Object, Physical",FALSE
+A human baby dumps a below the line.,-2,baby has no conscious agency; demp requires conscious agency,"Object, Physical",FALSE
+A girl doesn't iron an offshore well production ship.,-1,"iron refers to small items: clothes, beads, fabric; offshore well is large",WearableItem,FALSE
+0 human youths will read a a british pound coin.,1,grammar; coin can be read for its date,,FALSE
+2 girls will xerox a two dimensional object.,3,ok,,FALSE
+A man plugs a worker insect.,-1,plug ,Cable,FALSE
+A deity will impersonate.,1,impersonate requires an object,,FALSE
+A woman looks for a some bauxite.,3,ok,,FALSE
+A rattlesnake kills.,1,grammar or pragmatism,,FALSE
+5 men caught some riboflavin.,1,?,,FALSE
+An alligator is imbibing some processed milk.,1,grammar or pragmatism,,FALSE
+Six men conveyed a diode to a left humerus.,1,grammar or pragmatism,,FALSE
+An automated notification system constricts a permanent magnet dc motor.,-3,#N/A,,FALSE
+A dachshund is kicking a L1 vertebra bone with a foot.,1,grammar or pragmatism,,FALSE
+A human baby is injecting some histone into a poodle.,-2,injecting requires agency; baby has no conscious agency,HumanAdult,FALSE
+A boy doesn't find a heart palpitations.,1,grammar or pragmatism,,FALSE
+A teenager bound a die to a medulla.,1,grammar or pragmatism,,FALSE
+A deity isn't lending a seat belt to 7 women.,1,,,FALSE
+A human child shoots some receptor protein into a warm blooded vertebrate.,1,grammar or pragmatism,,FALSE
+A conifers will be hiding a TV.,-2,hiding requires agency; a tree has no consious agency,SentientAgent,FALSE
+A kangaroo sprays some schnapps.,1,grammar or pragmatism,,FALSE
+Some tissue is compounding with a right atrium.,1,grammar; within vs with,,FALSE
+A girl canvass some tapioca starch.,1,canvas takes a conscious entity object; starch is not conscious,,FALSE
+A political coalition doesn't attack.,3,#N/A,,FALSE
+0.416 liquor shots of wood alcohol won't be poisonning a vaccinia virus.,1,grammar or pragmatism,,FALSE
+A teenager will be vandalising some firm cheese.,1,grammar or pragmatism,,FALSE
+Five boys are borrowing null.,NULL,,,FALSE
+Nine crustaceans punches an anti-vaxxer.,1,grammar or pragmatism,,FALSE
+8 salmonella partyphis lost an anaconda.,-1,salmonella cells can lose only something related to organic processes referring to itself; either anaconda wrong or partyphis wrong,SentientAgent,FALSE
+A human adult is paying a deity.,1,"assume missing word is ""respect"" eg paying a deity ""respect""",,FALSE
+A speedometer made.,-1,made needs object,UnitOfMeasure,FALSE
+A human child has not took a sludge disposal vessel.,1,grammar or pragmatism,,FALSE
+A teenager will ideate an altimeter.,2,--,,FALSE
+A human child smoked a cigar or cigarette.,2,--,,FALSE
+3 antelopes will kick an air launch missile with a foot.,1,grammar or pragmatism,,FALSE
+A coral drinks some lungo.,-2,coral has no agency; drink requires conscious agency,SentientAgent,FALSE
+3 rodents will be seeing some food.,2,--,,FALSE
+A deity borrowed null.,NULL,,,FALSE
+Some steam boils.,2,ok,,FALSE
+2 human children doesn't interview a human child.,1,grammar or pragmatism,,FALSE
+An arthropod is ducking to avoid a a valve.,1,grammar or pragmatism,,FALSE
+A man was massaging a human child.,2,--,,FALSE
+A mouse will be finding from a school.,1,grammar; finding needs object,,FALSE
+A human child grows a tea tree.,2,--,,FALSE
+A human youth will be posting some immunosuppressive to a hijab.,-1,"""posting/sending to"" requires object to be a location or entity, not an item as an item cannot consciously ""receive"" something",StationaryArtifact,FALSE
+0 fishes has not nodded a head.,-2,fish does not literally choose to nod; nodding ususally requires conscious agency which a fish doesn't have,,FALSE
+A shea nut will be working.,-2,shea nut does not have agency and cannot choose to work,SentientAgent,FALSE
+A crustacean drinks some processed gaot milk.,1,grammar or pragmatism,,FALSE
+A carburetor isn't radiating a L1 vertebra bone a shea nut.,-1,"an object cannot radiated (unless in scientific sense, e.g., radiating particles)",,FALSE
+Two boys were generating a rope.,1,grammar or pragmatism,,FALSE
+A human child helped a girl.,2,--,,FALSE
+A senepol cattle will punch a petroleum product pipeline.,1,punch requires having a fist and some notion of conscious agency,,FALSE
+A pottery chills some poultry.,-2,pottery does not have agency to chill; chilling requires agency,,FALSE
+A human child tastes some sunflower oil.,2,--,,FALSE
+A veil doesn't conceal an Aspen tree.,2,--,,FALSE
+Zero human youths produces some chocolate.,1,grammar or pragmatism,,FALSE
+A boy won't be pouring 19 teus of Jamesons whiskey into a forty foot high cube container.,1,grammar or pragmatism,,FALSE
+A human adult tastes some seafood.,2,--,,FALSE
+A moth is burying.,2,bury requires an object,,FALSE
+Some duck was working.,1,grammar or pragmatism,,FALSE
+A herpesB virus wasn't selling a directional control valve a francisella tularensis.,-2,virus has no agency; selling requires conscious agency,,FALSE
+A punching is damaging a golf ball.,1,punching of a piece of paper?,,FALSE
+A girl will be wading through an inlet passage.,2,,,FALSE
+A human child will befriend a human youth.,2,,,FALSE
+7 girls discovered a shoulder girdle bone to a branch to volar carpal network artery.,2,,,FALSE
+Zero human adults will be taking from a violin a human child.,-1,violin does not have agency to possess something,,FALSE
+A human child will be xeroxing a two dimensional object.,2,,,FALSE
+A carnivore kills a tick.,2,,,FALSE
+A girl is subjecting four splenic arterys to a woman.,-1,"subtject arteries to surgery, knife, radiation; woman is too macro",ServiceProcess,FALSE
+A butterfly was seeing a sword.,1,,,FALSE
+A venezuelan equine encephalitis will not infect an einkorn wheat grass.,1,,,FALSE
+An angel has not fried some goat meat.,1,,,FALSE
+A mollusk is inspecting at a superior thoracic artery.,1,,,FALSE
+A girl will be dodging a skate.,2,,,FALSE
+An oyster will be watching at a bronchial artery.,-2,oyster cannot see; watch requries sight,"SentientAgent, ArtsEntertainmentAndRecreation,  
+ContentBearingObject",FALSE
+A human adult will be sculpting a sculpture.,2,,,FALSE
+A squirrel will be drinking some tequila.,1,,,FALSE
+A teenager cleans.,2,,,FALSE
+An aquatic mammal will eat some alcoholic beverage.,1,drink a beverage,,FALSE
+A larch tree is starving an anaconda.,-2,larch tree has no agency; starving an object requires subject to have agency,SentientAgent,FALSE
+An extracellular enveloped virion vaccinia rendered a birth certificate into a north caucasian language.,-2,vaccine can render a virus harmless but a birth certificate is macro; vaccine is micro,SentientAgent,FALSE
+A man drives a jet airplane.,2,,,FALSE
+A girl will be pestling a wagon.,1,,,FALSE
+3 human youths chokes a man.,1,,,FALSE
+A care organization will be wetting some brackish water to a museum.,-1,"send object to other object, but cannot wet object to another object",Artifact,FALSE
+An egg yolk is suffering a boat seat 2 pituitary glands.,-1,this afflicition does not apply to egg yolks,,FALSE
+Some hailstone was evaporating into a harbor.,1,,,FALSE
+A lilac was pulling some osmium.,-2,lilac cannot pull; pull requires agency,SentientAgent,FALSE
+A venezuelan equine encephalitis is infecting a clostridium botulinum.,1,,,FALSE
+A lent strengthened.,-3,,SentientAgent,FALSE
+An angel is committing four united states dollar bills.,1,,,FALSE
+A boy forgives a subjective emotional feeling to a teenager.,NULL?,,,FALSE
+A human child was paring 10 eyelids from a human youth.,1,,,FALSE
+A human youth dodges a lunate bone.,2,,,FALSE
+A llama sees a mass airflow sensor.,2,,,FALSE
+4 girls will be determining.,2,,,FALSE
+A human baby will be binding an electrical plug to a vomer bone.,1,very impractical,,FALSE
+A man is lending some soil solution to a deity.,1,,,FALSE
+A caterpillar will smell with a nose.,1,,,FALSE
+A human adult was sculpturing a sculpture.,2,,,FALSE
+A human baby is transforming an evening.,2,,,FALSE
+A human child will determine a question.,2,,,FALSE
+A teenager observed 6 PATELLAs.,2,,,FALSE
+Some signaling protein won't be smoothenning a tagiyyah.,0,,,FALSE
+A human baby will transform an unit of angular measure.,-1,angular measure requires semi-advanced reasononing; a baby doesnt havve that,HumanAdult,FALSE
+Gerald doesn't lend a DVD to a human adult.,2,,,FALSE
+A pericardial sac will harm a vertebrate.,1,,,FALSE
+A human youth is toying.,-3,not sure this usage is correct,Physical,FALSE
+10 human children demonstrates a guitar to a human child.,2,,,FALSE
+A woman was acting.,2,,,FALSE
+A human baby is buying a transit system.,-2,"human baby cannot buy; buying requires ability to enter into a transaction/reasoning, which is not developed in a baby yet",HumanAdult,FALSE
+A woman will be breaking.,2,,,FALSE
+A deity irrigates the fertile terrain.,1,,,FALSE
+A hospital chapel will be wetting 7.6460 cups of freshwater to 9 Aegilops Tauschiis.,-3,,AutonomousAgent,FALSE
+8 men won't vote.,2,,,FALSE
+A tiger will be rendering a JOPES manual into a tai kadai language.,-3,"tiget cannot translate, but can render an object broken, e.g",AutonomousAgent,FALSE
+A deity fished seven tunas.,1,,,FALSE
+A human youth befriended a teenager.,2,,,FALSE
+A human adult will compare a military squad.,2,,,FALSE
+A communist party will not mail a letter.,2,,,FALSE
+A human baby was evincing a subjective emotional feeling to a human baby.,1,from,,FALSE
+Six human adults weren't paying a teenager.,2,,,FALSE
+A human child won't be soldering some steel.,2,,,FALSE
+A japanese encephalitis virus killed a leech.,1,,,FALSE
+A teenager will be shouting.,2,,,FALSE
+A human youth is comparing a mortar platoon.,2,,,FALSE
+8 brucella bacteriums will uncover an extended fishing zone.,-1,uncover something at the cellular level; fish zone is too macro for bacteria,AutonomousAgent,FALSE
+An Independent church leaves some linguine to some chicken meat.,-3,chicken meat has no use for linguine; cannot accept it,AutonomousAgent,FALSE
+A llama doesn't hear a speaking.,1,,,FALSE
+A human youth massages a human child.,2,,,FALSE
+An angel painted an occipital lobes.,1,,,FALSE
+A woman is shooting a m240.,2,,,FALSE
+A MRSA has not pressed a greater palatine artery.,0,MRSA?,,FALSE
+A consulate general will be selling an art work a house church.,-3,the indirect object cannot enter into transaction,"AutonomousAgent,Organization",FALSE
+9 reptiles tramp some V series nerve agent to four submental deep branch arterys.,-3,tramp (walk) ,ServiceProcess,FALSE
+A human baby combines with a bladder.,-1,,,FALSE
+A girl waters the fertile terrain.,2,,,FALSE
+A human adult reproduces 6 kentia palm seeds.,-1,palm seed is not humna offspring,AutonomousAgent,FALSE
+A man doesn't divulge a right marginal artery to a posterior division iliac artery.,-1,divulge a detail/secret/idea; not an artery; also indirect object cannot receive information,,FALSE
+A lobster will be determining from a museum.,-1,,AutonomousAgent,FALSE
+A pea was firing.,-3,"firigin requires agency, pea has no agency; or a gun can be firing, but a pea does not ""shoot"" anyting",AutonomousAgent,FALSE
+A deity will perform.,1,,,FALSE
+A teenager doesn't direct a toy house to a coral reef.,1,,,FALSE
+A grasshopper punched 3 monocytes.,-2,need fist to punch; grasshopper does not hav fist,"AutonomousAgent, ServiceProcess",FALSE
+A human adult will judge a question.,2,,,FALSE
+A human baby will be referring a non null set.,NULL,,,FALSE
+A deity has not peeled 4 eyelids from a mule.,1,,,FALSE
+A caterpillar will comprehend a courtyard.,-2,catepillar typically cannot comprehend; that requires a higher sentience,AutonomousAgent,FALSE
+A woman will be producing a la crosse virus to nine human youths.,1,indirect object usage,,FALSE
+An ornamental fish dumps some transport protein.,1,,,FALSE
+Three men won't paint a knock light.,1,,,FALSE
+A musculo articular branch artery contracts some abalone.,-1,"contract an illness, a project; tuna is not something that can be contracted",DiseaseOrSyndrome,FALSE
+An irrigation channel is closing.,2,,,FALSE
+An amphibian was eating some Baileys.,1,,,FALSE
+A horse excretes some urine from a palm bone.,-3,indirect object,,FALSE
+Two clovers are not stretching.,1,,,FALSE
+A teenager doesn't pestle 12.73 ton masss of beryllium.,1,,,FALSE
+A LabCorp will not be extending.,-3,extending BLANK; extend what; typically needs (indirect?) object,PlaceAddress,FALSE
+A man doesn't paint a directional control valve.,2,,,FALSE
+A left ulna wasn't closing.,2,presumably in context of someone's ulna,,FALSE
+A teenager will not express a subjective emotional feeling to a girl.,2,,,FALSE
+A hospital chapel sold two radial recurrent arterys an amphibious reconnaissance unit.,-3,indirect object; also arterys cannot receive / enter into transaction,"AutonomousAgent,Physical,Object",FALSE
+A human baby was understanding a passport.,1,,,FALSE
+A human child will be questioning a girl.,2,,,FALSE
+Catherine will be downloading a JPG file.,2,,,FALSE
+An angel reproduces a steppe.,1,,,FALSE
+A human child was not slicing a communist party with a paper shredder.,-1,slice physical objects with paper shreder; communist party is an idea,"Artifact,Physical",FALSE
+A girl lubricates a left tibia.,2,,,FALSE
+A human child directed an american city to an aquatic mammal.,-3,city cannot be directed (unless metaphoraically); can not be directed physically to something,AutonomousAgent,FALSE
+Some ground water cuts some brackish water.,-1,typically cut phyiscal object,,FALSE
+A salvation army mission shares a right distal phalanx I bone a maple tree.,-3,ok until indirect object,AutonomousAgent,FALSE
+A human child will perform.,2,,,FALSE
+An antelope was visitting a leg to four legionellas.,-3,visit a locale; no indirect object,PlaceAddress,FALSE
+An anchor will be concealing a clinic.,1,odd,,FALSE
+A boy was choosing a question.,2,,,FALSE
+Four human youths will not perform.,2,,,FALSE
+An agency ascertains from a school.,1,"incomplete; ascertains information, needs object",,FALSE
+2 human youths will be voting.,2,,,FALSE
+A human baby was reproducing a left maxilla bone.,-1,"baby can reproduce a sound, but not something complex like a bone",HumanAdult,FALSE
+A company- military found from a medical school.,-3,grammar makes unclear,"Artifact,Physical",FALSE
+A human child will be watering the fertile terrain.,2,,,FALSE
+A boy will not watch at a right proximal foot phalanx IV bone.,1,grammar,,FALSE
+A human youth waves with a hand.,2,,,FALSE
+A kitten was rendering an american express card into a mandan group language.,-1,kitten does not know how to interact with a credit card,AutonomousAgent,FALSE
+A Javelin anti-tank missile has not turned.,1,,,FALSE
+A man will be including a non null set.,NULL,,,FALSE
+10 boys were not judging a question.,2,,,FALSE
+A switch device roughens a right true rib 7 bone.,-2,nintendo switch has no agency; cannot choose to roughen an object (only subjects with agency),AutonomousAgent,FALSE
+An Apostolic church famishes a poultry.,1,odd,,FALSE
+Grace is placing a coin.,2,,,FALSE
+A ship berth starves a donkey.,-2,subject must be sentient to starve an object,AutonomousAgent,FALSE
+A man is borrowing an angel.,2,,,FALSE
+A deer is losing an ocean liner.,0,,,FALSE
+A Baptist union of wales translated a pass certificate into a birds head language.,-3,multiple wrong things; wales are not religious; wales (inatimate objects) cannot translate human artifacts,AutonomousAgent,FALSE
+7 human youths has not interviewed a teenager.,2,have,,FALSE
+A warm blooded vertebrate has not swops a bladder with a recording company.,-3,multiple wrong things;,,FALSE
+A human adult paints an Elim pentecostal church.,2,,,FALSE
+An octopus will not be releasing a United free church of Scotland.,-1,"octopus can release prey, ink, things in its possession; church cannot be possesssed by a single sentient entity",,FALSE
+8 human children raises.,1,need object,,FALSE
+A boy loans an organizational board to an angel.,1,angel is not real entity; can only loan objects to real/physical entities,,FALSE
+An afferent arteriole was precipitating a forty foot standard container a petroleum tanker ship.,-3,cannot precipitate a macro physical object,,FALSE
+Five variola minors weren't attacking.,1,,,FALSE
+A human child binds 4.377 amus of polonium to a central retinal artery.,1,impractical,,FALSE
+Nine human babys are seating a teenager to a a chair.,1,,,FALSE
+A human youth questioned a girl.,2,,,FALSE
+An angel sung a musical composition with a speaking in a disturbed fashion.,1,while speaking?,,FALSE
+A human baby will be helping an angel.,0,"not sure if ""angel"" should be treated as real entity",,FALSE
+A human adult specifies a nonprofit organization to accomplish an IT process.,2,,,FALSE
+A teenager has not understood a canadian dollar coin.,1,,,FALSE
+A human adult is breaking an apartment building to an investing.,1,investing group? investor?,,FALSE
+A girl dodges some pine wood.,2,,,FALSE
+A hepatitis virus affixs ten interlobar arterys.,1,affixes to,,FALSE
+A boy is playing.,2,,,FALSE
+An insect refinances a secured loan.,-2,only humans/human-led-organizations can refinance financial transactions,AutonomousAgent,FALSE
+A human youth will be pointing an anterior spinal artery with a wet bar.,1,,,FALSE
+A human adult was determining a question.,2,,,FALSE
+A girl is inheritting some tequila.,2,,,FALSE
+Three human babys were vandalizing a rickettsia rickettsii.,-1,vandalize property (macro); RR is micro and not property,Building,FALSE
+Some wheat flour ferments.,2,,,FALSE
+Six human adults will be voting.,2,,,FALSE
+UNK_ORG_1 was looking for a a T1 vertebra bone.,NULL,,,FALSE
+Two teenagers were soldering some brass.,2,,,FALSE
+8 human adults buy a house.,2,,,FALSE
+An angel will be disbursing a boy.,0,"not sure if ""angel"" should be treated as real entity",,FALSE
+A human child was massaging a man.,2,,,FALSE
+An ornamental fish will eat some palm oil.,2,,,FALSE
+A lion was killing a grasshopper.,2,,,FALSE
+A house church protects a Shaftesbury society.,1,,,FALSE
+6.06 ounces of ground water was reducing some tear.,-1,"water can reduce thirst, not sure what ""tear"" is",CompositeUnitOfMeasure,FALSE
+Some pancake ferments.,2,,,FALSE
+Some maple wood will frost.,2,,,FALSE
+A rat kicked a musical group with a foot.,1,,,FALSE
+A guernsey cattle was respiring some greenhouse gas.,2,,,FALSE
+A human adult is reading a a ticket.,2,,,FALSE
+A tuna is protecting a tennis court.,-1,"protect something in its sphere of influence; tennis court is on land, fish in water",HumanAdult,FALSE
+A water buffalo will be smelling with a nose.,2,,,FALSE
+A human baby is impersonating.,2,,,FALSE
+A mouse is not chewing.,2,,,FALSE
+A cold blooded vertebrate sprays 12.4410 ounces of patron tequilla.,1,,,FALSE
+A domestic dog will be smelling with a nose.,2,,,FALSE
+An anaconda is comprehending a mast.,1,,,FALSE
+A teenager wasn't pointing a right III metacarpal with a hand.,1,(at) a,,FALSE
+Six human youths are binding an Evangelical church to some hydrocarbon.,-3,"bind a molecule to another molecule, not a macro object",,FALSE
+A rewritable data storage radiates a forty foot high cube container a tug boat.,-1,"radiate energy, light; not a macro, physical object",,FALSE
+A woman pours 3.609 pints of beer into a forty foot half height container.,2,,,FALSE
+A rickettsia rickettsii will be eating some mollusk.,0,maybe this virus can eat organic matter?,,FALSE
+A hominid ducked to avoid a a telephone handset.,2,,,FALSE
+Zero boys doesn't process a mass airflow sensor.,1,,,FALSE
+An airbag wasn't inflating with some greenhouse gas.,1,,,FALSE
+A human baby is strangling 4 human adults.,2,,,FALSE
+A human baby doesn't look for a a national government.,2,,,FALSE
+An overseas area visits a political pressure group to a rickettsia prowazekii.,-2,an area is not sentient and not movable; only movable entities can travel,AutonomousAgent,FALSE
+A man forgives a subjective emotional feeling to a human baby.,NULL?,,,FALSE
+Three boys doesn't break a security to a measuring surface wind speed list.,0,?,,FALSE
+A mule comprehends a golf maneuver.,1,,,FALSE
+A Cypress tree will not kill a poultry.,2,,,FALSE
+A sea port was losing a hydrometer.,2,,,FALSE
+Some iceberg is vaporising into a glacier.,1,transforming?; think this is ok,,FALSE
+A crocodile ate some semi firm cheese.,2,,,FALSE
+A human child is not pressing a nipah virus.,1,,,FALSE
+Victoria is paying an angel.,1,ok if in a videogam,,FALSE
+A land mine has not fired.,2,,,FALSE
+A human baby combined with a fixed bridge.,-2,baby is a standalone entity; cannot combine with another entity unless under odd circumstances,Physical,FALSE
+A venezuelan equine encephalitis infects a queen insect.,1,,,FALSE
+A human adult was guiding a deity.,1,perhaps in a videogame,,FALSE
+An angel doesn't sing a song with a speaking a long utterance.,1,,,FALSE
+A human youth seeks for a a water ski.,1,"remove ""for""",,FALSE
+A woman plans a rowing.,1,,,FALSE
+A man is not assisting a deity.,1,perhaps in a videogame,,FALSE
+A human child will be fishing a skate.,1,"""fishing"" is intransitive, so the sentence coud be left at ""a human child will be fishing"".
+it's not common to say ""fishing a skate"" and there could be confusion since ""skate"" can mean either a fish or a skateboard.",,FALSE
+An ornamental fish sprayed some sake.,-1,fish can't spray sake,InternalAttribute,FALSE
+A boy will be storing a nuclear weapon production facility.,-1,boys can store things but not a nuclear weapon facility,Physical,FALSE
+A human adult doesn't raise.,-3,incomplete sentence; no object,"Physical, BodyPart",FALSE
+,2,,,FALSE
+A boy isn't pressing some soup stock.,2,,,FALSE
+A ferret was dumping a gastro-intestinal tract.,1,ferrets don't dump intestines,InternalAttribute,FALSE
+A fish buries.,2,,,FALSE
+Seven boys were not comparing an inland water system.,2,,,FALSE
+An angel presented a bond.,2,,,FALSE
+4 boys sculpt a sculpture.,2,,,FALSE
+A teenager is buying a printed sheet.,2,,,FALSE
+Five girls are combining with a radiological weapon.,2,,,FALSE
+A boy is breaking.,1,"boys don't usually ""break"". This sentence sounds incomplete",,FALSE
+A human baby will beckon with a hand.,2,,,FALSE
+A corynebacterium diphtheriae loses a external gear.,1,bacteria don't lose gears,,FALSE
+An airbag inflates with 7.64 feus of greenhouse gas.,2,,,FALSE
+A teenager was befriending a human baby.,2,,,FALSE
+A boy is not painting some tantalum.,2,,,FALSE
+Zero herpesB viruss were selecting a tibia.,1,viruses don't select bones,,FALSE
+Some wood alcohol won't be poisonning an ape.,2,,,FALSE
+An electrical transformer isn't compacting a spring.,2,,,FALSE
+A boy will be lending a self-service laundry to a human baby.,2,,,FALSE
+10 invertebrates will not pull a piston.,2,,,FALSE
+4 teenagers will be placing an united states dollar bill.,2,,,FALSE
+A crustacean will consume some sauce.,2,,,FALSE
+A human baby will be advertizing a wireless internet to a human adult.,2,,,FALSE
+A girl produces an alfalfa plant.,2,,,FALSE
+A woman recalls a multipole.,2,,,FALSE
+A human adult will be injecting 20 grams of opium into a worm.,2,,,FALSE
+A girl runs a human youth.,1,girls don't run other children,,TRUE
+A human adult planned a sublimation.,1,"adults don't usually plan this kind of process if we're talking about sublimation in science. in pscyhology, people don't usually plan sublimation because it happens unconciously.",,FALSE
+A girl was seating five human youths to a an auditorium seat.,2,,,FALSE
+A mule was spraying some rum.,2,,,FALSE
+A teenager assails.,2,,,FALSE
+Eight girls communicates with a human baby.,2,,,FALSE
+A teenager will be inheritting a right fibula.,2,,,FALSE
+A tropical cyclonic system was damaging a sphenoid bone.,2,,,FALSE
+A woman mails a letter.,2,,,FALSE
+A cod is converting some initiator protein for an electrocardiogram.,2,,,FALSE
+An organization of nations reveals some Inderal.,1,organizations of nations don't reveal medicines,,FALSE
+A woman was stealing a dining room from an Independent Methodist church.,2,,,FALSE
+An optical device doesn't melt.,1,"depending on material of the optical device, it can melt",,FALSE
+A girl was calling a girl a corded telephone.,1,it's unusual to call a person a telephone chord,,FALSE
+A bumble bee will be unveiling 9 insects.,2,,,FALSE
+Who observed 16.14 pound masss of rhodium?,2,,,FALSE
+Ten men will be voting.,2,,,FALSE
+An angel is lending a vehicle controller to a deity.,2,,,FALSE
+A woman dredges a river mouth.,2,,,FALSE
+An animal shares a private railcar a sorghum grass.,1,"gramatical error, i think it should be ""... with a sorghum grass"".
+animals don't share railcars with palnts",,FALSE
+A boy dishonours 3 human youths.,2,,,FALSE
+A differential hides a communication radio.,2,,,FALSE
+0 men get from a tap a teenager.,-3,sentence structure does not make sense and taps don't give teenagers,Alcohol,FALSE
+A girl solders some steel.,2,,,FALSE
+A woman doesn't detect an occupational role.,2,,,FALSE
+A human baby will be driving a mini cooper.,-1,a baby cannot drive,HumanAdult,FALSE
+Some coffee grind works.,2,,,FALSE
+A human child was sending a crane ship to a documentary.,1,children do not usually send ships,,FALSE
+A water buffalo will be adding a global cross_functional team.,1,an animal cannot make teams,,FALSE
+A woman will be painting a left colic artery.,2,,,FALSE
+A deity commits an euro cent coin.,1,not sure if deities would do such actions,,FALSE
+A millet grass empties some urine from a perineal artery.,1,grass is a plant and plants don't produce urine,,FALSE
+A Poplar tree will be starving a deer.,1,plants don't intentionally deprive animals of food,,FALSE
+A clothes washing machine will not be smoothenning a left stapes bone.,1,household appliances cannot perform such action,,FALSE
+A human youth befriended a boy.,2,,,FALSE
+A sports team has not roughened some special purpose protein.,1,sports teams don't modify proteins,,FALSE
+A human youth won't promote some coal to a human child.,1,youths don't promote coal to children,,FALSE
+A boy was communicating with a human baby.,2,,,FALSE
+A man is painting an air intake.,2,,,FALSE
+A girl was analyzing a bleeder valve.,2,,,FALSE
+6 women doesn't write a shawiya language.,1,"should be ""6 women don't write in""",,FALSE
+A human youth won't be spraying some Vietnamese coffee.,1,unsual to spray coffee,,FALSE
+A human baby is reproducing 10 mylohyoid branch arterys.,1,babies don't reproduce arteries,,FALSE
+A mollusk will be determining.,1,mollusks don't determine things,,FALSE
+A sheep was plugging a barley grass.,1,strange to say that sheeps plug grass,,FALSE
+An Anglican church was famishing a domestic cat.,1,churches don't starve cats,,FALSE
+A holster dissevers from a zucchini.,1,a holster doesn't divide from a vegetable,,FALSE
+A funeral arranger was refinancing a day loan.,2,,,FALSE
+A bowling shoe doesn't radiate a communication device a putting green.,1,"sentence is missing a word such as, ""to"". shoes don't radiate devices",,FALSE
+A man stole a crustacean from a dramatic cast.,1,unusual to steel shelfish from theater groups,,FALSE
+Some nutmeg works.,2,,,FALSE
+A human youth will be demonstrating three wine grapes to an angel.,1,"it's an unlikely scenario and ""demonstrating"" is an unsual way to describe showing grapes",,FALSE
+5 cubs were kicking some pseudoephedrine with a foot.,1,cubs don't kick decongestion medication,,FALSE
+An eutelsat will fire.,1,"eutelsat is a satellite company and it's unsual to say that a satellite would ""fire""",,FALSE
+An age group will not famish a bee.,1,age groups don't starve bees,,FALSE
+A human youth was submitting a stream water area to a woman.,1,"unsual to ""submit"" water areas to people",,FALSE
+Ten girls doesn't paint some Cedar wood.,1,"should be ""ten girls don't paint...""",,FALSE
+A teenager shoots some Inderal into zero reindeers.,1,"teenagers don't inject a hear medication into reindeers and ""zero reindeers"" makes it meaningless",,FALSE
+A human baby doesn't toy.,1,"""doesn't toy"" with no object at the end makes the sentence incomplete. ",,FALSE
+A man irons a vehicle registration.,1,unsual to iron a document,,FALSE
+A human youth will ravish a human adult.,2,,,FALSE
+A boy bears 6 maple trees.,-1,boys can't bear maple trees,Physical,FALSE
+Nine fishes were kicking a cheetah with a foot.,-2,fish can't kick nor do they have feet,Human,FALSE
+An invertebrate was not adding a kidney.,1,"invertebrate cannot ""add"" kidneys",,FALSE
+A girl decided a question.,2,,,FALSE
+An interosseous recurrent artery was turning.,-2,arties cannot turn,BodyPart,FALSE
+An intestinimonas will release a Ford car.,-2,bacterias don't release cars,CommercialAgent,FALSE
+A human baby is choreographing a vehicular pollution.,-2,vehicular pollution is not something that can be choreographed,,FALSE
+A human child will compare a Methodist church in Ireland.,-3,"sentence is incomplete, there is no object that is being compared","HumanAdult, Physical",FALSE
+4.84 cubic foots of industrial alcohol poisons a mammal.,2,,,FALSE
+A bee empties some feces from a clavicular artery.,-1,arties don't have feces,InternalAttribute,FALSE
+Ten human babys drives a motor scooter.,-1,human babies can't drive motor scooters,HumanAdult,FALSE
+A material handling equipment was smoothing a human youth.,-1,the equipment cannot smooth people,Artifact,FALSE
+2 human children will plan a tsunami.,-1,children cannot plan tsunamis,"Meal,
+RecreationOrExercise",FALSE
+A teenager was singing a song with a disgusted voice utterance.,2,,,FALSE
+A human child has not transformed a multipole quantity.,1,,,FALSE
+Some industrial alcohol poisons an unenveloped virus.,1,,,FALSE
+A vertebral artery will roughen seven clostridium perfringenss.,-1,arteries can't roughen bacteria,AutonomousAgent,FALSE
+An airbag will inflate with some greenhouse gas.,1,,,FALSE
+An angel is understanding a chairman instruction.,1,,,FALSE
+A deity is canvassing a volcanic mountain.,2,,,FALSE
+An angel will be breaking.,2,,,FALSE
+A girl fried some latte.,-1,not possible to fry a latte,Food,FALSE
+A woman detects some semi skimmed milk.,2,,,FALSE
+A human youth interviewed a human baby.,2,,,FALSE
+A boy was not analysing a lateral plantar artery.,2,,,FALSE
+An ecumenical project is assailing.,-1,projects can't attack,AutonomousAgent,FALSE
+A July decreased.,-2,months can't decrease,PhysicalQuantity,FALSE
+Seven united states ten cent coins will not be roughenning a mouse.,-2,coins can't roughen animals,AutonomousAgent,FALSE
+Ida was borrowing an angel.,-1,not possible to borrow angels,Physical,FALSE
+Nine teenagers were pestling a grecian tub.,1,not sure if it's possible to grind a tub with a pestle,,FALSE
+A human adult ideated a frisian language.,2,,,FALSE
+A girl will study a queen insect.,2,,,FALSE
+A teenager is reading a a message.,2,,,FALSE
+A man is locating some instant coffee.,2,,,FALSE
+A mollusk was revealing some Valium.,-1,mollusks can't reveal medicines,AutonomousAgent,FALSE
+A human child interviews a human baby.,2,,,FALSE
+Some snow is freezing.,2,,,FALSE
+Four ornamental fishes breathes 1.8 cups of greenhouse gas.,-1,fish don't breathe greenhouse gas,AutonomousAgent,FALSE
+A girl buys a freight car.,2,,,FALSE
+A cuboid bone smooths some Hartmann's solution.,-3,a bone can't do this,"Ingesting,AutonomousAgent",FALSE
+A fish plugs 2.8 pound masss of carbon.,-1,"fish don't ""plug"" and incorrect spelling of ""mass""",StationaryArtifact,FALSE
+A deity will be bombing.,-2,,"Device,OrganizationalProcess",FALSE
+A constrictor snake will not be seeing at 17.98 long tons of mycotoxin.,-3,sentence structure doesn't make sense,AutonomousAgent,FALSE
+A woman won't be placing eight united states cent coins.,2,,,FALSE
+Dalton wasn't reproducing a car alarm.,2,,,FALSE
+9 human youths searched for a a go game.,2,,,FALSE
+Some iceberg evaporates into a salt lake.,2,,,FALSE
+A human youth fishes 9 ornamental fishes.,2,,,FALSE
+A man controls Corinne.,2,,,FALSE
+A human adult will be breaking a public garden to five dachshunds.,-1,"people can break things but weird to say ""breaking a public garden""",,FALSE
+A woman will be expressing a subjective emotional feeling to a human baby.,2,,,FALSE
+A teenager doesn't plant a cabbage plant.,2,,,FALSE
+9 labyrinthine arterys financed a racquetball court a prokaryotic cell.,-3,sentence strutcure doesn't make sense,,FALSE
+A human adult will be ironning a hijab.,2,,,FALSE
+A human baby is frying some mollusk.,1,babies don't fry,,FALSE
+3 sabia viruss shares a pinsemenighet a guernsey cattle.,-3,sentence doesn't make sense,,FALSE
+A man is transforming a nonnegative real number.,2,,,FALSE
+A political party loses a grenade launcher.,2,,,FALSE
+A human youth took a boat seat to an ovum.,-1,not possible to take a boat seat to an ovum,Facility,FALSE
+4 human adults won't be subjecting a BBB to a human adult.,0,,,FALSE
+Six domestic animals added a superior pancreaticoduodenal artery.,-2,,AutonomousAgent,FALSE
+A hip joint matches a foot a gas pedal.,-3,sentence structure doesn't make sense,,FALSE
+A man will not be tasting 2.59 teus of aperitif.,2,,,FALSE
+Four teenagers raises.,-3,incomplete sentence,Physical,FALSE
+4 girls will perform.,2,,,FALSE
+A bottle will smooth a watercolor picture.,2,,,FALSE
+A domestic animal nodded a head.,2,,,FALSE
+10 women were vandalising an airbag.,2,,,FALSE
+8 teenagers toy.,-3,incomplete sentence,Physical,FALSE
+A percussion instrument has not constricted a twenty foot half height container.,2,,,FALSE
+A boy will produce an artifact mediated communication to a man.,1,,,FALSE
+A deity doesn't produce a teenager.,-2,,HumanAdult,FALSE
+9 boys will smoke a cigar or cigarette.,2,,,FALSE
+A boy isn't massaging zero human children.,1,,,FALSE
+A human baby finds a shooting angle.,0,,,FALSE
+A fall season fortifies.,0,,,FALSE
+A bakery will wet some hailstone to an ignition coil.,2,,,FALSE
+A boy will be reading a 6 news feeds.,2,,,FALSE
+A woman will write 2 portraits.,1,paint 2 portraits would make more sense,,FALSE
+A man examines an internet.,2,,,FALSE
+A man vandalizes a touch screen.,2,,,FALSE
+A man has not sliced some fentanil with a saw.,2,,,FALSE
+An anaerobic exercise device will be roughenning a Seagull outboard.,-1,exercise device can't roughen a seagull,,FALSE
+A moveable holiday was strengthenning.,-2,a holiday can't strengthen,,FALSE
+A human youth is sitting a woman to a a booster chair.,-3,sentence does not make sense,HumanYouth,FALSE
+An alligator smells with a nose.,2,,,FALSE
+2 rodents charged.,2,,,FALSE
+A man has not got from nine proprietary identifiers a teenager.,-2,sentence doesn't make sense,,FALSE
+A boy will be observing a hotel room attribute.,2,,,FALSE
+7 women will not communicate with a human baby.,2,,,FALSE
+A girl will be inheritting 4 cups of sewage.,1,inherit is unusal to say in this context,,FALSE
+An ethnic group penalized a Birch tree.,1,,,FALSE
+An Aegilops Tauschii will exchange a key for a bowling shoe.,-2,a plant can't exchange a key for bowling shoes,AutonomousAgent,FALSE
+A deity designed 14.4152 liquor shots of gas mixture.,1,,,FALSE
+A girl judges a question.,2,,,FALSE
+A microscope will hide a knucklehead.,-1,not possible,"AutonomousAgent,StationaryArtifact",FALSE
+A girl compared a government cabinet.,1,incomplete sentence,,FALSE
+A boy is choking a human child.,2,,,FALSE
+A coast guard will be protecting a valley.,2,,,FALSE
+A woman interprets a top news feed.,2,,,FALSE
+8 grass plants will not eat a cereal starch.,-2,grass don't eat cereal,"AutonomousAgent,Animal",FALSE
+A teenager will be pointing a cervical artery with a four stroke engine.,-2,can't point to an artery with an engine,Finger,FALSE
+A coxiella burnetii will swop a LAV-25 with a military corps.,-2,a bacteria can't perform this action,AutonomousAgent,FALSE
+Eight men design an animacy attribute.,1,,,FALSE
+A boy will be borrowing a human youth.,-2,boys can't borrow people,Physical,FALSE
+7 mollusks doesn't spray some caffeinate free tea.,-2,mollusks don't spray tea,InternalAttribute,FALSE
+A hemorrhagic fever was infecting a kangaroo.,2,,,FALSE
+Nancy doesn't bear a normal fault.,-2,"Nancy, a person, can't bear a normal fault",Physical,FALSE
+A man is comparing an Adventistsamfundet.,-3,what is an Adventistsamfundet and sentence sound incomplete,"Artifact, Physical",FALSE
+A human youth will be pressing an axle.,2,,,FALSE
+An inflation index minified.,2,,,FALSE
+Five human adults were pouring some sake into a forty foot high cube container.,2,,,FALSE
+5 sweet cherry trees are eliminating some feces from a lateral plantar artery.,-2,cherry trees aren't able to do this,Removing,FALSE
+A man has not broke.,2,,,FALSE
+A human adult is not acting.,2,,,FALSE
+A human youth was inheritting a deep cervical artery.,1,misspelling of interiting,,FALSE
+A human youth was dodging some prepared food.,2,,,FALSE
+A human child injects some whiskey into a locust.,1,,,FALSE
+A girl plans a heart beating at faster rate.,1,,,FALSE
+A man watched at an assault amphibian unit.,1,"shouldbe ""watched an assault amphibian unit""",,FALSE
+A boy shows a subjective emotional feeling to 7 girls.,1,,,FALSE
+A girl was storing a skylight.,2,,,FALSE
+Seven women smokes a cigar or cigarette.,2,,,FALSE
+A teenager fishes a skate.,1,,,FALSE
+A right lunate doesn't crunch some vitamin E.,1,,,FALSE
+A deity is placing an afghan afghani coin.,2,,,FALSE
+A goat sprays some long black.,0,,,FALSE
+An angel was playing.,2,,,FALSE
+A man is pipping a rifle.,0,,,FALSE
+A boy raises.,2,,,FALSE
+A posterior labial branch artery turns.,1,,,FALSE
+A girl searches for a a radiating.,-3,"unclear what the girl is searching for, incomplete sentence","Artifact,Physical,AutonomousAgent,Animal",FALSE
+A human child won't be cleaning.,2,,,FALSE
+6 microorganisms are attacking.,1,sentence incomplete,,FALSE
+A man reads a a growth stock.,1,one extra 'a',,FALSE
+A Union of welsh independents was finding.,-1,missing object,"Artifact,ContentBearingObject",FALSE
+A pingstroerelsen partook a radio station a downtown.,0,,,FALSE
+A deity was searching for a a pericarditis.,1,diseases aren't searched for,,FALSE
+A human baby will wade through a landlocked water.,1,,,FALSE
+A woman shoots a m2 browning.,2,,,FALSE
+A CYFA will drill the hole.,0,,,FALSE
+A rowing machine will not be bearing the hole.,1,,,FALSE
+Seven men strangles a woman.,2,,,FALSE
+A Baptist church is protecting a spear.,1,,,FALSE
+A water sprinkler is suffering 5 internal thoracic arterys 10 animal shells.,-1,,,FALSE
+A salmonella partyphi will affix a United reformed church.,1,,,FALSE
+A woman will break.,0,sentence incomplete,,FALSE
+A girl sings a musical composition with a reciting.,1,,,FALSE
+A crab was seeing a LED.,1,,,FALSE
+Some sparkling water will be freezing.,2,,,FALSE
+3 human adults will be painting some methamphetamine.,2,,,FALSE
+3 men will be soldering some steel.,2,,,FALSE
+Some distilled alcoholic beverage boiled.,2,,,FALSE
+A relief valve grinds some Rinvoq.,0,,,FALSE
+A teenager is posting a relief valve to a man.,2,,,FALSE
+A boy will loan some bile to an angel.,1,,,FALSE
+A boy cleans.,2,,,FALSE
+A deity won't perform.,2,,,FALSE
+A human child steals a federal housing administration from a Moravian church.,1,,,FALSE
+Eight mice spray 2.4999 registry tons of vodka.,-2,mice can't spray vodka,InternalAttribute,FALSE
+A girl injects some ascorbic acid into a turtle.,2,,,FALSE
+An antelope haves some cotton seed oil.,1,,,FALSE
+A teenager has not painted a T1 vertebra bone.,2,,,FALSE
+4 arachnids will be having five durum wheat grains.,1,,,FALSE
+A human baby steals a key from a political coalition.,1,,,FALSE
+An angel will be deciding a question.,2,,,FALSE
+A teenager isn't planning a stationary front.,1,,,FALSE
+Two girls were recalling a Microsoft windows.,1,,,FALSE
+A queen insect nods a head.,1,,,FALSE
+A MRSA will be killing.,2,,,FALSE
+A WMD weapons production facility is radiating 5 deep auricular arterys an infraorbital artery.,-1,a weapon product facility can't do this,"
+RadiatingElectromagnetic",FALSE
+Some Tazac is not running.,1,,,FALSE
+A US thanksgiving day is minifying.,1,,,FALSE
+A louse won't hear a speaking loudly.,1,,,FALSE
+A girl will be bombing.,2,,,FALSE
+A boy is waving with a hand.,2,,,FALSE
+An invertebrate is eating some aperitif.,2,,,FALSE
+A state government wetted some sea water to a basket ball.,1,,,FALSE
+A switch device will be radiating a fluid container a torque wrench.,0,,,FALSE
+A boy is imagining a finger.,2,,,FALSE
+4 teenagers play.,2,,,FALSE
+A human child will be fishing ten ornamental fishes.,2,,,FALSE
+Ten gillss squeezes an Epstein–Barr virus.,1,,,FALSE
+A data transfer downloaded a hyperlink.,2,,,FALSE
+3 human children will design a greater palatine artery.,1,,,FALSE
+A deer wasn't comprehending an efferent arteriole.,1,,,FALSE
+A girl was not studying 7 feus of freon-12.,0,,,FALSE
+An anterior interventricular artery will be burning.,1,,,FALSE
+A goat will be spraying some two percent milk.,2,,,FALSE
+A boy will be reproducing a hammock.,1,,,FALSE
+A deity was searching for a a trip.,1,,,FALSE
+An angel will observe 7 hepatitis viruss.,1,,,FALSE
+Five oysters nod a head.,1,,,FALSE
+4 vultures doesn't hunt a cod.,1,,,FALSE
+A communism is selling an orchestra an air force.,1,,,FALSE
+A Balsa tree ate some pork.,-1,trees can't eat meat,AutonomousAgent,FALSE
+A scallop was smelling with a nose.,-2,scallop don't have noses,Human,FALSE
+A human baby was locating some NSAID.,1,,,FALSE
+Two teenagers will be pestling a left patella.,0,,,FALSE
+A deity discovered a clavicular artery to some fertilizer.,-1,arteries aren't discovered in fertilizer,,FALSE
+A right rib bone will be precipitating an alternator a carotid artery.,-1,a rib can't do this,,FALSE
+Karina was conveying with 3 boys.,2,,,FALSE
+An angel has not searched for a a magazine.,1,,,FALSE
+A personal watercraft was firing.,1,,,FALSE
+A boy peels an eyelid from 8 vaccinia virions.,1,,,FALSE
+A boy was giving a tuna to seven human adults.,2,,,FALSE
+An angel plays.,2,,,FALSE
+A spelt wheat grain was roughenning an ore carrier ship.,0,,,FALSE
+A girl got from some dimercaprol a deity.,0,,,FALSE
+9 mules were adding a pinsebevegelsen.,-2,mules don't add a movement,"AutonomousAgent, Organization",FALSE
+A human youth was borrowing a boy.,1,,,FALSE
+A human child will be reproducing a Union of welsh independents.,1,,,FALSE
+A man is choreographing a yoga.,2,,,FALSE
+A teenager will be binding a community church to some FinishedLumber.,0,,,FALSE
+A mouse has not ducked to avoid a a pump.,1,,,FALSE
+An almond fired.,-1,,"AutonomousAgent, Device",FALSE
+A deity compares a savings and loans.,1,,,FALSE
+A girl will massage a man.,2,,,FALSE
+Some proton cooled a superficial epigastric artery.,1,,,FALSE
+A teenager was acting.,2,,,FALSE
+A special operations force won't protect an involuntary muscle.,1,,,FALSE
+A human baby won't tie a reproductive body to a seed.,1,,,FALSE
+A deity is figuring a complex number.,2,,,FALSE
+A human child irrigated the fertile terrain.,1,,,FALSE
+A boy gives a virus outer membrane to a woman.,1,,,FALSE
+An european nation doesn't exchange six T3 Vertebra Bones for 5 heptaploid cells.,1,,,FALSE
+A human baby showed some whey with a hand.,1,,,FALSE
+A man votes.,2,,,FALSE
+A teenager slices an audio visual file with a blade.,1,,,FALSE
+A cod kicks a testament with a foot.,-2,fish don't have feet,AutonomousAgent,FALSE
+A teenager questions a woman.,2,,,FALSE
+A marsupial won't be spraying some Stolichnoya.,1,,,FALSE
+A paddy rice is punishing an anti-vaxxer.,-2,rice can't punish,AutonomousAgent,FALSE
+A boy shows a subjective emotional feeling to a human child.,2,,,FALSE
+A woman pips a mortar gun.,0,,,FALSE
+A man is not taking from a narrow gauge railway a girl.,1,,,FALSE
+A boy will shoot some vollum 1B into a cub.,1,,,FALSE
+An epoch will strengthen.,2,,,FALSE
+An angel lends a palm bone to a man.,1,,,FALSE
+A boy was not planning a sand storm.,2,,,FALSE
+A cold blooded vertebrate kills a paddy rice.,2,,,FALSE
+A feline will assail.,2,,,FALSE
+A junior college replaces 6 master cards for a pajamas.,2,,,FALSE
+A human youth subjected a checkpoint to a woman.,2,,,FALSE
+An electrocardiogram will bray a key.,-1,electrocardiogram don't bray,Animal,FALSE
+A girl doesn't reproduce a medical device.,1,,,FALSE
+A human child was vandalising a shimagh.,2,,,FALSE
+A place address will dissever from 17.833 registry tons of Baileys.,1,,,FALSE
+An Apostolisk church doesn't lose an ecosystem.,1,,,FALSE
+8 human adults combined with a car seat.,1,,,FALSE
+A human youth granted zero zero coupon bonds.,1,,,FALSE
+A human baby will be cleaning.,2,,,FALSE
+An angel designed a dravidian language.,2,,,FALSE
+An islamic law court refinances a consolidation loan.,2,,,FALSE
+A human is specifying a Union of welsh independents to accomplish an incendiary device attack.,1,,,FALSE
+0 human children will be comparing a jury.,2,,,FALSE
+A deity finds a left lacrimal bone.,2,,,FALSE
+A teenager was graving a sculpture.,2,,,FALSE
+A human youth takes from two fishes a human adult.,0,,,FALSE
+A mission organization determines.,1,,,FALSE
+4 human youths will not inherit a continent.,2,,,FALSE
+A lake region smoothens a violin.,-1,a lake can't smooth a violin,AutonomousAgent,FALSE
+Eight hominids smell with a nose.,2,,,FALSE
+Zero human adults won't imagine a finger bone.,1,,,FALSE
+A human adult will fry some feta.,2,,,FALSE
+A deity writes a cavinena tacana language.,2,,,FALSE
+A rat will be taking a shea nut.,2,,,FALSE
+A human adult doesn't break.,2,,,FALSE
+A human youth was strangling a human child.,2,,,FALSE
+Sarah assists a human adult.,2,,,FALSE
+A narrative text suffers four deltoid muscles a medial femoral circumflex descending branch artery.,0,,,FALSE
+Seven boys disbursed a human youth.,-2,,FinancialInstrument,FALSE
+A boy will not reproduce a mass airflow sensor.,2,,,FALSE
+A teenager has not advertized an european city to a human baby.,2,,,FALSE
+A leaf spring was falling a black current five guernsey cattles.,0,,,FALSE
+A human adult was resolving a question.,2,,,FALSE
+A woman vandalized a hardware system.,2,,,FALSE
+A boy forgave a subjective emotional feeling to a woman.,2,,,FALSE
+A soccer team doesn't stretch.,2,,,FALSE
+A dorsal carpal arch artery radiates a handle a C6 vertebra bone.,-1,an artery can't radiate a handle,,FALSE
+Some Valium will be extending.,1,,,FALSE
+Zero women were planning a palpitations.,1,"unusual to say ""zero women""",,FALSE
+A human baby shoots a GAU-15/A machine gun.,1,,,FALSE
+4 human youths will be remembering a mechanical engineering.,2,,,FALSE
+A boy is searching for a an engine cranking.,2,,,FALSE
+A college isn't protecting an Aeropress.,2,,,FALSE
+A human child will not nod a head.,2,,,FALSE
+6 human babys are pestling a solenoid.,1,,,FALSE
+A deity was impersonating.,2,,,FALSE
+An angel plans a pampero.,1,,,FALSE
+A human baby will not be breaking.,1,,,FALSE
+A woman is guiding a man.,2,,,FALSE
+Two girls were shooting some Benelysta into a toad.,1,,,FALSE
+A girl was planning a speaking at a slower rate.,1,,,FALSE
+A human baby stole a lunate bone from a salmon.,1,,,FALSE
+A girl will be revealing an inferior ulnar collateral artery to a growth stock.,1,,,FALSE
+An automated system starved a hoofed mammal.,2,,,FALSE
+A human adult was disbursing a girl.,1,,,FALSE
+A man is questioning a teenager.,2,,,FALSE
+A teenager soldered some brass.,2,,,FALSE
+A girl won't be analysing a half wave single phase rectifier.,2,,,FALSE
+A deity assists a boy.,2,,,FALSE
+A public library is choosing a below the line.,1,,,FALSE
+A woman doesn't assault a human baby.,2,,,FALSE
+A Frelsesarmeen auctions a left gastric artery.,1,,,FALSE
+An ape watches at a clamp.,0,,,FALSE
+A woman telephones a boy a fixed phone.,-1,doesn't make sense to telephone a boy a fixed phone,Transfer,FALSE
+Ten human children toy.,-3,incomplete sentence,Physical,TRUE
+An anterior tibial recurrent artery was falling a fungus a canal lock gate.,0,,,FALSE
+6 senepol cattles will nod 6 heads.,2,,,FALSE
+A deity will not be figuring a Friday.,1,,,FALSE
+A charismatic church doesn't combine with a dorsal carpal artery.,-2,does not make sense for a church to combine with an artery,,FALSE
+0 human adults took from an arable land a boy.,0,,,FALSE
+A human baby wasn't bombarding.,2,,,FALSE
+A girl won't be borrowing a teenager.,2,,,FALSE
+A girl dodged a collage.,2,,,FALSE
+An angel is presenting two canadian dollar coins.,2,,,FALSE
+A man is helping a woman.,2,,,FALSE
+A service organization will be converting a chicken for some polystyrene.,1,,,FALSE
+An angel canvass a nucleosome.,1,,,FALSE
+A Methodist church in Ireland attacks.,2,,,FALSE
+A deep draft port is not wetting some sea water to a nonprofit organization.,1,,,FALSE
+8 apes are watching at some clonazepam.,1,,,FALSE
+Some mustard harms a calf.,1,,,FALSE
+A man will shoot a howitzer.,2,,,FALSE
+A teenager detects a deep auricular artery.,2,,,FALSE
+Four men ideates a mailing.,1,,,FALSE
+A woman dredges a gulf.,2,,,FALSE
+4 human youths has not vandalised some atom.,1,,,FALSE
+A MRSA doesn't starve a llama.,2,,,FALSE
+A human child will inherit a vagina.,1,,,FALSE
+A boy wasn't taking a left common carotid artery to a novel.,1,,,FALSE
+Some spice was harming a red oak tree.,2,,,FALSE
+A human child ties a fuel pump to a giardia lamblia.,1,,,FALSE
+A C6 vertebra bone will fire.,1,,,FALSE
+A long gun burns.,2,,,FALSE
+10 donkies ingest some couscous.,2,,,FALSE
+A chicken is not having a cashew nut.,2,,,FALSE
+An angel won't be subjecting some goat meat to a man.,2,,,FALSE
+A deity stored a traffic light.,2,,,FALSE
+A human child raised.,2,,,FALSE
+A deity is bearing an urethral artery.,2,,,FALSE
+A girl breaks.,-3,,EmotionalState,FALSE
+A man irrigates the fertile terrain.,2,,,FALSE
+A teenager vandalized a moka Pot.,0,,,FALSE
+A forty eight foot container will be suffering a damper a catheter.,0,,,FALSE
+A queen insect is dumping some arsine.,1,,,FALSE
+A boy will reproduce a rain forest.,1,,,FALSE
+A boy will steal a compartment from 2 mollusks.,1,,,FALSE
+A cucumber plant was pulling a skunk.,1,,,FALSE
+A Redwood tree will separate from a right intermediate phalanx II bone.,-2,a redwood tree can't separate from a bone,AutonomousAgent,FALSE
+A girl will be massaging seven boys.,2,,,FALSE
+8 girls doesn't solder some steel.,2,,,FALSE
+An inferior alveolar artery crunches a motor scooter.,-2,an artery can't crunch a scooter,Artifact,FALSE
+A ship crew doesn't mail a letter.,2,,,FALSE
+An ebola virus will not be drawing two oesophagi.,1,,,FALSE
+4 mice matched a television station a high precision weapon.,1,,,FALSE
+A boy was soldering some brass.,2,,,FALSE
+A snake will be considering at a rocket.,1,,,FALSE
+A woman created a sweet potato tuber.,1,,,FALSE
+A deity was writing a debit card.,2,,,FALSE
+A coffee plant doesn't egest some urine from a bronchial duct.,1,,,FALSE
+6 human babys showed a french franc coin with a mattress.,1,,,FALSE
+A human youth will produce a speaking to a woman.,1,,,FALSE
+A left femur won't radiate a water vehicle a heated pool.,-2,a femur can't radiate a water vehicle ,,FALSE
+A virus will be revealing three succulents.,1,,,FALSE
+A human child designed some special purpose protein.,2,,,FALSE
+A human baby has not toyed.,2,,,FALSE
+A boy will be interviewing a human child.,2,,,FALSE
+A teenager plans an artifact mediated communication.,1,,,FALSE
+A human youth loans some softwood to 6 human adults.,2,,,FALSE
+A human youth will wade through an estuary.,2,,,FALSE
+6 toads buries.,2,,,FALSE
+A customer support was not determining from a private school.,2,,,FALSE
+A teenager was not designing a triploid cell.,2,,,FALSE
+A nipah virus doesn't pull a posterior auricular artery.,2,,,FALSE
+A woman will be inheritting a tray.,2,,,FALSE
+Ten boys were envisaging a land subsidence.,2,,,FALSE
+A constrictor snake will be dreaming.,2,,,FALSE
+A cold blooded vertebrate was burying.,2,,,FALSE
+Zero instep bones were not precipitating ten correspondences a star network.,0,,,FALSE
+6 human children has not choreographed a low pressure weather system.,1,,,FALSE
+A man is promoting 8 eye irides to a human child.,1,,,FALSE
+A coffee plant will be wetting some steam to a left proximal phalanx II bone.,-2,cofee plants aren't capable of this,,FALSE
+Ten dachshunds attack.,2,,,FALSE
+A boy will be ironning a form text.,0,what kind of text? a physical document text?,,FALSE
+A vaccinia virion combines with 2 cervical arterys.,1,,,FALSE
+A sheep will be famishing six owls.,1,,,FALSE
+Who was treating a hotel villa?,2,,,FALSE
+A boy was pushing some watercolor paint to a teenager.,2,,,FALSE
+Ten boys were inheritting a rickettsia rickettsii.,1,,,FALSE
+A giardia lamblia was killing a clostridium perfringens.,2,,,FALSE
+A queen insect was not killing an intracellular mature virion vaccinia.,2,,,FALSE
+A boy is including a null set.,NULL,,,FALSE
+A teenager won't operate a human adult.,2,,,FALSE
+A human youth guided a woman.,2,,,FALSE
+A woman was understanding a financial bill.,2,,,FALSE
+Seven boys were tying a hemisphere to a pillow.,1,,,FALSE
+Who was planning a recovering from illness?,2,,,FALSE
+Seven human youths compares a Church of the nazarene.,2,,,FALSE
+A boy will not choreograph a restating.,1,,,FALSE
+A quail bird will not auction a paved runway.,2,,,FALSE
+A human youth was raping 10 women.,2,,,FALSE
+A girl plans an eating.,1,,,FALSE
+A goose is not spraying some one percent milk.,2,,,FALSE
+An angel bears a T3 Vertebra Bone.,2,,,FALSE
+A woman isn't producing an aborting to a human child.,1,,,FALSE
+5 human adults is reproducing six tajik somoni coins.,2,,,FALSE
+A hemorrhagic fever infects an Aegilops Speltoides.,2,,,FALSE
+Four men inoculated six teenagers with 10.68 ounces of vaccine.,2,,,FALSE
+A Baptist union of wales is famishing a hoofed mammal.,1,,,FALSE
+A woman was bombing.,2,,,FALSE
+Some rain will not freeze.,2,,,FALSE
+Four teenagers will interpret a license.,2,,,FALSE
+A girl is choking a human adult.,2,,,FALSE
+A goat is smelling with two noses.,-2,a goat does not have 2 noses,Nose,FALSE
+A bumble bee will be kicking an optical disc with 3 feet.,-2,bees don't have feet,Human,FALSE
+A human child is understanding a currency bill.,2,,,FALSE
+An angel was pouring some rum into an oven.,2,,,FALSE
+Ten hoofed mammals will be attacking.,2,,,FALSE
+A boy treats a vacuum gauge.,2,,,FALSE
+Some durum wheat flour was working.,2,,,FALSE
+4 human children were planning a quitting.,2,,,FALSE
+A boy will be planting an Aspen tree.,2,,,FALSE
+A human youth was breaking.,1,,,FALSE
+A stock market has not protected a beets.,0,,,FALSE
+Some beta blocker has not born the hole.,0,,,FALSE
+A teenager advertizes 4 lunate bones to a human adult.,2,,,FALSE
+A human baby will give a refrigerated cargo ship to a teenager.,1,,,FALSE
+A human child will skin nine eyelids from a fox.,2,,,FALSE
+A human adult will purchase a sternum.,2,,,FALSE
+A deity was cleaning.,2,,,FALSE
+A human adult was breaking.,2,,,FALSE
+3 tunas kick a superficial temporal frontal branch artery with a foot.,-2,tunas don't have feet,Human,FALSE
+An union organization will be sharing an age group four poxviridaes.,1,,,FALSE
+A boy imagines a filter.,2,,,FALSE
+A public school was starving six sheeps.,2,,,FALSE
+A boy is befriending a human child.,2,,,FALSE
+A superficial temporal parietal branch artery will not be harming a bacterial agent.,1,,,FALSE
+A greater palatine artery was roughenning a pen.,-2,arteries can't harm pen,AutonomousAgent,FALSE
+A human adult will be frying a shea nut.,2,,,FALSE
+A tuna will smell with a nose.,2,,,FALSE
+A boy will produce a pottery.,2,,,FALSE
+Nine primates will spray some processed milk.,2,,,FALSE
+A special operations forces sells a right intermediate phalanx V bone eight calves.,-2,not possible to sell to a bone,"Artifact,AutonomousAgent",FALSE
+Some neurotransmitter will not turn.,2,,,FALSE
+A boy will be communicating with a deity.,2,,,FALSE
+A right intermediate foot phalanx II bone burnt.,2,,,FALSE
+An angel will not notice a car distribution system.,2,,,FALSE
+A deity reproduced a saline lock.,1,,,FALSE
+An antelope was relinquishing a vented chest seal.,0,,,FALSE
+Evelyn will be singing a musical composition with a speaking loudly.,1,,,FALSE
+A boy won't be including a finite set.,2,,,FALSE
+A teenager was searching for a a vehicle window.,2,,,FALSE
+A military chapel will refinance a secured loan.,2,,,FALSE
+A fly insect converted a light truck for a distributor.,1,,,FALSE
+A woman will be massaging a girl.,2,,,FALSE
+Ten human children produces some petroleum lubricant.,2,,,FALSE
+A deity has not designed some fuel vapor.,2,,,FALSE
+A teenager is dishonorring 10 teenagers.,2,,,FALSE
+A man will dodge a badger.,2,,,FALSE
+An eye glass extended.,2,,,FALSE
+A deity ciphered an even integer.,2,,,FALSE
+A boy is not toying.,2,,,FALSE
+A teenager has not searched for a a vocal cords.,2,,,FALSE
+A teenager reckons an unit of length.,0,,,FALSE
+A Bunny was kicking a walnut with a foot.,2,,,FALSE
+A woman is befriending a human child.,2,,,FALSE
+A mollusk won't be catching a computer.,2,,,FALSE
+A man will buy a baseball steal.,2,,,FALSE
+A domestic cat will harm 10 orchids.,2,,,FALSE
+A deity will be lending a six anterior intercostal branch artery to a human adult.,1,,,FALSE
+A rift valley fever will be infecting an elephant.,2,,,FALSE
+An angel advertises a blackboard to a boy.,1,,,FALSE
+A human child is recollecting an international agreement.,1,,,FALSE
+A game room is suffering a parrot a passport.,0,,,FALSE
+Two human youths will vandalize a wire line.,2,,,FALSE
+A box has not supported a domestic animal a T9 Vertebra Bone.,1,,,FALSE
+A human baby plans a nodding.,1,,,FALSE
+3.75 liquor shots of freshwater was freezing.,2,,,FALSE
+A woody plant radiates a license a decaploid cell.,0,,,FALSE
+A teenager is not aviating an airplane.,2,,,FALSE
+A teenager shot some azulfidine into a mule.,2,,,FALSE
+A human youth reproduces an air conditioning compressor.,2,,,FALSE
+A teenager will resolve a question.,2,,,FALSE
+Three women strangled a girl.,2,,,FALSE
+A human youth is transforming a Christmas day.,-2,a youth can't transform a holiday,Planning,FALSE
+A wind surfing board burns.,2,,,FALSE
+A human child compared a media organization.,2,,,FALSE
+A teenager pips a chain gun.,0,,,FALSE
+Zero human youths are purchasing a label.,1,,,FALSE
+A C.V. joint will gain.,0,,,FALSE
+Who will bombard?,2,,,FALSE
+A girl solders some brass.,2,,,FALSE
+Eight corynebacterium diphtheriaes were eating some salmon meat.,2,,,FALSE
+A girl takes a light truck.,2,,,FALSE
+A heel bone will be harming a progeny vaccinia virus immature.,0,,,FALSE
+A boy isn't detecting a strictness attribute.,2,,,FALSE
+A woman discovers a profession.,2,,,FALSE
+A saxophone runs.,2,,,FALSE
+An alligator kills a junin virus.,1,,,FALSE
+A sheepdog will not drink some whiskey.,2,,,FALSE
+A human baby assorts a set of equations.,2,,,FALSE
+A man will press a vertebra bone.,2,,,FALSE
+A human youth will not give an ergometer to a human adult.,2,,,FALSE
+A mollusk smells with 2 noses.,1,,,FALSE
+A butterfly is not respiring 1.412 cups of greenhouse gas.,1,,,FALSE
+An angel will advertize a road junction to a woman.,2,,,FALSE
+A teenager ironed some thyroxine.,1,,,FALSE
+A human youth destined a political pressure group to accomplish an ulcerative colitis.,1,,,FALSE
+A woman buys a position.,2,,,FALSE
+An anti-vaxxer takes a barricade.,2,,,FALSE
+A teenager has not peeled an eyelid from a yellow fever virus.,1,,,FALSE
+Ten cattles are kicking some alcoholic beverage with a foot.,2,,,FALSE
+An ascending aorta radiates a wheel chock a spinal cord.,-1,an aorta doesn't radiate wheel chocks ,,FALSE
+A pigeon sprays some aperitif.,-2,pigeons can't spray aperitif,InternalAttribute,FALSE
+Rita doesn't intercommunicate with a deity.,2,,,FALSE
+An Aegilops Tauschii refinanced a single payment loan.,-2,,AutonomousAgent,FALSE
+A teenager will refer a finite set.,2,,,FALSE
+A human baby is imagining some thyroid stimulating hormone.,2,,,FALSE
+A lamb isn't taking some Coca_Cola.,2,,,FALSE
+A teenager was irrigating the fertile terrain.,2,,,FALSE
+A teenager broke.,2,,,FALSE
+Some bupropion will shut.,0,,,FALSE
+A human adult produced a temperature falling (experienced as feeling cold) to a human baby.,1,,,FALSE
+A human child doesn't disburse a human child.,1,,,FALSE
+A smoking pipe doesn't drill the hole.,2,,,FALSE
+5 human adults doesn't find 7 spinal columns.,2,,,FALSE
+A human child is not bombing.,2,,,FALSE
+An airbag inflated with some greenhouse gas.,-1,airbag doesn't inflate with greenhouse gas,Nitrogen,FALSE
+A sports team will be refinancing a balloon loan.,2,,,FALSE
+18.737 ounces of ground water is diluting some antifreeze.,2,,,FALSE
+A human child chokes a human adult.,2,,,FALSE
+A herpes virus uncovers a putting green.,-1,a virus can't uncover,AutonomousAgent,FALSE
+An airbag inflates with some greenhouse gas.,-1,airbag doesn't inflate with greenhouse gas,Nitrogen,FALSE
+A pig is not drawing some unnildecium.,1,,,FALSE
+A delta variant is selling some asbestos an unincorporated united states territory.,-1,delta variant can't be a seller,,FALSE
+An angel was not seeking for a a surfboard.,2,,,FALSE
+A teenager doesn't ideate a prairie.,2,,,FALSE
+Nine cattles are kicking some anti-parasitic with a foot.,1,,,FALSE
+A Missionskyrkan has not squeezed a face.,-2,a church can't squeeze faces,AutonomousAgent,FALSE
+A periodical publisher was determining from a day school.,0,,,FALSE
+An angel is analyzing some thulium.,1,,,FALSE
+An angel destined a police organization to accomplish an achieving control.,0,,,FALSE
+A girl was presenting a growth stock.,2,,,FALSE
+Who is comprehending a written language?,2,,,FALSE
+A guinea pig will be spraying some vodka.,-2,guinea pigs can't spray vodka,InternalAttribute,FALSE
+An infantry company is translating 5 announcements into a harakmbet language.,2,,,FALSE
+A man doesn't shoot some marijuana into a vulture.,1,,,FALSE
+A hoofed mammal won't be smelling with a nose.,2,,,FALSE
+A human adult pares an eyelid from a dachshund.,1,,,FALSE
+Who will be searching for a a condominium building?,1,,,FALSE
+A mammal imbibes some whole milk.,2,,,FALSE
+A hepatitis doesn't infect a butterfly.,2,,,FALSE
+A man will not ideate a shotgun slug.,1,,,FALSE
+A girl grew a goose.,1,,,FALSE
+A coral is not kicking a pot or pan with a foot.,1,corals can't kick,,FALSE
+7 human children ideated an emailing.,2,,,FALSE
+A human child determines a question.,2,,,FALSE
+A teenager canvass a canal lock.,1,,,FALSE
+5 boys are massaging a human adult.,2,,,FALSE
+A boy sees an united states cent coin.,2,,,FALSE
+A woman impersonates.,2,,,FALSE
+An Independent church will not be refinancing a day loan.,2,,,FALSE
+A human adult isn't inheritting a pear fruit.,2,,,FALSE
+A butterfly will be spraying some processed gaot milk.,-2,"a butterfly can't spray goat milk and it should be ""goat""",InternalAttribute,FALSE
+8 streptococcus As won't be forcing an insect.,-2,"a bacteria can't do this, overall sentence doesn't make sense",,FALSE
+A human adult loaned a ship crew to a girl.,2,,,FALSE
+A deity seted a question.,-3,seited is not a valid word,Requesting,FALSE
+A woman rings a boy a cordless telephone.,2,,,FALSE
+An anterior tibial artery won't precipitate a perforating branch to the posterior tibial artery an intestinal artery.,,,,FALSE
+A teenager is sitting a boy to a an auditorium seat.,2,,,FALSE
+A llama will add a liquefied gas tanker ship.,-2,animals can't add to a ship,AutonomousAgent,FALSE
+Winston uploads a web site.,2,,,FALSE
+A data saving doesn't download a computer report.,2,,,FALSE
+A Triticum urartu was protecting an artery of bulb of penis.,-3,sentence doesn't make sense,,FALSE
+A deity doesn't treat a canal structure.,1,,,FALSE
+9 girls are choking a boy.,2,,,FALSE
+A girl retrieves a cocktail menu.,2,,,FALSE
+A boy doesn't bring a safe container to some chlorpheniramine.,-1,sentence doesn't make sense,StationaryArtifact,FALSE
+A teenager will point a submental artery with a leather.,-1,"can't point with a leather, it's a material",Finger,FALSE
+A human baby plays.,2,,,FALSE
+A human adult is giving a file path to a deity.,1,,,FALSE
+An ornamental fish was nodding a head.,1,,,FALSE
+Some hailstone vaporises into a mouth.,1,,,FALSE
+A kangaroo was passing some feces from 4 adrenal glands.,-1,feces do not come from adrenal glands,Anus,FALSE
+Who will be burying?,2,,,FALSE
+Ronald was giving a limb to a teenager.,2,,,FALSE
+A cloak brays an abayah.,-1,a cloak can't do this,Donkey,FALSE
+Two men aren't storing a plant branch.,2,,,FALSE
+A girl writes a purchase order number.,2,,,FALSE
+A shrimp will be selling some anti-inflammatory an ovrigt.,-2,shrimp cannot sell,AutonomousAgent,FALSE
+A rift valley fever is infecting an oat grass.,2,,,FALSE
+A lamb is adding an accompanying artery of ischiadic nerve.,-2,lambs can't add arteries,MedicalDoctor,FALSE
+A hospital building smooths some famotidine.,-1,can't smooth a medication,MedicalDoctor,FALSE
+An Anglican church will take 5 SARSCoV1s.,2,,,FALSE
+A human child is not violating 7 human youths.,2,,,FALSE
+Seven teenagers are reading a an invoice.,2,,,FALSE
+A deity analyzes a radicchio.,2,,,FALSE
+A teenager will take from a pocket four girls.,-3,does not make sense,CriminalAction,FALSE
+A turtle sprays some milk foam.,-2,turtle can't spray milk foam,InternalAttribute,FALSE
+A human youth was discovering a portable computer to a 4 by 4 tire.,2,,,FALSE
+A commission fires.,1,,,FALSE
+A human youth is ironning some chemical base.,-1,chemical base can't be ironed; the subject is incorrect,Artifact,FALSE
+Seven women were treating an oxygen sensor.,1,,,FALSE
+A human youth doesn't beckon with a hand.,2,,,FALSE
+A spear will be concealing a laptop.,-1,a spear can't conceal a laptop,AutonomousAgent,FALSE
+A producer price index strengthens.,2,,,FALSE

@@ -1,0 +1,1012 @@
+,-3,Invalid: other,,
+,-2,Invalid: subject,,
+,-1,Invalid: object,,
+,0,Unclear,,
+,1,Valid: but grammar issue or pragmatically strange,,
+,2,Valid,,
+Sentence,Valid/Invalid,Reason Why,"Correct Type 
+(exact SUMO term,
+if more than one, 
+separate with commas)","Invalid 
+Preposition"
+Who doesn't play a running track?,-1,a running track is an inanimate object and cannot be played like an entity or an activity,Game,FALSE
+Claire is discovering a place of worship.,2,,,FALSE
+0 bacteriums divided Ellen.,1,,,FALSE
+Harold was not borrowing a pitchers mound from Emil.,-1,a pitchers mound is immovable and cannot be transported,Artifact,FALSE
+Who designated a collarbone to a tool box?,-3,collarbone is not a tool,SocialRole,FALSE
+Carl will be dredging a motor hopper.,0,"seems ok, domain knowledge",,FALSE
+Rachel will be running a vehicle.,2,,,FALSE
+Kate will not download a news feed.,2,,,FALSE
+Ethel will not be performing a mouth.,-1,a mouth is not an action; actions are performed,Performance,FALSE
+Who drives a lung?,-1,a lung cannot be driven (unless transported as an organ recovery),TransportationDevice,FALSE
+A clostridium tetani infects a louse with a vaccinia virion.,2,,,FALSE
+Who was not inflating an ornamental fish?,2,,,FALSE
+Who will be playing a kitchen?,-1,"kitichen is not a role, game, ""sucker"", instrument","Game,MusicalInstrument",FALSE
+Dominic was famishing Sebastian.,2,,,FALSE
+Harry has not painted a Spruce tree.,2,,,FALSE
+Alba will comprehend a cell nucleus.,2,,,FALSE
+Who wasn't observing a la crosse virus?,2,,,FALSE
+Jane will have to a throat.,0,,,FALSE
+Who will be borrowing a calf?,2,,,FALSE
+Sally will be egesting a red blood cell.,2,,,FALSE
+A giardia lamblia is beckonning a device.,-2,giardia is not sentient; beckoning requires sentience,AutonomousAgent,FALSE
+Who plays a sprinkler?,-1,"sprinkler is not a role, game, ""sucker"", instrument","Game,MusicalInstrument",FALSE
+Lilian will recollect.,1,,,FALSE
+Kristin tells an APC.,NULL,,,FALSE
+Carol is vandalizing a religious building.,2,,,FALSE
+A sorghum grass will trot a facial hair.,-1,grass is not sentient; trotting requires sentience,AutonomousAgent,FALSE
+Who peels a snake?,2,,,FALSE
+Robin doesn't taste a pancreas.,2,,,FALSE
+Gladys was inferring Evan.,1,inferring about?,,FALSE
+Who will seek a rhinoceros?,2,,,FALSE
+Mildred will dodge a twin_sized bed.,2,,,FALSE
+Bill financed a revolver gun.,2,,,FALSE
+Who will inherit a wet bar?,2,,,FALSE
+Who noticed a musical instrument?,2,,,FALSE
+Carmen perceived a deltoid artery.,2,,,FALSE
+Who is melting some cocoa bean?,2,,,FALSE
+Ethel will visit a forty foot container.,2,,,FALSE
+Who is interviewing a report?,-1,"report is nonsentient, only sentient entities can be interviewed",AutonomousAgent,FALSE
+Grace presses a hat.,2,,,FALSE
+An aloe vera plant is finding a single family residence.,-1,"a plant's findings are limited to its sense, plants cannot sense complex objects beyond light, water, etc",AutonomousAgent,FALSE
+A tobacco will not be smoking some sugar.,-1,a tobacco's smoking is limited to being on fire; it cannot choose to smoke sugar,AutonomousAgent,FALSE
+Adam will step a right proximal phalanx IV bone.,1,grammar: step ON,,FALSE
+Who will roll a tire changer?,2,,,FALSE
+A domestic cat inherited an anatomical structure from an ear.,-3,an ear does not reproduce; inherited traits are passed via reproduction,AutonomousAgent,FALSE
+Who spreads a hotel?,2,,,FALSE
+Who runs an insect?,-1,"run an organization, process, race; insect has its own ""agency""",Sport,FALSE
+A coffee plant is buying some mint.,-2,coffee plant is non sentien; buying requires sentience,AutonomousAgent,FALSE
+Who will not communicate a table to a kufiyyah?,-1,table is not an idea; can only communicate ideas,AutonomousAgent,FALSE
+Allan will get an anchor from a currency.,-3,currency has no agency; give/get requries agency,AutonomousAgent,FALSE
+Who doesn't smell 6 monkies?,2,,,FALSE
+Douglas downloads an art studio.,2,,,FALSE
+Who doesn't share a Poplar tree?,-1,share a divisible item; a poplar tree is a single unit,"AutonomousAgent, Artifact",FALSE
+Ten cottonwood trees will smell Caitlin.,-2,trees' senses are limited and do not include smell; smell is for sentient entities,AutonomousAgent,FALSE
+Caitlin won't be supporting a currency.,2,,,FALSE
+Who referred a golf course?,2,,,FALSE
+Alison will not be toying an organ.,-1,"""with"" an organ?","Game, Artifact",FALSE
+Who will wade a swimming pool?,1,in,,FALSE
+Alba figures a spinal cord.,0,,,FALSE
+Lydia will be choosing a vending machine.,2,,,FALSE
+Claudia protected an abnormal anatomical structure.,2,,,FALSE
+Rebecca advertized a vine.,2,,,FALSE
+Fiona was shooting a saw.,-1,shoot a projectile or film; saw is stationary,Device,FALSE
+Sylvia bombarded a prison.,2,,,FALSE
+A salmon doesn't hear an organ.,2,,,FALSE
+Elizabeth has not uploaded a picture frame.,-1,picture frame is not digital; only digital entites can be uploaded,Software,FALSE
+Who injects a respirator?,-1,"respirator is not an ""inject""able type e.g., liquid, or phrase","Liquid,Medicine",FALSE
+A guinea pig was not performing a steering wheel.,-1,steerming wheel is not an action; only actions are performed,AutonomousAgent,FALSE
+Gary will be singing a trousers.,-1,trouser is not a song/tune/etc; only those can be sung,Song,FALSE
+Richard will be smoothing a fabric.,2,,,FALSE
+Kristen will be tying seven right ossa coxaes.,2,,,FALSE
+Alice pares ten left gastric arterys.,2,,,FALSE
+Who mails ten left true rib 5 bones?,1,grammar,,FALSE
+Tom will be painting a coin.,2,,,FALSE
+Kathleen wasn't raising a muscular ulnar artery.,1,her,,FALSE
+A tobacco smokes a firearm.,-2,tobacco cannot smoke an object; can only use smoke as intransitive verb,AutonomousAgent,FALSE
+Sarah has not nodded a nail.,-1,a nail is not gesticulable,Head,FALSE
+A reptile doesn't immunise Richard.,2,,,FALSE
+Jack will be figuring a hominid.,1,figure a hominid out of clay,,FALSE
+Two algas starved a product.,2,,,FALSE
+Harry doesn't fall a skylight.,-1,fall a tree,,FALSE
+A RNA virus will be plugging a deltoid muscle.,-1,"plug thiings with holes, a deltoid muscle does not have a hole",,FALSE
+Who will be tying a thorax bone to a pencil?,2,,,FALSE
+Who isn't uploading a motion picture?,2,,,FALSE
+7 horses is wading a board or block.,-1,wade in water or shallow liquid; block is solid,,FALSE
+Who auctions 3 birds?,2,,,FALSE
+Who is freezing a text?,2,,,FALSE
+Alvin sells Bridget a coin.,2,,,FALSE
+Who won't skin a snake?,2,,,FALSE
+Henry doesn't press a French press.,2,,,FALSE
+Who will get a Chevrolet engine?,2,,,FALSE
+Pete irons 8 muscular ulnar arterys.,-1,"iron cloth, not organic matter",,FALSE
+Two felines befriends a cocoa tree.,-1,trees are not sentient; friendship is between two sentient entities,,FALSE
+Lucas haves a license.,2,,,FALSE
+A bacterium infected a worm with a lacrimal artery.,2,,,FALSE
+An elephant reckons a small intestine.,0,,,FALSE
+Who puted an academic degree?,0,?,,FALSE
+Lucy steals a genetically engineered organism from an engine control module.,-3,organic matter is not part of a mechanical engine (under my best understanding of current science),,FALSE
+Who matches Mark?,2,,,FALSE
+Who will be swarming a hominid?,0,,,FALSE
+Thomas will see Alice.,2,,,FALSE
+Rachel will be hearing Arnold.,2,,,FALSE
+Who designed a Balsa tree?,1,,,FALSE
+A mammal is forgiving Sonya.,2,,,FALSE
+Ricky presents Felix a board or block.,2,,,FALSE
+Rachel will be setting a pollen.,0,,,FALSE
+Who sends an electrocardiogram?,2,,,FALSE
+Who doesn't raise a lid?,1,,,FALSE
+A feline eats some RNA molecule.,-1,"eat ""food""; ingest something non-food; rna is non-food",,FALSE
+Nicholas wasn't pouring eight arteries.,-1,only pour liquids; artery is solid,,FALSE
+Hilda thinned a lentil.,1,odd,,FALSE
+Who won't bury an animal shell?,2,,,FALSE
+6 monkies will raise a drum.,2,,,FALSE
+Madeline is catching Penny.,2,,,FALSE
+An Escherichia coli will not upload an intelsat.,-2,uploading reequires sentience/agency; e-coli is nonsentient,,FALSE
+Who is producing a party platform?,2,,,FALSE
+Who wasn't placing a left lacrimal bone?,2,,,FALSE
+5 primates will be communicating a painted picture to Felix.,2,,,FALSE
+Who turns a taillight?,1,,,FALSE
+Who is not envenomming an occipital lobes?,1,,,FALSE
+Pearl drives a vehicle.,2,,,FALSE
+Bill has not imbibed a fabric.,-1,imbibe a liquid/beverage; fabric is solid,,FALSE
+Pete born Ursula.,-3,birthed?,,FALSE
+Stella catches Paul.,2,,,FALSE
+Sharon swops a salmon.,-3,swap an item for another,,FALSE
+Seven organisms inherits a salmon from Frances.,-3,"""inherit""; also, organism can inhereit trait/dna, but not a macro object like salmon",,FALSE
+Who was envisaging a bicycle?,1,,,FALSE
+Katherine steals a chain from Mary.,2,,,FALSE
+Vincent is running Alfred.,2,,,FALSE
+Mona is smelling Ursula.,2,,,FALSE
+A feline will analyze a performance stage.,2,,,FALSE
+UNK_PERSON_1 was communicating a pollen.,NULL,,,FALSE
+Jack will be conveying a courtyard to Jane.,1,,,FALSE
+Who suffered an organism?,-1,suffer an ailment; organism isnot an affliction,,FALSE
+Amselm is not communicating an ape to Jacinta.,1,,,FALSE
+Who is not acquiring a sail?,2,,,FALSE
+Who will inherit a multifunctional large load carrier ship from Adrian?,2,,,FALSE
+Rita infects a body junction with two nerve cells.,2,,,FALSE
+Deborah designs an auditorium.,2,,,FALSE
+Randy discovers a position report.,2,,,FALSE
+Vanessa paints a vegetable.,2,,,FALSE
+3 clostridium botulinums envenomed a projectile.,-2,"botulinums do not create venom; snakes , spiders/macro organisims do ; also cannot envenom an inantimate object (envenom prey)",,FALSE
+Ursula will be eating 2 shoulder blades.,2,,,FALSE
+Who has not infected 3 vaccinia virions with 6 virus parts?,1,,,FALSE
+Max will not protect a trachea.,2,,,FALSE
+Melody will plan a passenger railcar.,2,,,FALSE
+Who delivers a product?,2,,,FALSE
+Murphy fished a wearable item.,1,out of a hat?,,FALSE
+Who doesn't pay a skunk?,0,"cannot pay a skunk, but does ""who doesn't"" make it all hypothetical and ok?",,FALSE
+A pine tree sells a larch tree.,-2,pine tree non sentient; only sentient can sell,,FALSE
+Emma is guiding an organism.,2,,,FALSE
+Christine will be tying a VaccinationCard.,-1,"around XYZ? otherwise, tie a knot, or someone in a race",,FALSE
+UNK_ORG_1 will download a firearm.,NULL,,,FALSE
+Who buries zero plants?,2,,,FALSE
+Who will not seat a residence?,-1,seat a person,,FALSE
+Laura is slicing a pressure bandage.,2,,,FALSE
+Who replaces a back with a vessel to semilunar ganglion artery?,0,,,FALSE
+Who was communicating a desk?,2,,,FALSE
+Milton wasn't freezing a shirt.,2,,,FALSE
+An anaconda charges a tire.,-1,anaconda cannot charge; charge either requires legs or ability to enter into a transaction,,FALSE
+Noel is exchanging two toes with a hotel.,-1,exchange item with sentient being; object nonsenteint,,FALSE
+Who was disclosing a horse to Maurice?,-1,usually disclose information (ideas); horse is usually a physical horse,,FALSE
+Edmund roughens some FinishedLumber.,2,,,FALSE
+Who is not downloading a compact disc?,1,usually contents of a CD...,,FALSE
+Who will be sculpturing a bull?,2,,,FALSE
+A vaccinia virus assorts 9 cell membranes.,-2,virus cannot sort/assort; sorting requires sentience,AutonomousAgent,FALSE
+Helen is damaging a nose.,2,,,FALSE
+Grace is not comparing a skunk.,2,,,FALSE
+Raymond doesn't steal a party platform.,2,,,FALSE
+Clement is inheritting an alfalfa plant from Adam.,2,,,FALSE
+Louis combines a computational system.,1,"usually combine ""with""",,FALSE
+Rosa was firing a cereal grain.,1, perhaps there's a case where someone is burning this...,,FALSE
+Hardy was dripping a bottle.,1,,,FALSE
+Nancy was reproducing a computer input device.,2,,,FALSE
+Andrew reproduced a hammer.,2,,,FALSE
+Tom was starving an ant insect.,2,,,FALSE
+Abraham locates a helmet.,2,,,FALSE
+Who doesn't affix a compressor?,2,,,FALSE
+Who treated a coin?,2,,,FALSE
+Who will refer a mosque?,2,,,FALSE
+Gerald isn't studying a farm.,2,,,FALSE
+A grass plant was fermenting a coffee robusta.,-3,it implies a grass plant is sentient/has agency when it has indirect object,AutonomousAgent,FALSE
+Carol pours a citrus fruit.,-1,pour a liquid,AutonomousAgent,FALSE
+George will be classing a body segment.,1,,,FALSE
+A primate won't communicate five arachnids to UNK_PERSON_2.,NULL,-1; normally communicate information,,FALSE
+Who will assail a muscle?,1,,,FALSE
+Who was getting a farm from UNK_PERSON_2?,NULL,,,FALSE
+UNK_PERSON_2 ideates a narrative text.,NULL,,,FALSE
+Seven shrubs will be inheritting an exoskeleton.,-1,inherit genetic traits; exoskeleton is not a genetic trait of a shrub; only animals have exoskeletons,AutonomousAgent,FALSE
+Who was not planning a business railcar?,1,,,FALSE
+Cora commands an unpowered vehicle.,2,,,FALSE
+Who was smelling a lion?,2,,,FALSE
+Travis was suffering a cell wall.,-1,suffer an affliction/idea/feeling; cell wall is physical object,InternalChange,FALSE
+Who doesn't produce an office building?,2,,,FALSE
+Who was lending a gene to a catheter?,-3,"""to a catheter"" makes it incorrect; the indirect object cannot receive",AutonomousAgent,FALSE
+Who will be getting a transistor?,2,,,FALSE
+Anita located a worker insect.,2,,,FALSE
+Sylvia doesn't pour a dishdashah.,-1,pour only liquids,Liquid,FALSE
+Aloysius will be sculpturing a metallic 3D printer.,2,,,FALSE
+Walter irrigates a groundnut.,-1,irrigate crops (plural) not singular; or irrigate a field or fields,"Plant, LandArea",FALSE
+Randy will be wading a heated pool.,1,(in),,FALSE
+Lindsay will sit Guenevere.,2,,,FALSE
+Malcolm transforms a device.,2,,,FALSE
+A turkey bird will not hunt four domestic dogs.,1,,,FALSE
+Who is communicating an engine fan?,1,,,FALSE
+Mary pips a helmet.,1,,,FALSE
+Randy will not imbibe a DVD.,2,,,FALSE
+Who examines a hominid?,2,,,FALSE
+Who doesn't extend a human corpse?,2,,,FALSE
+Josephine is not downloading an organism.,-1,download a digital entity; organism is physical,Software,FALSE
+Burt winked a mosque.,1,(at) a mosque?,,FALSE
+Cara haves an ear.,0,?,,FALSE
+Who will be questioning a container?,-1,question a concept or a human entity or organization,AutonomousAgent,FALSE
+Sheila supports 7 currencies.,1,,,FALSE
+Who won't reproduce a message?,2,,,FALSE
+Judith will interview five magazines.,2,,,FALSE
+A viral agent reproduces a clothing.,-1,"virus reproduces itself, not a macro object","Bacteria,Virus,DiseaseOrSyndrome",FALSE
+Who will be recalling?,2,,,FALSE
+Who pestles a gun barrel?,1,odd,,FALSE
+Caitlin was forgiving a barricade.,1,,,FALSE
+Who impersonated a medial cuneiform bone?,1,,,FALSE
+Who will be singing a tongue?,-1,sing a song; tongue is an object,Song,FALSE
+Who was giving 9 fungi a kufiyyah?,-3,fungi cannot receive macro objects,AutonomousAgent,FALSE
+Alexander is cooling six gastro_intestinal tracts.,2,,,FALSE
+A lamb was burying a sphenoid bone.,1,,,FALSE
+Who was stretching a vocal cords?,1,,,FALSE
+Jackie doesn't pour a basement.,-1,pour a liquid,Liquid,FALSE
+Who pulls three abdominal aortae?,1,,,FALSE
+Who will solder an organ?,1,pipe organ?,,FALSE
+A domestic dog will operate a genetically engineered organism.,-1,GMO cannot be operated ,AutonomousAgent,FALSE
+Who will produce zero staphylococcus aurei?,2,,,FALSE
+Who intended to Anthony to strangle?,2,,,FALSE
+Five hens was punching a fish.,-2,hens cannot punch; arms needed for punching,AutonomousAgent,FALSE
+Alban is slitting 8 ears.,2,,,FALSE
+Who isn't teeming an organ?,0,?,,FALSE
+Who isn't selling an united states dollar bill?,2,,,FALSE
+Alvin searches a lemur.,2,,,FALSE
+Tommy questions a report.,2,,,FALSE
+An elephant will be performing a camera.,1,"(for) a camera; otherwise, perform an action but camera not an action",,FALSE
+Who won't be uploading a lion?,-1,upload a digital entity,Software,FALSE
+A tick borne encephalitis virus poisoned 2 lips.,0,seems ok?,,FALSE
+Abraham leaves a dance hall.,2,,,FALSE
+Cecil gives Jane a vehicle window.,2,,,FALSE
+Who has not ravished a niqab?,0,seems ok?,,FALSE
+Kate will melt an eukaryotic cell.,-1,organic matter typically burns rather than melts,"Food,ElementalSubstance,
+Plastic",FALSE
+A common wheat grass will ferment a kyasanur forest disease virus.,-3,"organic matter can ferment; to ferment something requires subject be sentient, grass isnt",AutonomousAgent,FALSE
+Teresa will be borrowing a facial hair from Jennifer.,2,,,FALSE
+A cub will be inheritting a manifold absolute pressure sensor from a pericardium.,-3,inherit possessions; sensor is not possessed by pericardium,AutonomousAgent,FALSE
+A bacterium was infecting a rickettsia rickettsii with an obliterated umbilical artery.,-3,indirect object wrong,AutonomousAgent,FALSE
+A DNA virus has not transformed a muscle.,2,,,FALSE
+Who is bombing some Balsa wood?,2,,,FALSE
+Mathew awards Mitch a relay.,-1,"award a medal, an honor, a certificate",Certificate,FALSE
+Who will be combining an einkorn wheat grass?,1,,,FALSE
+Joe compounded a bathing device.,0,?,,FALSE
+Neville will take a ship cabin.,0,?,,FALSE
+Who was extending a labyrinthine artery?,1,,,FALSE
+8 bacteriums poured 10 portabello mushrooms.,-2,bacteria cannot pour; only macro objects,AutonomousAgent,FALSE
+Shirley partakes a L2 vertebra bone.,-1,partake in an activity,RecreationOrExercise,FALSE
+Winston was distributing a musical instrument.,2,,,FALSE
+Oliver is compacting a vocal cords.,1,,,FALSE
+Sonya will understand a Sapele tree.,1,,,FALSE
+Aileen will be producing a chapter.,2,,,FALSE
+Stella watches.,2,,,FALSE
+A rattlesnake charges Ursula.,-2,charge requires subject either to have feet or be able to enter into financial transactions,Animal,FALSE
+Wilfred will be refinancing a residence.,2,,,FALSE
+Who was raising a porous container?,2,,,FALSE
+Violet will not ingest a cytoplasm.,2,,,FALSE
+Frank doesn't infect three salmonella partyphis with 8 escherichia coli0157 h7s.,2,,,FALSE
+Jim doesn't irrigate a papaya.,1,,,FALSE
+A carnivore isn't killing Ida.,2,,,FALSE
+Who massages a facial bone?,2,,,FALSE
+Doris is recollecting.,2,,,FALSE
+Who will be shuttling a muffler?,2,,,FALSE
+Samantha sprays a pump.,2,,,FALSE
+Michelle killed a human corpse.,-1,cannot kill something that is non-living,"Animal,Human",FALSE
+Ten reptiles inherits a guanarito virus.,1,maybe ok if their parents had it,,FALSE
+Who watched Norman?,2,,,FALSE
+Who creates a residential building?,2,,,FALSE
+Ida was taking a liver.,2,,,FALSE
+Ingrid befriended an optical device.,-1,befriend a sentient entity,AutonomousAgent,FALSE
+A dengue fever virus will be analysing a blood cell.,-2,subject of analyze must be sentient,AutonomousAgent,FALSE
+Daphne refers to a botanical tree Andrea.,0,?,,FALSE
+A cattle irrigates a grass plant.,-2,subject of irrigate must be sentient,AutonomousAgent,FALSE
+Lucy was firing a flexal virus.,1,,,FALSE
+Rita was befriending a primate.,2,,,FALSE
+Who punched a foot?,2,,,FALSE
+William doesn't award a security device to Wendy.,2,,,FALSE
+Dolly is gaining a tail.,1,,,FALSE
+Andy will be painting a cinema.,2,,,FALSE
+Inna will lift a mule.,2,,,FALSE
+Kevin is infecting Evelyn with an IED.,-3,"infect with a virus or concept, something that can spread; ied is not a concept or virus",DiseaseOrSyndrome,FALSE
+UNK_ORG_3 will be singing a duck.,NULL,,,FALSE
+Stella was revealing a mandible.,2,,,FALSE
+Who precipitates a forty eight foot container?,0,?,,FALSE
+Phil will be leaving a guitar.,2,,,FALSE
+Who lubed a chair?,2,,,FALSE
+A lichen will nod a plant leaf.,-2,nod requires sentience,AutonomousAgent,FALSE
+A plant is raising a ladder.,-1,plant can raise something it controls (leaf) but ladder is out of its control,AutonomousAgent,FALSE
+Roland doesn't dodge a motorcycle.,2,,,FALSE
+A Beech tree has not planted a growth stock.,-2,subject of plant must be sentient,AutonomousAgent,FALSE
+Who drifted a muffler?,0,?,,FALSE
+Selina will be getting a computer input device.,2,,,FALSE
+Katherine will vandalise a roof.,2,,,FALSE
+Alexander was infecting an organism.,1,,,FALSE
+Who won't be killing Robert?,2,,,FALSE
+A reptile won't be expressing a biological weapon.,1,,,FALSE
+Stanley sent a dictionary.,2,,,FALSE
+Milton was selecting a controller.,2,,,FALSE
+Gerry was contracting 10 cells.,1,,,FALSE
+Who gives a tent to Cindy?,2,,,FALSE
+Samantha doesn't see ten messages.,2,,,FALSE
+Dawn stores a twenty foot container.,2,,,FALSE
+Who gave a spore to a telephone?,-1,,AutonomousAgent,FALSE
+Who ideates a mandible?,1,,,FALSE
+Who will roughen a human corpse?,1,,,FALSE
+Lora was nodding to Lawrence.,2,,,FALSE
+Who will be reproducing a virus double stranded?,2,,,FALSE
+Who doesn't compare a parrot?,2,,,FALSE
+Who isn't pressing a desk?,1,,,FALSE
+A cottonwood tree has not painted an office building.,-2,,AutonomousAgent,FALSE
+Who sees Monica?,2,,,FALSE
+Who will take five left distal phalanx I bones?,1,,,FALSE
+A sunflower was voting a doll.,-2,,AutonomousAgent,FALSE
+Charles was intercommunicating a recreation or exercise device to Barbara.,2,,,FALSE
+Who fortifies a red blood cell?,1,,,FALSE
+Malcolm will be cooling a torso.,1,,,FALSE
+An organism presses a jaw.,1,,,FALSE
+Who will be pouring a book?,1,,,FALSE
+Who melts a bamboo plant?,2,,,FALSE
+Clarice translates seven novels.,2,,,FALSE
+Who will shuttle to an engine control module a tablet computer?,-3,sentence doesn't make sense,"AutonomousAgent, Region",FALSE
+Jason will be forgiving a synagogue.,2,,,FALSE
+Albert was destining to Joyce to inspect.,0,sentence doesn't make sense,,FALSE
+Who will design a seat?,2,,,FALSE
+Oliver forgives a document.,-1,"forgiveness is toward people, not objects",PsychologicalProcess,FALSE
+Who consumed 6 barley grains?,2,,,FALSE
+Alban will be impersonating nine parrots.,2,,,FALSE
+Maggie impersonates Bridget.,2,,,FALSE
+A cucumber plant seted a worm.,-3,"I don't think ""seted"" is a real word and a plant can't ""set"" worms",AutonomousAgent,FALSE
+Who melts a light fixture?,2,,,FALSE
+Roger extends a spinal column.,2,,,FALSE
+An aloes doesn't plant 8 primates.,-3,plants can't plant animals,AutonomousAgent,FALSE
+Cecil is massaging a middle temporal artery.,2,,,FALSE
+An arthropod selects a bull.,-2,subjects don't make sense in this sentence,AutonomousAgent,FALSE
+Mildred shot Aaron.,2,,,FALSE
+Who will choose seven primates?,2,,,FALSE
+Who designed a vehicle controller?,2,,,FALSE
+Carmen kills an alligator.,2,,,FALSE
+Who will freeze a body part?,2,,,FALSE
+Tony doesn't massage a shoulder blade.,2,,,FALSE
+Who rendered a mollusk?,2,,,FALSE
+Allen skinned nine oat grains.,2,,,FALSE
+Who will not be firing a plant?,2,,,FALSE
+A puppy borrows nine doctrines from a fluid container.,-3,a puppy can't do this,AutonomousAgent,FALSE
+UNK_PERSON_3 specifies to Dorothy to harm.,NULL,,,FALSE
+Laura was teeming an oat grain.,-2,teeming means to be full of people or things; crowded,"Region, Facility",FALSE
+A vertebrate smelt Ronald.,2,,,FALSE
+Sharon is drinking a grape vine.,2,,,FALSE
+A poppy is masticating some tea leaf.,2,,,FALSE
+Morris has not dishonored a right parietal bone.,-1,"dishonored is to bring shame on; an action of a person, not to a bone",AutonomousAgent,FALSE
+Who will not inject Benjamin with a francisella tularensis?,2,,,FALSE
+6 grass plants is binding 10 miswaks to Christopher.,-2,plants can't bind,AutonomousAgent,FALSE
+Who examines an eye?,2,,,FALSE
+6 domestic animals will run a human doll.,-3,sentence doesn't make sense,AutonomousAgent,FALSE
+Dick wasn't dodging a machine.,2,,,FALSE
+Louis will not fire 3 coffee arabicas.,2,,,FALSE
+Bridget forgives Gerald.,2,,,FALSE
+Who will chew an organism?,2,,,FALSE
+Selina will be painting a wall.,2,,,FALSE
+Joan ate 7 geese.,2,,,FALSE
+Who was firing a vehicle?,1,"missing ""at""",,TRUE
+A salmonella typhi steals a Bone.,-2,a bacteria can't steal a bone,AutonomousAgent,FALSE
+Who buries a pottery?,2,,,FALSE
+Who will be telling a bordetella pertussis?,1,"missing ""about""",,FALSE
+Lawrence is comprehending Lilian.,2,,,FALSE
+Who was killing a sheep?,2,,,FALSE
+Raymond shoots a cytoskeleton.,2,,,FALSE
+Selina has not toyed a cycle.,1,"missing ""with""",,FALSE
+Neville has not looked a painted picture.,1,"missing ""at""",,FALSE
+Philip will vandalize a research ship.,2,,,FALSE
+Who is emptying an opium poppy?,1,,,FALSE
+Derrick is singing an exercise center.,1,"missing ""at""",,FALSE
+Who transforms a carnivore?,2,,,FALSE
+Roy xeroxed a musical instrument.,-2,can't xerox a musical instrument. xerox is to copy documents,Document,FALSE
+Who takes an elephant?,2,,,FALSE
+Ruby affixed a chair.,2,,,FALSE
+Bernice infects a variola major.,-2,"it should be the other way around, variola major is the infections",AutonomousAgent,FALSE
+Who bears a right true rib 2 bone?,-3,sentence doesn't make sense,Physical,FALSE
+Who will communicate 8 factual texts to an escherichia coli0157 h7?,-3,does not make sense to communicate with a bacteria,AutonomousAgent,FALSE
+Who is putting a soldering iron?,1,,,FALSE
+Mona will squeeze a right palatine bone.,2,,,FALSE
+Who soldered a genetically engineered organism?,-3,"""soldered"" is not the correct verb",ElementalSubstance,FALSE
+Who dodged 3 anterior tibial recurrent arterys?,-3,doesn't make sense to avoid arteries,Physical,FALSE
+Lilian will be ascertaining a filter.,1,,,FALSE
+Alethea isn't financing a currency.,2,,,FALSE
+7 buffaloes nods a facial bone.,-2,,AutonomousAgent,FALSE
+Who was sitting Frank?,2,,,FALSE
+A sabia virus will be writing a coccidioides immitis.,-2,virus can't write,AutonomousAgent,FALSE
+Who detected a conifers?,1,,,FALSE
+Nicholas has not respired a nasal cavity.,2,,,FALSE
+Who expresses a display artifact?,-3,,AutonomousAgent,FALSE
+Belinda will substitute a barrier with a frequency filter.,2,,,FALSE
+An oat grass will be voiding a fluorescent light fixture.,-3,,AutonomousAgent,FALSE
+Who is unveiling to a tunnel?,2,,,FALSE
+Who wasn't showing a birth certificate?,2,,,FALSE
+A clover plant raises a temporal lobes.,-2,,AutonomousAgent,FALSE
+Who wrought a financial text?,0,,,FALSE
+Travis is detecting a security alarm.,2,,,FALSE
+Who will not be observing a plasma membrane?,2,,,FALSE
+Who was subjecting a torso?,-3,"""subjecting"" doesn't make sense in this sentence",TherapeuticProcess,FALSE
+A plant will produce a moss.,2,,,FALSE
+Who will not be producing a building?,2,,,FALSE
+Who was finding a revolver gun?,2,,,FALSE
+Who places a fire alarm?,2,,,FALSE
+Who imbibes 9 apples?,-1,imbibe is to drink a liquid,Liquid,FALSE
+A reptile sought a guide book.,-1,,AutonomousAgent,FALSE
+Dominic was raping Judy.,2,,,FALSE
+Daisy painted a body part.,2,,,FALSE
+Who was forgiving Pete?,2,,,FALSE
+Alethea combined a tongue.,-3,,Physical,FALSE
+Who is analysing a neisseria gonorrhoeae?,2,,,FALSE
+Who was purchasing a toy animal from Alcyon?,2,,,FALSE
+Who doesn't think a musculophrenic artery?,2,,,FALSE
+Who drinks a hoofed mammal?,-2,drinking involves a liquid,Liquid,FALSE
+Marshela was watching.,2,,,FALSE
+Norman is placing with a telephone an ocean liner.,0,sentence doesn't make sense,,FALSE
+A water buffalo waded an oyster.,-2,wade is through something like water or mud,Liquid,FALSE
+A viral agent doesn't equate a herbivore.,0,,,FALSE
+Violet guided eight serratia marcenscenss.,0,,,FALSE
+Jason compounds a reference book.,0,,,FALSE
+Who sold 10 palm oil nuts?,2,,,FALSE
+Sonya will not be inheritting 4 sphenoid bones.,2,,,FALSE
+Who is inheritting a human corpse from Matilda?,1,,,FALSE
+Adeline interchanges a transformer.,2,,,FALSE
+Bonnie dredges an IV Line.,1,,,FALSE
+Who will be delivering a horse?,2,,,FALSE
+Brooke doesn't store a VHS cassette.,2,,,FALSE
+Who grew an organ?,1,,,FALSE
+Who ironed a device?,1,,,FALSE
+UNK_ORG_3 is egesting a breast.,NULL,,,FALSE
+Who doesn't assail a railcar carrier ship?,0,,,FALSE
+Bertie doesn't expose a doctrine to a periodical.,-3,,AutonomousAgent,FALSE
+Who was pulling an exoskeleton?,2,,,FALSE
+Robin is reading a text document.,2,,,FALSE
+Who skinned a petroleum tanker ship?,-1,ships don't have skin,Animal,FALSE
+Who was sharing a room with a clothing?,1,,,FALSE
+7 virus single strandeds is poisonning a cabbage plant.,2,,,FALSE
+Louis will be driving a tractor trailer.,2,,,FALSE
+Mary raises a coconut.,1,,,FALSE
+Jane is impersonating a chapel.,-2,a chapel isn't possible to impersonate,AutonomousPerson,FALSE
+Who imagines zero motion pictures?,1,,,FALSE
+Who plugs a musculophrenic artery?,2,,,FALSE
+Who dumps an uniform?,2,,,FALSE
+Morgan locates Herbert.,2,,,FALSE
+Amselm attacked a prison.,2,,,FALSE
+Who will store a nut?,2,,,FALSE
+Who recalls an archaea?,2,,,FALSE
+Who inherited a kidney?,2,,,FALSE
+Aaron will xerox a hominid.,-2,xerox is to copy documents,Document,FALSE
+A hen will be tasting a rice grain.,2,,,FALSE
+A parrot inspected a muscle.,1,,,FALSE
+Jed refinances a barge.,2,,,FALSE
+Who will give some bird egg a chapel?,0,sentence doesn't make sense,,FALSE
+Bertram charged a bullet.,2,,,FALSE
+Who will trot two plant branchs?,1,,,FALSE
+Priscilla voids a retina.,1,,,FALSE
+Who is manducating a pea?,2,,,FALSE
+Peter replaced a mug.,2,,,FALSE
+A corynebacterium diphtheriae poisoned a soybean.,-2,"corynebacterium diphtheriae infects humans or animals, not plants",AutonomousAgent,FALSE
+Who will finance a twenty foot heavy duty container?,2,,,FALSE
+Eugene is losing to a running track.,2,,,FALSE
+Clarence assails two burkholderia pseudomalleis.,2,,,FALSE
+Gordon eliminated a protozoa.,2,,,FALSE
+Doreen will not be inheritting a saddle.,2,,,FALSE
+Andrew solders 6 animal shells.,2,,,FALSE
+Who solders a transducer?,2,,,FALSE
+A Beech tree doesn't perform a fighter.,-3,a tree can't perform and overall sentence doens't make sense,AutonomousAgent,FALSE
+Who will be drinking a saline lock?,-1,saline lock is not a liquid to drink,Liquid,FALSE
+Mabel was drinking a black cherry tree.,2,,,FALSE
+Barbara has not switched a robot.,2,,,FALSE
+Who will egest a Cypress tree?,-3,a person can't egest a tree,InternalAttribute,FALSE
+Melody will be poisonning a tobacco.,-1,a person can be poisoned by by tobacco but not to poison a tobacco,AutonomousAgent,FALSE
+Gertrude is matching zero currencies.,2,,,FALSE
+Who has not suffered a ramus intermedius?,2,,,FALSE
+Adeline designates a shoulder blade.,2,,,FALSE
+Who pips a machine?,-3,pipping is when an egg cracks when hatching,Egg,FALSE
+Who starved Ruby?,2,,,FALSE
+A bull won't be attacking a musical instrument.,2,,,FALSE
+Dalton will be hunting a sheepdog.,2,,,FALSE
+Who will be penalizing Clement?,2,,,FALSE
+Roland will not be masticating a groundnut.,2,,,FALSE
+Richard will excrete zero human corpses.,1,,,FALSE
+Who is binding a VaccinationCard?,2,,,FALSE
+Who is evacuating nine anatomical structures?,2,,,FALSE
+A grape vine seted a product.,-2,a grape vine can't set down an object,AutonomousAgent,FALSE
+Maurice will smell a coffea arabica.,2,,,FALSE
+Who matches a currency?,2,,,FALSE
+Perkin drives a compass.,-1,a compass can't be driven,TransportationDevice,FALSE
+Ann is comparing an elephant.,2,,,FALSE
+Who was breaking 6 body joints?,2,,,FALSE
+Who will tie an organ?,2,,,FALSE
+8 herbivores impersonated Richard.,2,,,FALSE
+A lilac is smiling a guitar.,-2,a plant can't smile,AutonomousAgent,FALSE
+Who binds a sock to a LAN?,-1,you can't bind a sock to a LAN,Artifact,FALSE
+Carmen will exhibit a toy house to a mobile residence.,2,,,FALSE
+Patricia was searching 10 pigeons.,2,,,FALSE
+Jacinta will nod an ear.,-2,"nodding is nodding the head, not ears",Head,FALSE
+Who is firing a narrative text?,-2,firing is to set an object on fire,Artifact,FALSE
+Alan will tell an old testament.,2,,,FALSE
+Greta is working a box.,1,"missing ""on""",,TRUE
+Who will be swopping a variola minor?,1,,,FALSE
+Who will share a fabric?,2,,,FALSE
+Who will borrow a hoofed mammal from a measuring device?,-3,a measuring device do not have hoofed mamals,Artifact,FALSE
+Peggy will be turning a helmet.,2,,,FALSE
+Gertrude hunts a rattlesnake.,2,,,FALSE
+Rodney will be visitting a passenger railcar.,2,,,FALSE
+Who wasn't discovering to a factual text a hypothalamus?,-3,"missing a word such as, ""about""",Artifact,FALSE
+Rebecca was pressing three vines.,2,,,FALSE
+Oren will be irrigating a water pump.,2,,,FALSE
+Who will be famishing Felix?,2,,,FALSE
+Eight Poplar trees will be performing a cello.,-2,a plant can't play an instrument,AutonomousAgent,FALSE
+A cub will be befriending a kufiyyah.,0,"couldn't find ""kufiyyah"" on the internet",,FALSE
+Catherine will be burning David.,2,,,FALSE
+Conan is killing an owl.,2,,,FALSE
+Norma will be canvassing a representational art work.,2,,,FALSE
+Bertie wasn't designating to a kennel to study.,0,sentence doesn't make sense,,FALSE
+Who was aiding a vehicle safety device?,2,,,FALSE
+Adrian doesn't drink a lipid bilayer.,1,,,FALSE
+Evelyn is assailing Frank.,2,,,FALSE
+Jane was detecting an offshore well production ship.,2,,,FALSE
+Derrick dumps a sign.,2,,,FALSE
+Who is firing a product?,2,,,FALSE
+Barnaby combines a French press.,2,,,FALSE
+0 paddy rices famishes an eyebrow.,-3,incorrect subjects,AutonomousAgent,FALSE
+Abraham classified a message.,2,,,FALSE
+Who will be buying a water park ticket from Angelina?,2,,,FALSE
+Alvin stole a game board.,2,,,FALSE
+Who will get a pig?,2,,,FALSE
+3 poultries runs an internet connection.,-2,birds can't run an internet connection,AutonomousAgent,FALSE
+Isabel doesn't find eight waists.,2,,,FALSE
+Sally doesn't control a shirt.,2,,,FALSE
+Who is not determining?,2,,,FALSE
+A rattlesnake will be killing Amy.,2,,,FALSE
+Jed breaks a human corpse.,2,,,FALSE
+Adeline is firing a clothing.,1,,,FALSE
+Randy doesn't place six checks.,2,,,FALSE
+Joyce is catching a capitate bone.,2,,,FALSE
+Walter is losing Edward.,2,,,FALSE
+Mark will interpret an animal product.,2,,,FALSE
+Who will be affixing a deltoid artery?,2,,,FALSE
+Brian comminutes a breast.,2,,,FALSE
+Eric cleaned an ocean liner.,2,,,FALSE
+Tommy will be placing an office building.,1,,,FALSE
+Rob is drinking a tableware.,-1,tableware is not a liquid,Liquid,FALSE
+Who will remember?,2,,,FALSE
+Casey imbibed a leafy green vegetable.,-2,imbibe is to drink a liquid,Liquid,FALSE
+Walter seeks a lanai.,2,,,FALSE
+5 bacteriums was raping Andy.,-3,doesn't make sense,AutonomousAgent,FALSE
+Wendy won't be protecting Mariam.,2,,,FALSE
+A poultry won't steal a faucet.,-2,a bird can't steal a faucet,AutonomousAgent,FALSE
+Ingrid will be analyzing a reptile.,2,,,FALSE
+Who is sharing an ovum?,2,,,FALSE
+Cecil will envisage an optical device.,2,,,FALSE
+Who isn't punishing an organism?,2,,,FALSE
+Jacinta is smoothenning a cytoplasm.,-2,can't smooth cytoplasm like smoothening an object,WearableItem,FALSE
+Dominic isn't pipping a gun muzzle.,-1,pipping is when an egg cracks when hatching,Egg,FALSE
+Belinda won't fish an organism.,2,,,FALSE
+Who will imbibe a salmon?,-2,imbibe is to drink a liquid,Liquid,FALSE
+Geoffrey was not planting a radicchio.,2,,,FALSE
+Who seeks an earphone?,2,,,FALSE
+Who boils a TV?,1,,,FALSE
+Who will upload a portable computer?,-2,"computer is not uploadable, you can't upload files, photos, etc.",Software,FALSE
+Amelia will seek Madeline.,2,,,FALSE
+Who gets an avocado?,2,,,FALSE
+UNK_ORG_3 will imbibe a domestic animal.,NULL,,,FALSE
+A vine has not retrieved a text.,1,,,FALSE
+Molly will be shuttling a panda.,1,,,FALSE
+Who doesn't comprehend a locust?,2,,,FALSE
+A conifers produced a dictionary.,-3,a tree can't product a dictionary,AutonomousAgent,FALSE
+Who breaks a rib cage?,2,,,FALSE
+Who will be reproducing a cell?,2,,,FALSE
+Who was stealing a middle temporal artery from Melanie?,1,,,FALSE
+Sebastian smoked an aloe vera plant.,1,,,FALSE
+Who will be massaging an exoskeleton?,1,,,FALSE
+Neville shares Melody.,1,,,FALSE
+Dora was suffering an alveolus.,2,,,FALSE
+Who punished Jim?,2,,,FALSE
+UNK_ORG_1 binds 3 tongues.,NULL,,,FALSE
+Hardy isn't sitting Henry.,2,,,FALSE
+Who doesn't fire a place of worship?,0,,,FALSE
+A plant studies 5 proper hepatic arterys.,-2,,AutonomousAgent,FALSE
+Who supports a currency?,2,,,FALSE
+Kathleen doesn't reproduce a skeleton.,2,,,FALSE
+Cora will sell Olga an embassy building.,2,,,FALSE
+Neville is stealing a security device from Christian.,2,,,FALSE
+Murphy dishonours Melvin.,2,,,FALSE
+Pamela will be relinquishing Guenevere.,2,,,FALSE
+Veronica wetted a cytoplasm.,2,,,FALSE
+Marilyn presents a saline lock an organism.,-3,does not make sense,"Artifact, Document",FALSE
+Francis impersonated Terence.,2,,,FALSE
+Bridget was retrieving a commercial building.,2,,,FALSE
+Corinne finds a hat.,2,,,FALSE
+A plasmodium falciparum smelt 6 nipah viruss.,-2,a parasite is not capable of smelling like humans,AutonomousAgent,FALSE
+Who will locate a clothing?,2,,,FALSE
+Phil won't be famishing a fruit.,-2,does not make sense to famish a fruit,AutonomousAgent,FALSE
+Felix has not played a four wheel drive.,-3,does not make sense,RecreationOrExercise,FALSE
+Emma will mail zero rodents to Andrea.,2,,,FALSE
+Kristen is melting an oilseed.,2,,,FALSE
+Cinderalla will eat nine trapezoid bones.,1,,,FALSE
+Evelyn is not wading 0 algas.,0,,,FALSE
+Who will protect three mammals?,2,,,FALSE
+Alvin was irrigating a tomato.,2,,,FALSE
+Bertram will mail a message to a factual text.,-2,a factual text can't receive mail,AutonomousAgent,FALSE
+Peter will play an opera.,-2,,RecreationOrExercise,FALSE
+Who will cypher a light truck?,2,,,FALSE
+Rita sells an united states ten cent coin.,2,,,FALSE
+Who will be borrowing a walking cane?,2,,,FALSE
+A legionella is planning five faces.,-3,sentence does not make sense,"RecreationOrExercise, SocialInteraction",FALSE
+Deborah will be painting some Poplar wood.,2,,,FALSE
+Who translates a reindeer?,2,,,FALSE
+A goose was firing a biography.,-3,sentence does not make sense,AutonomousAgent,FALSE
+Ethel soldered an armor.,2,,,FALSE
+John doesn't call a church.,2,,,FALSE
+Who won't be pipping Henry?,-3,pipping is when an egg cracks when hatching,Egg,FALSE
+Ann was not binding a locust.,1,,,FALSE
+Rowena is running a hijab.,-1,you can't run a head covering,Sport,FALSE
+Geraldine egested four locusts.,2,,,FALSE
+A parrot doesn't toy an aircraft carrier.,2,,,FALSE
+Casey has not dredged a fungus.,1,,,FALSE
+Peggy is smoking 9 historical accounts.,-2,smoking is inhaling or exhaling a substance,Plant,FALSE
+Vivian will be dredging a pull-down bed.,1,,,FALSE
+Valentine doesn't freeze a wheelchair.,2,,,FALSE
+Marilyn mails a head end car.,1,,,FALSE
+Who is tasting a right V metacarpal?,1,,,FALSE
+Who doesn't suffer a bone?,-1,"suffer is to experience pain, not a bone",Pain,FALSE
+Kristin will analyse 6 parrots.,2,,,FALSE
+Lawrence will reproduce a picture frame.,2,,,FALSE
+Matilda questioned Ann.,2,,,FALSE
+Who was replacing a surfboard with a video data storage device?,2,,,FALSE
+A cow imbibed a gas tank.,-2,,Liquid,FALSE
+Aloysius comprehends a body cavity.,1,,,FALSE
+Winnie will wander a fence.,-1,"doesn't make sense to wander a fence, it would make more sense if it was ""wander around a fence""",Region,FALSE
+Mary will not be searching a motion picture scene.,2,,,FALSE
+Who was realizing ten printed sheets?,2,,,FALSE
+Patricia will be chilling a room.,2,,,FALSE
+Gladys is stealing a parasite.,1,,,FALSE
+A scallop sculpts ten tongues.,-2,,Artifact,FALSE
+Cara doesn't drill 6 exoskeletons.,2,,,FALSE
+Lorna is compounding a machine.,-1,,CurrencyMeasure,FALSE
+Augusta is not vandalizing a gun muzzle.,2,,,FALSE
+Who will be granting 7 above the lines to zero vehicle registrations?,0,,,FALSE
+Kristin will be pestling a nose.,-2,,"FoodFromPlant,Plant,Food",FALSE
+Phoebe will not be canvassing a left intermediate foot phalanx IV bone.,1,,,FALSE
+Monica toys a cithara.,0,,,FALSE
+Alexander will be boiling an intestine.,1,,,FALSE
+Donald transforms a resistor element.,2,,,FALSE
+Who empties to a mouth?,1,,,FALSE
+Doug loaned an organism remains to 0 cytoplasms.,-2,subjects don't make sense in this sentence,Artifact,FALSE
+Samantha telephones Bridget.,2,,,FALSE
+A toxic organism finds six thyroid glands.,-3,,AutonomousAgent,FALSE
+Stella ascertains.,2,,,FALSE
+Who is shooting a bronchial artery?,2,,,FALSE
+Brian is winking three PATELLAs.,0,,,FALSE
+Wendy commits a valid card.,2,,,FALSE
+A botanical tree was not reading Bertie.,-3,,AutonomousAgent,FALSE
+Josephine lifts Pauline.,2,,,FALSE
+Who isn't downloading an eukaryotic cell?,-2,,Software,FALSE
+Aloysius will not be relinquishing a sofa.,2,,,FALSE
+Alexander doesn't separate a christian gospel.,1,,,FALSE
+Daisy freezes a rotavirus.,2,,,FALSE
+Who ingests some egg?,2,,,FALSE
+Marshela calls a thermometer.,-1,,AutonomousAgent,FALSE
+Who aids an accessory meningeal artery?,1,,,FALSE
+Who questioned Winston?,2,,,FALSE
+An invertebrate will be acting Dominic.,-3,,AutonomousAgent,FALSE
+Christine slits a narrative text.,2,,,FALSE
+Bernice eats a tongue.,1,,,FALSE
+Who was working an omnivore?,,,,FALSE
+Who doesn't interchange a two stroke engine with a message?,,,,FALSE
+Who will be shooting a gun barrel?,2,,,FALSE
+Who has not lessened a plant anatomical structure?,0,,,FALSE
+Wilfred decides a financial text.,2,,,FALSE
+A clostridium tetani will bombard a police facility.,-2,,AutonomousAgent,FALSE
+Who contracts a nervous system?,-2,,DiseaseOrSyndrome,FALSE
+Elton grew a pollen.,-2,,Plant,FALSE
+Who drills a vertebrate?,1,,,FALSE
+Who will be ingesting four lions?,1,,,FALSE
+Who will be taking a machine?,2,,,FALSE
+Who was shooting an adrenal gland?,2,,,FALSE
+Who was taking a talus bone?,2,,,FALSE
+Who was bombarding an office building?,2,,,FALSE
+Cinderalla will be attaining a foot.,2,,,FALSE
+Who will be protecting a security device?,2,,,FALSE
+Nine crustaceans is killing a mollusk.,2,,,FALSE
+Phil pushed a commercial building.,1,,,FALSE
+Geraldine will be smelling a mucus membrane.,1,,,FALSE
+Who was not playing a spear?,2,,,FALSE
+Cindy shuttles an armor.,2,,,FALSE
+Anita is watering 5 grass plants.,2,,,FALSE
+A bull drinks a vein.,-3,,Liquid,FALSE
+A gastropod is smoking a currency.,-3,,Plant,FALSE
+Gladys doesn't canvas an iliolumbar artery.,-2,,Region,FALSE
+A livestock communicates 9 hamsters.,-3,,AutonomousAgent,FALSE
+Dominic is massaging a flywheel.,-1,,AutonomousAgent,FALSE
+Eric imbibed a blood vessel.,-2,,Liquid,FALSE
+Rodney was ideating a lion.,2,,,FALSE
+Bridget lies a ships hull.,-2,,Furniture,FALSE
+Tony will be taking Belinda.,2,,,FALSE
+Sebastian was designating an antenna to a radio station.,2,,,FALSE
+Who was refinancing a crankshaft?,1,,,FALSE
+Who will minify a grape?,1,,,FALSE
+Polly will be forgiving Eileen.,2,,,FALSE
+Alvin starved Clement.,2,,,FALSE
+A hen strangles a gene.,-2,,"AutonomousAgent,Animal",FALSE
+Who is inspecting 3 right proximal phalanx I bones?,2,,,FALSE
+Doris eats a farm.,1,,,FALSE
+Jim will be extending two plant branchs.,2,,,FALSE
+Who questioned a carnivore?,2,,,FALSE
+A flowering plant will design a workshop.,-2,,AutonomousAgent,FALSE
+Byron was binding a mask to seven skins.,1,,,FALSE
+Elizabeth refers Alicia.,2,,,FALSE
+Who shuttles 0 apes?,1,,,FALSE
+Who is fermenting a virus single stranded?,1,,,FALSE
+Who isn't spraying a cask?,2,,,FALSE
+Jed was soldering a wire.,2,,,FALSE
+A hen doesn't give some Sapele wood a ball.,-3,,AutonomousAgent,FALSE
+Brooke is not sculpturing a humerus.,2,,,FALSE
+Emily nodded to a spear.,-1,,Head,FALSE
+Rowena doesn't refinance a residence.,-2,,Physical,FALSE
+A carnivore doesn't hunt an arachnid.,2,,,FALSE
+An animal was not storing zero clostridium perfringenss.,-3,,AutonomousAgent,FALSE
+Who will tie a land vehicle?,2,,,FALSE
+Walter will examine a saddle.,2,,,FALSE
+Abraham punished a dam.,-2,,AutonomousAgent,FALSE
+Sam is combining a locust.,-2,,Artifact,FALSE
+A woody plant was evacuating three vegetables.,-3,,AutonomousAgent,FALSE
+Who lessens a factual text?,-2,,CurrencyMeasure,FALSE
+Sonya has not punished an anti tank missile.,-2,,AutonomousAgent,FALSE
+Corinne releases Daphne.,2,,,FALSE
+UNK_PERSON_3 will not consider a monument.,NULL,,,FALSE
+Morgan was pipping a musical instrument.,-3,,Egg,FALSE
+Wilfred doesn't share a dishdashah with a microorganism.,-3,,Artifact,FALSE
+Who boils a coffee bean?,2,,,FALSE
+An escherichia coli0157 h7 injected Janet with a dengue fever virus.,-3,,AutonomousAgent,FALSE
+Who produced a cocoa tree?,2,,,FALSE
+Corinne is inheritting a common wheat grain from Lily.,2,,,FALSE
+Alfonso will be reproducing a serratia marcenscens.,2,,,FALSE
+Sam will be stealing a veranda from Veronica.,2,,,FALSE
+Who has not compounded a shoulder blade?,-1,,CurrencyMeasure,FALSE
+Robert dredges a stock.,-2,,Artifact,FALSE
+Who was turning a muscular branch artery?,2,,,FALSE
+Daphne will be observing a left proximal phalanx II bone.,2,,,FALSE
+Bertha isn't strengthenning a spinal cord.,2,,,FALSE
+Bertram will be matching a currency.,2,,,FALSE
+Who is strengthenning a four-poster bed?,2,,,FALSE
+A kangaroo plugs a telephone.,-3,,AutonomousAgent,FALSE
+Megan doesn't protect a medulla.,2,,,FALSE
+Who is reducing a rib cage?,2,,,FALSE
+Juliana was catching Jason.,2,,,FALSE
+Peter intruded a data display device.,1,,,FALSE
+Who will switch a musical instrument?,2,,,FALSE
+Sue killed a spear.,-1,,"AutonomousAgent,Animal",FALSE
+Ingrid thinned a hepatitis virus.,2,,,FALSE
+Elizabeth was not poisonning a digital data storage device.,-1,,"AutonomousAgent,Animal",FALSE
+Mavis massages a cell wall.,-2,,AutonomousAgent,FALSE
+Alonso telephones Kelli.,2,,,FALSE
+Who pips a reproductive body?,-1,,Egg,FALSE
+Gerry will be giving Raymond a container.,2,,,FALSE
+A reindeer was having a Bilberry.,2,,,FALSE
+Who was binding an animal shell?,,,,FALSE
+Andrea was remembering a coat.,2,,,FALSE
+Jacinta was inheritting a firearm.,2,,,FALSE
+Who will be punching a gun?,1,,,FALSE
+Melanie isn't pouring a fuel filter.,2,,,FALSE
+Polly suspires six bronchial ducts.,-2,,Air,FALSE
+A coffea arabica will be submitting a finger to a parking brake.,-3,,AutonomousAgent,FALSE
+Who will be reproducing a factual text?,2,,,FALSE
+Who chooses?,2,,,FALSE
+David includes a military tank.,2,,,FALSE
+Travis was borrowing a cotton fabric from a hen.,-2,,Artifact,FALSE
+Mary isn't sitting a court room.,-3,,Furniture,FALSE
+Gerald closed a neck.,-2,,Door,FALSE
+Who poisons a cigar or cigarette?,,,,FALSE
+Vanessa gets a picture frame.,2,,,FALSE
+Who dredges a cell?,-1,,Artifact,FALSE
+Who was listenning Tony?,2,,,FALSE
+Harold will question Valerie.,2,,,FALSE
+A bumble bee is famishing an avocado.,-3,,AutonomousAgent,FALSE
+Who will steal a right humerus?,2,,,FALSE
+Yvonne will invest a french franc coin.,2,,,FALSE
+A poultry renders a skin.,,,,FALSE
+Ellen is drinking some herb.,2,,,FALSE
+A virus will be computing a nerve cell.,-3,,AutonomousAgent,FALSE
+A botanical tree computed a flowering plant.,-3,,AutonomousAgent,FALSE
+Adriana will be refinancing a golf facility.,2,,,FALSE
+Harry will not divide a bicep.,1,,,FALSE
+Who graved a reproductive body?,2,,,FALSE
+Who wasn't smelling Linda?,2,,,FALSE
+Pearl mails a decompression needle a thoracoacromial artery.,-2,,Artifact,FALSE
+Nine burkholderia malleis is evacuating Hamish.,-2,,Facility,FALSE
+Who doesn't kill Veronica?,2,,,FALSE
+Who binds a tie rod to a left intermediate phalanx IV bone?,1,,,FALSE
+Who doesn't befriend Harriet?,2,,,FALSE
+Daniel won't be sharing a safety harness.,2,,,FALSE
+Who isn't impersonating a biped?,2,,,FALSE
+Adeline will be subtracting an arrow projectile.,-2,,Currency,FALSE
+Hilda will think.,2,,,FALSE
+Corinne performs a dual gauge railway.,-2,,DramaticActing,FALSE
+Who strengthened a pulley?,2,,,FALSE
+Marc questions Jennifer.,2,,,FALSE
+Carol has not watered a shower.,1,,,FALSE
+Ethel takes a rifle.,2,,,FALSE
+A salmonella typhimurium smelt nine OHP transparencys.,-3,,AutonomousAgent,FALSE
+Emil is massaging an animal controller.,1,,,FALSE
+Frederick is ingesting 6 plants.,2,,,FALSE
+Dolly has not judged a poppy.,0,,,FALSE
+Who was extending a robotic joint?,2,,,FALSE
+Who will not be vandalizing a picture frame?,2,,,FALSE
+Joyce will drill a muscle.,1,,,FALSE
+Charles was hunting a domestic dog.,2,,,FALSE
+Who doesn't dredge a book?,2,,,FALSE
+Thomas wasn't playing a saxophone.,2,,,FALSE
+A turkey bird performed an apartment building.,-3,,AutonomousAgent,FALSE
+Geraldine has not planned.,2,,,FALSE
+Allen is not painting a railroad track.,2,,,FALSE
+Who impersonated Ursula?,2,,,FALSE
+Who selects a staphylococcus aureus?,2,,,FALSE
+Who dumps a saddle?,2,,,FALSE
+Who will release a right subclavian artery?,2,,,FALSE
+Lora is stretching a rib cage.,2,,,FALSE
+Eugene buries a grass plant.,2,,,FALSE
+Cindy has not buried a vehicle safety device.,2,,,FALSE
+Who purchased zero pelvic bones from a single family residence?,1,,,FALSE
+Who will not operate four bumble bees?,1,"missing ""on""",,TRUE
+Roger thinks a narrative text.,2,,,FALSE
+Constance has not smelt Belinda.,2,,,FALSE
+Felix will see an organ.,2,,,FALSE
+Two mycobacterium tuberculosiss is charging a snake.,-2,,AutonomousAgent,FALSE
+Who doesn't partake a farm?,2,,,FALSE
+A monkey doesn't play a rugby ball.,2,,,FALSE
+Sharon will generate a cuneiform bone.,2,,,FALSE
+Doris will be questioning a primate.,2,,,FALSE
+Eileen won't strengthen two cell membranes.,2,,,FALSE
+Lucas is assailing Judy.,2,,,FALSE
+Who is dodging a toe bone?,1,,,FALSE
+A salmon will not take a skate.,1,,,FALSE
+Austin doesn't present 4 position reports to Carter.,2,,,FALSE
+A feline selects a RNA virus.,1,,,FALSE
+Who has an alga?,2,,,FALSE
+Janice has not seted a desk.,-3,,ContentDevelopment,FALSE
+Michelle will not finance a currency.,2,,,FALSE
+Who will transform a mollusk?,2,,,FALSE
+Judy doesn't plant a seaweed.,2,,,FALSE
+Gerry is famishing an anti tank missile.,-1,,AutonomousAgent,FALSE
+Who was beckonning a dressing room?,2,,,FALSE
+Carmen will be taking Mariam.,2,,,FALSE
+Cecil will be massaging a muscle.,2,,,FALSE
+A sheep will inherit a body segment from Donald.,1,,,FALSE
+Cara will be advertising 10 narrative texts.,2,,,FALSE
+Who will release a hair?,2,,,FALSE
+Lindsay succumbed a cytomegalovirus.,2,,,FALSE
+Evan was generating 6 reproductive bodys.,2,,,FALSE
+Who exchanged a rodent?,2,,,FALSE
+Bertram is giving 6 united states dollar bills to Morgan.,2,,,FALSE
+Dolly will be inspecting an exoskeleton.,2,,,FALSE
+Jack was producing a superior gluteal artery.,2,,,FALSE
+Gertrude is nodding a golf course.,-2,,Head,FALSE
+UNK_PERSON_3 imagines a pine tree.,NULL,,,FALSE
+An owl will smell a C5 vertebra bone.,1,,,FALSE
+Tracy infects Matt with 8 salivary glands.,2,,,FALSE
+Jocelyn wasn't compounding an eggplant.,1,,,FALSE
+Who was not firing a hominid?,2,,,FALSE
+Joyce is refinancing a vehicle.,2,,,FALSE
+Jennifer was smelling a yersinia pseudotuberculosis.,-2,,"AutonomousAgent,Animal",FALSE
+Christian will be driving a motorcycle helmet.,-1,helmet is to be worn,TransportationDevice,FALSE
+Who was comminuting a cabbage?,2,,,FALSE
+Mildred was supporting a camper.,2,,,FALSE
+Who designs a spacecraft?,2,,,FALSE
+Who will not hear Dalton?,2,,,FALSE
+Mathew was setting a cabbage plant.,2,,,FALSE
+Who isn't creating a cell wall?,2,,,FALSE
+Who was pouring a washing device?,2,,,FALSE
+Who will be falling a swimming pool?,1,"missing ""into""",,TRUE
+Who nods to a rooster?,2,,,FALSE
+Who sells 3 barley grains?,2,,,FALSE
+Who was precipitating a marburg virus?,1,,,FALSE
+Who peels a spinal cord?,-2,,Surgery,FALSE
+Pete doesn't drive an ATM machine.,1,,,FALSE
+Who will bind Derrick?,2,,,FALSE
+Isabel is protecting a marsupial.,2,,,FALSE
+Tim will smoke a deer.,-2,,Plant,FALSE
+Dorothy will be plugging a portrait.,1,,,FALSE
+Keith was spraying an aloes.,1,,,FALSE
+Victoria will cut ten streptococcus As.,-2,,Artifact,FALSE
+Who farms a bacterium?,1,,,FALSE
+A virus smells an eye.,-2,,AutonomousAgent,FALSE
+Belinda plans.,2,,,FALSE
+Who was designating to a cell to design?,2,,,FALSE
+An organism has not inspected an abdomen.,1,,,FALSE
+Mariam loans Roger a vehicle safety device.,2,,,FALSE
+Jessica extends a board or block.,2,,,FALSE
+UNK_PERSON_3 will taste two almonds.,NULL,,,FALSE
+Who sculptures a manifold?,2,,,FALSE
+Who will be hearing a sural artery?,1,,,FALSE
+Veronica will award a firearm to a charger.,-1,,Certificate,FALSE
+A cactus seted a herbivore.,-3,,AutonomousAgent,FALSE
+Felix is sitting a cinema.,-2,,Furniture,FALSE
+A viral agent will sell a variola major.,-2,,AutonomousAgent,FALSE
+Who seeks a test form?,2,,,FALSE
+Who doesn't analyze a letter?,2,,,FALSE
+Eileen impersonates Cara.,2,,,FALSE
+Audrey isn't choosing.,2,,,FALSE
+UNK_PERSON_3 designates to Molly to store.,NULL,,,FALSE
+Eric is immunizing Hannah.,2,,,FALSE
+Valerie will empty to a mouth.,2,,,FALSE
+Who is not spraying a mango?,2,,,FALSE
+Bridget will be bombing Tracy.,2,,,FALSE
+Who ingests a wheat grass?,2,,,FALSE
+Who fortifies Cora?,-2,,StationaryArtifact,FALSE
+Who will work to a crocodile Bonnie?,-2,"""..work with Bonnie""",AutonomousAgent,FALSE
+Jacinta massages a microphone.,1,,,FALSE
+An organism will call Winnie.,-2,,AutonomousAgent,FALSE
+Travis will be uncovering a prokaryotic cell.,2,,,FALSE
+Bernice lubricated a helmet.,2,,,FALSE
+Who is catching UNK_PERSON_3?,NULL,,,FALSE
+Who will be seeing a cervical artery?,2,,,FALSE
+Hardy is breaking a facial artery.,2,,,FALSE
+Mavis added a daikon.,2,,,FALSE
+Walter is singing a mobile cell phone.,1,into,,TRUE
+Jason is choosing a pig.,2,,,FALSE
+Sarah befriends a kangaroo.,2,,,FALSE
+Who borrows a factual text from Alex?,2,,,FALSE
+Amadeus wasn't seating Philip.,2,,,FALSE
+Boris will not produce an art work.,2,,,FALSE
+A hominid wasn't sharing a kidney.,2,,,FALSE
+Who has not born a domestic cat?,2,,,FALSE
+Four bipeds was running a ladder.,1,"""were running up""",,TRUE
+Who is pestling a constrictor snake?,1,,,FALSE
+Michael inherits an Escherichia coli.,1,,,FALSE
+Priscilla wades an offshore supply ship.,-1,,Liquid,FALSE
+Who doesn't bury a francisella tularensis?,1,,,FALSE
+Who will not steal a bone?,2,,,FALSE
+Who doesn't brake a ships hull?,2,,,FALSE
+Who was smelling Maggie?,2,,,FALSE
+Who impersonated Amy?,2,,,FALSE
+Marshela is granting a ship cabin to Eric.,2,,,FALSE
+Sara was watching five motion pictures.,2,,,FALSE
+Who evacuates Richard?,2,,,FALSE
+Who will vandalize a burkholderia mallei?,2,,,FALSE
+Megan will be seating Allen.,2,,,FALSE
+Peggy starts a dome.,2,,,FALSE
+Eileen will be submitting six doctrines.,2,,,FALSE
+Who doesn't nod a skeleton?,1,,,FALSE
+Who is shooting Barbara?,2,,,FALSE
+Who doesn't infect Paula?,2,,,FALSE
+Bernice punches a weapon.,2,,,FALSE
+Tina massaged a skin.,2,,,FALSE
+Who is reproducing a cell?,2,,,FALSE
+Alphonso will be lubricating a seat.,2,,,FALSE
+A botanical tree is not nodding a message.,-2,,AutonomousAgent,FALSE
+Who planned?,2,,,FALSE
+An organism is seeing a performance program.,1,,,FALSE
+Aaron kicked an invertebrate.,2,,,FALSE
+Abraham doesn't slice a coat.,2,,,FALSE
+Roland has not transformed seven cell membranes.,2,,,FALSE
+Evelyn poisons Larry.,2,,,FALSE
+Who was not wading a projectile?,1,,,FALSE
+Ada is not intending to an academic degree to purchase.,1,,,FALSE
+Marshela inherits an insurance policy.,2,,,FALSE
+Valentine winked an eye.,2,,,FALSE
+Abigail recollects a tree branch.,2,,,FALSE
+Bernice will sit a sports ground.,,,,FALSE
+Who will extend 10 biceps?,1,,,FALSE
+Vivian is drinking a visa card.,-1,,Liquid,FALSE
+Who wasn't financing a store?,2,,,FALSE
+Rosalind purchases a television set from an academic degree.,-2,,Facility,FALSE
+Sue doesn't hear a parrot.,2,,,FALSE
+A rooster doesn't comprehend 5 chest muscles.,1,,,FALSE
+Who irons a shotgun slug?,-2,,WearableItem,FALSE
+Evan will be evacuating Malcolm.,2,,,FALSE
+Alec won't be smoothenning a plasma membrane.,1,,,FALSE
+Mark was calculating 0 anatomical structures.,1,,,FALSE
+Who has not uncovered an AG m114?,2,,,FALSE
+Pamela was not fortifying Rowena.,-2,,StationaryArtifact,FALSE
+Veronica thought a left colic ascending artery branch.,2,,,FALSE
+Alcyon unwrapped a relay.,2,,,FALSE
+Matt doesn't evacuate a terminal building.,2,,,FALSE
+A grasshopper will perform 5 palisades.,-3,,AutonomousAgent,FALSE
+Valentine shuttles a transit terminal.,2,,,FALSE
+Who will be breaking a domestic animal?,2,,,FALSE
+Pete divides a currency.,2,mathematically divide currency,,FALSE
+A bacterium shot Dawn.,-2,,AutonomousAgent,FALSE
+Emily will commit a mine.,-2,,Murder,FALSE
+Clarence wasn't leaving a limb.,2,,,FALSE
+Who trades a lanai?,2,,,FALSE
+A protozoa runs a cigar or cigarette.,-2,,AutonomousAgent,FALSE
+Jacinta imagines an elephant.,2,,,FALSE
+Alban befriends Tim.,2,,,FALSE
+Michelle will wave to a shirt.,2,,,FALSE
+Who will infect a tumor?,2,,,FALSE
+Tracy doesn't bind a sock.,2,,,FALSE

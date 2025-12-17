@@ -1,0 +1,1011 @@
+,-3,Invalid: other,,
+,-2,Invalid: subject,,
+,-1,Invalid: object,,
+,0,Unclear,,
+,1,Valid: but grammar issue or pragmatically strange,,
+,2,Valid,,
+Sentence,Valid/Invalid,Reason Why,"Correct Type 
+(exact SUMO term,
+if more than one, 
+separate with commas)","Invalid 
+Preposition"
+Bonnie was fishing some glue.,1,fish FOR an item,,FALSE
+Angelina was getting a somatic cell.,-1,"somatic cell is not something one can purchase,receive,obtain",Artifact,FALSE
+Who was finding a valid card?,2,,,FALSE
+Violet fell an electromechanical fitting.,1,,,FALSE
+Alain has not froze a fungus.,2,,,FALSE
+Nancy won't smell a cotton fabric.,2,,,FALSE
+Who winks a commissioned officer rank?,1,wink AT,,FALSE
+Sebastian watched a right true rib 3 bone.,2,,,FALSE
+Who ascertained a data display device?,1,ascertain an idea not a physical entity,,FALSE
+Rob was egesting a vegetable.,2,,,FALSE
+Stanley has not discovered a radiator.,2,,,FALSE
+Sue was hitting an inner ear bone.,2,,,FALSE
+Who was constricting a commercial building?,-1,"constrict physically means the object has some leeway/""give""; a building is ""hard"" and fixed",AutonomousAgent,FALSE
+Who doesn't ascertain a transfer switch?,-1,ascertain an idea not a physical entity,,FALSE
+Who places an obturator artery?,1,,,FALSE
+Max will be destining to a private rank to fall.,-3,"maybe ok if remove first instance of ""to""; cannot destine/establish an object; rather choose among options ",,FALSE
+Dolly supported a propeller jet.,2,,,FALSE
+Alexander doesn't play three nerve cells.,-1,"play an instrument, game, not a nonsentient entity",,FALSE
+Alice has not determined an external iliac artery.,-1,cannot determine an object,,FALSE
+Morgan is calling Lily.,2,,,FALSE
+Patrick peels an owl.,2,,,FALSE
+Barbara will be protecting a safety position.,2,,,FALSE
+Mabel winked a glove.,1,wink AT,,FALSE
+Who won't be running a legume?,-1,"run an operation, race, business, process; legume has no ""process"" element",,FALSE
+Rita voided a chairman publication.,2,,,FALSE
+Winston will be bawling a nasal trumpet.,-1,"bawl typically is intransitive; cannot bawl an object the subject is not sentiently controlling (e.g., ""eyes"")",,FALSE
+Who sculpts 10 glandular branch arterys?,2,,,FALSE
+Phoebe befriended a professional game player.,2,,,FALSE
+Victoria doesn't envenom an exercise center.,-1,envenom an organic object; an excercise center is non living,,FALSE
+Claudia will be granting five lower branches of the space anastomoses arterys to Colin.,1,,,FALSE
+Stanley has not evacuated 8 left true rib 5 bones.,2,,,FALSE
+Hilda designs a right inferior nasal conchae bone.,2,,,FALSE
+Kristen auctioneered an apartment unit.,2,,,FALSE
+Edmund was hunting a palmar carpal arch artery.,-3,hunt FOR; otherwise hunting implies the object is sentient and an artery is nonsentient,,FALSE
+Winnie buries an anterolateral central artery.,2,,,FALSE
+Ralph was pouring a gun muzzle.,-1,pour a liquid; gun muzzle is non-liquid,,FALSE
+Gerald played a deep external pudendal artery.,-1,"play an instrument, game, not a nonsentient entity",,FALSE
+Richard questions William.,2,,,FALSE
+Who charged Keith?,2,,,FALSE
+Joseph doesn't smile a lung.,-2,smile is an intransitive verb,,FALSE
+Roland locates a neck.,2,,,FALSE
+Who is acquiring a test protocol specification from a professional game player?,2,,,FALSE
+Who will be spraying an air intake?,2,,,FALSE
+Ursula is immunizing a military rank.,-1,immunize a living entity or one susceptible to organic pathogens; rank is an idea,,FALSE
+Who will be starving a medical person?,2,,,FALSE
+Bernice was not ingesting a valve.,2,,,FALSE
+Katherine doesn't submit a generator to Noel.,2,,,FALSE
+Who was mashing a moka Pot?,2,,,FALSE
+Janet suffers UNK_WORK_OF_ART_3.,NULL,,,FALSE
+Who wasn't strengthenning Maggie?,2,,,FALSE
+Who was uploading a pnp transistor?,-1,upload a digital entity; pnp transistor is typically a physical object,,FALSE
+Edmund advertizes a gasket.,2,,,FALSE
+Who kicks a tumor?,2,,,FALSE
+Kate thinned an earphone.,2,,,FALSE
+Who ran a malarial plasmodium?,-1,"run an operation, race, business, process; legume has no ""process"" element",,FALSE
+Who acts Hazel?,-1,act is usually intransitive,,FALSE
+Adeline is massaging a manual labor.,-1,massage a physical entity; manual labor is a nonphysical idea,,FALSE
+Who will fire a manifold heat control valve?,0,,,FALSE
+Who was looking Melinda?,1,look FOR/AT,,FALSE
+Karl has not starved Allan.,2,,,FALSE
+Augusta was punishing Amselm.,2,,,FALSE
+Alethea was performing a crimean congo hemorrhagic fever virus.,-1,perform an action; the object is not an action,,FALSE
+Who won't shut a posterior inferior cerebellar artery?,2,,,FALSE
+Karl will be punishing a US warrant officer rank.,-1,punish an object or sentient entity; a rank is a nonphysical construct,,FALSE
+Donald pips a professional game player.,1,defeat at the last moment; ok; but old/weird verb,,FALSE
+Charles will award an occupational trade a Bilberry.,-3,"award an idea, object, person not vocation; the ""occ. trade"" has no use for a ""bilberry""",,FALSE
+Tony is experimenting to a college student position.,1,WITH,,FALSE
+Who will not experiment a right distal foot phalanx V bone?,1,ON,,FALSE
+Who assorted a spleen?,-1,spleen has no obvious subgroups; assort requires arranging an object's subgroups,,FALSE
+Norman was planning.,2,,,FALSE
+Alvin was breathing a noninverting amplifier.,-1,organic matter breathes air/vapor/etc; an amp is not an object that can be inhaled,,FALSE
+Sharon is burying a veranda.,2,,,FALSE
+Terence has not transformed four hens.,2,,,FALSE
+Who punches Kelly?,2,,,FALSE
+Who winks an alveolus?,1,AT,,FALSE
+Who is planning a pot or pan?,-1,"plan an operation, process; a pot/pan is a physical entity",,FALSE
+Ursula reexamines a hominid.,2,,,FALSE
+Who will be working a hominid?,1,WITH,,FALSE
+Lucas was seeking UNK_FAC_3.,NULL,,,FALSE
+Joe smokes a material handling equipment.,-1,person smokes something that can be inhaled/eaten; equipment cannot be eaten,,FALSE
+UNK_ORG_3 lubricates a tire.,NULL,,,FALSE
+Who finds a bed frame?,2,,,FALSE
+Mary will be selling a financial bill to Denis.,2,,,FALSE
+Vivian is selling Nora a hypothalamus.,2,,,FALSE
+Hamish borrowed a norfolk island pine seed from Francis.,2,,,FALSE
+Linda will infect a film making profession with a palmar carpal arch artery.,-3,infect a living entity; a profession is not living,,FALSE
+Raymond was punching a military rank.,-1,punch an object; rank is an idea,,FALSE
+Bunny examined a permanent magnet dc motor.,2,,,FALSE
+Who doesn't ring Tracy?,2,,,FALSE
+Emily comprehended a theater profession.,1,weird,,FALSE
+Clarice was running 5 inferior thyroid arterys.,-1,"run an operation, race, business, process; artery has no ""process"" element",,FALSE
+Edmund will hear a rolling stock.,-1,rolling stock does not make noise; only hear noise,,FALSE
+Who will be getting Robin?,2,,,FALSE
+Who canvass a hotel?,1,canvasses,,FALSE
+Who befriended Ralph?,2,,,FALSE
+Who was suffering a kitchen?,-1,suffer an ailment/situation; kitchen is an object not a feeling/situation,,FALSE
+Who shows a traffic light?,1,needs external context to make sense; eg show-tell at school,,FALSE
+Claire smoothened a shoe.,2,,,FALSE
+Who will smoke an elephant?,2,,,FALSE
+Who compounds a Chevrolet engine?,2,,,FALSE
+Abraham is transforming a train.,2,,,FALSE
+Who is beckonning some wood product?,-1,beckon to a (sentient) entity that can move,,FALSE
+Alfonso is designing a fishing vessel.,2,,,FALSE
+Who is nodding to a military rank?,-1,nod to a sentient entity,,FALSE
+Who is befriending Emil?,2,,,FALSE
+Who doesn't egest 9 left distal foot phalanx II bones?,1,odd,,FALSE
+Hannah was starting an organism.,-1,"start a race, event, procedure, process, not physical object (unless pieve of equipment)",,FALSE
+Randy communicates a gun.,1,,,FALSE
+Alfred won't refinance a right patella.,-1,refinance a financial transaction or purchase; typically cannot purchase a patella,,FALSE
+Karina included a baton.,2,,,FALSE
+Madeline fires a lock.,1,from a cannon,,FALSE
+Who will be reverberating a patent?,0,?,,FALSE
+Who was taking a red cabbage?,2,,,FALSE
+Felix will burn a private rank.,-1,burn an object,,FALSE
+Louis will be driving a body cavity.,-1,"drive a vehicle, operation, something operable; cavity is inoperable",,FALSE
+Clement shoots a professional game player.,2,,,FALSE
+Jessie will be bombarding a device.,2,,,FALSE
+Who envisaged a walking cane?,2,,,FALSE
+Sam haves UNK_WORK_OF_ART_2.,NULL,,,FALSE
+Selina reproduces a self powered device.,2,,,FALSE
+Who is fermenting a tympanic membrane?,1,odd,,FALSE
+Roger doesn't impersonate Desmond.,2,,,FALSE
+Fred will not take Gloria.,2,,,FALSE
+Who was wading a fruit or vegetable?,-1,things with legs can wade,,FALSE
+Mona borrowed a left metatarsal 4 bone.,1,,,FALSE
+Doug was demonstrating a projectile to a US warrant officer rank.,0,? is warrant officer rank a person?,,FALSE
+Max is pullulating a cystic artery.,0,?,,FALSE
+Pete finances a bacterium.,-1,finance a project/organization/research,,FALSE
+Who was sculpting a posterior inferior cerebellar lateral branch artery?,1,,,FALSE
+Who will be locating a goose?,2,,,FALSE
+Nora will be charging an air attack missile.,1,if battery powered,,FALSE
+Who will realize a cab car?,0,?,,FALSE
+Kevin was mailing a game board to a US warrant officer rank.,2,,,FALSE
+Morgan releases a rib cage.,2,,,FALSE
+Sebastian was not auctioning six sunflowers.,2,,,FALSE
+Tracy will be combining a sprinkler.,-1,combine with,,FALSE
+Who is kicking six academic degrees?,-1,kick a physical object,,FALSE
+Who will be shutting a dome?,2,,,FALSE
+Selina will be investing an inferior ulnar collateral ascending branch artery.,-3,invest in; otherwise invest time/currency but artery is not usually curency,,FALSE
+Who is locating a cantilever shaft?,2,,,FALSE
+Who fortified an occupational trade?,2,,,FALSE
+Wendy is downloading a fabric.,-1,download digital entity,,FALSE
+Cheryl retrieves a water heater.,2,,,FALSE
+Polly protected a volley ball.,2,,,FALSE
+UNK_ORG_3 seats Katherine.,NULL,,,FALSE
+Burt will reproduce an organ.,2,,,FALSE
+Bridget was delivering a brucella bacterium to Audrey.,2,,,FALSE
+Angelina was playing a coffea arabica.,-1,"in a theatre production (ok); otherwise, typically play a game/role/instrument",,FALSE
+Agatha is protecting Norman.,2,,,FALSE
+Karl was transforming a radioactive weapon.,2,,,FALSE
+Molly is helping.,2,,,FALSE
+Pauline famishes Jocelyn.,1,,,FALSE
+Anthony is not distributing 4 branch to popliteus arterys.,-3,indirect object cannot receive a branch,,FALSE
+Sylvia doesn't transform a tobacco.,2,,,FALSE
+Who interprets a farm building?,2,,,FALSE
+Byron disbursed an extracellular enveloped virion vaccinia.,-1,disburse a payment; object is not payment,,FALSE
+Guenevere will be reading a table.,2,,,FALSE
+Who is refinancing 7 cheetahs?,1,,,FALSE
+Amadeus doesn't bombard a sternocleidomastoid artery.,2,,,FALSE
+Kelli is moving Tracy.,2,,,FALSE
+David will sculpt a fish factory ship.,2,,,FALSE
+Who solders an anaerobic exercise device?,1,perhaps ok,,FALSE
+Vincent buys an email message from a professional athlete.,1,perhaps ok (blockchain?),,FALSE
+Who isn't smoking 9 anterior medial malleolar arterys?,2,,,FALSE
+Who buys ten deep femoral arterys from a medical person?,2,,,FALSE
+Who was not processing an intercostal branch artery?,2,,,FALSE
+Hardy is generating a tick borne encephalitis virus.,2,,,FALSE
+Who melted a laser?,2,,,FALSE
+Wallace will be bombarding a GAU-15/A machine gun.,2,,,FALSE
+Sue treats a transmission.,1,,,FALSE
+Cara has not processed a message.,2,,,FALSE
+Who is dodging a gun bore?,2,,,FALSE
+David will separate a lamb.,2,,,FALSE
+Lily ascertains six grapefruits.,1,,,FALSE
+Who toyed a dictionary?,0,?,,FALSE
+Linda grows a superior gluteal artery.,2,,,FALSE
+Who doesn't drive a lower3rd to11th posterior intercostal artery?,1,"drive it in a car, say",,FALSE
+Derrick is expressing a vehicle window.,1,"in a painting, say",,FALSE
+Sheila is imagining a thermometer.,2,,,FALSE
+Ignatius was extending a lateral thoracic artery.,2,,,FALSE
+Rob will be binding a deltoid artery to a juniorNCO rank.,-3,indirect object is nonphysical; bind object to physical object,,FALSE
+Who is construing a superior pancreaticoduodenal artery?,-1,"construe a concept, not a physical object",,FALSE
+Who is working five left inferior nasal conchae bones?,1,working (on)?,,FALSE
+Alfonso is submitting a sorghum grain.,2,,,FALSE
+Gladys buries a pull-down bed.,2,,,FALSE
+Amselm played a right ulna.,-1,"play a game, intsstrument",,FALSE
+Who won't distribute an electrical outlet?,2,,,FALSE
+Stuart gives Eugene 0 ballots.,2,,,FALSE
+Who supported a profession?,2,,,FALSE
+Roy assists an electrified railway.,2,,,FALSE
+UNK_PERSON_1 poured a transistor.,NULL,,,FALSE
+Bill will designate to Casey to paint.,1,designate casey to paint,,FALSE
+Who will be auctioning a constrictor snake?,2,,,FALSE
+Who evacuates a telephone?,1,,,FALSE
+Who breaks a CMV?,0,?,,FALSE
+Harold will be combining a mass airflow sensor.,1,combine X with Y; assuming ok from context,,FALSE
+Amadeus inspects a military rank.,1,,,FALSE
+Who will be stealing a helmet?,2,,,FALSE
+Kevin was smoothing 2 worms.,2,,,FALSE
+Who expresses a british pound coin?,1,,,FALSE
+Judith will not be selling a railcar carrier ship.,2,,,FALSE
+Who will be painting a dictionary?,2,,,FALSE
+William was producing a fluorescent light fixture.,2,,,FALSE
+Roger was not uploading an inmarsat.,2,,,FALSE
+Ethel disburses a machine.,0,?,,FALSE
+Catherine was closing an oqal.,0,?,,FALSE
+Constance doesn't recall a nasal cavity.,1,,,FALSE
+Who was drinking a window?,-1,drink liquid,,FALSE
+Ignatius raises a salmonella typhimurium.,2,,,FALSE
+Jocelyn was driving a fuel atomizer.,-1,drive a vehicle/process/something navigable. fuel atomizer seems non-navigable/movable,,FALSE
+Monica is sending a position.,2,,,FALSE
+Bob will be pointing a liver.,1,(to) a liver,,FALSE
+Adeline bears Murphy.,2,,,FALSE
+Who will be sitting a janitor?,1,,,FALSE
+Lilian befriends an occupational role.,-1,befriend a sentient entity,,FALSE
+Robin is watering a left intermediate foot phalanx II bone.,-1,typically water something living (plant),,FALSE
+Andy specified to Bertha to eat.,2,,,FALSE
+Jennifer was famishing a US military rank.,-1,famish a living entity,,FALSE
+Who doesn't grant a film making profession UNK_GPE_3?,NULL,,,FALSE
+Who doesn't share a novel?,2,,,FALSE
+Lawrence doesn't designate to an occupational role to cat.,0,?,,FALSE
+Dick will not be sharing a heated pool.,2,,,FALSE
+Alonso dreams a christian bible.,1,dreams (of),,FALSE
+Who will be smelling Tommy?,2,,,FALSE
+Marilyn sets a left incus bone.,2,,,FALSE
+Who is eating five pay stubs?,-1,typically only eat food,,FALSE
+Lucy is putting an occupational domain.,0,?,,FALSE
+Oliver will be fishing a mediastinal branch artery.,-3,fish for an item; or just fishing; or fish an item out of a XYZ,,FALSE
+Who immunizes a government position?,-1,immunize a living entity,,FALSE
+Cora will be planning.,2,,,FALSE
+Who roughens a chromotin?,0,?,,FALSE
+Jack wasn't matching a manual labor.,-3,"matching intransitive verb ok; as transitive, usually requires two objects",,FALSE
+Who will search an air conditioning compressor?,2,,,FALSE
+Gordon affixs a lumbar branch artery.,1,,,FALSE
+Louis is not massaging an academic degree.,-1,massage a living entity,,FALSE
+UNK_PERSON_1 is canvassing a throat.,NULL,,,FALSE
+Who will be fishing a sculpture?,-3,fish for an item; or just fishing; or fish an item out of a XYZ,,FALSE
+Who has not froze a pay stub?,-1,freeze a liquid or something with liquid,,FALSE
+Jason will take an internet access point.,0,?,,FALSE
+Inna will not pestle to a secure airfield.,-3,"""pestle to"" is incorrect; pestle a (smallish) object but airfield is too large",,FALSE
+Who was not drawing a posterior lateral nasal branch artery?,2,,,FALSE
+Stephen will design a machine.,2,,,FALSE
+Dalton will be smoking a left lacrimal bone.,1,,,FALSE
+Louis was downloading a right true rib 3 bone.,-1,download a digital entity,,FALSE
+Cheryl was catching Emily.,2,,,FALSE
+Maria is extending an intercostal branch artery.,2,,,FALSE
+Who isn't determining to Constance?,-3,"""was determined to go fishing"" is ok; determining to do something; not determine to <object>",,FALSE
+Who was pouring a form text?,-1,pour a liquid,,FALSE
+Who was envisaging a porous container?,2,,,FALSE
+Who falls a modem?,-1,fall a tree,,FALSE
+Gerry perceives Ursula.,2,,,FALSE
+Ralph is not selling an educational facility to Priscilla.,2,,,FALSE
+Who will borrow a clock from Carol?,2,,,FALSE
+Randy has not located a manual labor.,1,"remove ""a""",,FALSE
+Terence has not wrote a coffee robusta.,-1,written about ok; write a story,,FALSE
+Rachel was commanding a manual labor.,-1,"laborer ok; command an entity, not concept",,FALSE
+Frances was locating a US military rank.,1,in a list of ranks? ok,,FALSE
+Winston was buying a fuel injector from Christopher.,2,,,FALSE
+Clarence will punch a basement.,1,typically punch something more specific (basement wall),,FALSE
+Who will replace a water vehicle?,2,,,FALSE
+Kelli won't control a non commissioned officer rank.,0,?,,FALSE
+Alec refers a dual gauge railway.,1,,,FALSE
+Cheryl lessened a paddy rice.,1,,,FALSE
+Phoebe borrowed some Beech wood.,2,,,FALSE
+Bob decreases a red blood cell.,-1,blood cell seems indivisible,,FALSE
+Sally was writing a speedometer.,-1,writing about ok; otherwise write a story,,FALSE
+Phoebe wasn't injecting Mark with a municipal bond.,-3,inject with a virus/vacine,,FALSE
+Carter was evacuating a professional athlete.,2,,,FALSE
+Who breathes UNK_GPE_2?,NULL,,,FALSE
+Ethel was reducing seven fungivores.,-3,?,,FALSE
+Alexander was voting a damper.,-3,?,,FALSE
+Sarah was skinning a missile.,-1,skin a potato or something usually to be cooked,,FALSE
+Who is assailing an occupational trade?,-1,assail an object; occ. trade a concept,,FALSE
+Bill will not give a poodle to a flag officer rank.,0,?,,FALSE
+Tommy creates a left humerus.,2,,,FALSE
+Evan was sitting a manual labor.,-1,sit a dog; manual laobr a concept,,FALSE
+Mike waded a blood cell.,-3,wade through a liquid,,FALSE
+Winnie is watering a spinal cord.,-1,water a plant/living entity,,FALSE
+Who suffers a climbing carabiner?,-1,suffer an ailment,,FALSE
+Who loans a seniorNCO rank a pine tree?,-1,loan a person something; NCO rank is a concept?,,FALSE
+Who will be presenting Geoffrey an elephant?,1,(with) an,,FALSE
+Violet will seat Marshela.,2,,,FALSE
+Vanessa splited a second perforating artery.,1,split,,FALSE
+Bridget doesn't beckon to Kate.,2,,,FALSE
+Who is massaging ten right distal foot phalanx V bones?,-1,mmassage a living entity,,FALSE
+Who will be consuming an amplifier?,-1,amplifier not something a person can consume,,FALSE
+Who is burning Patricia?,2,,,FALSE
+Gloria closes a wrench.,2,,,FALSE
+Josephine is recalling.,2,,,FALSE
+Rachel is borrowing a ship cabin.,-1,borrow an item; ship cabin seems not an item,,FALSE
+Philip will be sculpting an interosseous recurrent artery.,2,,,FALSE
+Morgan refinanced a sculpture.,2,,,FALSE
+UNK_ORG_1 will raise a home base.,NULL,,,FALSE
+Who will kill Hardy?,2,,,FALSE
+Who imbibes two french franc coins?,-1,imbibe a liquid,,FALSE
+Ada pours to a bowling lane.,-3,?,,FALSE
+Clarence will be burying an artillery gun.,2,,,FALSE
+Maggie affixed a jet airplane.,1,could be ok from context,,FALSE
+Julia is selling a miniature golf to Benjamin.,1,mini golf course,,FALSE
+Amelia doesn't present a flag officer rank a chest or cabinet.,-3,?,,FALSE
+Who borrowed a hall from Nora?,-1,borrow an item; hall not an item,,FALSE
+Jocelyn dodged 3 dictionaries.,2,,,FALSE
+Cinderalla is questioning an artistic occupation.,2,,,FALSE
+Geoffrey will be evacuating a field grade officer rank.,2,,,FALSE
+Matt doesn't discover an outfit car.,2,,,FALSE
+Valentine is kicking a chest muscle.,2,,,FALSE
+Who was paying an invasive ventilator?,2,,,FALSE
+Who is reproducing a plant branch?,2,,,FALSE
+Who was punishing an enlisted soldier rank?,2,,,FALSE
+Clarence excretes a lamb.,-2,object is incorrect,,FALSE
+James canvass two pulmonary arterys.,-3,canvass in this sentence doesn't make sense to use,,FALSE
+Who bought a spring from Cecil?,2,,,FALSE
+Lisa will not be processing a vine.,2,,,FALSE
+Who will not be finding a truck trailer?,2,,,FALSE
+Who was ascertaining?,2,,,FALSE
+Who disburses a driveshaft?,1,"""disassembling""",,FALSE
+Who won't be selecting Lilita?,2,,,FALSE
+Who will read an oesophageal branch artery?,-2,"to read something is to read a text, not arteries",,FALSE
+Mariam locates a chain link.,2,,,FALSE
+Who mailed a bear to Joan?,2,,,FALSE
+Who was turning a dish?,2,,,FALSE
+Who doesn't toy a tableware?,2,,,FALSE
+Alan was harming Gloria.,2,,,FALSE
+Mabel immunised Corinne.,2,,,FALSE
+Who will solder a steps?,1,,,FALSE
+Melanie has not nodded a right metatarsal 3 bone.,-2,"nodding is to move head up and down or side to side, does not apply to bones",,FALSE
+Who doesn't shoot a musician?,2,,,FALSE
+Who will be grinding a right triquetral?,2,,,FALSE
+Who is uploading an electronic data storage device?,2,,,FALSE
+Who will be taking a right lunate?,2,taking in this sentence could be interpretted in a medical sense such as to perform or taking responsibility to study the bone,,FALSE
+Who is adding an office building?,2,,,FALSE
+Roy attacked an open top railcar.,2,,,FALSE
+Who assaults a janitor?,2,,,FALSE
+Who respires a rechargeable battery?,2,,,FALSE
+Alice will be vaporising an outfit car.,2,,,FALSE
+Melody inherits a grenade.,2,,,FALSE
+Matilda egests a median sacral artery.,-2,to egest an artery is not correct,,FALSE
+Who has not ate nine inferior epigastric arterys?,2,,,FALSE
+Rob is minifying a millet grass.,-2,minifying grass is not correct,,FALSE
+Priscilla is starving a flag officer rank.,2,,,FALSE
+Damian will lose Ignatius.,2,,,FALSE
+Who hunted an entertainment profession?,2,,,FALSE
+Ingrid finds a doctrine.,2,,,FALSE
+Edward shared a voting poll with a desk.,-1,sharing a voting poll with a desk is incorrect,,FALSE
+Tina smells a service position.,-2,can't smell a service position,,FALSE
+Rowena doesn't taste a WMD weapons research facility.,-2,can't taste a weapons research facility,,FALSE
+Brian is planting an intraosseous device.,2,,,FALSE
+Ignatius has not borrowed an iliac branch artery from a commissioned officer rank.,1,,,FALSE
+Herbert conveys Ingrid.,-3,"it would make more sense as ""conveys to Ingrid""",,FALSE
+Who will be uncovering an odometer?,2,,,FALSE
+Sam bound Desmond.,2,,,FALSE
+Kevin uncovers a left distal foot phalanx V bone.,2,,,FALSE
+Who subjects a ladder to Hilda?,-3,,,FALSE
+Ida gave a non commissioned officer rank an eggplant.,-3,,,FALSE
+Colin doesn't break an anterior lateral malleolar artery.,2,,,FALSE
+Daphne is sorting a janitor.,2,,,FALSE
+Arnold will borrow a queen insect from a US warrant officer rank.,1,,,FALSE
+Calvin was taking a left ossa coxae.,1,,,FALSE
+Who will play UNK_NORP_2?,NULL,,,FALSE
+Who will be smelling a branch artery to surface of the femur and the knee joint?,0,,,FALSE
+Who steals 5 basilar arterys?,1,,,FALSE
+Irene was deducting a classroom.,-2,,,FALSE
+Cinderalla is running a suprascapular artery.,-2,,,FALSE
+Winston will be financing a gun.,2,,,FALSE
+Jackie will drive Agatha.,2,,,FALSE
+Sam was smelling Terence.,2,,,FALSE
+Who was presenting a bed linen?,2,,,FALSE
+Winston injects Aaron with a savoy cabbage.,-2,,,FALSE
+Who is not ingesting a drivers license?,2,,,FALSE
+Who doesn't plug Byron?,-2,,,FALSE
+Bob beckoned an artery.,-2,,,FALSE
+Ursula will be winking a standard gauge railway.,-2,,,FALSE
+Who is not awarding a diode to Hilda?,2,,,FALSE
+Audrey was leaving a safety device.,2,,,FALSE
+Who located a plasma membrane?,2,,,FALSE
+Joan will pestle a chapter.,-2,,,FALSE
+Hannah will mail some white oak wood to Abigail.,2,,,FALSE
+Neville studied a printer.,2,,,FALSE
+Gertrude was loaning a US military rank UNK_NORP_1.,NULL,,,FALSE
+Who will be massaging Rosemary?,2,,,FALSE
+Burt will be paying a performance bond.,2,,,FALSE
+Who will be storing 0 printed sheets?,1,,,FALSE
+Claire will be designing a magazine.,2,,,FALSE
+Who was reproducing a below the line?,0,,,FALSE
+UNK_ORG_2 cyphers a music text.,NULL,,,FALSE
+Andy was planning 0 patellae.,2,,,FALSE
+Who punches a professional game player?,2,,,FALSE
+Who sets a hinge?,2,,,FALSE
+Rodney compared a bartender.,2,,,FALSE
+Joyce fires an alga.,2,,,FALSE
+Karl will evacuate UNK_LAW_1.,NULL,,,FALSE
+Boris doesn't set a message.,2,,,FALSE
+Who makes a lassa virus?,2,,,FALSE
+Philip kills a professional game player.,2,,,FALSE
+Who infects a college student position with an airplane?,0,,,FALSE
+Rosalind wasn't freezing an aerator.,2,,,FALSE
+Who evacuated Bertram?,2,,,FALSE
+Who wasn't dredging five sterna?,-2,,,FALSE
+Elizabeth will not be mailing UNK_ORG_3 to a commissioned officer rank.,NULL,,,FALSE
+Morgan helped a film making profession.,2,,,FALSE
+Tony buries a pearl.,2,,,FALSE
+Jackie suffers a railcar.,-2,,,FALSE
+Pearl will not be working a coccidioides immitis.,0,,,FALSE
+Marshela has a window.,2,,,FALSE
+Mathew buried some tea twig.,2,,,FALSE
+Daphne seats a salivary gland.,-2,,,FALSE
+Who specified to UNK_PERSON_2 to blush?,NULL,,,FALSE
+Alison doesn't vote a baseball bat.,2,,,FALSE
+Edward eats an eastern equine encephalitis virus.,1,,,FALSE
+Mabel doesn't borrow 2 posterior spinal ascending branch arterys from Norman.,1,,,FALSE
+Bridget punishes an occupational domain.,-2,,,FALSE
+Keith will switch a humerus.,2,,,FALSE
+Who steals a motorcycle helmet?,2,,,FALSE
+Mitch has not recalled a transverse cervical superficial branch artery.,2,,,FALSE
+Dolly is getting a maple tree from Carmen.,2,,,FALSE
+Who xeroxed an uniform?,-1,,,FALSE
+Frances will be planning a left triquetral.,-2,,,FALSE
+Who pipped a government position?,-2,,,FALSE
+Austin is borrowing a representational art work.,2,,,FALSE
+Who has not financed a npn transistor?,2,,,FALSE
+Barbara was massaging a flag officer rank.,-2,,,FALSE
+Ronald is settling an anatomical structure.,1,,,FALSE
+Norma will write a palisade.,-2,,,FALSE
+Agatha will not be breaking a receiver device.,2,,,FALSE
+Paul was replacing a star network with a spear.,-1,,,FALSE
+Emma is unveiling a baseball field.,2,,,FALSE
+Paula extends a toothbrush.,2,,,FALSE
+Claire was combining a filter.,2,,,FALSE
+Who is awarding a general cargo ship to Lisa?,2,,,FALSE
+Penny befriends a non commissioned officer rank.,-2,,,FALSE
+Who will ideate seven muscles?,2,,,FALSE
+Patricia discovered five codecaploid cells.,2,,,FALSE
+Max starves Duncan.,2,,,FALSE
+Who will sell some sugar?,2,,,FALSE
+Judith plans a sphenopalatine artery terminal branch.,,,,FALSE
+Edmund is immunising Matt.,2,,,FALSE
+Tommy rings a field grade officer rank.,,,,FALSE
+Who roughened a telephone handset?,2,,,FALSE
+Lucy will be envisaging a left coronary artery.,2,,,FALSE
+Ada will be drilling a base.,2,,,FALSE
+Penny egests a water heater.,-2,,,FALSE
+Who visits UNK_LOC_1?,NULL,,,FALSE
+Who will skin some Sapele wood?,2,,,FALSE
+Who reproduces a machupo virus?,2,,,FALSE
+Who doesn't hear a company grade rank?,,,,FALSE
+Isabel thinks a zucchini.,2,,,FALSE
+Who was ascertaining?,2,,,FALSE
+Raymond will select a valet.,2,,,FALSE
+Malcolm will dream a lock.,2,,,FALSE
+Marilyn will not comprehend a seed.,2,,,FALSE
+Who is hearing a house?,-1,,,FALSE
+Jeffrey was giving a bottle to Kellie.,2,,,FALSE
+Who won't be taking Constance?,2,,,FALSE
+Who won't be searching a profession?,2,,,FALSE
+Who will cycle a left capitate?,-2,,,FALSE
+Who was protecting a safety position?,2,,,FALSE
+Rosalind will commit a tonsillar branch artery.,-2,,,FALSE
+Agnes steals an urethra.,1,,,FALSE
+Who mails a novel?,2,,,FALSE
+Lorna seats a private rank.,-3,,,FALSE
+Tim is pouring zero mystery storys.,-3,,,FALSE
+Who shouts a file device?,-2,,,FALSE
+Stephen will not be voting a DVD.,2,,,FALSE
+Who is placing an induction motor?,2,,,FALSE
+Kenneth will consume a cell.,1,,,FALSE
+Ada is envisaging some walnut wood.,2,,,FALSE
+Who dredges a blade?,2,,,FALSE
+Gordon will be hearing a sales position.,2,,,FALSE
+Ingrid doesn't read a read only memory data storage.,2,,,FALSE
+Who compared a non commissioned officer rank?,2,,,FALSE
+Allan was forgiving a professional athlete a bathroom.,0,,,FALSE
+Rick guides a ballistic missile.,2,,,FALSE
+Mariam reproduces a letter.,2,,,FALSE
+Who will destine to Frank to sell?,0,,,FALSE
+Who is demonstrating a government position with a reptile?,0,,,FALSE
+Who is searching a tongue?,2,,,FALSE
+Who will translate Evelyn?,0,,,FALSE
+Maggie will be having 4 branch to popliteus arterys.,0,,,FALSE
+Who will be nodding a refrigerator car?,-1,,,FALSE
+Carter respires a security.,-3,respire is to breathe,,FALSE
+Who has not lent an obturator artery to Claudia?,2,,,FALSE
+William doesn't think zero hearts.,1,,,FALSE
+Elvis searched a Joint Publication.,2,,,FALSE
+Who is smelling a faucet?,2,,,FALSE
+Who was braying a rickettsia rickettsii?,-3,,,FALSE
+Katherine canvass a left proximal phalanx II bone.,-2,canvass is related to surveys or political campaigns,,FALSE
+Who searches a theater profession?,0,,,FALSE
+Morris is planning some pine wood.,2,,,FALSE
+Karl is pestling a shower.,-1,,,FALSE
+Jim refinances a courtyard.,2,,,FALSE
+Michael was soldering an Aegilops Tauschii.,-2,,,FALSE
+Annabel will pestle a gearbox.,1,,,FALSE
+Eileen destined to Vivian to acquire.,0,,,FALSE
+Ethel downloads a callable bond.,-2,,,FALSE
+Edmund wasn't giving a pollen to a military rank.,-3,,,FALSE
+Patrick gives Amselm a LAN.,2,,,FALSE
+Who evacuates a key?,-1,,,FALSE
+Olga is not choking a US military rank.,-2,,,FALSE
+Who will be tasting a grab bar?,1,,,FALSE
+Larry has not loaned Amy a radio receiver.,2,,,FALSE
+Elaine was fishing a bust.,1,,,FALSE
+Joseph combines four right patellae.,1,,,FALSE
+Lily is not violating a position.,2,,,FALSE
+Who will poison a broad gauge railway?,-1,,,FALSE
+Dawn will be calculating a rectifier.,2,,,FALSE
+Who doesn't hide Alfred?,2,,,FALSE
+Michael will mail a military vehicle.,1,,,FALSE
+Maurice assorts Ralph.,-2,,,FALSE
+Who was borrowing some Cedar wood from Donald?,2,,,FALSE
+Amadeus has not buried a japanese encephalitis virus.,1,,,FALSE
+Who borrows 3 nails?,2,,,FALSE
+Annabel impersonated Cora.,2,,,FALSE
+Pamela evacuates an egg yolk.,-2,,,FALSE
+Jack disburses six DNA viruss.,-2,,,FALSE
+Who will hear a tympanic cavity?,-2,,,FALSE
+Daphne was reproducing four eyelids.,1,,,FALSE
+Who was relinquishing Richard?,2,,,FALSE
+Who will pour a supercharger?,-2,,,FALSE
+Who will be killing Austin?,2,,,FALSE
+Mitchell ravishes a professional athlete.,1,,,FALSE
+Who was running a mine?,2,,,FALSE
+Who was binding a nervous system to a commissioned officer rank?,0,,,FALSE
+Elaine dodges a bee.,2,,,FALSE
+Alain will be transforming a hydrophilic side.,2,,,FALSE
+Alfonso will draw a tick.,2,,,FALSE
+Who is granting a deep femoral artery to Oren?,1,,,FALSE
+Who performs an Icon helmet?,-1,,,FALSE
+Gordon will be downloading a toy.,-1,,,FALSE
+Claire will lose Ursula.,2,,,FALSE
+Kristin conveyed a rail vehicle.,2,,,FALSE
+Roy doesn't drink some nucleotide.,-2,,,FALSE
+Allen isn't giving a tractor trailer to Hannah.,2,,,FALSE
+Conan will be diluting a chain.,-1,,,FALSE
+Who doesn't produce a right proximal foot phalanx IV bone?,2,,,FALSE
+Who forgives Oren eight deers?,0,,,FALSE
+Sara doesn't sit Tony.,0,,,FALSE
+Who won't be penalising a company grade rank?,0,,,FALSE
+Who burnt Dick?,2,,,FALSE
+Veronica will be evacuating Lilian.,2,,,FALSE
+Who binds a laboratory to Victor?,-3,,,FALSE
+Who is imbibing to an aircraft carrier?,-1,,,FALSE
+Lorna will infect Noel.,2,,,FALSE
+Fiona was evacuating Teresa.,2,,,FALSE
+Who will not write a melon?,-1,,,FALSE
+Karl is choosing an occupational domain.,2,,,FALSE
+Who won't lose Jacinta?,2,,,FALSE
+Who was reproducing a fixed bridge?,-1,,,FALSE
+Who will be binding a bridge to an athlete?,-2,,,FALSE
+Melinda will submit a rabbit to a position.,0,,,FALSE
+Dolly was crunching a telephone handset.,2,,,FALSE
+Rosemary will tell a muscular branch artery.,-2,,,FALSE
+Valentine evacuates Murphy.,2,,,FALSE
+Who plans?,2,,,FALSE
+Who is not shutting a permanent residence?,0,,,FALSE
+Susan is giving a valet a whip.,2,,,FALSE
+Who designed a separately excited dc motor?,0,,,FALSE
+Harriet will be wading a currency.,-2,,,FALSE
+Who is fishing a vehicle registration?,1,,,FALSE
+Hilda killed an unskilled occupation.,0,,,FALSE
+Violet isn't smelling a renal artery.,2,,,FALSE
+Jacinta will designate a vehicle controller to Lionel.,2,,,FALSE
+Alba fell an envelope.,0,,,FALSE
+Dawn emerged to an aircraft Rosemary.,0,,,FALSE
+Who will not squeeze a barricade?,2,,,FALSE
+Cnythia is relinquishing a ground launch missile.,2,,,FALSE
+Barnaby doesn't find.,2,,,FALSE
+Who will not steal an alternator?,2,,,FALSE
+Who is distributing five right parietal bones?,2,,,FALSE
+Frances will relinquish a building.,2,,,FALSE
+Jessica is fortifying a profession.,0,,,FALSE
+Peter is destining to Roger to immunize.,0,,,FALSE
+Who nodded a barge?,-1,,,FALSE
+Ronald designates to a valet to deliver.,2,,,FALSE
+Andy won't be sculpturing a ships hull.,2,,,FALSE
+Mavis will hide Malcolm.,2,,,FALSE
+Austin was combining a steps.,0,,,FALSE
+Who was reproducing a traffic light?,2,,,FALSE
+Dawn will be irrigating some bird egg.,-1,,,FALSE
+Rachel wasn't seeing a photographic film.,2,,,FALSE
+Pete isn't drinking a first perforating artery.,1,,,FALSE
+Who was nodding to a film making profession?,2,,,FALSE
+Who will clean a savoy cabbage?,2,,,FALSE
+Laura doesn't set a radar.,2,,,FALSE
+Brenda won't be jawing an ice skating rink.,-2,,,FALSE
+Who will be soldering a cycle?,2,,,FALSE
+Victor will be disbursing a kitchen.,-2,,,FALSE
+Who massaged a left radius?,2,,,FALSE
+Rita supported Irene.,2,,,FALSE
+Ethel will plan a revolver gun.,-1,,,FALSE
+Who will outrage an enlisted soldier rank?,,,,FALSE
+Who shuts an opium poppy?,-1,,,FALSE
+Anne was ravishing Andrew.,2,,,FALSE
+Gladys is awarding Veronica a vulture.,2,,,FALSE
+Brian smells a tooth.,2,,,FALSE
+Who nods some egg?,-1,,,FALSE
+Judy will be paying a balloon.,-3,"""paying for""",,FALSE
+Nancy won't be remembering 6 right true rib 6 bones.,2,,,FALSE
+UNK_PERSON_1 is infecting a professional athlete with three perforating branch to the posterior tibial arterys.,NULL,,,FALSE
+Elaine piloted a C1 vertebra bone.,-2,,,FALSE
+Who will massage Allen?,2,,,FALSE
+UNK_PERSON_3 is substituting a photocopier with a goat.,NULL,,,FALSE
+Dawn was outraging Michelle.,2,,,FALSE
+Who is planting a nostril?,-2,,,FALSE
+Mike will assist Bertram.,2,,,FALSE
+Who searches a suprascapular artery?,-2,,,FALSE
+Who will find a French press?,2,,,FALSE
+Jessie is jogging a faucet.,-1,,,FALSE
+Who roughens a kufiyyah?,2,,,FALSE
+Who will not pestle 2 beetss?,1,,,FALSE
+Mariam won't toy UNK_LOC_1.,NULL,,,FALSE
+Alethea won't penalize a skilled occupation.,-2,an occupation can't be penalized,,FALSE
+Simon has not painted a file device.,2,,,FALSE
+Malcolm is demoing a US military rank a bacterium.,0,,,FALSE
+Who dodged an ankle?,-2,,,FALSE
+Adrian transforms an internet.,2,,,FALSE
+Jessie was giving a safety position a radar.,0,,,FALSE
+Who will be assisting a non commissioned officer rank?,-2,,,FALSE
+Who recalls?,2,,,FALSE
+Florence will be frying a heating device.,-1,,,FALSE
+Diana will be massaging a tomato.,2,,,FALSE
+Who disburses an offshore support ship?,-2,disburse money,,FALSE
+Milton doesn't shoot an occupational trade with a blade.,0,,,FALSE
+Who isn't borrowing a nasal bone?,1,,,FALSE
+Bernice relinquished a message.,1,,,FALSE
+Polly looks an insurance policy.,-3,"""looks at an insurance policy""",,FALSE
+Who doesn't seek Pearl?,2,,,FALSE
+Mark will be befriending a flag officer rank.,-2,,,FALSE
+Who shows a mass airflow sensor?,2,,,FALSE
+Who wasn't driving eight body cavitys?,-2,,,FALSE
+Who respires a recurrent branch artery?,-2,,,FALSE
+Who doesn't wave a castanet?,1,,,FALSE
+Who was selling a military rank a staphylococcus?,0,,,FALSE
+Nancy has not forgave Dorothy a shot shell.,0,,,FALSE
+Bernice won't be infecting a position.,-2,"a position can't be infected, it can be filled",,FALSE
+Who sees an electronic data storage device?,2,,,FALSE
+Albert hears a left clavicle bone.,1,,,FALSE
+Anita will lose a US warrant officer rank.,-2,,,FALSE
+Who is cutting a ceiling?,2,,,FALSE
+Kelli was auctioning 10 faces.,-2,,,FALSE
+Jane doesn't massage a musician.,1,,,FALSE
+Who is lending a vegetable to Burt?,2,,,FALSE
+Teresa planned a cycle.,1,,,FALSE
+Jeffrey was storing a right true rib 3 bone.,1,,,FALSE
+Larry is famishing Nancy.,2,,,FALSE
+Norma will deduct a vertebrate.,-2,deduct is to take away from an amount,,FALSE
+Who plants a body segment?,2,,,FALSE
+Lionel analyses four transverse cervical superficial branch arterys.,2,,,FALSE
+Jason will uncover a wheel chock.,2,,,FALSE
+Adriana will be mailing a hardware system.,2,,,FALSE
+Who likened a gas tank?,-1,,,FALSE
+Doreen shouts a reindeer.,-3,"""shouts at a reindeer""",,FALSE
+Lucy told a zygomatic branch artery.,-3,incorrect grammar,,FALSE
+Who awards an armor to a manual labor?,-3,can't give armor to a job category,,FALSE
+Juliana will be interviewing Jack.,2,,,FALSE
+Laura is tying Kelli.,2,,,FALSE
+Carter will visit a golf course.,2,,,FALSE
+Lucas will be searching a professional athlete.,1,,,FALSE
+Kristin isn't borrowing a shoe.,2,,,FALSE
+Derek will invest eight united states ten cent coins.,2,,,FALSE
+Derrick wasn't paying a perforating artery.,-2,,,FALSE
+Robert is likenning to Alan to refer.,0,,,FALSE
+Who recollects 10 books?,2,,,FALSE
+Evan will nod a small intestine.,-2,,,FALSE
+Ellen will be supporting a janitor.,2,,,FALSE
+Who is massaging Fiona?,2,,,FALSE
+Andrew was comparing Alvin.,2,,,FALSE
+Who will smooth a governor?,-2,,,FALSE
+Derek will remember a clothes washing machine.,1,,,FALSE
+Austin was reading a capstone publication.,2,,,FALSE
+Bunny uploads a self-service laundry.,-2,,,FALSE
+Amy has not stored a splenic artery.,1,,,FALSE
+Victor finances a kayak.,2,,,FALSE
+Jane is designating a musician an animal product.,0,,,FALSE
+Jessie is beckonning a sheep.,2,,,FALSE
+Who will not remember a fluid container?,1,,,FALSE
+Walter was recalling a CDRW.,2,,,FALSE
+Who will be vaccinating Bertha?,2,,,FALSE
+Sally mails Sharon 9 facial arterys.,1,,,FALSE
+Who is violating a medical person?,2,,,FALSE
+Oren was kicking a cell nucleus.,-2,,,FALSE
+Byron was infecting Patrick.,2,,,FALSE
+Shirley is dishonouring a medical person.,2,,,FALSE
+Marshela ducks a vine.,2,,,FALSE
+Jocelyn doesn't give Sally a crankshaft.,2,,,FALSE
+Teresa relinquishes Adrian.,2,,,FALSE
+Victor was vandalising a dredger.,2,,,FALSE
+Louis nods to Mariam.,2,,,FALSE
+Who designed a malleus bone?,2,,,FALSE
+Joseph plans a jet airplane.,1,,,FALSE
+Greta lost Joan.,2,,,FALSE
+Mariam will divide Victoria.,-2,,,FALSE
+Agnes is frying a three phase power source.,-2,,,FALSE
+Carl plans a cereal grain.,-2,,,FALSE
+Ralph questioned a field grade officer rank.,-3,,,FALSE
+Fiona was soldering 6 thorax bones.,-1,,,FALSE
+Simon will be designating to Jacinta to resound.,0,,,FALSE
+Carl vandalizes a calf.,1,,,FALSE
+Calvin doesn't befriend a film making profession.,-3,,,FALSE
+Kathleen was freezing a radial recurrent artery.,2,,,FALSE
+Jason trots some lumber.,0,,,FALSE
+Who performs a four stroke engine?,0,,,FALSE
+Rowena is dreaming an oat grass.,1,,,FALSE
+Eugene was pushing a lilac.,1,,,FALSE
+Who kicks a middle cerebral artery?,1,,,FALSE
+Simon will be selling an enlisted soldier rank a house.,-3,,,FALSE
+Lydia will be xeroxing a poodle.,-2,,,FALSE
+Roy is freezing a cleaning device.,2,,,FALSE
+Sarah was inflating an arrow projectile.,-1,,,FALSE
+Pauline will not be assisting a medical device.,2,,,FALSE
+Who was not dodging a surfboard?,2,,,FALSE
+Who was toying a brush or comb?,2,,,FALSE
+Alain will paint a ticket.,2,,,FALSE
+Rachel will be pipping an artistic occupation.,-3,,,FALSE
+Who wets a motor?,2,,,FALSE
+Ada will drink a right metatarsal 4 bone.,-1,,,FALSE
+Who subjects a forty foot container to Mabel?,1,,,FALSE
+Dawn doesn't boil a tent.,1,,,FALSE
+Who is inflating a Ford car?,-1,,,FALSE
+Who stole a drum from Harold?,2,,,FALSE
+Hardy was not producing 3 circumflex arterys.,2,,,FALSE
+Barnaby will be reproducing a dish.,2,,,FALSE
+Dorothy is not painting a hot water heater.,2,,,FALSE
+Who stored a hexaploid cell?,2,,,FALSE
+Katherine will pip Alfonso.,-2,,,FALSE
+Who doesn't peel a brake drum?,-1,,,FALSE
+Who is running Cora?,0,,,FALSE
+Who won't pull a sports facility?,-2,,,FALSE
+Emily presented an occupational trade an ulnar artery.,0,,,FALSE
+Ronald will take an united states dollar bill.,2,,,FALSE
+Who will be befriending a flag officer rank?,-3,,,FALSE
+Kathleen will be running an oqal.,0,,,FALSE
+Who froze a left navicular bone?,2,,,FALSE
+Who transformed a baseball field?,2,,,FALSE
+Emma has not watered a fence.,2,,,FALSE
+Who is taking a table?,2,,,FALSE
+Who includes a freight car?,0,,,FALSE
+UNK_ORG_1 is gaining a brake.,NULL,,,FALSE
+Abigail was purchasing a text document.,2,,,FALSE
+Maurice will eat a cattle.,2,,,FALSE
+Who listened a neisseria gonorrhoeae?,0,,,FALSE
+Who was loaning a bartender 0 posterior septal branch arterys?,-3,,,FALSE
+Who is pulling 2 inferior labial arterys?,1,,,FALSE
+Who has not loaned 7 inferior ulnar collateral arterys to a professional athlete?,1,,,FALSE
+Monica is not switching a right I metacarpal.,2,,,FALSE
+Ethel will dishonour a musician.,2,,,FALSE
+Who wasn't relinquishing a government position?,2,,,FALSE
+Barnaby will eat a brush or comb.,2,,,FALSE
+Who will steal an ape from a non commissioned officer rank?,-3,,,FALSE
+Walter dodges a roll on roll off cargo ship.,0,,,FALSE
+Cecil won't shout 7 tobaccoes.,-1,,,FALSE
+Gordon won't be nodding a muscular ulnar artery.,0,,,FALSE
+Annabel won't take a Rover v8.,2,,,FALSE
+Who impersonates Ralph?,2,,,FALSE
+Who bombed a staphylococcus aureus?,1,,,FALSE
+Who was not breaking an anterior humeral circumflex artery?,2,,,FALSE
+Mike is compounding a guernsey cattle.,-2,,,FALSE
+Patricia poured an anterior tympanic artery.,-1,,,FALSE
+Susan doesn't vote a refrigerator car.,1,,,FALSE
+Who suffers a supercharger?,0,,,FALSE
+Who will guide a share?,1,,,FALSE
+Gary will be passing Travis.,2,,,FALSE
+Who will sculpt a nuclear weapon?,2,,,FALSE
+Milton doesn't shoot Ida.,2,,,FALSE
+Lawrence was not imbibing a drum.,-1,,,FALSE
+Vincent doesn't work a flowering plant.,0,,,FALSE
+Christian paints a pencil.,2,,,FALSE
+Who will be drinking a vine?,-2,,,FALSE
+Who is comprehending a left clavicle bone?,2,,,FALSE
+Who will produce UNK_ORG_2?,NULL,,,FALSE
+Who will be replacing Dalton?,2,,,FALSE
+Carmen doesn't store a brake caliper.,2,,,FALSE
+Who will demonstrate an accompanying artery of ischiadic nerve?,0,,,FALSE
+Norman is lending a grab bar to a non commissioned officer rank.,-3,,,FALSE
+Seth pared a lateral inferior genicular artery.,2,,,FALSE
+Who lost a professional game player?,1,,,FALSE
+Hannah is not shooting Judith with a hammock.,2,,,FALSE
+Janet buries a CD-ROM.,2,,,FALSE
+Who isn't clipping an animal shell?,1,,,FALSE
+Hannah will locate an intestinal artery.,2,,,FALSE
+Seth is figuring a piston.,-1,,,FALSE
+Hannah will be extending a portable restroom.,2,,,FALSE
+Adeline doesn't tie a bacterium to Nancy.,-2,,,FALSE
+Stephen has not discovered Augusta.,2,,,FALSE
+Who will eat a server?,1,,,FALSE
+Andy will be trading two popliteal arterys.,1,,,FALSE
+Douglas writes a button.,-1,,,FALSE
+Who stretches a pharyngeal artery?,2,,,FALSE
+Austin will notice six right clavicle bones.,2,,,FALSE
+Tim imbibed a digital data storage device.,-1,,,FALSE
+Kate lends a test form to Winnie.,2,,,FALSE
+Alba is roughenning a generator.,2,,,FALSE
+Who points a ceiling?,-3,incorrect grammar,,FALSE
+Alfred attacked a sports position.,-3,,,FALSE
+Sheila searched Andrea.,2,,,FALSE
+Bunny will refinance a foot.,2,,,FALSE
+Who sells a farm to a sports position?,-3,,,FALSE
+Malcolm was strengthenning Abraham.,2,,,FALSE
+Morris mails a printed sheet.,2,,,FALSE
+Emily spreaded a right metatarsal 4 bone.,2,,,FALSE
+Oscar tastes a SARS.,0,,,FALSE
+Who is performing a right capitate?,-2,,,FALSE
+Victor intended to a juniorNCO rank to harm.,0,,,FALSE
+Who is disbursing a waist to a professional athlete?,0,,,FALSE
+Who will bear a femur?,-2,,,FALSE
+Randy outrages a field grade officer rank.,-2,,,FALSE
+Byron was not reproducing a portrait.,2,,,FALSE
+Who is not loaning an occupational domain a left femur?,0,,,FALSE
+Agnes ducks a right calcaneus bone.,1,,,FALSE
+UNK_ORG_2 was ideating a tumor.,NULL,,,FALSE
+Who is detecting an occupational domain?,1,,,FALSE
+Who vandalised a test form?,2,,,FALSE
+Sally will reproduce an united states ten cent coin.,2,,,FALSE
+Who doesn't fall an exhaust valve?,-3,,,FALSE
+Who has not protected a theater profession?,2,,,FALSE
+Who voted a basket?,1,,,FALSE
+Paul is not seating a religious position.,0,,,FALSE
+Who is not seeking a CDR?,2,,,FALSE
+Rebecca is reproducing UNK_noun_2.,NULL,,,FALSE
+UNK_PERSON_2 won't be sending a theater profession.,NULL,,,FALSE
+Who has not granted a walnut tree to a janitor?,1,,,FALSE
+Kelly skins a bulk cargo ship.,-1,,,FALSE
+Who will be wading a bevel gear?,-1,,,FALSE
+Who was binding a service position?,0,,,FALSE
+Karl will nod to Sebastian.,2,,,FALSE
+Casey envenoms a brake rotor.,-3,,,FALSE
+Who was canvassing a broom?,0,,,FALSE
+Who grants a steam engine to a safety position?,0,,,FALSE
+Sarah was intercommunicating a lambskin.,0,,,FALSE
+James isn't mailing 3 perforating branch to the posterior tibial arterys.,0,,,FALSE
+Douglas was shouting a CPU.,-1,,,FALSE
+Stella won't be lubricating a staphylococcus aureus.,-2,,,FALSE
+Who will bury a lateral femoral circumflex descending branch artery?,1,,,FALSE
+Who sits Terence?,0,,,FALSE
+Gary is binding a classroom to a theater profession.,2,,,FALSE
+Boris seted a room.,0,,,FALSE
+Who evinces a right navicular?,2,,,FALSE
+Jason comprehends a position.,2,,,FALSE
+Alicia will be inheritting a right subclavian artery.,1,,,FALSE
+Who assails a kitchen?,1,,,FALSE
+Jacinta will extend a facial hair.,-3,,,FALSE
+Who produces a norfolk island pine seed?,-3,a person doesn't produce this tree,,FALSE
+Who will be decreasing a lettuce?,-1,,,FALSE
+Who sold four seeds?,2,,,FALSE
+Elaine locates Casey.,2,,,FALSE
+Ida was not pipping a safety position.,-3,,,FALSE
+Raymond doesn't recall a profile wall.,2,,,FALSE
+Who rendered a stationary artifact?,2,,,FALSE
+Emil forces Harry.,2,,,FALSE
+Who seted UNK_LAW_3?,NULL,,,FALSE
+Lorna will be remembering a single family residence.,1,,,FALSE
+Bonnie has not consumed a posterior spinal artery.,2,,,FALSE
+Who is not smelling UNK_FAC_3?,NULL,,,FALSE
+Donald infects Andy with a tennis court.,0,,,FALSE
+Who violates Jacinta?,2,,,FALSE
+Mathew is not soldering a coffea arabica.,-2,you don't solder a coffee plant,,FALSE
+Who retrieved a pea?,2,,,FALSE
+Amy doesn't design a metallic 3D printer.,2,,,FALSE
+Rose was stealing some rough sawn lumber.,2,,,FALSE
+Alain will be catching a juniorNCO rank.,-2,a rank can't be caught,,FALSE
+Eugene won't be setting to Geraldine.,0,,,FALSE
+Rob will not observe 0 ebola viruss.,1,,,FALSE
+Who relinquishes Richard?,2,,,FALSE
+Kelli finances six coffee plants.,2,,,FALSE
+Who will read a separately excited dc motor?,0,,,FALSE
+Burt is not shooting Daisy.,2,,,FALSE
+Who isn't financing a leaf spring?,2,,,FALSE
+Max doesn't freeze UNK_LANGUAGE_3.,NULL,,,FALSE
+Jessica doesn't drive a pig.,1,,,FALSE
+Clarence was downloading a data sink.,-2,,,FALSE
+Who is not searching a dc motor?,2,,,FALSE
+Who will pass an absolute dud?,0,,,FALSE
+Kevin will be replacing a relief valve.,2,,,FALSE
+Who was not likenning Neville?,0,,,FALSE
+Walter passes an inferior vesical artery.,2,,,FALSE
+Randy deduces 0 vaccinia virions.,2,,,FALSE
+Who will turn a radicchio?,2,,,FALSE
+Penny was evacuating Maurice.,2,,,FALSE
+Who puted a safety position?,0,,,FALSE
+Conan was not strengthenning Doug.,1,,,FALSE
+Francis sculpts 10 capstone publications.,-2,,,FALSE
+Augusta conveys a rotary dump car.,1,,,FALSE
+William was borrowing a short sea passenger ship.,2,,,FALSE
+Mariam assailed a fluorescent light bulb.,1,,,FALSE
+Who freezes a larch tree?,1,,,FALSE
+Who was supporting a sports position?,2,,,FALSE
+Who jogged a manual labor?,-2,,,FALSE
+Eugene soldered a picture frame.,1,,,FALSE
+Amy sold a hyoid bone.,1,,,FALSE
+Who spreaded a fish?,0,,,FALSE
+Who will be slitting a six cylinder engine?,1,,,FALSE
+Robin was kicking a cattle.,2,,,FALSE
+Who starved Inna?,2,,,FALSE
+Dora phones Jennifer.,2,,,FALSE
+Who downloads a plasmodium falciparum?,-2,,,FALSE
+Allan votes a military water vehicle.,1,,,FALSE
+Who will be supporting Rowena?,2,,,FALSE
+Fiona will smoothen an abdomen.,1,,,FALSE
+Who shuts a malarial plasmodium?,0,,,FALSE
+Gary impersonates a film making profession.,-2,,,FALSE
+Who was evacuating a juniorNCO rank?,-2,doesn't make sense to befriend a rank,,FALSE
+Who is not referring a Snellen chart?,2,,,FALSE
+Who will be freezing 3 right true rib 5 bones?,1,,,FALSE
+Anita smells a service position.,-2,doesn't make sense to smell a position,,FALSE
+Daisy winks a railcar.,-1,"could be ""wink at a railcar""",,FALSE
+Lily will be jogging a bartender.,-3,"could be ""jogging toward a bartender""",,FALSE
+Audrey will construe a horn instrument.,-1,"construe means to interpret text, not an instrument",,FALSE
+Lilita was binding a valet.,-2,,,FALSE
+Benjamin will stretch an antigen COVID test.,1,,,FALSE
+Priscilla was punching a non commissioned officer rank.,-2,doesn't make sense to punch a rank,,FALSE
+Who was running an occupational trade?,1,,,FALSE
+Alfred was imbibing a resistor element.,-1,,,FALSE
+Who will be promoting some mint?,2,,,FALSE
+Who gives Harold a horse?,2,,,FALSE
+Who doesn't reproduce five vegetables?,2,,,FALSE
+Who bombards an unskilled occupation?,0,,,FALSE
+Who will combine a fixed bridge?,0,,,FALSE
+Mitch will be plugging a transfer switch.,2,,,FALSE
+Richard will be harming Rosemary.,2,,,FALSE
+Who looks a modelling position?,-3,"it would make more sense to say ""who is looking for a modeling position""",,FALSE
+Francis will put a thymic branches artery.,-2,,,FALSE
+Who will be impersonating Perkin?,2,,,FALSE
+Pauline disburses a human corpse to Carol.,-2,,,FALSE
+Who has not buried 5 notes?,1,,,FALSE
+Fred is hearing a gas pedal.,2,,,FALSE
+Susan is not melting a motor railcar.,2,,,FALSE
+Who will be burying a cotton fabric?,2,,,FALSE
+Who loans a train to Audrey?,2,,,FALSE
+Dora binds a sales position.,-3,,,FALSE
+Donald rung Geoffrey.,2,,,FALSE
+Lionel stretches a sugar beet.,-2,sugar beet can't be stretched,,FALSE
+Damian will not transform a right ventricle.,1,,,FALSE
+Who will be starving a US warrant officer rank?,-2,doesn't make sense to starve a rank,,FALSE
+Who demos a flag officer rank with a crocodile?,0,,,FALSE
+Abigail chokes a commissioned officer rank.,-2,doesn't make sense to choke a rank,,FALSE
+Janet will plant a plasma membrane.,1,,,FALSE
+Adam will be determining to a position.,0,,,FALSE
+Gloria has not purchased zero newspapers from Aloysius.,1,,,FALSE
+Florence photocopies ten oat grains.,-1,,,FALSE
+Who vandalized an external striate artery?,-2,,,FALSE
+Amelia was ironning a left false rib 9 bone.,-2,,,FALSE
+Neville will imagine a ship cabin.,2,,,FALSE
+Who will shoot an enlisted soldier rank with an academic degree?,0,,,FALSE
+Who will be getting Christine?,2,,,FALSE
+Who was compressing 3 operas?,-2,,,FALSE
+Wendy was comparing a foreign service position.,2,,,FALSE
+Rick won't help a vital organ.,2,,,FALSE
+Who dredges a forty eight foot container?,2,,,FALSE
+Brenda will be binding Sarah.,2,,,FALSE
+Who cuted seven pigeons?,0,,,FALSE
+Casey was stepping Isabel.,-3,"""stepping on""",,FALSE
+Who will produce two superior labial arterys?,1,,,FALSE
+Who is voting a nail?,0,,,FALSE
+Vanessa will be determining a chest container.,1,,,FALSE
+Byron was bawling a robotic gripper.,-1,,,FALSE
+Marshela will pip a sales position.,0,,,FALSE
+Mark was boiling an easel.,1,,,FALSE
+Alison plays a Redwood tree.,-3,,,FALSE
+Lydia delivers a bicycle to Melanie.,2,,,FALSE
+Marc is evacuating to a standard gauge railway.,2,,,FALSE
+Pauline has not vandalised a leafy green vegetable.,1,,,FALSE
+Allan has not puted Brian.,0,,,FALSE
+Kevin doesn't befriend a juniorNCO rank.,-2,doesn't make sense to befriend a rank,,FALSE
+Max will be pestling an elevator.,-2,,,FALSE
+Claire cleans a palletized cargo ship.,2,,,FALSE
+Christine was reading a guanarito virus.,-3,"""reading about""",,FALSE
+Patrick will be seeing a flag officer rank.,-2,doesn't make sense to see a rank,,FALSE
+Carol will perceive a modem.,1,,,FALSE
+Who will be running Rose?,0,,,FALSE
+Maurice was reading an iliac branch artery.,2,,,FALSE
+Hannah was combining a non_rechargeable battery.,0,,,FALSE
+Wendy tells an ocean liner.,-1,,,FALSE
+Tim determines a guided missile.,2,,,FALSE
+Who graves a left distal phalanx V bone?,1,,,FALSE
+Florence imbibes a positive crankcase ventilation valve.,-3,,,FALSE
+Who envenoms a defensive stock?,-2,,,FALSE
+Who is supporting a military surplus?,2,,,FALSE
+Who seats Abigail?,2,,,FALSE
+Nancy will pullulate Caitlin an auricle.,0,,,FALSE
+Tim auctioneers a steps.,1,,,FALSE
+George fires a switch device.,2,,,FALSE
+Laura crunched a left intermediate phalanx II bone.,1,,,FALSE
+Susan assails a triquetral bone.,1,,,FALSE
+Who will be inheritting four apples?,2,,,FALSE
+Greta will be writing five torsi.,-2,writing a torsi doesn't make sense,,FALSE
+Morgan buries a temporal branch artery.,2,,,FALSE
+Terence will pour 10 leafy green vegetables.,2,,,FALSE
+Who won't assault a professional athlete?,2,,,FALSE
+Who has not ingested some glue?,2,,,FALSE
+Who was assailing Richard?,2,,,FALSE
+Who won't pestle an ovum?,1,,,FALSE
+Amselm will be wetting a note.,2,,,FALSE
+Who will be trotting from an edible nut Andrew?,0,sentence doesn't make sense,,FALSE
+Lisa will be stealing a palm oil nut from an artistic occupation.,-2,doesn't make sense to steal from an occupation,,FALSE
+Emily doesn't borrow a vessel to semilunar ganglion artery from a field grade officer rank.,0,doesn't make sense,,FALSE
+Who reproduced a drum?,2,,,FALSE
+Who will be firing a hotel function room?,0,sentence doesn't make sense,,FALSE
+Rebecca sought a Triticum urartu.,-3,"""sought after""",,FALSE
+Maggie borrows a petroleum tanker ship.,2,,,FALSE
+Who finances a chairman manual?,-1,can't fiannace a document,,FALSE
+Who roughens a wheelchair?,2,,,FALSE

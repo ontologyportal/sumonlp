@@ -18,8 +18,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "csv_path",
-        type=Path,
-        help="Path to the CSV file (e.g., test.csv)",
+        help="Path to a CSV file (e.g., test.csv) or 'all' to process every CSV in csv_data/",
     )
     return parser.parse_args()
 
@@ -62,9 +61,26 @@ def extract_columns(csv_path: Path) -> dict[str, str]:
 
 def main() -> None:
     args = parse_args()
-    sentence_status = extract_columns(args.csv_path)
-    for sentence, validity in sentence_status.items():
-        print(f"{sentence}: {validity}")
+    csv_arg = args.csv_path.strip()
+    if csv_arg.lower() == "all":
+        csv_dir = Path(__file__).resolve().parent / "csv_data"
+        if not csv_dir.is_dir():
+            raise SystemExit(f"CSV directory not found: {csv_dir}")
+        csv_files = sorted(csv_dir.glob("*.csv"))
+        if not csv_files:
+            raise SystemExit(f"No CSV files found in {csv_dir}")
+
+        for idx, csv_file in enumerate(csv_files):
+            print(f"--- {csv_file.name} ---")
+            sentence_status = extract_columns(csv_file)
+            for sentence, validity in sentence_status.items():
+                print(f"{sentence}: {validity}")
+            if idx < len(csv_files) - 1:
+                print()
+    else:
+        sentence_status = extract_columns(Path(csv_arg))
+        for sentence, validity in sentence_status.items():
+            print(f"{sentence}: {validity}")
 
 
 if __name__ == "__main__":
