@@ -1,0 +1,1007 @@
+Total sentences processed successfully: 1000
+Valid sentences: 892 
+Invalid sentences: 108 
+
+---- VALID SENTENCES ----
+Cindy is envenomming a sheep.
+Who places a profile wall?
+Eugene isn't substituting an organ with a human corpse.
+Bertram will be exchanging seven organisms.
+Pearl is shooting Bertram.
+Who was choosing?
+Jacinta doesn't demo UNK_GPE_1 with null.
+3 coffea robustas was nodding to an organism.
+Hazel will be stretching a plant spinose structure.
+Who steals a tableware from Adam?
+Fred will release a right stapes bone.
+Ralph sat Cindy.
+A seaweed dredged a business railcar.
+Who nods a domestic animal?
+Lucy bombards a middle cerebral artery.
+Neville is searching a plant.
+Who is manducating a fruit or vegetable?
+Who pulls a vehicle?
+A bacterium infects Hazel.
+Gloria is purchasing a product.
+Who pilots an aircraft?
+Christopher will not be lubricating a gear.
+Bertha took a hamster.
+Who will be massaging Tim?
+Who is matching a currency?
+Nancy will be jogging a motor scooter.
+Who pestles a bone?
+Ricky will be partaking some wood artifact.
+Bruce xeroxs a text.
+Who doesn't reproduce a windmill?
+Harriet is inheritting a skylight from Mabel.
+Who reproduces a sheepdog?
+Bernice isn't transforming a norfolk island pine seed.
+Janice is painting a wall.
+Who will be extending a weapon?
+Who has not examined a fixed bridge?
+Who tastes a gallery car?
+Who doesn't bind a chest seal?
+A vine doesn't smell Edmund.
+Who is imbibing an automobile?
+An organism will poison a small intestine.
+Who was classifying Travis?
+Who will fire a thermometer?
+Rita is sorting an easel.
+Who has not took six checks?
+Damian was eating a shoe sole.
+Larry vandalizes a vehicle.
+Who will not lend Stanley an oxygen sensor?
+Herbert tastes a shimagh.
+Who will reproduce a right hepatic artery?
+Belinda studies a motion picture.
+Allan refinances a feather.
+A grasshopper suffers UNK_noun_3.
+Who will be catching 10 eyes?
+Alec won't read a chapter.
+Who is nodding a head?
+Eugene won't work Lilian.
+Who will imagine ten right stapes bones?
+Lilian will vandalize a vehicle.
+UNK_ORG_3 has not kicked a leg.
+Who will smell a neck?
+Joe doesn't eat a charger.
+Amanda raises a smoke detector.
+Judy was painting a wall.
+Ann stores a RNA virus.
+Seth will replace a coffea arabica.
+Who buried a human corpse?
+Who will be designing a positive crankcase ventilation valve?
+Alba was planning.
+A bacterium fermented a bacterium.
+Maria will protect Lilita.
+Who will plug a portable computer?
+Who burns Monica?
+Who doesn't comprehend Sue?
+Who irons a clothing?
+Sheila was playing zero borrowed stocks.
+Maurice is designing a tub.
+Florence is shooting a device.
+Sharon ducked a scooter.
+Tracy kills an organism.
+Kelly will search a blackboard.
+Rodney was not pilotting an airplane.
+Who plans?
+Thomas will be paying an occipital lobes.
+Raymond will interpret a text.
+A horse isn't shooting a wearable item.
+Alonso is selling a product to a waist.
+Karina is burying a human corpse.
+Claire will study a hoisting device.
+Lisa will be taking a vehicle.
+Mavis solders a curb.
+Dorothy is befriending Alba.
+Who is rendering a tongue?
+Christine flew an airplane.
+Who will be stealing a biped?
+Stephen buries a human corpse.
+Who was not substituting a planer?
+Norman has not stole some white oak wood.
+Vincent is borrowing a factual text.
+Morgan kicks a leg.
+Who was not buying a product?
+Nicholas will be subjecting a forty foot high cube container to an attaching device.
+Who dredges a ball joint?
+Derrick will be storing a nut.
+Who sculptured a black current?
+Cnythia tastes a buffalo.
+Lora will shut a doorway.
+Who constricts an animal?
+Simon wasn't infecting a bacterium with a Bilberry.
+Judy places a projection screen.
+Kristin has not dumped a ship container.
+Who isn't financing a currency?
+Who sprayed a deltoid muscle?
+Who was inheritting a factual text?
+Hamish doesn't make a home base.
+Donald doesn't shut a doorway.
+Elaine examines a hexaploid cell.
+Fiona injects a light fixture.
+Lawrence delivers a tibia to a patent.
+An antelope has not compared a red cabbage.
+Christian trades a product.
+Rosa was writing a text.
+Herbert will play a chest seal.
+A bacterium attacked a product package.
+Mabel doesn't search John.
+Who will be aiding Sue?
+Rebecca shares Dorothy.
+Who added a paper?
+Who wasn't firing a thermometer?
+Who lubricates a machine?
+Sheila imbibed a truck.
+A deer hunts a bag.
+Who fires a thermometer?
+Andrew will be observing an ironing board.
+James will be canvassing a dramatic play.
+Max planned.
+Agnes will fire a thermometer.
+Who will steal a test protocol specification from a left femur?
+Who comprehends Robert?
+Who takes a paddy rice?
+Who chooses?
+Lora smelt Gerald.
+Who will be separating a right intermediate phalanx IV bone?
+Who wasn't roughenning a fabric?
+Patrick xeroxed a text.
+Who reveals a military vehicle?
+Agatha is not singing to Calvin.
+Derek doesn't unwrap an outdoor clothing to Cnythia.
+Mabel was canvassing a vending machine.
+Andrew will be spraying a reindeer.
+Tony will be toying a goat.
+Gertrude is strangling an inferior ulnar collateral descending branch artery.
+Who isn't pouring a bottle?
+Who doesn't freeze a papaw?
+Stella smells Terence.
+Who is locating a guitar?
+UNK_PERSON_1 is soldering a hall.
+Who dodged a bullet?
+Ignatius is evaporating null.
+Who will relinquish an oar?
+Who doesn't swap a coccidioides immitis?
+Who buys a product?
+Who is cypherring a veil?
+Rosalind was not bombarding four right intermediate foot phalanx IV bones.
+Eugene was designing an antelope.
+Alan is finding an occipital bone.
+Melody will be squeezing a weapon.
+Who is dumping an intercostal branch artery?
+Who doesn't get UNK_LANGUAGE_2?
+Nancy fired a thermometer.
+Who is pouring a bottle?
+Who solders a water board?
+Amanda poisons a sunflower seed.
+Gordon has not interchanged a zero coupon bond.
+A pigeon distributes a message.
+A snake was selecting Pamela.
+Pearl converts an organism.
+Who has not envisaged a twenty foot standard container?
+Who will be forgiving Boris a string?
+Who doesn't pull a vehicle?
+Who won't affix a hair?
+Barbara placed some tea bud.
+Sonya will be refinancing a dining room.
+Leonard was attacking a dish.
+Who lost Norman?
+Who has not sculptured a gutrah?
+Sharon doesn't boil a nose.
+Kristin reproduced a mobile cell phone.
+UNK_PERSON_2 won't be stealing a steam bath from a sports facility.
+A seaweed will dredge a financial instrument.
+Megan will be impersonating a cranial bone.
+An oyster finds 7 ducks.
+Alex designated to a jaw to massage.
+Priscilla will be waving a weapon.
+Jessie will be wetting a clothing.
+Guenevere refinances a pulse oximeter.
+Who is painting a wall?
+Harriet won't be performing an artillery cannon.
+Violet discovers a tunnel.
+Who won't be driving a vehicle?
+Victoria auctioneers a periodical.
+Who relinquishes a board or block?
+Who is downloading a computer?
+Alonso votes a ballot.
+Frank plays a forty foot high cube container.
+A bee was vaporising an art work.
+A moss will not take a liver.
+A horse will bear a radar.
+2 deers will be hunting a jet airplane.
+Who walks a municipal bond?
+Alexander will not be kicking 5 legs.
+Vincent will be killing an organism.
+Nicholas doesn't freeze a treasury bond.
+A leech will be comparing a TDD phone.
+Who is performing a vehicle?
+Who will be waving an arm?
+Leonard heard Angelina.
+Who will hunt Tony?
+Peter supported a currency.
+Brian is selling a product.
+Who will split Juliana?
+Who was seating an auditorium?
+Who is breaking a doorway?
+Kristen was not spraying UNK_FAC_1.
+An oyster is nodding to Violet.
+Ingrid was befriending an organism.
+Sam plans an art work.
+Who sells Simon a strawberry?
+Who interchanges an organism with an organism?
+Kevin will toy a game artifact.
+Who ascertained?
+Who won't be telephoning Valentine?
+Thomas will penalize Stella.
+An oyster doesn't recollect.
+Mary doesn't convey 7 messages to Winnie.
+Eight coffea robustas is sculpting a putting green.
+Abigail will not poison a personal watercraft.
+Monica doesn't locate Jennifer.
+Who will express a summary?
+Who discovers a tennis court?
+Who doesn't clean a home base?
+Who pares an orange fruit?
+Augusta protects a muffler.
+Alison will present a performance stage with an old testament.
+Who was designating to Victoria to irrigate?
+Who analyzes a device?
+Who will be borrowing an ocular group artery?
+Who befriended Herbert?
+Dawn was voting a ballot.
+Who shuttles a vehicle?
+Who evacuated a liver?
+Michelle was operating a device.
+A locust nods to a domestic animal.
+Who will be computing a pulse oximeter?
+A grape vine won't be pestling a plant branch.
+Who was borrowing a laser?
+Rosa was pulling a N95 respirator.
+A black cherry tree will not be getting an evergreen tree.
+Doris freezes a dramatic play.
+Who assaults Vivian?
+Annabel will steal an air intake from Gertrude.
+Who befriends Elvis?
+An organism won't poison Pete.
+Bernice fortifies a weapon.
+Adrian transforms an aircraft.
+Jackie doesn't place a shower.
+Dalton will be bombarding zero white blood cells.
+Alban compounds an optical device.
+Who will peel an orange fruit?
+Who will lose Adeline?
+Who is not shifting a clover?
+Who doesn't fire a thermometer?
+Amy imbibed a charger.
+Lawrence soldered a celiac artery.
+Amanda toys a button.
+Elton chooses.
+Clarice examines an inferior mesenteric artery.
+Who produced a domestic animal?
+Mildred was playing a dry bulk carrier ship.
+Who fires a thermometer?
+Josephine drives a vehicle.
+Jane will be tying null to Alicia.
+Who will not compare Alvin?
+Who won't inherit a factual text from a rollaway bed?
+Who is planning a ratchet?
+Who has not got a toothbrush from a bacterium?
+UNK_ORG_3 has not assailed a zygote.
+Bridget kicks a leg.
+Perkin pipped a device.
+Christian was slicing a finger.
+8 organisms doesn't befriend Derek.
+Yvonne will imbibe a metallic 3D printer.
+Who will class a bull?
+Who submits a contraceptive device?
+Joyce will match a currency.
+Who won't mail Eugene a porch?
+Claudia won't famish Sonya.
+Alison will not be leaving a turkey bird.
+Who will be matching a currency?
+Who will be sculpturing a pentaploid cell?
+Augusta selects some tea twig.
+Monica sends a message to Richard.
+Amselm is shuttling a vehicle.
+Byron has not studied an oven.
+Rose will not be interviewing a purchase order.
+Who canvass null?
+An organism will not be befriending a cement carrier ship.
+A bacterium will egest a reel.
+Who was frying a pot or pan?
+Phil telephones Bertha.
+Duncan is not breaking a Bone.
+Kate doesn't turn a vehicle wheel.
+A Poplar tree was choking an avocado.
+Bob won't judge two stocks.
+Who will plan 8 arachnids?
+Who submitted 8 PATELLAs?
+Who will watch an audio recorder?
+Ethel seats an auditorium.
+Mavis studies a ramus intermedius.
+Who empties an uniform?
+Eric ate a short sea passenger ship.
+Eric operated a device.
+Geraldine was designing a military aircraft.
+Sonya was infecting a bacterium.
+Who drove a vehicle?
+Aileen will compare Amy.
+Who was vandalising a cotton?
+Who plugs Alice?
+Gary is evacuating a building.
+Anthony indicates a finger to William.
+Who was setting a panda?
+A variola minor was comparing a hominid.
+Mike reproduces a cell.
+Amelia will be adding a ship container.
+Sylvia eats to a pontoon bridge.
+Null will be remembering.
+Who sprays null?
+Doug will be bearing a workshop.
+Who doesn't pour a bottle?
+Who was acquiring an amphibian from Thomas?
+Harriet is playing a swimming pool.
+Who was storing an electrical component?
+Emil pours a bottle.
+A donkey was freezing a coupon bond.
+Who strengthens 0 compasses?
+Hilda judged a C1 vertebra bone.
+Edward will be taking an anatomical structure.
+Dalton was violating Christian.
+Jim burns a building.
+Who will not be designating a finger?
+Judy isn't punching a domestic animal.
+Mona is retrieving.
+Robin extends a weapon.
+Melinda wasn't taking a berry.
+Dolly doesn't show a fluid cylinder.
+Who exchanged a flute with a private railcar?
+Who binds a fictional text?
+A bacterium ferments a bacterium.
+Seth votes a ballot.
+Teresa bombarded a spring.
+Who has not fired a thermometer?
+Who was purchasing a currency from Alba?
+Who has not buried a human corpse?
+Who is imbibing a vehicle registration?
+Mitch conceals a coronavirus.
+Rosa is rendering a text.
+Who will be attacking a casino?
+Phil ate a large intestine.
+Who will not be studying a yersinia pestis?
+Seth will be vandalizing a vehicle.
+Sue presents a factual text a red oak tree.
+Abraham will be pestling ten fruit or vegetables.
+Who is freezing a hand gun?
+A bacterium will not be working a bacterium.
+Roger injects Rita with 3 arms.
+Who will be dodging a bullet?
+Mavis is roughenning a clothing.
+Stuart won't disburse a dengue fever virus.
+Who doesn't perform a helmet?
+Who questioned a pulmonary artery?
+Agnes will observe a window.
+Andrew will express a message.
+A grass plant borrowed a library building.
+Ronald was impersonating Irene.
+Who will dodge a bullet?
+UNK_ORG_2 was protecting a toilet.
+Who is contracting a light fixture?
+Who was bombing Priscilla?
+A bacterium won't attack a CPU.
+Lisa has not shared Valerie.
+Who locates a sheep?
+Kelli inherits an oilseed.
+Ursula helps a table.
+Sally was planting a seed.
+Maria is lifting an animal.
+Who will read a deltoid muscle?
+Boris won't store a papaya.
+Marilyn steps an ATM machine.
+Kathleen will be clipping a pianola.
+Lionel doesn't massage a reference book.
+Karl will choke an eggplant.
+Phoebe was inflating a balloon.
+Charles will upload a combustion chamber.
+Pamela will steal a hair.
+Who drills a left metatarsal 4 bone?
+Rosalind will be imbibing a cub.
+Who will be attacking Penny?
+Ruby will be judging a helicopter.
+Alonso doesn't hear Emma.
+Lucas will be outraging Eugene.
+Ethel punches Frederick.
+Katherine smells a toy.
+Raymond nods 7 heads.
+Bertram replaces to a bowling lane.
+Benjamin fishes a gear train.
+Lionel was bombing ten endives.
+Jed classes a Ford rim.
+Hamish dumps a ship container.
+Who doesn't combine a contraceptive device?
+Maggie is firing a thermometer.
+Who will be bombarding a ski?
+Who is not subjecting a pearl to Dorothy?
+UNK_PERSON_1 determines a factual text.
+Kathleen sculptured a right distal foot phalanx V bone.
+Lora dreams a hearing protection.
+Who is dodging a bullet?
+Alain doesn't see a tv remote.
+Philip will be mailing a device.
+Melvin showed nine T4 vertebra bones to Mike.
+Who is wading a title?
+Larry roughened a clothing.
+Daniel detects a garlic.
+Morris pips Duncan.
+Allan will be forgiving Kristen a cricothyroid artery.
+Who was not kicking a leg?
+Patrick will exhibit a display artifact a hair.
+Who solders a spring?
+An organism was befriending some walnut wood.
+Who will not be charging a sheepskin?
+Clarice has not respired a tie rod.
+Who discovers a MacPherson strut?
+Bertha was helping a table.
+Who downloads a computer?
+Derek will be borrowing a factual text.
+Wilfred will not bombard a salivary gland.
+Caitlin will translate a text.
+Who is uncovering 10 most recent feeds?
+Boris will nod to a head.
+Who will be inheritting a factual text from a VSTOL?
+Leonard was borrowing a factual text.
+Who was borrowing a muffler from Rick?
+Allan dredged a ball.
+Walter was irrigating an airport.
+Vanessa smells a sheepskin.
+Pete will be firing a thermometer.
+Who assorted a railcar?
+Allan is paying a ski.
+Who was catching Ada?
+Andy bought a product from 6 currencies.
+Phoebe is seeing four spinachs.
+Who plans?
+Who is demoing an animal controller?
+Kevin is choreographing a tire.
+Who sits a seat?
+Derek doesn't wink an eye.
+Who will be infecting Jed?
+Who won't judge a blue agave?
+Sylvia stole a triploid cell.
+Who doesn't starve Marshela?
+Calvin will write a text.
+Christine will be running a game artifact.
+Who buries a human corpse?
+Who will be refinancing an aircraft carrier?
+Who was reading a plant product?
+Marshela was closing a doorway.
+An animal will be burying an alternator.
+Ada indicates Amselm a finger.
+Who will be detecting the ferry boat?
+Who suffers UNK_WORK_OF_ART_3?
+Jackie was not stealing a lip.
+Who plans?
+Susan will not smoothen a hair.
+Who was remembering a L2 vertebra bone?
+Claudia will be bawling a rotor.
+Ida fortifies a weapon.
+Who will be inheritting a factual text from Kristin?
+Alec is awarding Susan null.
+Who will be analyzing 10 decaploid cells?
+Doug swaps a tooth.
+Four organisms befriends Teresa.
+Benjamin is roughenning a clothing.
+Henry will be grinding a canine.
+Jed evacuates an absolute dud.
+An animal will be burying a projectile shell.
+Rose will be canvassing UNK_PRODUCT_2.
+James doesn't sing a bulk cargo ship.
+Who stored a room?
+Who nods to Shirley?
+Who was trading a left palatine bone?
+UNK_ORG_2 evacuated a building.
+10 ducks has not waded a synagogue.
+Who won't be refinancing a joint doctrine?
+Rose has not sprayed null.
+Who analysed a valve?
+Who will lend an electrical plug a video display?
+Who assails 3 cashew nuts?
+Who won't starve a solarium?
+A pigeon was converting a viral agent.
+A puppy will solder null.
+Noel finances an alligator.
+Who will share a C2 vertebra bone with a legume?
+Lilian treats a viral core.
+Daphne will farm a superior laryngeal artery.
+Max painted a wall.
+Five horses trotted to Karina to swing.
+Claire will massage an aloe vera plant.
+Benjamin will be strengthenning Susan.
+Who ran a chest seal?
+Vanessa will inherit an ape.
+Donald doesn't deliver a window to UNK_PERSON_2.
+Tony reads a chapter.
+Anne protected a groundnut.
+Who was boiling a baseball field?
+Who was aviating an airplane?
+Who commanded a music text?
+5 hamsters was taking a home base.
+Greta is playing a rocket.
+Pete supported a currency.
+Lydia is painting a wall.
+Who precipitated a hallway?
+Barbara will bury a human corpse.
+Annabel exchanged an organism with a queen_sized bed.
+Barnaby produced a botanical tree.
+Who doesn't sing to Linda?
+A seaweed was not dredging a tape recorder.
+Norman looks a gas pedal.
+Who doesn't release a basement?
+Rose was uncovering a touch screen.
+Sheila designates to a lateral cuneiform bone to compare.
+Who is emerging an Escherichia coli?
+Bertie was suffering zero muscles.
+UNK_ORG_3 is befriending an organism.
+Who pulls a vehicle?
+Who doesn't wade a telephone?
+An enveloped virus observed a L2 vertebra bone.
+Francis is performing a head.
+Who was not borrowing a portabello mushroom?
+Seth will wink 4 eyes.
+Who vandalises a prison?
+An enveloped virus is not locating Lydia.
+Ruby ideates null.
+Who is matching a currency?
+Who will award a title to 3 true rib bones?
+Gertrude is strengthenning Aileen.
+Who fires a thermometer?
+Ann will work a pay check.
+Veronica will creep a bed frame.
+Stephen will be firing a thermometer.
+Agnes will be mailing a message.
+Evelyn was envisaging an electric device.
+Who performs a device?
+Who will be playing null?
+Who will compound a manifold?
+Who designates a finger?
+Rosa will be infecting Ursula with an orchid.
+Laura doesn't befriend an organism.
+Who loses Hazel?
+Clarice has not seated an auditorium.
+Cara will not be watching.
+Who isn't perceiving a left colic descending artery branch?
+Mitchell uncovered a product package.
+Morgan drives a vehicle.
+Casey will be sculpturing a base.
+Who will be imbibing a bathing device?
+Who protected an armor?
+Who was eating an ignition coil?
+Who is pipping Robert?
+UNK_PERSON_3 was toying a game board.
+Dolly is substituting an organ.
+Wilfred binds a recording tape.
+Who replaces 10 fingers?
+William doesn't buy a product.
+Eugene will loan a vehicle a military vehicle.
+Who will burn Henry?
+Bertha doesn't relinquish Richard.
+Cindy pilots an airplane.
+Pauline is fishing a gear.
+An organism isn't befriending a motorcycle.
+Who helped Pearl?
+Leonard painted a painted picture.
+Barbara shuttles a vehicle.
+Who isn't manducating a fruit or vegetable?
+Who wasn't eating a calf?
+Noel will be relinquishing a left palatine bone.
+Who will be giving a tomato to Emma?
+Ethel has not winked 4 eyes.
+Who has not wrought a bacterium?
+Neville searched Oliver.
+Leonard infected Eileen.
+Who punishes Augusta?
+Fred stole some red oak wood.
+Who has not shouted a saddle?
+Who is painting a wall?
+Who is determining?
+UNK_PERSON_2 demoed a zener diode.
+Maggie injected a jfet transistor with null.
+Geraldine doesn't bombard a bottle.
+A bacterium was not fermenting 4 bacteriums.
+Who will download a computer?
+A hominid impersonated Elton.
+Who acquires a ls1 engine?
+Who is comparing four superior gluteal deep branch arterys?
+Who manducated a fruit or vegetable?
+Felix doesn't play zero berries.
+Sue was sculpturing a kyasanur forest disease virus.
+Norman is smelling a planing hull water vehicle.
+Alcyon processed a proper hepatic artery.
+Who doesn't bind Claudia?
+Who will wink a motor scooter?
+A grape vine will be firing a thermometer.
+A Poplar tree was nodding a neck.
+Kevin isn't pulling a npn transistor.
+Who infects a microorganism?
+Susan has a walnut tree.
+A mosquito sat an auditorium.
+Valentine reproduces a cell.
+Who paints a wall?
+Lily gets a factual text from a jaw.
+5 animals bellows a dress.
+Who will study a mylohyoid branch artery?
+Alcyon includes a chin.
+A Fir tree will vandalize a vehicle.
+A monkey swung Austin.
+Who releases a controller?
+A calf was designing a bed linen.
+Who produces some cocoa bean?
+Inna evacuates a nail.
+Patricia searches 10 clostridium tetanis.
+Who will be setting a petroleum tanker ship?
+Eugene operated a device.
+Who will judge a vehicle brake?
+Thomas isn't calling Megan.
+A west nile virus is tying a portabello mushroom to Ignatius.
+Who befriends null?
+Megan befriends Mona.
+Pauline was mashing a fruit or vegetable.
+Annabel isn't stealing a heliport from 4 cashew nuts.
+Alba will be voting eight ballots.
+Phoebe was driving a vehicle.
+A botanical tree wasn't committing a plant spinose structure.
+Who is selling a currency UNK_LAW_2?
+Oren transforms a safety device.
+Who interchanges four organisms?
+Albert will perceive Eric.
+Jacinta drove a vehicle.
+Aileen will not be translating a text.
+Who evacuates Sheila?
+Derrick decreased a factual text.
+Eileen was storing six cytomegaloviruss.
+Robert will be evacuating a building.
+Alphonso is ironning a clothing.
+Mary wasn't intending to a left proximal phalanx III bone to play.
+Winnie will be pipping a device.
+Milton was revealing a navicular bone.
+An organism doesn't befriend Adam.
+Who was searching a tea tree?
+Matilda protects a hand tool.
+Caitlin will be moving to Veronica.
+Mona drives Malcolm.
+Ruby is studying 6 testicular arterys.
+Who drinks a face?
+Who has not squeezed an odometer?
+Alex will compare UNK_ORG_1.
+Ada will be smoothing a hair.
+Gordon was granting Victor a water catchment.
+A queen insect wasn't suffering a drill.
+Who compounds a blade?
+Richard doesn't take a vehicle.
+Wallace relinquishes Deborah.
+Who gave Molly a tongue?
+Who has not massaged a bedroom?
+Augusta will not download a calf.
+Who refinances an armor?
+Grace was not processing a vaccinia virus.
+Who doesn't borrow a wearing friction surface from a night club?
+A coffee plant doesn't toy a flower.
+Who will penalise Kevin?
+Pete will be raising 3 domestic animals.
+Daniel was reproducing a cell.
+UNK_ORG_1 compounds a pollen.
+Who was punishing a gun barrel?
+Mariam vandalises a vehicle.
+Alice will watch a motion picture shot.
+Veronica is choosing an arcuate artery.
+Albert befriended Susan.
+Penny is writing eight texts.
+Sarah purchases a product from Roy.
+Larry will drink a lateral cuneiform bone.
+Who will remember?
+Who isn't taking a vehicle?
+Who was seeing an electrical component?
+Tommy was penalising Victor.
+Who placed an article?
+Who voided a nipah virus?
+Who will compare Barbara?
+Melinda ate a displacement hull water vehicle.
+Who will interview a fluorescent light bulb?
+Who is questioning 8 throats?
+Who will not be planning a right II metacarpal?
+Who planned?
+Who compounded five C5 vertebra bones?
+Madeline eats a PATELLA.
+Who will not bind a chin?
+Vanessa drills a foot and mouth virus.
+Andrea isn't ascertaining 8 factual texts.
+Carmen will melt a generator.
+Who will be breaking a kitchen?
+Harold doesn't hear a lateral femoral circumflex transverse branch artery.
+A guinea pig is regarding a government building.
+Bernice will drill a gas pedal.
+Geoffrey disbursed a flowering plant.
+Who was planning?
+Marshela doesn't vote a ballot.
+Patricia has not acquired Alain.
+Mariam wasn't stealing a stock.
+Edward doesn't farm a zygote.
+Wallace released a guanarito virus.
+Elaine is storing a revolver gun.
+Who has not fired a thermometer?
+Aaron specifies to an insurance policy to kick.
+Janice is taking a golf facility.
+Tina doesn't close a doorway.
+Rebecca will be paying a spore.
+Nicholas inflates a balloon.
+Who will pestle a bone?
+Alonso flew an airplane.
+Who ran a game goal?
+Rachel will be infecting a bacterium.
+Alonso ran Janet.
+Geraldine is fortifying a weapon.
+Isabel will sell a product.
+Who will not locate a synagogue?
+Murphy doesn't freeze a supreme intercostal artery.
+Lora wasn't turning a bicycle.
+Linda won't be investing a cable ship.
+Alban was not commanding an insurance policy.
+Leonard is vandalising a vehicle.
+Maurice is harming an animal.
+An organism poisoned a crab.
+Alice has not recollected.
+Ignatius is analyzing four united states five cent coins.
+Alvin will hear a hen.
+Lindsay isn't drinking a brake pedal.
+Who was choking a screw?
+Herbert has not waved to 9 arms.
+Pauline will question a rutabaga.
+Mathew will be locating a portable computer.
+Duncan is catching UNK_PERSON_3.
+Who is befriending Janice?
+Simon matched a currency.
+Who will not be infecting a microorganism?
+Lydia loaned a vehicle to Ursula.
+Who will smell a horse?
+A salmon has not readed 5 books.
+Mike won't be downloading a palisade.
+Lilita forgives a gonadal artery.
+Alison was choosing.
+Who will be driving a vehicle?
+Vincent doesn't produce a left false rib 10 bone.
+Who won't be smelling a tachometer?
+Kenneth has not winked Evan.
+Phil will give a body junction to a external gear.
+Jeffrey will be nodding a domestic animal.
+Marshela uploaded a ship cabin.
+Who is pushing a party platform?
+Eric will be questioning a N95 mask.
+Who was dreaming 8 microorganisms?
+Who doesn't lose an airbag?
+Doris is hunting 2 organisms.
+Doreen doesn't hear a different Doreen.
+An elephant will be lifting a party platform.
+Who presented Peter a medulla?
+Dorothy was dodging a bullet.
+Helen will fortify a weapon.
+Who performs a crocodile?
+Who guides an ulna?
+Who doesn't dump a baseball bat?
+Irene vandalized a vehicle.
+Bob was forgiving a clover.
+Tony is storing an unpowered vehicle.
+Who pips Pauline?
+Lorna was posting 9 messages.
+Who will loan a baseball dugout an intestine?
+Terence invests an ice breaker ship.
+Who will be cutting a wheelchair?
+Who will be mailing a long posterior ciliary artery?
+Boris will shoot a device.
+A sunflower borrows a veil from an Eustachian tube.
+Who replaces Samantha?
+Who borrows an endomembrane from Jessie?
+Molly will be painting a wall.
+Who will not be treating an animal?
+Who forgives an embassy building?
+John will be playing a game artifact.
+UNK_ORG_1 doesn't choose Harold.
+Who punished a chemical tanker ship?
+A goose wasn't borrowing a chapter from a library building.
+Phyllis doesn't act Gerald.
+Adeline observed Dalton.
+Rebecca fortified a weapon.
+Neville will not attack a blackberry.
+Who is awarding a title a motor?
+Who will suffer a stock?
+Who is infecting a microorganism?
+Who has not sought a basement?
+Norman doesn't produce a guided missile.
+Elton will be massaging a weather assessment.
+Who caught Barbara?
+Frances was not computing Pamela.
+Ursula starts a computer memory.
+Randy fishes a gear.
+An animal doesn't massage a saddle.
+Who will be interpretting 8 texts?
+Lionel will be smelling a game artifact.
+Who will find a factual text?
+Hardy will be hunting Augusta.
+Who is not dodging a bullet?
+Rose smooths a hair.
+Kristin has not massaged some bird egg.
+Barbara will be recalling a right ossa coxae.
+Rodney is spewing a hair dryer.
+Cnythia is searching a broom.
+Caitlin will present a factual text to Gloria.
+Amadeus was inspecting a posterior inferior cerebellar artery.
+Who buried a human corpse?
+Richard shares a factual text.
+Who doesn't bear Deborah?
+Audrey will be winking from an eye Doris.
+Who will be working a bacterium?
+Who is selling a currency?
+Who will be lubricating a machine?
+Who produced a tooth?
+Who will be mailing UNK_GPE_3 to Dora?
+Kelly doesn't see an exercise center.
+Who sought a poultry?
+Louis planned.
+Who was photocopying a text?
+Rebecca emptied an aerator.
+An organism befriends a hominid.
+Who supports Aileen?
+Peggy will be borrowing a factual text.
+Frank is working a pay check.
+Who was stealing a baseball dugout from Amy?
+Dora will not toy a hen.
+Joan is seeing an eye.
+Lisa deduced an upper leg.
+Teresa selected a toll booth.
+Frank doesn't set a pharyngeal artery.
+Who will be strangling Larry?
+Who will combine a lyrics?
+Alice imbibed a kennel.
+Who bombs a sheep?
+Isabel is charging Denis.
+Who is taking a vehicle?
+Mike borrows nine factual texts from a library building.
+Deborah kicks a leg.
+A bacterium doesn't infect a cell with an E. coli.
+Richard waters a goat.
+Who doesn't buy a product from Desmond?
+Byron was killing an organism.
+Kelly evacuates a stationary artifact.
+Who was pouring a bottle?
+Zero hominids was not befriending a hominid.
+Doreen will examine a malarial plasmodium.
+Mary disburses an air conditioner.
+Wallace compares a porous container.
+Who was soldering a barricade?
+Sue makes a home base.
+A botanical tree fired a thermometer.
+Melvin was massaging Stella.
+Cindy will invest a tent.
+Who will evacuate a time_phased force and deployment data file?
+Who will spray a peach?
+Who is hitting a vehicle wheel?
+Duncan is operating a device.
+Conan is not visitting a hand gun.
+Olga will not imbibe a bronchial duct.
+Who likens an organism?
+Lisa is boiling a research ship.
+Geoffrey immunizes a patent.
+Who won't plan a pulmonary vein?
+Marshela was planning.
+
+---- INVALID SENTENCES ----
+Sebastian heard a right proximal foot phalanx II bone.
+Abraham is pulling UNK_FAC_3.
+A seaweed was dredging nine left proximal foot phalanx V bones.
+A monkey is injecting Rowena with a screwdriver.
+A bacterium egested a PATELLA.
+A seaweed is dredging a FEMUR.
+Who was seeking 3 pecss?
+Who canvass UNK_FAC_1?
+A burkholderia mallei selects Lisa.
+Bill will be drinking a thoracic vertebra bone.
+Ida will be stealing a right distal phalanx V bone from Nora.
+A bacterium attacks a wrist bone.
+Jessie steals a dorsal carpal branch of radial artery from a wet bar.
+Who was borrowing a m2 browning?
+Francis was slicing a finger.
+Inna lends eight pollens to a middle cerebral artery.
+A Bunny is starving UNK_PRODUCT_2.
+Who doesn't bomb a building?
+Eight deers hunted Helen.
+Nine chordopoxvirinaes evacuates Roland.
+Kenneth was freezing a human corpse.
+Who was not performing an external carotid terminal third portion artery?
+Alvin is suspiring 10 lungs.
+A bacterium infected Selina with a server.
+A microorganism awards a wrist bone a chairman manual.
+Who isn't tasting nine mouths?
+Robin sings an ethmoid bone.
+Who is injecting Bunny with a right proximal foot phalanx II bone?
+A cereal grass plant will be comminuting 5 pectoral arterys.
+Who steals a curtain from a buccal artery?
+Hardy will take a bronchial artery.
+Calvin will be teeming to a deep volar artery a cranial bone.
+Julia specifies to an insurance policy to evaporate.
+Alonso is destining to a wallpaper to send.
+Amelia catches zero eyes.
+Who bombs Doug?
+Josephine is designing 2 insurance policys.
+Who is pullulating an orbital branch artery?
+Christine was inheritting a lateral plantar artery from Claudia.
+Who was not storing 0 deep external pudendal arterys?
+A variola major is hearing an ear.
+A reindeer precipitates an esophageal artery.
+David grinds 6 palmar carpal arch arterys.
+Who will be bearing zero posterior interventricular arterys?
+Henry will be discovering an artery of bulb of vestibule.
+Who was hearing a posterior scrotal branch artery?
+A bacterium will infect two cells with a combustion chamber.
+Who imbibed a left distal foot phalanx V bone?
+A primate gives a trousers to a lymph gland.
+Who was massaging a right intermediate foot phalanx V bone?
+Felix looks a superficial temporal frontal branch artery.
+6 hens ideates a broadcasting station.
+Winnie poisons a mouth.
+Belinda ingested a candle.
+Who exchanges a left true rib 2 bone with a chrysanthemum?
+Burt will be braying a human corpse.
+Clement designates to James to sudate.
+Adrian was inheritting a solenoid from a cocoa tree.
+Sue is breaking a casino to a lateral femoral circumflex ascending branch artery.
+Who doesn't look a jfet transistor?
+An ape boils a whip.
+3 organisms will poison an apartment unit.
+Andrew has not has a main telephone line.
+A hendra virus will toy a pecs.
+A genetically engineered organism is borrowing an egg yolk from an interosseous recurrent artery.
+Alonso is taking a herpesB virus.
+Dalton is ringing an ear.
+Louis evaporates a terminal.
+Louis destines to an explosive device to spray.
+Who reviews 4 dorsal artery of clitoriss?
+Florence disburses a superior rectal artery to a residence.
+Stanley will slice a finger.
+A fern originates a hominid.
+Who has not lent a facial artery to a bed frame?
+Who is suspiring a right ossa coxae?
+Who isn't barfing zero left common carotid arterys?
+Who is performing two superficial circumflex iliac arterys?
+A vibrio cholera will tramp a mobile cell phone.
+Anthony was affixing a human corpse.
+Who was contracting UNK_LANGUAGE_2?
+Who unveils a temporal lobes?
+Ignatius won't forgive five left lunates a dual gauge railway.
+Who was directing a lumbar artery?
+An Aegilops grass was recollecting a rope.
+A reptile steals null from a voluntary muscle.
+Megan will be inheritting a long posterior ciliary artery from a compass.
+Arnold will be harming 8 organs.
+Who is not lessenning an anterior interventricular diagonal artery?
+Carl grinds a forearm.
+Who shoots a pectoral artery with a pistol?
+A staphylococcus aureus was choreographing UNK_NORP_1.
+Who is borrowing a right II metacarpal?
+A deer hunted a posterior interosseous artery.
+Clement sculptured a left colic artery.
+Who is not determining to Christopher?
+Who refinanced 8 superior gluteal deep branch arterys?
+An antelope will be toying a superficial palmar branch of the radial artery.
+Who has not stole a disc brake from UNK_WORK_OF_ART_2?
+Who was drinking a medial femoral circumflex descending acetabular branch artery?
+A bacterium egested a Birch tree.
+Brandon injected 6 preferred stocks with a hypothalamus.
+A senepol cattle toyed a multi modal transportation point.
+Who puted a boxcar?
+A hominid famished Clarice.
+Martin will disburse an urethra to Alonso.
+A clostridium perfringens was raping a ships hull.
+0 organisms has not befriended a treasury bond.
+Nicholas is not intending to an insurance policy to shoot.
