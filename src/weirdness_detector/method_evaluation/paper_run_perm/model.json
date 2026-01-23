@@ -1,0 +1,110 @@
+{
+  "features": [
+    "n_tokens",
+    "avg_nll",
+    "p95",
+    "p99",
+    "max_surp",
+    "spike_frac_35",
+    "spike_frac_50",
+    "rep_1gram",
+    "top1_prob_mean",
+    "top1_minus_true_mean",
+    "digit_ratio",
+    "upper_ratio"
+  ],
+  "linear_rule_raw": {
+    "a": {
+      "avg_nll": -0.3163493809603294,
+      "digit_ratio": 11.042366029612216,
+      "max_surp": -0.08993927382084278,
+      "n_tokens": -0.31573263567406845,
+      "p95": -0.09747886372301766,
+      "p99": -0.08317582490033337,
+      "rep_1gram": 21.39058129283106,
+      "spike_frac_35": -1.280498557464063,
+      "spike_frac_50": 0.39722296476895147,
+      "top1_minus_true_mean": -2.7746230940199763,
+      "top1_prob_mean": 2.4869572721293274,
+      "upper_ratio": -3.713880917821987
+    },
+    "c_bias": 7.34714372083724,
+    "keep_if": "sum(a[f]*x[f]) + c_bias >= 0"
+  },
+  "model_type": "logistic_regression_gd",
+  "notes": [
+    "Compute z[f]=(x[f]-mean[f])/std[f]. Then p=sigmoid(bias + sum(w[f]*z[f])). Keep if p>=threshold_p.",
+    "Equivalent raw rule: sum(a[f]*x[f]) + c_bias >= 0 (same as p>=threshold_p)."
+  ],
+  "schema_version": 4,
+  "standardization": {
+    "means": {
+      "avg_nll": 6.425278950657012,
+      "digit_ratio": 0.003419425851434701,
+      "max_surp": 12.870902049074818,
+      "n_tokens": 8.881201394475731,
+      "p95": 10.405786985250737,
+      "p99": 10.40897777044784,
+      "rep_1gram": 0.00042004317511397154,
+      "spike_frac_35": 0.7347853614910164,
+      "spike_frac_50": 0.5590592713864306,
+      "top1_minus_true_mean": 0.1721296672030035,
+      "top1_prob_mean": 0.24190707401448108,
+      "upper_ratio": 0.04116393805309734
+    },
+    "stds": {
+      "avg_nll": 0.9388938097126873,
+      "digit_ratio": 0.011620979893633629,
+      "max_surp": 2.0466874071781986,
+      "n_tokens": 2.809413409678031,
+      "p95": 1.7558449628581263,
+      "p99": 1.759141795854096,
+      "rep_1gram": 0.006723467839927621,
+      "spike_frac_35": 0.13546840149437894,
+      "spike_frac_50": 0.1269223027792195,
+      "top1_minus_true_mean": 0.053523062650013144,
+      "top1_prob_mean": 0.06674335815996857,
+      "upper_ratio": 0.03823809942827247
+    }
+  },
+  "threshold_p": 0.85,
+  "training_settings": {
+    "dataset": {
+      "coherent": 2273,
+      "incoherent": 1456,
+      "prevalence": 0.6095467953875033,
+      "usable_examples": 3729
+    },
+    "epochs": 4000,
+    "kfold": 5,
+    "l2": 0.001,
+    "lr": 0.05,
+    "min_precision": 0.0,
+    "min_precision_lcb": 0.9,
+    "neg_threshold": -1.0,
+    "objective": "maximize coherent_kept_rate subject to precision constraint",
+    "perm_repeats": 5,
+    "perm_seed": 123,
+    "pos_threshold": 2.0,
+    "prune_tol": 0.01,
+    "seed": 0,
+    "selected_step": 6,
+    "steps": 201,
+    "use_lcb": true
+  },
+  "weights_standardized": {
+    "avg_nll": -0.2970184754900939,
+    "bias": 0.5063701943000809,
+    "digit_ratio": 0.12832311360826656,
+    "max_surp": -0.18407757913987075,
+    "n_tokens": -0.8870235005357162,
+    "p95": -0.1711577718531943,
+    "p99": -0.1463180699868183,
+    "rep_1gram": 0.14381888539970702,
+    "spike_frac_35": -0.17346709269551477,
+    "spike_frac_50": 0.0504164534052641,
+    "top1_minus_true_mean": -0.1485063256914045,
+    "top1_prob_mean": 0.1659878799422661,
+    "upper_ratio": -0.14201174780044096
+  }
+}
