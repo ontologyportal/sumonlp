@@ -14,6 +14,7 @@
 
 import os
 import glob
+import shutil
 import sys
 import unicodedata
 import re
@@ -312,12 +313,12 @@ def lines_to_dict(filename):
 
 def write_dict_values_by_key(input_dict, output_filename):
     """
-    Writes the values of input_dict to output_filename, one per line,
-    in the order of their keys (sorted numerically).
+    Writes the keys of input_dict (line content) to output_filename, one per line,
+    sorted by their values (original line numbers) to preserve file order.
     """
     with open(output_filename, 'w', encoding='cp1252') as f:
-        for key in sorted(input_dict):
-            f.write(f"{input_dict[key]}\n")
+        for key in sorted(input_dict, key=lambda k: input_dict[k]):
+            f.write(f"{key}\n")
 
 def find_subsuming_mappings():
     global search_directory, noun_file, verb_file, adj_file, adv_file
@@ -346,11 +347,11 @@ def find_subsuming_mappings():
     adj_file = lines_to_dict(os.path.join(search_directory, "WordNetMappings30-adj.txt"))
     adv_file = lines_to_dict(os.path.join(search_directory, "WordNetMappings30-adv.txt"))
     generate_new_kifs()
-    write_dict_values_by_key(noun_file, "new_WordNetMappings30-noun.txt")
-    write_dict_values_by_key(verb_file, "new_WordNetMappings30-verb.txt")
-    write_dict_values_by_key(adj_file, "new_WordNetMappings30-adj.txt")
-    write_dict_values_by_key(adv_file, "new_WordNetMappings30-adv.txt")
-    print(f"Results saved to " + output_file_path + ". Additionally updated wordnet mappings saved to new_WordNetMappings30-*.txt.")
+    write_dict_values_by_key(noun_file, os.path.join(search_directory, "new_WordNetMappings30-noun.txt"))
+    write_dict_values_by_key(verb_file, os.path.join(search_directory, "new_WordNetMappings30-verb.txt"))
+    write_dict_values_by_key(adj_file,  os.path.join(search_directory, "new_WordNetMappings30-adj.txt"))
+    write_dict_values_by_key(adv_file,  os.path.join(search_directory, "new_WordNetMappings30-adv.txt"))
+    print(f"Results saved to {output_file_path}. Updated wordnet mappings saved to {search_directory}/new_WordNetMappings30-*.txt.")
 
 def clear_directory(dir_path):
     """
